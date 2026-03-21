@@ -1,4 +1,4 @@
-<#
+﻿<#
 .SYNOPSIS
     Sync .claude/agents + .claude/skills to Codex / GitHub Copilot format
 
@@ -9,7 +9,7 @@
 
     Current assumed Codex format (update if different):
       .github/
-        copilot-instructions.md     <- global agent rules (from CLAUDE.md routing logic)
+        copilot-instructions.md     <- global agent rules (from AGENTS.md routing logic)
         agents/
           {agent}.md                <- individual agents with minimal frontmatter
 
@@ -291,23 +291,23 @@ function Sync-Skills-Codex {
 # ─── Global Instructions (copilot-instructions.md) ───────────────────────────
 
 function Generate-GlobalInstructions {
-    $claudeMdPath  = Join-Path $RepoRoot "CLAUDE.md"
+    $claudeMdPath  = Join-Path $RepoRoot "AGENTS.md"
     $targetFile    = Join-Path $RepoRoot $CodexGlobalFile
 
     Write-Host ""
     Write-Status "[GLOBAL] Generating $CodexGlobalFile" "White"
 
     if (-not (Test-Path $claudeMdPath)) {
-        Write-Warning "CLAUDE.md not found — skipping global instructions"
+        Write-Warning "AGENTS.md not found — skipping global instructions"
         return
     }
 
     $claudeMd = Get-Content $claudeMdPath -Raw -Encoding UTF8
 
-    # Extract the routing/intent section from CLAUDE.md as global instructions
+    # Extract the routing/intent section from AGENTS.md as global instructions
     $header = @"
 # Codex Global Instructions
-# Auto-generated from CLAUDE.md — do not edit directly.
+# Auto-generated from AGENTS.md — do not edit directly.
 # Source: .claude/agents/ | Edit source, then run: .\scripts\sync-to-codex.ps1
 
 "@

@@ -1,4 +1,4 @@
-## ⚡ Kit Maintenance (How to Sync & Update)
+﻿## ⚡ Kit Maintenance (How to Sync & Update)
 
 > **Read this first if you need to update agents, add skills, or migrate to a new AI tool.**
 
@@ -49,29 +49,17 @@ This kit also includes an out-of-the-box sync script for GitHub Copilot/Codex fo
 
 ---
 
-## Setting Up With Your Project
-
-
-To use this kit with an existing project, copy the core files into your project root:
-
-```bash
-# From the tri-ai-kit directory, copy into your target project
-cp -r .claude /path/to/your-project/
-cp CLAUDE.md /path/to/your-project/
-cp WORKFLOW.md /path/to/your-project/
-```
-
-Then open your project in Claude Code — the agents, skills, and hooks will load automatically on session start.
-You can use slash commands in Claude Code to activate agents.
-
-**What gets installed:**
-- `.claude/` — agents, skills, hooks, and slash commands
-- `CLAUDE.md` — routing rules and orchestration instructions Claude Code reads on startup
-- `WORKFLOW.md` — 15-phase production delivery workflow reference
-
 # tri-ai-kit
 
-Multi-agent development toolkit for Claude Code. Specialized agents handle each phase of the software lifecycle — from problem definition to post-launch monitoring.
+Multi-agent development toolkit providing skills, agents, and workflows for Claude Code, Antigravity, and Codex. Specialized agents handle each phase of the software lifecycle — from problem definition to post-launch monitoring.
+
+## Setup Instructions
+
+Depending on the AI tool you are using, follow the specific setup guide below:
+
+- **Claude Code:** [Claude Setup Instructions](./claude-setup-instructions.md)
+- **Antigravity:** [Antigravity Setup Instructions](./antigravity-setup-instructions.md)
+- **Codex (GitHub Copilot):** [Codex Setup Instructions](./codex-setup-instructions.md)
 
 > See [WORKFLOW.md](./WORKFLOW.md) for the full 15-phase production delivery workflow.
 
@@ -79,7 +67,7 @@ Multi-agent development toolkit for Claude Code. Specialized agents handle each 
 
 ## What It Is
 
-tri-ai-kit installs a set of agents, skills, and hooks into your Claude Code workspace. The main conversation acts as the orchestrator — it reads context, routes to the right agent, and merges results. Agents do not spawn other agents.
+tri-ai-kit installs a set of agents, skills, and hooks/workflows into your AI workspace. The main conversation acts as the orchestrator — it reads context, routes to the right agent, and merges results. Agents do not spawn other agents.
 
 **Core loop:**
 ```
@@ -218,8 +206,8 @@ tri-ai-kit/
 ├── packages/
 │   ├── core/            # Core hooks, scout-block, notification providers
 │   └── domains/         # Domain-specific packages
-├── templates/           # Repo and workspace CLAUDE.md templates
-├── CLAUDE.md            # Project-level agent instructions
+├── templates/           # Repo and workspace AGENTS.md templates
+├── AGENTS.md            # Project-level agent instructions
 ├── WORKFLOW.md          # 15-phase production delivery workflow
 └── README.md            # This file
 ```
@@ -302,5 +290,5 @@ TELEGRAM_CHAT_ID=...
 ## Related Docs
 
 - [WORKFLOW.md](./WORKFLOW.md) — Full 15-phase production workflow with exit criteria
-- [CLAUDE.md](./CLAUDE.md) — Agent routing rules and orchestration protocol
+- [AGENTS.md](./AGENTS.md) — Agent routing rules and orchestration protocol
 - [.claude/hooks/docs/README.md](./.claude/hooks/docs/README.md) — Hooks reference

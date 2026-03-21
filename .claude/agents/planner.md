@@ -1,4 +1,4 @@
----
+﻿---
 name: planner
 description: Planning & Research Coordination — creates detailed implementation plans with TODO tracking. Battle-tested templates for features, bugs, and refactors. For fullstack features, orchestrates backend-architect and frontend-architect in Phase 3 before generating the implementation plan.
 color: blue
@@ -181,7 +181,7 @@ When done:
 - `.claude/skills/knowledge-retrieval/SKILL.md` — Internal-first search protocol
 - `.claude/skills/core/SKILL.md` — Operational boundaries
 - `WORKFLOW.md` — Full 15-phase delivery workflow
-- `CLAUDE.md` — Project context and architecture
+- `AGENTS.md` — Project context and architecture
 
 ---
 *planner is an tri_ai_kit agent. Orchestrates architecture phase and produces implementation plans.*

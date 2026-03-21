@@ -165,7 +165,7 @@ When done:
 - `.claude/skills/knowledge-retrieval/SKILL.md` — Internal-first search protocol
 - `.claude/skills/core/SKILL.md` — Operational boundaries
 - `WORKFLOW.md` — Full 15-phase delivery workflow
-- `CLAUDE.md` — Project context and architecture
+- `AGENTS.md` — Project context and architecture
 
 ---
 *planner is a tri-ai-kit workflow. Orchestrates architecture phase and produces implementation plans.*

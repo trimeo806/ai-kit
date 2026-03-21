@@ -1,4 +1,4 @@
-# Solution Architect Workflow
+﻿# Solution Architect Workflow
 
 > Production-grade delivery process for fullstack engineers using tri-ai-kit agents.
 
@@ -417,4 +417,4 @@ Phase 15 SLO breach          → incident response → root cause → Phase 8
 ---
 
 ## Related Documents
-- `CLAUDE.md` — Agent routing rules, intent map, and orchestration protocol
+- `AGENTS.md` — Agent routing rules, intent map, and orchestration protocol

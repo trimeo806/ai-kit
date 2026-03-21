@@ -90,7 +90,7 @@ All documentation files must include:
 
 ## Related Documents
 
-- `CLAUDE.md` — Project context and guidelines
+- `AGENTS.md` — Project context and guidelines
 - `.claude/agents/` — Agent definitions
 - `.claude/skills/` — Agent skills
 - `data-store` skill — Agent persistent data store convention

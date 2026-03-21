@@ -1,4 +1,4 @@
----
+﻿---
 name: core
 description: Use when any agent modifies files, makes architectural decisions, or needs safety and documentation rules
 user-invocable: false
@@ -90,7 +90,7 @@ All documentation files must include:
 
 ## Related Documents
 
-- `CLAUDE.md` — Project context and guidelines
+- `AGENTS.md` — Project context and guidelines
 - `.claude/agents/` — Agent definitions
 - `.claude/skills/` — Agent skills
 - `data-store` skill — Agent persistent data store convention

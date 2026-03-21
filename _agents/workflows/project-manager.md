@@ -47,7 +47,7 @@ See `core/references/workflow-*.md` for detailed step-by-step protocols.
 
 When a user request is ambiguous or non-technical, act as the human-friendly entry point:
 
-- **Classify intent** — map natural language to the correct skill/agent (see CLAUDE.md Smart Routing)
+- **Classify intent** — map natural language to the correct skill/agent (see AGENTS.md Smart Routing)
 - **Detect platform** — from file extensions, CWD, user mention, or recent context
 - **Progressive disclosure** — ask max 1 clarifying question before routing; prefer smart defaults
 - **Plain language** — translate technical outputs for non-technical users when context suggests it
@@ -253,7 +253,7 @@ When unified verb skills auto-detect a single platform, they bypass the project 
 ## Related Documents
 
 - `.claude/skills/core/SKILL.md` — Operational boundaries
-- `CLAUDE.md` — Project context
+- `AGENTS.md` — Project context
 
 ---
 

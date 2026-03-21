@@ -1,4 +1,4 @@
----
+﻿---
 name: tri-ai-kit
 description: Kit conventions, agent catalog, skill architecture, and routing rules for tri_ai_kit. Load when answering kit-level questions, authoring agents/skills, or routing ambiguous requests.
 user-invocable: false
@@ -41,7 +41,7 @@ A multi-agent development toolkit for Claude Code. The main conversation is alwa
 
 ## Routing Rules (Summary)
 
-See `CLAUDE.md` for the full routing table. Quick reference:
+See `AGENTS.md` for the full routing table. Quick reference:
 
 - **Build**: `developer` (generic), `frontend-developer` (UI), `backend-developer` (API)
 - **Fix**: `debugger`
@@ -89,7 +89,7 @@ Frontmatter: `name`, `description`, `user-invocable`, `context`, `agent`, `metad
 Subagents (spawned via Agent tool) cannot spawn further subagents. All multi-agent orchestration must originate from the main conversation.
 
 ## Related Files
-- `CLAUDE.md` — Full routing table and orchestration rules
+- `AGENTS.md` — Full routing table and orchestration rules
 - `.claude/skills/core/SKILL.md` — Operational boundaries
 - `.claude/skills/skill-discovery/SKILL.md` — Lazy skill loading protocol
 - `.claude/skills/skill-index.json` — Machine-readable skill catalog
