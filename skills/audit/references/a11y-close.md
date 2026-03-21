@@ -1,4 +1,4 @@
----
+﻿---
 name: audit-close-a11y
 description: "Mark an accessibility finding as resolved"
 user-invocable: false

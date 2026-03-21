@@ -1,4 +1,4 @@
-# Security Review Report
+﻿# Security Review Report
 
 **Component**: `CommentDisplay.tsx` + `useAuth.ts`
 **Date**: 2026-03-15

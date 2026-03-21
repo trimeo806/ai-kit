@@ -1,4 +1,4 @@
-# State Machine Modeling Guide
+﻿# State Machine Modeling Guide
 
 ## ASCII Notation
 

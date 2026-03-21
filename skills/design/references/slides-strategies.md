@@ -1,4 +1,4 @@
-# Slide Strategies
+﻿# Slide Strategies
 
 15 proven deck structures with emotion arcs.
 

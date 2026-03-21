@@ -1,4 +1,4 @@
-# Logo Style Guide
+﻿# Logo Style Guide
 
 ## Core Logo Types
 

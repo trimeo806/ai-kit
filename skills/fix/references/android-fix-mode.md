@@ -1,4 +1,4 @@
----
+﻿---
 name: android-fix-mode
 description: Android fix mode — fix templates, known-findings input, status codes, surgical fix process for Compose and Views/XML
 user-invocable: false

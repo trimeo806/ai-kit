@@ -1,4 +1,4 @@
-# Security Review Report
+﻿# Security Review Report
 **Date**: 2026-03-15
 **Scope**: Backend
 **Files Reviewed**: 1 file (`routes/users.js`)

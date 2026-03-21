@@ -1,4 +1,4 @@
-# Azure Architecture Reference
+﻿# Azure Architecture Reference
 
 Comprehensive guide for Azure services, patterns, and Cloud Adoption Framework implementation.
 

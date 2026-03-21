@@ -1,4 +1,4 @@
----
+﻿---
 name: android-audit-mode
 description: Android audit mode — JSON output schema, violation types, block-PR logic, detection rules for Compose and Views/XML
 user-invocable: false

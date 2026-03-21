@@ -1,4 +1,4 @@
----
+﻿---
 name: docs-init
 description: "Scan codebase and generate structured KB documentation"
 user-invocable: false

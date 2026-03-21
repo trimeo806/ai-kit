@@ -1,4 +1,4 @@
-# Pagination Patterns
+﻿# Pagination Patterns
 
 ## Why Paginate?
 

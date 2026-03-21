@@ -1,4 +1,4 @@
----
+﻿---
 name: fix-a11y
 description: "Fix accessibility findings — by ID (#<id>) or top N by priority (<n>)"
 user-invocable: false

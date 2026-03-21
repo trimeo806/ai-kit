@@ -1,4 +1,4 @@
-# Color Palette Management
+﻿# Color Palette Management
 
 Guidelines for defining, extracting, and enforcing brand colors.
 

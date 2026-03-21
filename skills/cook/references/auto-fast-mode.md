@@ -1,4 +1,4 @@
-# Cook Auto Fast Mode
+﻿# Cook Auto Fast Mode
 
 No research. Scout → plan fast → implement. Skip code review.
 

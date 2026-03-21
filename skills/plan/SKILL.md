@@ -1,4 +1,4 @@
----
+﻿---
 name: plan
 description: Use when user says "plan", "design this", "architect", "spec out", "how should we build", or "create a roadmap" — produces a phased implementation plan scaled to task complexity
 user-invocable: true
@@ -111,14 +111,14 @@ draft → active → completed → archived
 
 | Action | Command |
 |--------|---------|
-| Activate | `node .claude/scripts/set-active-plan.cjs plans/{slug}` |
-| Complete | `node .claude/scripts/complete-plan.cjs plans/{slug}` |
-| Archive | `node .claude/scripts/archive-plan.cjs plans/{slug}` |
+| Activate | `# set-active-plan.cjs plans/{slug}` |
+| Complete | `# complete-plan.cjs plans/{slug}` |
+| Archive | `# archive-plan.cjs plans/{slug}` |
 | Board | `plans/README.md` — updated by scripts automatically |
 
 **MANDATORY final step** — after writing all plan files, run:
 ```bash
-node .claude/scripts/set-active-plan.cjs plans/{slug}
+# set-active-plan.cjs plans/{slug}
 ```
 This stamps `status: active` in `plan.md` and registers the plan in session state so `/cook` picks it up automatically. Do NOT skip this step.
 

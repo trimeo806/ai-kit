@@ -1,4 +1,4 @@
-# ADR Template
+﻿# ADR Template
 
 ## ADR Format
 

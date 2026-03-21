@@ -1,4 +1,4 @@
----
+﻿---
 name: a11y-mode-fix
 description: Fix mode — surgical accessibility fixes from known-findings database with minimal code changes
 user-invocable: false

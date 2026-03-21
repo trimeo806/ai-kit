@@ -1,4 +1,4 @@
-# TypeScript Patterns
+﻿# TypeScript Patterns
 
 ## Builder Pattern
 

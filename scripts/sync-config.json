@@ -1,0 +1,108 @@
+{
+  "_comment": "Sync config for .claude/ → Antigravity (_agents/workflows/ + skills/). Edit this to tune transforms.",
+
+  "agents": {
+    "source": ".claude/agents",
+    "target": "_agents/workflows",
+
+    "frontmatter": {
+      "keep": ["description", "skills"],
+      "drop": ["name", "color", "model", "memory", "permissionMode", "handoffs", "tools", "allowedTools"]
+    },
+
+    "bodyTransforms": [
+      {
+        "_comment": "Skill path references",
+        "from": "\\.claude/skills/",
+        "to": "skills/"
+      },
+      {
+        "_comment": "Agent directory references",
+        "from": "\\.claude/agents/",
+        "to": "_agents/workflows/"
+      },
+      {
+        "_comment": "Claude scripts references — remove lines containing these",
+        "removeLineContaining": [
+          "node .claude/scripts/",
+          "set-active-plan.cjs",
+          "complete-plan.cjs",
+          "archive-plan.cjs",
+          ".claude/scripts/"
+        ]
+      },
+      {
+        "_comment": "Claude-specific tool references — rephrase",
+        "from": "via Agent tool",
+        "to": "via the workflow"
+      },
+      {
+        "_comment": "Generic agent tool spawn references",
+        "from": "spawn.*via Agent tool",
+        "isRegex": true,
+        "to": "invoke"
+      },
+      {
+        "_comment": "AskUserQuestion tool is Claude Code specific — replace",
+        "from": "AskUserQuestion tool",
+        "to": "ask the user"
+      },
+      {
+        "_comment": "Claude agent footer reference",
+        "from": "is an tri_ai_kit agent",
+        "to": "is a tri-ai-kit workflow"
+      },
+      {
+        "_comment": "from '.claude/skills/' skill loader lines",
+        "from": "Activate relevant skills from `\\.claude/skills/`",
+        "isRegex": true,
+        "to": "Activate relevant skills from `skills/`"
+      }
+    ]
+  },
+
+  "skills": {
+    "source": ".claude/skills",
+    "target": "skills",
+    "exclude": [
+      "skill-index.json"
+    ],
+
+    "pathTransforms": [
+      {
+        "from": "\\.claude/skills/",
+        "to": "skills/"
+      },
+      {
+        "from": "\\.claude/agents/",
+        "to": "_agents/workflows/"
+      },
+      {
+        "from": "node .claude/scripts/",
+        "to": "# "
+      }
+    ]
+  },
+
+  "skillIndex": {
+    "output": "skills/skill-index.json",
+    "generateOnSync": true,
+    "indexFields": ["name", "description", "category", "tier", "keywords", "platforms", "triggers", "agent-affinity", "connections", "path"]
+  },
+
+  "adapters": {
+    "antigravity": {
+      "agentTarget": "_agents/workflows",
+      "skillTarget": "skills",
+      "workflowFormat": "markdown-with-yaml-frontmatter",
+      "requiredFrontmatterFields": ["description"],
+      "optionalFrontmatterFields": ["skills"]
+    },
+    "codex": {
+      "_comment": "Placeholder — fill in when Codex format is known",
+      "agentTarget": ".github/agents",
+      "skillTarget": "skills",
+      "workflowFormat": "unknown"
+    }
+  }
+}

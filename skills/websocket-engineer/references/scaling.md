@@ -1,4 +1,4 @@
-# Horizontal Scaling Reference
+﻿# Horizontal Scaling Reference
 
 ## Architecture Overview
 

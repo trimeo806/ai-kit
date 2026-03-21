@@ -1,4 +1,4 @@
-# Frontend Security Checklist
+﻿# Frontend Security Checklist
 
 Based on roadmap.sh frontend security best practices and OWASP Top 10.
 

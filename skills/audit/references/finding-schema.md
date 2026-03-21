@@ -1,4 +1,4 @@
-# Audit Report Schema v2.0
+﻿# Audit Report Schema v2.0
 
 **This is a field reference** — it defines the structure of findings and methodology within `report.md`. You do NOT produce a separate JSON file. Findings are written inline as Markdown tables. Machine-readable tracking lives in `known-findings.json` (per-domain) and `session.json` (per-session summary).
 

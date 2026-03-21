@@ -1,4 +1,4 @@
-# Server Components
+﻿# Server Components
 
 ## Server vs Client Components
 

@@ -1,4 +1,4 @@
-# Web Organism/Application Checklist
+﻿# Web Organism/Application Checklist
 
 For use when `componentClass` is `organism` or `application`. Parallel to `ui-checklist-web-atoms.md` — covers organism-specific concerns only: public API surface, state boundaries, and mock data isolation.
 

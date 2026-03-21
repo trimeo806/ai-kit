@@ -1,4 +1,4 @@
----
+﻿---
 name: cook
 description: Use when user says "implement", "build", "add a feature", "cook", "make this work", or "continue the plan" — dispatches platform-aware feature implementation for web, iOS, Android, or backend
 user-invocable: true
@@ -15,12 +15,12 @@ Implement features with automatic platform detection and plan-aware agent/skill 
 
 **If `$ARGUMENTS` is empty**, resolve the active plan before asking the user for a task:
 
-1. Run: `node .claude/scripts/get-active-plan.cjs`
+1. Run: `# get-active-plan.cjs`
 2. **If result ≠ `none`**: read the plan's `plan.md`, identify the first phase with `status: pending`, then proceed to **Step 0A**.
 3. **If result = `none`**: scan `plans/*/plan.md` for the most recently created plan with `status: pending` (plans just created by `/plan` that haven't been activated yet). Sort by directory name descending; take the first match.
 4. **If still nothing**: ask the user for a task description.
 
-When a plan is found via step 3 (frontmatter scan), run `node .claude/scripts/set-active-plan.cjs <plan-dir>` to activate it before proceeding.
+When a plan is found via step 3 (frontmatter scan), run `# set-active-plan.cjs <plan-dir>` to activate it before proceeding.
 
 ### Step 0A — Plan-Aware Agent & Skill Resolution
 

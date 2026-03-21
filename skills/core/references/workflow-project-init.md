@@ -1,4 +1,4 @@
-# Workflow: Project Initialization
+﻿# Workflow: Project Initialization
 
 Bootstrap a new project or module with structure, docs, and initial commit.
 

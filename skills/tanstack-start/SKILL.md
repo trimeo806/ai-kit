@@ -1,4 +1,4 @@
----
+﻿---
 name: tanstack-start
 description: "Use when building full-stack React applications with TanStack Start — file-based routing, server functions, SSR, or type-safe client-server integration. Invoke whenever the user mentions TanStack Start, TanStack Router, createServerFn, createFileRoute, createRootRoute, or wants to scaffold a new TanStack Start project from scratch. Also trigger for questions about data loading with loaders, beforeLoad hooks, streaming SSR, or deploying TanStack Start to Netlify, Cloudflare, or Vercel."
 license: MIT

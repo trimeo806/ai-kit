@@ -1,4 +1,4 @@
-# Class to Modern React Migration Guide
+﻿# Class to Modern React Migration Guide
 
 ---
 

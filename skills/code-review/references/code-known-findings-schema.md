@@ -1,4 +1,4 @@
----
+﻿---
 name: code-known-findings-schema
 description: "Schema for .kit-data/code/known-findings.json — code review findings persistence layer"
 user-invocable: false

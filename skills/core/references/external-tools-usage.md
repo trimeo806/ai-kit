@@ -1,4 +1,4 @@
----
+﻿---
 name: external-tools-usage
 description: Rules for external tool/MCP usage as secondary reasoning aids.
 ---

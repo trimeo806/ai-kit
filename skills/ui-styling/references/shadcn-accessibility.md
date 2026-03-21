@@ -1,4 +1,4 @@
-# shadcn/ui Accessibility Patterns
+﻿# shadcn/ui Accessibility Patterns
 
 ARIA patterns, keyboard navigation, screen reader support, and accessible component usage.
 

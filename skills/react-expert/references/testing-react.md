@@ -1,4 +1,4 @@
-# Testing React
+﻿# Testing React
 
 ## Basic Component Test
 

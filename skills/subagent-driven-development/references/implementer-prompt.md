@@ -1,4 +1,4 @@
-# Implementer Subagent Prompt Template
+﻿# Implementer Subagent Prompt Template
 
 Use this template when dispatching an implementation subagent for a single task.
 

@@ -1,4 +1,4 @@
----
+﻿---
 name: tri-ai-kit
 description: Kit conventions, agent catalog, skill architecture, and routing rules for tri_ai_kit. Load when answering kit-level questions, authoring agents/skills, or routing ambiguous requests.
 user-invocable: false

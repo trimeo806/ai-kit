@@ -1,4 +1,4 @@
-{
+﻿{
   "eval_id": 2,
   "eval_name": "backend-sqli-noauth-nolimit",
   "prompt": "security audit on this express api please - we're about to go live next week and want to make sure it's ok\n\n[routes/users.js with SQL injection in all 3 queries, hardcoded JWT secret, no auth on profile/update, no rate limiting]",

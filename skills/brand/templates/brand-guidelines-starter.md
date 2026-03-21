@@ -1,4 +1,4 @@
-# Brand Guidelines v1.0
+﻿# Brand Guidelines v1.0
 
 > Last updated: {DATE}
 > Status: Draft

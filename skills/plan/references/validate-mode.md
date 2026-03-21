@@ -1,4 +1,4 @@
----
+﻿---
 name: plan-validate
 description: "Validate plan with critical questions interview"
 user-invocable: false

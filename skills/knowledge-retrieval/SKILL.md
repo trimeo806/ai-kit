@@ -1,4 +1,4 @@
----
+﻿---
 name: knowledge-retrieval
 description: Use when you need prior art, past decisions, or existing patterns — checks docs/, skills, and RAG before external sources
 user-invocable: false

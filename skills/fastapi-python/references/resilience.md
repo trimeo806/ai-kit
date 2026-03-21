@@ -1,4 +1,4 @@
-# FastAPI Resilience Patterns
+﻿# FastAPI Resilience Patterns
 
 Patterns for handling upstream instability: timeouts, retries, rate limits (429), and 503s.
 Relevant when upstream uses `?simulate_issues=true` or in any production-grade BFF.

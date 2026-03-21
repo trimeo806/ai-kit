@@ -1,4 +1,4 @@
-# net/http — HTTP Servers, Clients, and Middleware
+﻿# net/http — HTTP Servers, Clients, and Middleware
 
 ## HTTP Server with Timeouts (production baseline)
 

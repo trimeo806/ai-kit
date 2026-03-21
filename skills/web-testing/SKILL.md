@@ -1,4 +1,4 @@
----
+﻿---
 name: web-testing
 description: Use when writing tests, configuring Jest/Playwright, checking coverage, or working with test patterns
 user-invocable: false

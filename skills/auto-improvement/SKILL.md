@@ -1,4 +1,4 @@
----
+﻿---
 name: auto-improvement
 description: Use when reviewing session performance, analyzing improvement trends, or understanding the metrics-capture-detection pipeline
 user-invocable: false

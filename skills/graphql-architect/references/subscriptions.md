@@ -1,4 +1,4 @@
-# GraphQL Subscriptions
+﻿# GraphQL Subscriptions
 
 ## Basic Subscription Setup
 

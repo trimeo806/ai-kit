@@ -1,4 +1,4 @@
-# Kubernetes Troubleshooting
+﻿# Kubernetes Troubleshooting
 
 ## Essential kubectl Commands
 

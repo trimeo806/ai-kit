@@ -1,4 +1,4 @@
-# Concurrency Patterns
+﻿# Concurrency Patterns
 
 ## Goroutine Lifecycle Management
 

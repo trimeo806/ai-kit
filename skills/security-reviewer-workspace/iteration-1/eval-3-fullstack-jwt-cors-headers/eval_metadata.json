@@ -1,4 +1,4 @@
-{
+﻿{
   "eval_id": 3,
   "eval_name": "fullstack-jwt-cors-headers",
   "prompt": "can you do a full security review of our next.js app? specifically worried about the auth and api setup\n\n[app/api/auth/route.ts with password in JWT payload + hardcoded admin creds + next.config.js with wildcard CORS + credentials:true + middleware.ts with missing algorithm enforcement]",

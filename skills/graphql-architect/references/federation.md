@@ -1,4 +1,4 @@
-# Apollo Federation
+﻿# Apollo Federation
 
 ## Subgraph Setup
 

@@ -1,4 +1,4 @@
----
+﻿---
 name: error-recovery
 description: Retry strategies, circuit breakers, fallbacks, and graceful degradation patterns for handling transient and persistent failures
 user-invocable: false

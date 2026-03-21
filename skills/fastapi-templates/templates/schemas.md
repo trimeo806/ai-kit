@@ -1,4 +1,4 @@
-# Flight Booking Domain — Pydantic v2 Schemas
+﻿# Flight Booking Domain — Pydantic v2 Schemas
 
 Adapt field names after exploring the upstream `/docs`. These represent the **BFF contract** (what consumers see), not upstream shapes.
 

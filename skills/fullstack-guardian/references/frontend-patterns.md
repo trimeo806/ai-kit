@@ -1,4 +1,4 @@
-# Frontend Patterns
+﻿# Frontend Patterns
 
 ## TypeScript Configuration
 

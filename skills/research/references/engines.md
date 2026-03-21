@@ -1,4 +1,4 @@
-# Research Engine Reference
+﻿# Research Engine Reference
 
 ## Engine: gemini
 

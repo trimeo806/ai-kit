@@ -1,4 +1,4 @@
-# Cloud Cost Optimization Reference
+﻿# Cloud Cost Optimization Reference
 
 Comprehensive guide for cloud cost optimization including reserved instances, spot/preemptible, right-sizing, and FinOps practices.
 

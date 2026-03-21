@@ -1,4 +1,4 @@
-# Cook Parallel Mode
+﻿# Cook Parallel Mode
 
 Parallel implementation — split multi-module features across independent subsystems.
 

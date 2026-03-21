@@ -1,4 +1,4 @@
-# Orchestration Protocol
+﻿# Orchestration Protocol
 
 Rules for agent delegation, context passing, execution modes, and escalation.
 

@@ -1,4 +1,4 @@
-# Brand Consistency Checklist
+﻿# Brand Consistency Checklist
 
 ## Visual Consistency
 

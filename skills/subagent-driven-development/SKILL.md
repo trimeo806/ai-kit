@@ -1,4 +1,4 @@
----
+﻿---
 name: subagent-driven-development
 description: Use when a plan has 3+ independent tasks, phases have non-overlapping file ownership, or user says "parallel implementation", "execute all phases" — provides per-task subagent dispatch with two-stage review
 user-invocable: false

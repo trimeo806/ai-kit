@@ -1,4 +1,4 @@
-# TypeScript Configuration
+﻿# TypeScript Configuration
 
 ## Strict Mode Configuration
 

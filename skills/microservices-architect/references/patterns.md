@@ -1,4 +1,4 @@
-# Resilience and Reliability Patterns
+﻿# Resilience and Reliability Patterns
 
 Essential patterns for building fault-tolerant distributed systems.
 

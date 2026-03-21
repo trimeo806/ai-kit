@@ -1,4 +1,4 @@
-# Cook Auto Mode
+﻿# Cook Auto Mode
 
 Trust-based full pipeline: plan → implement → commit.
 

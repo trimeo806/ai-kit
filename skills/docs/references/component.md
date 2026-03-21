@@ -1,4 +1,4 @@
----
+﻿---
 name: docs-component
 description: "Document a klara-theme component (Figma data + prop mapping)"
 user-invocable: false

@@ -1,4 +1,4 @@
-# Backend & API Security Checklist
+﻿# Backend & API Security Checklist
 
 Based on roadmap.sh API security best practices and OWASP Top 10.
 

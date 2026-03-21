@@ -1,4 +1,4 @@
-# CIP Design Style Guide
+﻿# CIP Design Style Guide
 
 ## Corporate Minimal
 **Industries:** Finance, Legal, Consulting, Tech

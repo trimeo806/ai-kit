@@ -1,4 +1,4 @@
-# Real-Time Communication Alternatives
+﻿# Real-Time Communication Alternatives
 
 ## Technology Comparison
 

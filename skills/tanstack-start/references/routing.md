@@ -1,4 +1,4 @@
-# TanStack Start — File-Based Routing
+﻿# TanStack Start — File-Based Routing
 
 ## Route File Naming Conventions
 

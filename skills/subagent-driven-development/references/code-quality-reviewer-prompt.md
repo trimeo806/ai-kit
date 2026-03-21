@@ -1,4 +1,4 @@
-# Code Quality Reviewer Subagent Prompt Template
+﻿# Code Quality Reviewer Subagent Prompt Template
 
 Use this template ONLY after spec compliance review passes.
 

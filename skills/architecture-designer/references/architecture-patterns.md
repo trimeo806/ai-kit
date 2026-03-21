@@ -1,4 +1,4 @@
-# Architecture Patterns
+﻿# Architecture Patterns
 
 ## Pattern Comparison
 

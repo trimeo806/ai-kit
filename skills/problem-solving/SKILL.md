@@ -1,4 +1,4 @@
----
+﻿---
 name: problem-solving
 description: Use when stuck, facing a complex bug, or need root cause analysis — 5 whys, bisection, inversion techniques
 

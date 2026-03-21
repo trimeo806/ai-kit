@@ -1,4 +1,4 @@
-# AWS Architecture Reference
+﻿# AWS Architecture Reference
 
 Comprehensive guide for AWS services, patterns, and Well-Architected Framework implementation.
 

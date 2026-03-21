@@ -1,4 +1,4 @@
-# PostgreSQL Extensions
+﻿# PostgreSQL Extensions
 
 ## Extension Management
 

@@ -1,4 +1,4 @@
-# Tailwind CSS Utility Reference
+﻿# Tailwind CSS Utility Reference
 
 Core utility classes for layout, spacing, typography, colors, borders, and shadows.
 

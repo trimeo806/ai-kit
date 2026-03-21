@@ -1,4 +1,4 @@
----
+﻿---
 name: plan-deep
 description: "Deep plan with sequential research and comprehensive analysis"
 user-invocable: false
@@ -281,7 +281,7 @@ Max 200 lines per phase.
 
 ### 9. Set Active Plan
 ```bash
-node .claude/scripts/set-active-plan.cjs {plan_path}
+# set-active-plan.cjs {plan_path}
 ```
 If fails: warn with manual command.
 

@@ -1,4 +1,4 @@
-# Backend Patterns
+﻿# Backend Patterns
 
 ## Microservices Architecture
 

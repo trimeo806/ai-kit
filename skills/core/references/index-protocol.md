@@ -1,4 +1,4 @@
-# Index Protocol
+﻿# Index Protocol
 
 Defines how agents maintain the three project index files: `docs/index.json`, `plans/index.json`, and `reports/index.json`.
 

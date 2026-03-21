@@ -1,4 +1,4 @@
-#!/usr/bin/env node
+﻿#!/usr/bin/env node
 /**
  * Validate token usage in codebase
  * Finds hardcoded values that should use design tokens

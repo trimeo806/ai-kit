@@ -1,4 +1,4 @@
-# PostgreSQL Replication
+﻿# PostgreSQL Replication
 
 ## Streaming Replication (Physical)
 

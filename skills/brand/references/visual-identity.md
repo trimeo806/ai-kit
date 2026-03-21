@@ -1,4 +1,4 @@
-# Visual Identity Basics
+﻿# Visual Identity Basics
 
 ## Core Visual Elements
 

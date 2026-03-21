@@ -1,4 +1,4 @@
-# WebSocket Protocol Reference
+﻿# WebSocket Protocol Reference
 
 ## Protocol Basics
 

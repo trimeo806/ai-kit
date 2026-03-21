@@ -1,4 +1,4 @@
----
+﻿---
 name: audit
 description: Use when user says "audit", "run an audit", "check quality", "review before merge", "a11y audit", or "code audit" — detects audit type (UI component, a11y, or code) and dispatches the right specialist
 user-invocable: true

@@ -1,4 +1,4 @@
-# Architecture Decision Guide
+﻿# Architecture Decision Guide
 
 ## Technology Selection Matrix
 

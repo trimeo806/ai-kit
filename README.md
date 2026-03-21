@@ -1,4 +1,56 @@
+## ⚡ Kit Maintenance (How to Sync & Update)
+
+> **Read this first if you need to update agents, add skills, or migrate to a new AI tool.**
+
+This kit follows a **one-way sync model**:
+
+```
+.claude/agents/   ←── SOURCE OF TRUTH ──→  .claude/skills/
+        │                                         │
+        ▼  .\scripts\sync-to-antigravity.ps1      ▼
+_agents/workflows/   (Antigravity)           skills/   (Antigravity)
+```
+
+### Rules
+- ✅ **Edit** only `.claude/agents/` and `.claude/skills/`
+- ✅ **Run sync** after any change
+- ❌ **Never edit** `_agents/workflows/` or `skills/` directly — they are auto-generated
+
+### Sync Commands (Windows PowerShell)
+
+```powershell
+# Full sync (agents + skills + regenerate skill-index.json)
+.\scripts\sync-to-antigravity.ps1
+
+# Preview without writing
+.\scripts\sync-to-antigravity.ps1 -DryRun
+
+# Agents only
+.\scripts\sync-to-antigravity.ps1 -AgentsOnly
+
+# Skills only
+.\scripts\sync-to-antigravity.ps1 -SkillsOnly
+```
+
+### Sync to Codex (Copilot)
+This kit also includes an out-of-the-box sync script for GitHub Copilot/Codex formats:
+
+```powershell
+# Sync to .github/agents/ and .github/copilot-instructions.md
+.\scripts\sync-to-codex.ps1
+
+# Dry run
+.\scripts\sync-to-codex.ps1 -DryRun
+```
+
+*Note: Edit variables at the top of `scripts/sync-to-codex.ps1` (like `$CodexAgentTarget`) before running if the official Codex target directory format changes.*
+
+📖 **Full details**: [SETUP.md](./SETUP.md)
+
+---
+
 ## Setting Up With Your Project
+
 
 To use this kit with an existing project, copy the core files into your project root:
 

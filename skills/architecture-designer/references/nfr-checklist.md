@@ -1,4 +1,4 @@
-# Non-Functional Requirements Checklist
+﻿# Non-Functional Requirements Checklist
 
 ## NFR Categories
 

@@ -1,4 +1,4 @@
-# TypeScript JSDoc
+﻿# TypeScript JSDoc
 
 ## Function Documentation
 

@@ -1,4 +1,4 @@
-# TanStack Start — Server Functions
+﻿# TanStack Start — Server Functions
 
 ## The Execution Model
 

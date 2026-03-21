@@ -26,6 +26,12 @@
     "tanstack": {
       "command": "npx",
       "args": ["-y", "@g7aro/tanstack-mcp"]
+    },
+    "context7": {
+      "serverUrl": "https://mcp.context7.com/mcp",
+      "headers": {
+        "CONTEXT7_API_KEY": "ctx7sk-765664c7-4c86-4fee-88fc-2cf501c4c906"
+      }
     }
   }
 }

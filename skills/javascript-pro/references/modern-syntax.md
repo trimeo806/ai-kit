@@ -1,4 +1,4 @@
-# Modern JavaScript Syntax (ES2023+)
+﻿# Modern JavaScript Syntax (ES2023+)
 
 ## Optional Chaining and Nullish Coalescing
 

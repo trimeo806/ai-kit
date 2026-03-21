@@ -1,4 +1,4 @@
----
+﻿---
 name: infra-docker
 description: Use when working with Dockerfiles, docker-compose, containers, or containerized deployments
 user-invocable: false

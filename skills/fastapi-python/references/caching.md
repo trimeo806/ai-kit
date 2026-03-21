@@ -1,4 +1,4 @@
-# FastAPI Caching Patterns
+﻿# FastAPI Caching Patterns
 
 ## What to Cache (Decision Matrix)
 

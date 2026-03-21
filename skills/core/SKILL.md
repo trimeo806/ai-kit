@@ -1,4 +1,4 @@
----
+﻿---
 name: core
 description: Use when any agent modifies files, makes architectural decisions, or needs safety and documentation rules
 user-invocable: false

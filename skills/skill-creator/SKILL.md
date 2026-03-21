@@ -1,4 +1,4 @@
----
+﻿---
 name: skill-creator
 description: Create new skills, modify and improve existing skills, and measure skill performance. Use when users want to create a skill from scratch, edit, or optimize an existing skill, run evals to test a skill, benchmark skill performance with variance analysis, or optimize a skill's description for better triggering accuracy.
 ---
@@ -465,7 +465,7 @@ If you're working inside the **tri-ai-kit** repository, a few additional steps a
 Any time you create or modify a skill (including description-only edits), run:
 
 ```bash
-node .claude/scripts/generate-skill-index.cjs
+# generate-skill-index.cjs
 ```
 
 This rebuilds `skill-index.json`, which is how session-init discovers and routes to skills. Without it, your new or updated skill won't be visible to agents.

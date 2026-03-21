@@ -1,4 +1,4 @@
-# Fix CI Mode
+﻿# Fix CI Mode
 
 Direct CI fix — skip auto-detection, go straight to CI debugging.
 

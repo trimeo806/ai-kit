@@ -1,4 +1,4 @@
----
+﻿---
 name: fastapi-python
 description: Use when building Python backend APIs with FastAPI. Invoke for FastAPI route handlers, Pydantic v2 schemas, async HTTP clients with httpx, dependency injection, middleware, OpenAPI documentation, or BFF (Backend-for-Frontend) wrapper layers. Load this skill whenever the task involves FastAPI, Python REST APIs, uvicorn, Pydantic, or Python async backend services — even if the user just says "implement the API" in a Python project.
 license: MIT

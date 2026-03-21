@@ -1,4 +1,4 @@
----
+﻿---
 name: audit-ui-findings-schema
 description: "Schema for .kit-data/ui/known-findings.json — UI component findings persistence layer"
 user-invocable: false

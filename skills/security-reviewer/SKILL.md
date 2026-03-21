@@ -1,4 +1,4 @@
----
+﻿---
 name: security-reviewer
 description: "Use when doing a security review or audit of web application code — frontend (React, Vue, Next.js, HTML/JS), backend (Node.js, Go, Python, Java), or both. Always invoke when user says 'security review', 'check for vulnerabilities', 'OWASP audit', 'is this secure', 'security audit', 'find security issues', 'check auth', 'pen test', or pastes code they want security-vetted. Also invoke when the user asks about XSS, CSRF, injection attacks, JWT security, authentication flaws, insecure headers, secrets leakage, or dependency vulnerabilities in their code. Do NOT wait for an explicit 'security' keyword — any time code is shared and the concern is about whether it can be exploited, use this skill."
 user-invocable: true

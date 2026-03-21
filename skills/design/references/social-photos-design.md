@@ -1,4 +1,4 @@
-# Social Photos Design Guide
+﻿# Social Photos Design Guide
 
 Design social media images via HTML/CSS rendering + screenshot export. Orchestrates `ui-ux-pro-max`, `brand`, `design-system`, and `chrome-devtools` skills.
 

@@ -1,4 +1,4 @@
-# CIP Design Reference
+﻿# CIP Design Reference
 
 Corporate Identity Program design with 50+ deliverables, 20 styles, 20 industries. Generate mockups with Gemini Nano Banana (Flash/Pro).
 
