@@ -1,0 +1,57 @@
+# CLAUDE.md
+
+This file provides guidance to Claude Code when working with code in this repository.
+
+{{#if projectName}}
+## Project: {{projectName}}
+{{/if}}
+
+## Installed Profile: `{{profile}}`
+
+**Packages**: {{#each packages}}{{this}}{{#unless @last}}, {{/unless}}{{/each}}
+
+**Installed by**: epost-kit v{{cliVersion}} on {{installedAt}}
+
+---
+
+## Claude Code Agent System
+
+### Configuration
+- **Agents**: `.claude/agents/` — {{agentCount}} agents
+- **Commands**: `.claude/commands/` — Slash commands
+- **Skills**: `.claude/skills/` — Passive knowledge
+
+{{#if techStack}}
+### Tech Stack
+{{techStack}}
+{{/if}}
+
+---
+
+{{#each snippets}}
+{{{this.content}}}
+
+---
+
+{{/each}}
+
+## Guidelines
+
+### Decision Authority
+**Auto-execute**: dependency installs, lint fixes, documentation formatting
+**Ask first**: deleting files, modifying production configs, introducing new dependencies, multi-file refactors, changing API contracts
+
+### Code Changes
+- Verify environment state before operations
+- Use relative paths from project root
+- Prefer existing patterns over introducing new conventions
+- Conservative defaults: safety over speed, clarity over cleverness
+
+### Core Rules
+See `.claude/skills/core/SKILL.md` for operational boundaries.
+
+## Related Documents
+- `.claude/skills/core/SKILL.md` — Operational rules and boundaries
+{{#each relatedDocs}}
+- {{this}}
+{{/each}}

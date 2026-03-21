@@ -1,0 +1,50 @@
+// Debugging Process Flow
+// Authoritative process definition — prose in SKILL.md supports, doesn't replace.
+//
+// Render: dot -Tsvg debugging-flow.dot -o debugging-flow.svg
+
+digraph debugging_flow {
+    rankdir=TB;
+    node [shape=box, style=rounded, fontname="Helvetica", fontsize=11];
+    edge [fontname="Helvetica", fontsize=9];
+
+    // Entry
+    start [label="Bug Reported", shape=ellipse, style=filled, fillcolor="#e8f5e9"];
+
+    // Main flow
+    reproduce [label="1. Reproduce\nConsistently"];
+    isolate [label="2. Isolate\nMinimal Case"];
+    root_cause [label="3. Root Cause\nAnalysis"];
+    hypothesize [label="4. Hypothesize\nPossible Causes"];
+    test_hyp [label="5. Test Each\nHypothesis"];
+    fix [label="6. Apply Fix"];
+    verify [label="7. Verify Fix\n(Run Tests NOW)"];
+
+    // Decision nodes
+    reproduced [label="Reproduced?", shape=diamond, style=filled, fillcolor="#fff3e0"];
+    root_found [label="Root Cause\nFound?", shape=diamond, style=filled, fillcolor="#fff3e0"];
+    fix_works [label="Fix Verified?", shape=diamond, style=filled, fillcolor="#fff3e0"];
+    fix_count [label="Fix Attempts\n>= 3?", shape=diamond, style=filled, fillcolor="#ffebee"];
+
+    // Outcomes
+    done [label="Done\n(With Evidence)", shape=ellipse, style=filled, fillcolor="#e8f5e9"];
+    question_arch [label="STOP:\nQuestion Architecture\nEscalate to Architect", shape=box, style="filled,bold", fillcolor="#ffcdd2"];
+
+    // Flow
+    start -> reproduce;
+    reproduce -> reproduced;
+    reproduced -> isolate [label="Yes"];
+    reproduced -> reproduce [label="No — adjust\nenvironment/data"];
+    isolate -> root_cause;
+    root_cause -> hypothesize;
+    hypothesize -> test_hyp;
+    test_hyp -> root_found;
+    root_found -> fix [label="Yes"];
+    root_found -> hypothesize [label="No — next\nhypothesis"];
+    fix -> verify;
+    verify -> fix_works;
+    fix_works -> done [label="Yes — with\ntest output"];
+    fix_works -> fix_count [label="No"];
+    fix_count -> hypothesize [label="No — retry\nwith new hypothesis"];
+    fix_count -> question_arch [label="Yes — 3 failed\nfixes reached"];
+}

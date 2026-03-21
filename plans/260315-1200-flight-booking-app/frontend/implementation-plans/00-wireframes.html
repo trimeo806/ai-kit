@@ -1,0 +1,1411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Flight Booking — Screen Wireframes</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /*
+      Skyscanner design system
+      --background:        #F1F2F8  page background
+      --foreground:        #000000  primary text
+      --primary:           #0770E3  Skyscanner trust-blue
+    */
+
+    /* ══════════════════════════════════════════════════════
+       THEME TOKENS — Skyscanner design system
+       Light-only palette. No dark mode.
+    ══════════════════════════════════════════════════════ */
+
+    :root {
+      /* ══ Token rules ═══════════════════════════════════════
+         bg-primary            #0770E3  →  text-primary            #FFFFFF
+         bg-secondary          #F1F2F8  →  text-secondary          #000000
+         bg-highlight-primary  #FFFFFF  →  text-highlight-primary  #0770E3
+         bg-highlight-secondary #0770E3 →  text-highlight-secondary #FFFFFF
+      ══════════════════════════════════════════════════════ */
+      --bg-primary:        #0770E3;
+      --text-primary:      #FFFFFF;
+      --bg-secondary:      #F1F2F8;
+      --text-secondary:    #000000;
+      --border:            #E6E6E6;
+      --success:           #00A698;
+      --warning:           #FF7733;
+      --error:             #E20A17;
+      --badge-ok-bg:       #E8F5F4;
+      --badge-ok-fg:       #00A698;
+      --badge-ok-border:   #00A698;
+      --badge-warn-bg:     #FFF0E8;
+      --badge-warn-fg:     #FF7733;
+      --badge-warn-border: #FF7733;
+
+      /* ── Highlight tokens ─────────────────────────────
+         bg-highlight-primary   = active/selected element ON --bg-primary (blue)
+         bg-highlight-secondary = active/selected element ON --bg-secondary (gray) or white surface
+         Rule: highlight tokens flip the bg/text pair of their parent zone.
+      ─────────────────────────────────────────────────── */
+      --bg-highlight-primary:     #FFFFFF;   /* White — pops on blue bg       */
+      --text-highlight-primary:   #0770E3;   /* Blue text on white highlight  */
+      --bg-highlight-secondary:   #0770E3;   /* Blue — pops on gray/white bg  */
+      --text-highlight-secondary: #FFFFFF;   /* White text on blue highlight  */
+
+      /* ── Spacing scale (8px grid) ─────────────────────
+         Tailwind equivalent shown for reference.
+         Half-steps (--space-1, --space-3) included because
+         they are unavoidable in dense UI (icons, labels).
+      ─────────────────────────────────────────────────── */
+      --space-1:   8px;    /* Tailwind space-2  — tight/icon gap (min 8px) */
+      --space-2:   8px;    /* Tailwind space-2  — inline padding           */
+      --space-3:  16px;    /* Tailwind space-4  — label/field gap          */
+      --space-4:  16px;    /* Tailwind space-4  — card padding             */
+      --space-5:  24px;    /* Tailwind space-6  — medium breathing room    */
+      --space-6:  24px;    /* Tailwind space-6  — section padding          */
+      --space-8:  32px;    /* Tailwind space-8  — card header              */
+      --space-10: 48px;    /* Tailwind space-12 — input/button height      */
+      --space-12: 48px;    /* Tailwind space-12 — hero top padding         */
+      --space-16: 64px;    /* Tailwind space-16 — section separator        */
+      --space-20: 80px;    /* Tailwind space-20 — screen gap               */
+
+      /* ── Semantic aliases ── */
+      --padding-xs:      8px;             /*  8px — pill, badge             */
+      --padding-sm:      16px;            /* 16px — compact button, tab     */
+      --padding-md:      24px;            /* 24px — card, section default   */
+      --padding-lg:      24px;            /* 24px — page/hero padding       */
+      --padding-xl:      40px;            /* 40px — modal/confirmation      */
+      --gap-xs:          8px;             /*  8px — field group, icon       */
+      --gap-sm:          8px;             /*  8px — list rows, filter items */
+      --gap-md:          16px;            /* 16px — form fields             */
+      --gap-lg:          24px;            /* 24px — sidebar sections        */
+      --gap-xl:          32px;            /* 32px — major sections          */
+      --height-input:    48px;            /* 48px — h-12 (shadcn Input)     */
+      --height-btn:      48px;            /* 48px — h-12 (shadcn Button)    */
+      --height-btn-sm:   40px;            /* 40px — h-10 (shadcn size="sm") */
+    }
+
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: "Inter", system-ui, sans-serif;
+      font-size: 16px;
+      line-height: 1.5;
+      background: var(--bg-secondary);
+      color: var(--text-secondary);
+      padding: var(--space-10) var(--space-5);
+    }
+    h1 {
+      text-align: center;
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--text-secondary);
+      margin-bottom: 8px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+    .subtitle {
+      text-align: center;
+      font-size: 16px;
+      color: var(--text-secondary);
+      margin-bottom: 48px;
+    }
+
+    /* ─── Screen wrapper ─── */
+    .screens { display: flex; flex-direction: column; gap: var(--space-20); max-width: 1100px; margin: 0 auto; }
+    .screen-block { display: flex; flex-direction: column; gap: var(--gap-md); }
+    .screen-label { display: flex; align-items: center; gap: 16px; }
+    .screen-label .badge {
+      background: var(--bg-secondary); border: 1px solid var(--border); color: var(--text-secondary);
+      font-size: 16px; font-weight: 600; padding: 8px 16px; border-radius: 20px;
+      text-transform: uppercase; letter-spacing: 0.05em;
+    }
+    .screen-label h2 { font-size: 16px; font-weight: 600; color: var(--text-secondary); letter-spacing: -0.01em; }
+    .screen-label .route { font-size: 16px; color: var(--text-secondary); font-family: monospace; }
+
+    /* ─── Browser chrome ─── */
+    .browser { background: #E8EAED; border: 1px solid var(--border); border-radius: 10px; overflow: hidden; }
+    .browser-bar {
+      background: #F1F3F4; padding: var(--space-2) var(--padding-md); display: flex; align-items: center;
+      gap: var(--gap-sm); border-bottom: 1px solid var(--border);
+    }
+    .dots { display: flex; gap: 6px; }
+    .dot { width: 10px; height: 10px; border-radius: 50%; background: #BDC1C6; }
+    .url-bar {
+      flex: 1; background: #FFFFFF; border-radius: 4px; height: 32px;
+      display: flex; align-items: center; padding: 0 10px;
+      font-size: 16px; color: var(--text-secondary); font-family: monospace;
+    }
+    .browser-body { padding: 0; }
+
+    /* ─── Layout helpers ─── */
+    .row   { display: flex; gap: var(--gap-md); align-items: flex-start; }
+    .col   { display: flex; flex-direction: column; gap: var(--gap-sm); }
+    .grow  { flex: 1; }
+    .w-280 { width: 280px; flex-shrink: 0; }
+    .w-300 { width: 300px; flex-shrink: 0; }
+
+    /* ─── Annotation label ─── */
+    .ann {
+      font-size: 16px; color: var(--text-secondary);
+      text-transform: uppercase; letter-spacing: 1px; font-weight: 500;
+    }
+    .section-divider { height: 1px; background: var(--border); margin: 8px 0; }
+
+    /* ─── Label wireframe primitives ─── */
+    .wf-field-group { display: flex; flex-direction: column; gap: var(--gap-xs); }
+    .wf-field-label {
+      font-size: 16px; font-weight: 500; line-height: 1; letter-spacing: 0;
+      color: var(--text-secondary);                    /* text-sm font-medium — shadcn <Label> */
+    }
+    .wf-input {
+      background: #FFFFFF; border: 1px solid var(--border); border-radius: 4px;
+      height: var(--height-input); display: flex; align-items: center; padding: 0 var(--padding-sm);
+      font-size: 16px; color: var(--text-secondary);    /* text-sm — shadcn Input */
+    }
+    .wf-input.tall { height: 52px; }
+    .wf-input.error { border-color: var(--error); }
+    .wf-input-sm {
+      background: #FFFFFF; border: 1px solid var(--border); border-radius: 4px;
+      height: var(--height-input); display: flex; align-items: center; padding: 0 var(--padding-sm);
+      font-size: 16px; color: var(--text-secondary);
+    }
+    .wf-error-msg { font-size: 16px; color: var(--error); }         /* text-xs — shadcn FormMessage */
+    .wf-btn {
+      background: var(--bg-primary); color: var(--text-primary); border-radius: 8px;
+      height: var(--height-btn); display: flex; align-items: center; justify-content: center;
+      font-size: 16px; font-weight: 500; cursor: pointer;              /* text-sm font-medium — shadcn Button */
+    }
+    .wf-btn-sm {
+      background: var(--bg-primary); color: var(--text-primary); border-radius: 8px;
+      height: var(--height-btn-sm); display: flex; align-items: center; justify-content: center;
+      font-size: 16px; font-weight: 500; padding: 0 var(--padding-sm); white-space: nowrap; /* size="sm" */
+    }
+    .wf-btn-outline {
+      background: transparent; color: var(--bg-highlight-secondary); border: 1px solid var(--bg-highlight-secondary);
+      border-radius: 8px; height: var(--height-btn-sm); display: flex; align-items: center;
+      justify-content: center; font-size: 16px; font-weight: 500; padding: 0 var(--padding-sm); white-space: nowrap;
+    }
+    .wf-card { background: #FFFFFF; border: 1px solid var(--border); border-radius: 8px; padding: var(--padding-md); }
+    .wf-divider { height: 1px; background: var(--border); }
+    .wf-pill {
+      height: 40px; border-radius: 9999px; border: 1px solid var(--border);
+      background: var(--bg-secondary); display: inline-flex; align-items: center; padding: 0 var(--padding-md);
+      font-size: 16px; color: var(--text-secondary); cursor: pointer;
+    }
+    .wf-pill.active { background: var(--bg-highlight-secondary); border-color: var(--bg-highlight-secondary); color: var(--text-highlight-secondary); font-weight: 500; }
+    .wf-pill.client { border-style: dashed; color: var(--text-secondary); }
+    .wf-badge {
+      display: inline-flex; align-items: center; padding: 8px 16px; border-radius: 20px;
+      font-size: 16px; font-weight: 600;                               /* text-base font-semibold — shadcn Badge */
+      background: var(--bg-secondary); color: var(--text-secondary); border: 1px solid var(--border);
+    }
+    .wf-badge.nonstop  { background: var(--badge-ok-bg);   color: var(--badge-ok-fg);   border-color: var(--badge-ok-border); }
+    .wf-badge.one-stop { background: var(--badge-warn-bg); color: var(--badge-warn-fg); border-color: var(--badge-warn-border); }
+    .wf-text     { font-size: 16px; color: var(--text-secondary); }    /* text-sm */
+    .wf-text-dim { font-size: 16px; color: var(--text-secondary); }  /* text-sm muted-foreground */
+    .wf-text-sm  { font-size: 16px; color: var(--text-secondary); }  /* text-xs muted-foreground */
+    .wf-h1 { font-size: 40px; font-weight: 700; color: var(--text-secondary); letter-spacing: -0.025em; line-height: 1.1; }  /* text-4xl font-bold tracking-tight */
+    .wf-h2 { font-size: 32px; font-weight: 700; color: var(--text-secondary); letter-spacing: -0.025em; line-height: 1.2; }  /* text-3xl font-bold tracking-tight */
+    .wf-h3 { font-size: 16px; font-weight: 600; color: var(--text-secondary); letter-spacing: -0.01em; line-height: 1; } /* text-lg font-semibold — CardTitle */
+    .wf-price { font-size: 24px; font-weight: 700; color: var(--bg-highlight-secondary); letter-spacing: -0.02em; }  /* text-2xl font-bold */
+    .wf-time  { font-size: 24px; font-weight: 700; color: var(--text-secondary); letter-spacing: -0.02em; }  /* text-2xl font-bold */
+    .wf-mono  { font-family: monospace; font-size: 24px; font-weight: 700; letter-spacing: 0.2em; color: var(--text-secondary); }
+    .wf-radio {
+      width: 24px; height: 24px; border-radius: 50%; border: 1px solid var(--border);
+      background: var(--bg-secondary); flex-shrink: 0; display: flex; align-items: center; justify-content: center;
+    }
+    .wf-radio.active { border-color: var(--bg-highlight-secondary); background: var(--bg-highlight-secondary); }
+    .wf-checkbox {
+      width: 24px; height: 24px; border-radius: 3px; border: 1px solid var(--border);
+      background: var(--bg-secondary); flex-shrink: 0; display: flex; align-items: center; justify-content: center;
+      font-size: 16px; color: var(--text-primary);
+    }
+    .wf-checkbox.checked { background: var(--bg-highlight-secondary); color: var(--text-highlight-secondary); border-color: var(--bg-highlight-secondary); }
+    .wf-airline-logo {
+      width: 40px; height: 40px; border-radius: 4px; background: var(--bg-secondary);
+      border: 1px solid var(--border); display: flex; align-items: center; justify-content: center;
+      font-size: 16px; font-weight: 700; color: var(--text-secondary); flex-shrink: 0;
+    }
+    .wf-range {
+      height: 4px; background: var(--bg-secondary); border-radius: 2px; position: relative; margin: 10px 0;
+    }
+    .wf-range-fill { position: absolute; left: 20%; right: 25%; height: 100%; background: var(--text-secondary); border-radius: 2px; }
+    .wf-range-thumb { position: absolute; width: 14px; height: 14px; background: var(--bg-highlight-secondary); border-radius: 50%; top: -5px; }
+
+    /* ══ Ghost button (white, for use on blue backgrounds) ══ */
+    .wf-btn-ghost-white {
+      background: rgba(255,255,255,0.15); color: var(--text-primary); border: 1px solid rgba(255,255,255,0.4);
+      border-radius: 6px; padding: 6px 16px; font-size: 14px; font-weight: 500; cursor: pointer;
+    }
+
+    /* ══ Nav bar (shared across screens) ══ */
+    .s1-nav {
+      background: var(--bg-primary);
+      padding: 0 var(--padding-lg);
+    }
+    .s1-nav-inner {
+      max-width: 1100px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 56px;
+    }
+    .s1-nav-logo {
+      font-size: 20px; font-weight: 700; color: var(--text-primary); letter-spacing: -0.02em;
+    }
+    .s1-nav-links {
+      display: flex; gap: 32px;
+    }
+    .s1-nav-links span {
+      font-size: 15px; font-weight: 500; color: rgba(255,255,255,0.85); cursor: pointer;
+    }
+    .s1-nav-links span:first-child { color: var(--bg-highlight-primary); border-bottom: 2px solid var(--bg-highlight-primary); padding-bottom: 2px; }
+
+    /* ══ Screen 1 ══ */
+    .s1-hero { background: linear-gradient(135deg, #0770E3 0%, #084EB2 100%); padding: var(--space-12) var(--padding-lg) var(--space-10); }
+    .s1-heading { text-align: center; margin-bottom: var(--space-8); }
+    .s1-card {
+      background: #FFFFFF;
+      border: none;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.12);
+      border-radius: 12px;
+      padding: var(--padding-lg); max-width: 880px; margin: 0 auto;
+    }
+    .trip-pills { display: flex; gap: var(--gap-sm); margin-bottom: var(--space-5); }
+    .swap-btn {
+      width: var(--space-8); height: var(--space-8); border: 1px solid var(--border); border-radius: 9999px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; margin-top: var(--space-5); color: var(--text-secondary); font-size: 16px;
+    }
+
+    /* ── Popular destinations section ── */
+    .s1-popular {
+      background: var(--bg-secondary);
+      padding: 48px var(--padding-lg);
+    }
+    .s1-popular-inner {
+      max-width: 1100px; margin: 0 auto;
+    }
+    .s1-popular-heading {
+      font-size: 22px; font-weight: 700; color: var(--text-secondary); margin-bottom: 24px;
+    }
+    .s1-popular-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px;
+    }
+    .dest-card {
+      background: #FFFFFF; border-radius: 12px; overflow: hidden;
+      border: 1px solid #E6E6E6; cursor: pointer;
+      transition: box-shadow 0.15s ease;
+    }
+    .dest-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.08); }
+    .dest-img {
+      height: 100px; background: linear-gradient(135deg, #E8F0FE 0%, #C5D8FC 100%);
+      display: flex; align-items: center; justify-content: center; font-size: 40px;
+    }
+    .dest-info {
+      padding: 12px 16px; display: flex; flex-direction: column; gap: 4px;
+    }
+    .dest-city { font-size: 16px; font-weight: 600; color: var(--text-secondary); }
+    .dest-route { font-size: 13px; color: var(--text-secondary); opacity: 0.6; }
+    .dest-price { font-size: 13px; color: var(--text-secondary); }
+    .dest-price span { font-weight: 600; color: var(--bg-highlight-secondary); }
+
+    /* ── Footer ── */
+    .s1-footer {
+      background: #FFFFFF;
+      border-top: 1px solid #E6E6E6;
+    }
+    .s1-footer-inner {
+      max-width: 1100px; margin: 0 auto;
+      padding: 40px var(--padding-lg) 24px;
+      display: flex; gap: 64px; align-items: flex-start;
+    }
+    .s1-footer-brand {
+      display: flex; flex-direction: column; gap: 8px; min-width: 160px;
+    }
+    .s1-footer-logo {
+      font-size: 18px; font-weight: 700; color: var(--text-secondary);
+    }
+    .s1-footer-tagline {
+      font-size: 13px; color: var(--text-secondary); opacity: 0.6;
+    }
+    .s1-footer-cols {
+      flex: 1; display: flex; gap: 48px;
+    }
+    .s1-footer-col {
+      display: flex; flex-direction: column; gap: 10px;
+    }
+    .s1-footer-heading {
+      font-size: 13px; font-weight: 600; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em;
+    }
+    .s1-footer-link {
+      font-size: 14px; color: var(--text-secondary); opacity: 0.7; cursor: pointer;
+    }
+    .s1-footer-link:hover { color: var(--bg-highlight-secondary); opacity: 1; }
+    .s1-footer-bottom {
+      border-top: 1px solid var(--border);
+      font-size: 13px; color: var(--text-secondary); opacity: 0.6;
+      padding: 16px var(--padding-lg);
+    }
+
+    /* ══ Screen 2 ══ */
+    .s2-sticky-header {
+      background: var(--bg-primary);
+      border-bottom: none;
+      padding: var(--padding-sm) var(--padding-lg);
+    }
+    .s2-sort-bar {
+      background: var(--bg-primary);
+      border-bottom: 2px solid #084EB2;
+      padding: 0 var(--padding-lg); display: flex; gap: 0;
+    }
+    .sort-tab {
+      padding: 16px 24px; font-size: 15px; color: rgba(255,255,255,0.75); height: 48px;
+      display: flex; align-items: center;
+      border-bottom: 2px solid transparent; white-space: nowrap; cursor: pointer;
+    }
+    .sort-tab.active { color: var(--bg-highlight-primary); font-weight: 600; border-bottom: 2px solid var(--bg-highlight-primary); }
+    .sort-tab.client { color: rgba(255,255,255,0.4); }
+    .s2-body { display: flex; gap: 0; background: var(--bg-secondary); }
+    .s2-sidebar {
+      width: 280px; flex-shrink: 0; padding: var(--padding-md);
+      background: #FFFFFF;
+      border-right: 1px solid #E6E6E6;
+      display: flex; flex-direction: column; gap: var(--gap-lg);
+    }
+    .s2-results {
+      flex: 1; padding: var(--padding-md);
+      display: flex; flex-direction: column; gap: 8px;
+      background: var(--bg-secondary);
+    }
+    .filter-section { display: flex; flex-direction: column; gap: var(--gap-sm); }
+    .filter-header { display: flex; justify-content: space-between; align-items: center; }
+    .filter-row { display: flex; align-items: center; gap: 8px; min-height: 48px; }
+
+    /* flight card */
+    .flight-card-grid { display: grid; grid-template-columns: 2fr 1.5fr 1.5fr; align-items: center; gap: var(--gap-sm); }
+    .flight-center { display: flex; flex-direction: column; align-items: center; gap: 4px; }
+    .flight-line { display: flex; align-items: center; gap: 4px; width: 100%; }
+    .flight-line .line { flex: 1; height: 1px; background: var(--border); }
+    .flight-right { display: flex; flex-direction: column; align-items: flex-end; gap: 6px; }
+
+    /* ══ Screen 3 — progress header ══ */
+    .s3-progress-header {
+      background: var(--bg-primary);
+      padding: 24px var(--padding-lg) 32px;
+    }
+    .s3-body { display: flex; gap: 0; align-items: flex-start; padding: var(--padding-lg); background: var(--bg-secondary); }
+    .s3-form { flex: 1; display: flex; flex-direction: column; gap: var(--gap-md); padding-right: var(--padding-lg); }
+    .s3-sidebar { width: 360px; flex-shrink: 0; display: flex; flex-direction: column; gap: 16px; }
+    .progress-bar { display: flex; align-items: flex-start; margin-bottom: 16px; }
+    .prog-step { display: flex; flex-direction: column; align-items: center; gap: 4px; flex: 1; }
+    .prog-dot {
+      width: 32px; height: 32px; border-radius: 50%;
+      background: rgba(255,255,255,0.2); border: 2px solid rgba(255,255,255,0.5);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 16px; color: var(--text-primary); font-weight: 700;
+    }
+    .prog-dot.done   { background: var(--bg-highlight-primary); border-color: var(--bg-highlight-primary); color: var(--text-highlight-primary); }
+    .prog-dot.active { background: var(--bg-highlight-primary); border-color: var(--bg-highlight-primary); color: var(--text-highlight-primary); font-weight: 700; }
+    .prog-label { font-size: 13px; color: rgba(255,255,255,0.8); white-space: nowrap; }
+    .prog-line { height: 2px; flex: 1; background: rgba(255,255,255,0.3); margin-top: 16px; z-index: 0; }
+    .prog-line.done { background: var(--bg-highlight-primary); }
+    .accordion-header {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: var(--space-3) var(--padding-md); border-bottom: 1px solid var(--border);
+    }
+    .accordion-chevron { color: var(--text-secondary); font-size: 16px; }
+
+    /* ══ Screen 4 ══ */
+    .s4-body {
+      padding: var(--padding-lg);
+      background: var(--bg-secondary);
+      display: flex; justify-content: center;
+      min-height: 400px;
+    }
+    .s4-card {
+      max-width: 640px; width: 100%; background: #FFFFFF;
+      border: 1px solid var(--border); border-radius: 8px; overflow: hidden;
+    }
+    .s4-success-header {
+      background: #FFFFFF; border-bottom: 1px solid var(--border); padding: var(--padding-xl);
+      display: flex; flex-direction: column; align-items: center; gap: var(--gap-md);
+    }
+    .check-circle {
+      width: 72px; height: 72px; border-radius: 9999px;
+      background: #E8F5F4; border: 3px solid #00A698;
+      display: flex; align-items: center; justify-content: center; font-size: 32px;
+    }
+    .s4-section { padding: var(--padding-md); border-bottom: 1px solid var(--border); display: flex; flex-direction: column; gap: var(--gap-sm); }
+    .s4-actions { padding: var(--padding-md); display: flex; gap: var(--gap-sm); }
+
+  </style>
+</head>
+<body>
+
+<h1>Flight Booking App — Screen Wireframes</h1>
+<p class="subtitle">Labeled layout reference · Skyscanner pattern · 4 screens · API-aligned</p>
+
+<!-- ════════════════════════════════════════
+     PALETTE REFERENCE
+════════════════════════════════════════ -->
+<div style="max-width:1100px; margin:0 auto 64px; display:flex; flex-direction:column; gap:16px;">
+
+  <div style="max-width:1100px; margin:0 auto 64px; background:#FFFFFF; border:1px solid #E6E6E6; border-radius:8px; padding:24px;">
+    <div style="font-size:16px; font-weight:700; color:#000000; margin-bottom:16px;">Design Tokens</div>
+    <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:12px; font-size:14px;">
+
+      <div style="display:flex;align-items:center;gap:10px;">
+        <div style="width:32px;height:32px;border-radius:4px;background:#0770E3;flex-shrink:0;"></div>
+        <div><div style="font-weight:600;color:#000000;">--bg-primary</div><div style="color:#000000;">#0770E3</div></div>
+      </div>
+      <div style="display:flex;align-items:center;gap:10px;">
+        <div style="width:32px;height:32px;border-radius:4px;background:#FFFFFF;border:1px solid #E6E6E6;flex-shrink:0;"></div>
+        <div><div style="font-weight:600;color:#000000;">--text-primary</div><div style="color:#000000;">#FFFFFF</div></div>
+      </div>
+      <div style="display:flex;align-items:center;gap:10px;">
+        <div style="width:32px;height:32px;border-radius:4px;background:#F1F2F8;border:1px solid #E6E6E6;flex-shrink:0;"></div>
+        <div><div style="font-weight:600;color:#000000;">--bg-secondary</div><div style="color:#000000;">#F1F2F8</div></div>
+      </div>
+      <div style="display:flex;align-items:center;gap:10px;">
+        <div style="width:32px;height:32px;border-radius:4px;background:#000000;flex-shrink:0;"></div>
+        <div><div style="font-weight:600;color:#000000;">--text-secondary</div><div style="color:#000000;">#000000</div></div>
+      </div>
+      <div style="display:flex;align-items:center;gap:10px;">
+        <div style="width:32px;height:32px;border-radius:4px;background:#E6E6E6;border:1px solid #D1D1D6;flex-shrink:0;"></div>
+        <div><div style="font-weight:600;color:#000000;">--border</div><div style="color:#000000;">#E6E6E6</div></div>
+      </div>
+      <div style="display:flex;align-items:center;gap:10px;">
+        <div style="width:32px;height:32px;border-radius:4px;background:#00A698;flex-shrink:0;"></div>
+        <div><div style="font-weight:600;color:#000000;">--success</div><div style="color:#000000;">#00A698</div></div>
+      </div>
+      <div style="display:flex;align-items:center;gap:10px;">
+        <div style="width:32px;height:32px;border-radius:4px;background:#FF7733;flex-shrink:0;"></div>
+        <div><div style="font-weight:600;color:#000000;">--warning</div><div style="color:#000000;">#FF7733</div></div>
+      </div>
+      <div style="display:flex;align-items:center;gap:10px;">
+        <div style="width:32px;height:32px;border-radius:4px;background:#E20A17;flex-shrink:0;"></div>
+        <div><div style="font-weight:600;color:#000000;">--error</div><div style="color:#000000;">#E20A17</div></div>
+      </div>
+      <div style="display:flex;align-items:center;gap:10px;">
+        <div style="width:32px;height:32px;border-radius:4px;background:#E8F5F4;border:1px solid #00A698;flex-shrink:0;"></div>
+        <div><div style="font-weight:600;color:#000000;">--badge-ok-bg</div><div style="color:#000000;">#E8F5F4 / #00A698</div></div>
+      </div>
+      <div style="display:flex;align-items:center;gap:10px;">
+        <div style="width:32px;height:32px;border-radius:4px;background:#FFF0E8;border:1px solid #FF7733;flex-shrink:0;"></div>
+        <div><div style="font-weight:600;color:#000000;">--badge-warn-bg</div><div style="color:#000000;">#FFF0E8 / #FF7733</div></div>
+      </div>
+
+    </div>
+
+    <!-- Highlight tokens -->
+    <div style="margin-top:16px; padding-top:16px; border-top:1px solid #E6E6E6;">
+      <div style="font-size:13px; font-weight:600; color:#000000; text-transform:uppercase; letter-spacing:0.05em; margin-bottom:12px;">Highlight tokens — flip bg/text of parent zone</div>
+      <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:12px; font-size:14px;">
+
+        <div style="display:flex;align-items:center;gap:10px;">
+          <div style="width:32px;height:32px;border-radius:4px;background:#FFFFFF;border:1px solid #E6E6E6;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#0770E3;">Hi</div>
+          <div><div style="font-weight:600;color:#000000;">--bg-highlight-primary</div><div style="color:#000000;">#FFFFFF — active on blue bg</div></div>
+        </div>
+
+        <div style="display:flex;align-items:center;gap:10px;">
+          <div style="width:32px;height:32px;border-radius:4px;background:#0770E3;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#FFFFFF;">Aa</div>
+          <div><div style="font-weight:600;color:#000000;">--text-highlight-primary</div><div style="color:#000000;">#0770E3 — text on white highlight</div></div>
+        </div>
+
+        <div style="display:flex;align-items:center;gap:10px;">
+          <div style="width:32px;height:32px;border-radius:4px;background:#0770E3;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#FFFFFF;">Hi</div>
+          <div><div style="font-weight:600;color:#000000;">--bg-highlight-secondary</div><div style="color:#000000;">#0770E3 — active on gray/white bg</div></div>
+        </div>
+
+        <div style="display:flex;align-items:center;gap:10px;">
+          <div style="width:32px;height:32px;border-radius:4px;background:#FFFFFF;border:1px solid #E6E6E6;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#0770E3;">Aa</div>
+          <div><div style="font-weight:600;color:#000000;">--text-highlight-secondary</div><div style="color:#000000;">#FFFFFF — text on blue highlight</div></div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Spacing tokens -->
+  <div style="background:#FFFFFF; border:1px solid var(--border); border-radius:8px; padding:var(--padding-md); display:flex; flex-direction:column; gap:var(--gap-md);">
+    <div style="font-size:16px; font-weight:600; color:var(--text-secondary);">Spacing Scale <span style="font-size:16px; font-weight:400; color:var(--text-secondary);">8px grid · theme-independent</span></div>
+    <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:var(--gap-sm);">
+
+      <div style="display:flex; flex-direction:column; gap:8px;">
+        <div style="height:4px; background:var(--bg-primary); border-radius:2px; width:8px;"></div>
+        <div style="font-size:16px; font-weight:600; color:var(--text-secondary);">--space-1 · 8px</div>
+        <div style="font-size:16px; color:var(--text-secondary);">gap-xs · icon gap (min)</div>
+        <div style="font-size:16px; color:var(--text-secondary); font-family:monospace;">Tailwind: space-2</div>
+      </div>
+
+      <div style="display:flex; flex-direction:column; gap:8px;">
+        <div style="height:4px; background:var(--bg-primary); border-radius:2px; width:8px;"></div>
+        <div style="font-size:16px; font-weight:600; color:var(--text-secondary);">--space-2 · 8px</div>
+        <div style="font-size:16px; color:var(--text-secondary);">gap-sm · inline padding</div>
+        <div style="font-size:16px; color:var(--text-secondary); font-family:monospace;">Tailwind: space-2</div>
+      </div>
+
+      <div style="display:flex; flex-direction:column; gap:8px;">
+        <div style="height:4px; background:var(--bg-primary); border-radius:2px; width:16px;"></div>
+        <div style="font-size:16px; font-weight:600; color:var(--text-secondary);">--space-3 · 16px</div>
+        <div style="font-size:16px; color:var(--text-secondary);">padding-sm · label gap</div>
+        <div style="font-size:16px; color:var(--text-secondary); font-family:monospace;">Tailwind: space-4</div>
+      </div>
+
+      <div style="display:flex; flex-direction:column; gap:8px;">
+        <div style="height:4px; background:var(--bg-primary); border-radius:2px; width:16px;"></div>
+        <div style="font-size:16px; font-weight:600; color:var(--text-secondary);">--space-4 · 16px</div>
+        <div style="font-size:16px; color:var(--text-secondary);">padding-md · card padding</div>
+        <div style="font-size:16px; color:var(--text-secondary); font-family:monospace;">Tailwind: space-4</div>
+      </div>
+
+      <div style="display:flex; flex-direction:column; gap:8px;">
+        <div style="height:4px; background:var(--bg-primary); border-radius:2px; width:24px;"></div>
+        <div style="font-size:16px; font-weight:600; color:var(--text-secondary);">--space-5 · 24px</div>
+        <div style="font-size:16px; color:var(--text-secondary);">gap-lg · sidebar sections</div>
+        <div style="font-size:16px; color:var(--text-secondary); font-family:monospace;">Tailwind: space-6</div>
+      </div>
+
+      <div style="display:flex; flex-direction:column; gap:8px;">
+        <div style="height:4px; background:var(--bg-primary); border-radius:2px; width:24px;"></div>
+        <div style="font-size:16px; font-weight:600; color:var(--text-secondary);">--space-6 · 24px</div>
+        <div style="font-size:16px; color:var(--text-secondary);">padding-lg · page/hero padding</div>
+        <div style="font-size:16px; color:var(--text-secondary); font-family:monospace;">Tailwind: space-6</div>
+      </div>
+
+      <div style="display:flex; flex-direction:column; gap:8px;">
+        <div style="height:4px; background:var(--bg-primary); border-radius:2px; width:32px;"></div>
+        <div style="font-size:16px; font-weight:600; color:var(--text-secondary);">--space-8 · 32px</div>
+        <div style="font-size:16px; color:var(--text-secondary);">padding-xl · modal header</div>
+        <div style="font-size:16px; color:var(--text-secondary); font-family:monospace;">Tailwind: space-8</div>
+      </div>
+
+      <div style="display:flex; flex-direction:column; gap:8px;">
+        <div style="height:4px; background:var(--bg-primary); border-radius:2px; width:48px;"></div>
+        <div style="font-size:16px; font-weight:600; color:var(--text-secondary);">--space-10 · 48px</div>
+        <div style="font-size:16px; color:var(--text-secondary);">height-input / height-btn (h-12)</div>
+        <div style="font-size:16px; color:var(--text-secondary); font-family:monospace;">Tailwind: space-12</div>
+      </div>
+
+      <div style="display:flex; flex-direction:column; gap:8px;">
+        <div style="height:4px; background:var(--bg-primary); border-radius:2px; width:48px;"></div>
+        <div style="font-size:16px; font-weight:600; color:var(--text-secondary);">--space-12 · 48px</div>
+        <div style="font-size:16px; color:var(--text-secondary);">hero top padding</div>
+        <div style="font-size:16px; color:var(--text-secondary); font-family:monospace;">Tailwind: space-12</div>
+      </div>
+
+      <div style="display:flex; flex-direction:column; gap:8px;">
+        <div style="height:4px; background:var(--bg-primary); border-radius:2px; width:64px;"></div>
+        <div style="font-size:16px; font-weight:600; color:var(--text-secondary);">--space-16 · 64px</div>
+        <div style="font-size:16px; color:var(--text-secondary);">section separator</div>
+        <div style="font-size:16px; color:var(--text-secondary); font-family:monospace;">Tailwind: space-16</div>
+      </div>
+
+      <div style="display:flex; flex-direction:column; gap:8px;">
+        <div style="height:4px; background:var(--bg-primary); border-radius:2px; width:80px;"></div>
+        <div style="font-size:16px; font-weight:600; color:var(--text-secondary);">--space-20 · 80px</div>
+        <div style="font-size:16px; color:var(--text-secondary);">screen-to-screen gap</div>
+        <div style="font-size:16px; color:var(--text-secondary); font-family:monospace;">Tailwind: space-20</div>
+      </div>
+
+      <!-- Semantic aliases summary -->
+      <div style="grid-column:span 4; border-top:1px solid var(--border); padding-top:var(--gap-sm); display:grid; grid-template-columns:repeat(4,1fr); gap:var(--gap-sm);">
+        <div style="font-size:16px; color:var(--text-secondary);"><span style="color:var(--text-secondary); font-weight:500;">--height-input</span><br>48px — shadcn h-12</div>
+        <div style="font-size:16px; color:var(--text-secondary);"><span style="color:var(--text-secondary); font-weight:500;">--height-btn-sm</span><br>40px — shadcn h-10</div>
+        <div style="font-size:16px; color:var(--text-secondary);"><span style="color:var(--text-secondary); font-weight:500;">--padding-card</span><br>= --space-4 (24px)</div>
+        <div style="font-size:16px; color:var(--text-secondary);"><span style="color:var(--text-secondary); font-weight:500;">--padding-section</span><br>= --space-6 (24px)</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="screens">
+
+  <!-- ════════════════════════════════════════
+       SCREEN 1 — SEARCH
+  ════════════════════════════════════════ -->
+  <div class="screen-block">
+    <div class="screen-label">
+      <span class="badge">Screen 1</span>
+      <h2>Search</h2>
+      <span class="route">/ (home)</span>
+    </div>
+
+    <div class="browser">
+      <div class="browser-bar">
+        <div class="dots"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+        <div class="url-bar">localhost:3000/</div>
+      </div>
+      <div class="browser-body">
+
+        <!-- NAV BAR -->
+        <div class="s1-nav">
+          <div class="s1-nav-inner">
+            <div class="s1-nav-logo">&#9992; SkyBook</div>
+            <div class="s1-nav-links">
+              <span>Flights</span>
+              <span>Hotels</span>
+              <span>Cars</span>
+            </div>
+            <div class="s1-nav-auth">
+              <div class="wf-btn-ghost-white">Sign in</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="s1-hero">
+
+          <!-- Heading -->
+          <div class="s1-heading col" style="align-items:center; gap:8px;">
+            <div class="ann" style="color:rgba(255,255,255,0.6);">Page heading</div>
+            <div class="wf-h2" style="color:var(--text-primary);">Find your next flight</div>
+            <div class="wf-text-dim" style="color:rgba(255,255,255,0.8);">Search hundreds of airlines for the best deal</div>
+          </div>
+
+          <!-- Search card -->
+          <div class="s1-card">
+
+            <!-- Trip type pills -->
+            <div class="ann" style="margin-bottom:8px;">Trip type selector &#8594; slice count in POST /air/offer_requests</div>
+            <div class="trip-pills">
+              <div class="wf-pill active">One-way</div>
+              <div class="wf-pill">Round-trip</div>
+              <div class="wf-pill">Multi-city</div>
+            </div>
+
+            <!-- Origin / Destination -->
+            <div class="ann" style="margin-bottom:8px;">Airport combobox &#8594; GET /places/suggestions?query= (debounce 300ms, min 2 chars)</div>
+            <div class="row" style="margin-bottom:16px; align-items:flex-end;">
+              <div class="wf-field-group grow">
+                <div class="wf-field-label">From</div>
+                <div class="wf-input tall">KUL — Kuala Lumpur International Airport</div>
+              </div>
+              <div class="swap-btn">&#8644;</div>
+              <div class="wf-field-group grow">
+                <div class="wf-field-label">To</div>
+                <div class="wf-input tall">SIN — Singapore Changi Airport</div>
+              </div>
+            </div>
+
+            <!-- Dates + Passengers -->
+            <div class="ann" style="margin-bottom:8px;">Dates &#8594; slice departure_date &middot; Passengers &#8594; passenger type array &middot; Cabin &#8594; cabin_class</div>
+            <div class="row" style="margin-bottom:24px;">
+              <div class="wf-field-group grow">
+                <div class="wf-field-label">Departure date</div>
+                <div class="wf-input tall">15 May 2026</div>
+              </div>
+              <div class="wf-field-group grow">
+                <div class="wf-field-label">Return date <span style="color:rgba(0,0,0,0.35);">(disabled — one-way)</span></div>
+                <div class="wf-input tall" style="color:rgba(0,0,0,0.3);">Select return date</div>
+              </div>
+              <div class="wf-field-group" style="width:200px;">
+                <div class="wf-field-label">Passengers &amp; class</div>
+                <div class="wf-input tall">1 adult &middot; Economy</div>
+              </div>
+            </div>
+
+            <!-- CTA -->
+            <div class="ann" style="margin-bottom:8px;">Search CTA &#8594; POST /air/offer_requests?return_offers=false &#8594; saves offerRequestId + passengerIds[]</div>
+            <div class="wf-btn">Search flights</div>
+          </div>
+
+          <!-- Autocomplete dropdown + calendar hint -->
+          <div style="max-width:880px; margin:8px auto 0; display:flex; gap:16px;">
+
+            <div style="flex:1;">
+              <div class="ann" style="margin-bottom:8px; color:rgba(255,255,255,0.6);">Autocomplete dropdown &#8594; iata_code stored in Zustand on select</div>
+              <div class="wf-card" style="padding:8px; gap:0;">
+                <div class="wf-text-sm" style="padding:8px 16px; margin-bottom:8px;">Suggestions for "london"</div>
+                <!-- Selected row: bg-highlight-secondary / text-highlight-secondary -->
+                <div class="filter-row" style="padding:8px 16px; border-radius:4px; background:var(--bg-highlight-secondary); margin-bottom:8px;">
+                  <div style="font-size:16px;">&#127468;&#127463;</div>
+                  <div class="col grow" style="gap:8px;">
+                    <div class="wf-text" style="color:var(--text-highlight-secondary);">LHR — Heathrow Airport</div>
+                    <div class="wf-text-sm" style="color:var(--text-highlight-secondary); opacity:0.8;">London, GB</div>
+                  </div>
+                  <div class="wf-text-sm" style="color:var(--text-highlight-secondary); font-weight:700;">LHR</div>
+                </div>
+                <div class="filter-row" style="padding:8px 16px;">
+                  <div style="font-size:16px;">&#127468;&#127463;</div>
+                  <div class="col grow" style="gap:8px;">
+                    <div class="wf-text" style="">LTN — London Luton Airport</div>
+                    <div class="wf-text-sm">London, GB</div>
+                  </div>
+                  <div class="wf-text-sm">LTN</div>
+                </div>
+                <div class="filter-row" style="padding:8px 16px;">
+                  <div style="font-size:16px;">&#127468;&#127463;</div>
+                  <div class="col grow" style="gap:8px;">
+                    <div class="wf-text" style="">STN — Stansted Airport</div>
+                    <div class="wf-text-sm">London, GB</div>
+                  </div>
+                  <div class="wf-text-sm">STN</div>
+                </div>
+              </div>
+            </div>
+
+            <div style="flex:1;">
+              <div class="ann" style="margin-bottom:8px; color:rgba(255,255,255,0.6);">Date picker calendar panel</div>
+              <div class="wf-card" style="padding:16px;">
+                <div class="row" style="gap:16px;">
+                  <div class="col grow" style="gap:var(--gap-xs);">
+                    <div class="wf-text" style="font-weight:600; text-align:center;">May 2026</div>
+                    <div style="display:grid; grid-template-columns:repeat(7,1fr); gap:8px; text-align:center;">
+                      <div class="wf-text-sm">Mo</div><div class="wf-text-sm">Tu</div><div class="wf-text-sm">We</div><div class="wf-text-sm">Th</div><div class="wf-text-sm">Fr</div><div class="wf-text-sm">Sa</div><div class="wf-text-sm">Su</div>
+                      <div class="wf-text-dim" style="font-size:16px;"></div><div class="wf-text-dim" style="font-size:16px;"></div><div class="wf-text-dim" style="font-size:16px;"></div><div class="wf-text-dim" style="font-size:16px;"></div><div class="wf-text-dim" style="font-size:16px;">1</div><div class="wf-text-dim" style="font-size:16px;">2</div><div class="wf-text-dim" style="font-size:16px;">3</div>
+                      <div class="wf-text-dim" style="font-size:16px;">4</div><div class="wf-text-dim" style="font-size:16px;">5</div><div class="wf-text-dim" style="font-size:16px;">6</div><div class="wf-text-dim" style="font-size:16px;">7</div><div class="wf-text-dim" style="font-size:16px;">8</div><div class="wf-text-dim" style="font-size:16px;">9</div><div class="wf-text-dim" style="font-size:16px;">10</div>
+                      <div class="wf-text-dim" style="font-size:16px;">11</div><div class="wf-text-dim" style="font-size:16px;">12</div><div class="wf-text-dim" style="font-size:16px;">13</div><div class="wf-text-dim" style="font-size:16px;">14</div><div style="font-size:16px; background:var(--bg-highlight-secondary); color:var(--text-highlight-secondary); border-radius:50%; padding:4px; font-weight:700;">15</div><div class="wf-text-dim" style="font-size:16px;">16</div><div class="wf-text-dim" style="font-size:16px;">17</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- ── POPULAR DESTINATIONS (mock static — no Duffel explore endpoint) ── -->
+        <div class="s1-popular">
+          <div class="s1-popular-inner">
+            <div class="ann" style="margin-bottom:8px;">Popular destinations — static mock data (Duffel has no explore endpoint)</div>
+            <div class="s1-popular-heading">Popular destinations</div>
+            <div class="s1-popular-grid">
+
+              <div class="dest-card">
+                <div class="dest-img">&#127471;&#127477;</div>
+                <div class="dest-info">
+                  <div class="dest-city">Tokyo</div>
+                  <div class="dest-route">KUL &#8594; TYO</div>
+                  <div class="dest-price">from <span>&#8364;320</span></div>
+                </div>
+              </div>
+
+              <div class="dest-card">
+                <div class="dest-img">&#127462;&#127482;</div>
+                <div class="dest-info">
+                  <div class="dest-city">Sydney</div>
+                  <div class="dest-route">KUL &#8594; SYD</div>
+                  <div class="dest-price">from <span>&#8364;410</span></div>
+                </div>
+              </div>
+
+              <div class="dest-card">
+                <div class="dest-img">&#127468;&#127463;</div>
+                <div class="dest-info">
+                  <div class="dest-city">London</div>
+                  <div class="dest-route">KUL &#8594; LHR</div>
+                  <div class="dest-price">from <span>&#8364;490</span></div>
+                </div>
+              </div>
+
+              <div class="dest-card">
+                <div class="dest-img">&#127482;&#127480;</div>
+                <div class="dest-info">
+                  <div class="dest-city">New York</div>
+                  <div class="dest-route">KUL &#8594; JFK</div>
+                  <div class="dest-price">from <span>&#8364;550</span></div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <!-- ── FOOTER ── -->
+        <div class="s1-footer">
+          <div class="s1-footer-inner">
+            <div class="s1-footer-brand">
+              <div class="s1-footer-logo">&#9992; SkyBook</div>
+              <div class="s1-footer-tagline">Find your best flight deals</div>
+            </div>
+            <div class="s1-footer-cols">
+              <div class="s1-footer-col">
+                <div class="s1-footer-heading">Company</div>
+                <div class="s1-footer-link">About us</div>
+                <div class="s1-footer-link">Careers</div>
+                <div class="s1-footer-link">Press</div>
+              </div>
+              <div class="s1-footer-col">
+                <div class="s1-footer-heading">Support</div>
+                <div class="s1-footer-link">Help centre</div>
+                <div class="s1-footer-link">Contact us</div>
+                <div class="s1-footer-link">Refund policy</div>
+              </div>
+              <div class="s1-footer-col">
+                <div class="s1-footer-heading">Legal</div>
+                <div class="s1-footer-link">Privacy policy</div>
+                <div class="s1-footer-link">Terms of use</div>
+                <div class="s1-footer-link">Cookie policy</div>
+              </div>
+            </div>
+          </div>
+          <div class="s1-footer-bottom">
+            <div class="s1-footer-inner" style="display:flex; justify-content:space-between; align-items:center; padding-top:0; padding-bottom:0;">
+              <div>&#169; 2026 SkyBook. Powered by Duffel API.</div>
+              <div style="display:flex; gap:16px; color: var(--text-secondary); font-size:13px; opacity:0.6;">
+                <span>&#127468;&#127463; English</span>
+                <span>EUR &#8364;</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div><!-- /screen 1 -->
+
+
+  <!-- ════════════════════════════════════════
+       SCREEN 2 — RESULTS
+  ════════════════════════════════════════ -->
+  <div class="screen-block">
+    <div class="screen-label">
+      <span class="badge">Screen 2</span>
+      <h2>Results</h2>
+      <span class="route">/results?orq=orq_xxx</span>
+    </div>
+
+    <div class="browser">
+      <div class="browser-bar">
+        <div class="dots"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+        <div class="url-bar">localhost:3000/results?orq=orq_0000B4NPqcQH1F9SaAwguI</div>
+      </div>
+      <div class="browser-body">
+
+        <!-- Sticky compact search bar — blue background -->
+        <div class="s2-sticky-header">
+          <div class="ann" style="margin-bottom:8px; color:rgba(255,255,255,0.6);">Sticky compact search bar — click to return to Search</div>
+          <div class="row" style="align-items:center; gap:16px;">
+            <div class="wf-input" style="flex:1; height:40px; background: rgba(255,255,255,0.15); border-color: rgba(255,255,255,0.3); color: var(--text-primary);">
+              KUL &#8594; SIN &middot; 15 May 2026 &middot; 1 adult &middot; Economy
+            </div>
+            <div class="wf-btn-sm" style="background: var(--bg-highlight-primary); color: var(--text-highlight-primary); border: none; font-weight: 600;">Modify search</div>
+          </div>
+        </div>
+
+        <!-- Sort tabs — blue background -->
+        <div class="s2-sort-bar">
+          <div class="ann" style="padding:16px 0; margin-right:16px; color: rgba(255,255,255,0.6);">Sort:</div>
+          <div class="sort-tab active" title="sort=total_amount — server-side">Cheapest</div>
+          <div class="sort-tab" title="sort=total_duration — server-side">Fastest</div>
+          <div class="sort-tab client" title="client-side sort by departing_at — no API param">Earliest <span style="">(client)</span></div>
+        </div>
+
+        <!-- Body: sidebar + results -->
+        <div class="s2-body">
+
+          <!-- Filter sidebar — white background -->
+          <div class="s2-sidebar">
+            <div style="display:flex; justify-content:space-between; align-items:center;">
+              <div style="font-size:16px; font-weight:700; color:var(--text-secondary);">Filters</div>
+              <div style="font-size:13px; color:var(--bg-highlight-secondary); cursor:pointer; font-weight:500;">Clear all</div>
+            </div>
+            <div class="ann">Filter panel (sticky) — all filters are client-side</div>
+
+            <!-- Stops -->
+            <div class="filter-section">
+              <div class="filter-header">
+                <div class="wf-text" style="font-weight:600;">Stops</div>
+                <div class="wf-text-sm" style="cursor:pointer;">Reset</div>
+              </div>
+              <div class="filter-row"><div class="wf-radio active"></div><div class="wf-text" style="flex:1;">Any</div></div>
+              <div class="filter-row"><div class="wf-radio"></div><div class="wf-text" style="flex:1;">Nonstop</div><div class="wf-badge" style="">47</div></div>
+              <div class="filter-row"><div class="wf-radio"></div><div class="wf-text" style="flex:1;">1 stop</div><div class="wf-badge" style="">28</div></div>
+              <div class="filter-row"><div class="wf-radio"></div><div class="wf-text" style="flex:1;">2+ stops</div><div class="wf-badge" style="">6</div></div>
+            </div>
+            <div class="wf-divider"></div>
+
+            <!-- Departure time -->
+            <div class="filter-section">
+              <div class="wf-text" style="font-weight:600;">Departure time</div>
+              <div class="ann">segments[0].departing_at — client-side</div>
+              <div class="row" style="flex-wrap:wrap; gap:8px;">
+                <div class="wf-pill active" style="height:40px; font-size:16px; padding:0 16px;">6AM–12PM</div>
+                <div class="wf-pill" style="height:40px; font-size:16px; padding:0 16px;">12PM–6PM</div>
+                <div class="wf-pill" style="height:40px; font-size:16px; padding:0 16px;">6PM–12AM</div>
+                <div class="wf-pill" style="height:40px; font-size:16px; padding:0 16px;">12AM–6AM</div>
+              </div>
+            </div>
+            <div class="wf-divider"></div>
+
+            <!-- Airlines -->
+            <div class="filter-section">
+              <div class="wf-text" style="font-weight:600;">Airlines</div>
+              <div class="ann">owner.iata_code — client-side</div>
+              <div class="filter-row">
+                <div class="wf-checkbox checked">&#10003;</div>
+                <div class="wf-airline-logo" style="width:32px;height:32px;font-size:16px;">BA</div>
+                <div class="wf-text" style="flex:1;">British Airways</div>
+                <div class="wf-text-sm">12</div>
+              </div>
+              <div class="filter-row">
+                <div class="wf-checkbox"></div>
+                <div class="wf-airline-logo" style="width:32px;height:32px;font-size:16px;">SQ</div>
+                <div class="wf-text" style="flex:1;">Singapore Airlines</div>
+                <div class="wf-text-sm">8</div>
+              </div>
+              <div class="filter-row">
+                <div class="wf-checkbox"></div>
+                <div class="wf-airline-logo" style="width:32px;height:32px;font-size:16px;">AK</div>
+                <div class="wf-text" style="flex:1;">AirAsia</div>
+                <div class="wf-text-sm">15</div>
+              </div>
+              <div class="wf-text-sm" style="cursor:pointer;">+ 4 more airlines</div>
+            </div>
+            <div class="wf-divider"></div>
+
+            <!-- Price range -->
+            <div class="filter-section">
+              <div class="wf-text" style="font-weight:600;">Price range</div>
+              <div class="ann">total_amount — client-side only, filters loaded page</div>
+              <div class="wf-range">
+                <div class="wf-range-fill"></div>
+                <div class="wf-range-thumb" style="left:20%;"></div>
+                <div class="wf-range-thumb" style="left:75%;"></div>
+              </div>
+              <div class="row" style="justify-content:space-between;">
+                <div class="wf-text-sm">&#8364;20</div>
+                <div class="wf-text-sm">&#8364;150</div>
+              </div>
+              <div style="font-size:16px; color:var(--warning); margin-top:8px;">&#9888; client-side only — filters loaded page</div>
+            </div>
+          </div>
+
+          <!-- Results list — #F1F2F8 background -->
+          <div class="s2-results">
+            <div class="ann">Result count</div>
+            <div class="wf-text-dim"><span style="color: var(--bg-highlight-secondary); font-weight: 700;">85 flights found</span></div>
+
+            <!-- Flight card 1 — nonstop -->
+            <div class="ann" style="margin-top:4px;">Flight card — GET /air/offers/{offer_id} on click &#8594; saves selectedOffer &#8594; router.push('/passengers')</div>
+            <div class="wf-card" style="cursor:pointer;">
+              <div class="flight-card-grid">
+                <!-- Left -->
+                <div class="col" style="gap:var(--gap-xs);">
+                  <div class="row" style="align-items:center; gap:8px;">
+                    <div class="wf-airline-logo">BA</div>
+                    <div class="wf-text" style="">British Airways</div>
+                  </div>
+                  <div class="row" style="align-items:baseline; gap:8px;">
+                    <div class="wf-time" style="">10:50</div>
+                    <div class="wf-text-sm">KUL</div>
+                  </div>
+                  <div class="row" style="align-items:baseline; gap:8px;">
+                    <div class="wf-time" style="">11:48</div>
+                    <div class="wf-text-sm">SIN</div>
+                  </div>
+                </div>
+                <!-- Center -->
+                <div class="flight-center">
+                  <div class="wf-text-sm">58m</div>
+                  <div class="flight-line">
+                    <div class="line"></div>
+                    <div style="font-size:16px; color:var(--text-secondary);">&#9992;</div>
+                    <div class="line"></div>
+                  </div>
+                  <div class="wf-badge nonstop">Nonstop</div>
+                </div>
+                <!-- Right -->
+                <div class="flight-right">
+                  <div class="wf-price">&#8364;46.41</div>
+                  <div class="wf-text-sm">Economy &middot; Basic</div>
+                  <div class="wf-btn-outline">Select</div>
+                </div>
+              </div>
+              <!-- Baggage & conditions row -->
+              <div class="wf-divider" style="margin:var(--gap-sm) 0;"></div>
+              <div class="row" style="gap:var(--gap-md);">
+                <div class="wf-text-sm">&#129523; 1 checked &middot; 1 carry-on</div>
+                <div class="wf-text-sm">&#8617; Non-refundable</div>
+                <div class="wf-text-sm">&#9999; Changes allowed (&#8364;10 fee)</div>
+              </div>
+            </div>
+
+            <!-- Flight card 2 — 1 stop -->
+            <div class="wf-card" style="cursor:pointer; opacity:0.8;">
+              <div class="flight-card-grid">
+                <div class="col" style="gap:var(--gap-xs);">
+                  <div class="row" style="align-items:center; gap:8px;">
+                    <div class="wf-airline-logo">SQ</div>
+                    <div class="wf-text" style="">Singapore Airlines</div>
+                  </div>
+                  <div class="row" style="align-items:baseline; gap:8px;">
+                    <div class="wf-time" style="">08:30</div>
+                    <div class="wf-text-sm">KUL</div>
+                  </div>
+                  <div class="row" style="align-items:baseline; gap:8px;">
+                    <div class="wf-time" style="">12:05</div>
+                    <div class="wf-text-sm">SIN</div>
+                  </div>
+                </div>
+                <div class="flight-center">
+                  <div class="wf-text-sm">3h 35m</div>
+                  <div class="flight-line">
+                    <div class="line"></div>
+                    <div style="font-size:16px; color:var(--text-secondary);">&#9992;</div>
+                    <div class="line"></div>
+                  </div>
+                  <div class="wf-badge one-stop">1 stop &middot; JHB</div>
+                </div>
+                <div class="flight-right">
+                  <div class="wf-price">&#8364;38.20</div>
+                  <div class="wf-text-sm">Economy &middot; Standard</div>
+                  <div class="wf-btn-outline">Select</div>
+                </div>
+              </div>
+              <div class="wf-divider" style="margin:var(--gap-sm) 0;"></div>
+              <div class="row" style="gap:var(--gap-md);">
+                <div class="wf-text-sm">&#129523; 1 checked &middot; 1 carry-on</div>
+                <div class="wf-text-sm">&#8617; Refundable (&#8364;10 fee)</div>
+                <div class="wf-text-sm">&#9999; Changes not allowed</div>
+              </div>
+            </div>
+
+            <!-- Loading more indicator -->
+            <div class="ann">Load more — GET /air/offers?after={meta.after}</div>
+            <div class="wf-btn-outline" style="align-self:center; width:180px; margin-top:8px;">Load more flights</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div><!-- /screen 2 -->
+
+
+  <!-- ════════════════════════════════════════
+       SCREEN 3 — PASSENGER DETAILS
+  ════════════════════════════════════════ -->
+  <div class="screen-block">
+    <div class="screen-label">
+      <span class="badge">Screen 3</span>
+      <h2>Passenger Details</h2>
+      <span class="route">/passengers</span>
+    </div>
+
+    <div class="browser">
+      <div class="browser-bar">
+        <div class="dots"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+        <div class="url-bar">localhost:3000/passengers</div>
+      </div>
+      <div class="browser-body">
+
+        <!-- Nav bar (reuses .s1-nav) -->
+        <div class="s1-nav">
+          <div class="s1-nav-inner">
+            <div class="s1-nav-logo">&#9992; SkyBook</div>
+            <div class="s1-nav-links">
+              <span>Flights</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Progress stepper — blue background -->
+        <div class="s3-progress-header">
+          <div class="ann" style="margin-bottom:8px; color:rgba(255,255,255,0.6);">Progress stepper</div>
+          <div class="progress-bar">
+            <div class="prog-step">
+              <div class="prog-dot done">&#10003;</div>
+              <div class="prog-label">Search</div>
+            </div>
+            <div class="prog-line done"></div>
+            <div class="prog-step">
+              <div class="prog-dot done">&#10003;</div>
+              <div class="prog-label">Results</div>
+            </div>
+            <div class="prog-line done"></div>
+            <div class="prog-step">
+              <div class="prog-dot active">3</div>
+              <div class="prog-label">Passengers</div>
+            </div>
+            <div class="prog-line"></div>
+            <div class="prog-step">
+              <div class="prog-dot">4</div>
+              <div class="prog-label">Confirm</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Body — #F1F2F8 background -->
+        <div class="s3-body">
+
+          <!-- Form column -->
+          <div class="s3-form">
+            <div class="ann">Passenger form — one accordion card per passengerIds[] from Zustand</div>
+
+            <!-- Passenger 1 card — expanded -->
+            <div class="wf-card" style="padding:0;">
+              <div class="accordion-header">
+                <div class="col" style="gap:8px;">
+                  <div class="wf-text-sm">Passenger 1 &middot; Adult</div>
+                  <div class="wf-h3">Tony Stark</div>
+                </div>
+                <div class="accordion-chevron">&#8743;</div>
+              </div>
+              <div class="col" style="padding:16px; gap:16px;">
+
+                <!-- Title + First name + Last name -->
+                <div class="row" style="gap:16px; align-items:flex-end;">
+                  <div class="wf-field-group" style="width:120px;">
+                    <div class="wf-field-label">Title</div>
+                    <div class="wf-input-sm">Mr &#9662;</div>
+                  </div>
+                  <div class="wf-field-group grow">
+                    <div class="wf-field-label">First name &#8594; given_name</div>
+                    <div class="wf-input-sm">Tony</div>
+                  </div>
+                  <div class="wf-field-group grow">
+                    <div class="wf-field-label">Last name &#8594; family_name</div>
+                    <div class="wf-input-sm">Stark</div>
+                  </div>
+                </div>
+
+                <!-- DOB + Gender -->
+                <div class="ann">gender is required in POST /air/orders — not inferred from title</div>
+                <div class="row" style="gap:16px; align-items:flex-end;">
+                  <div class="wf-field-group" style="max-width:220px;">
+                    <div class="wf-field-label">Date of birth &#8594; born_on (YYYY-MM-DD)</div>
+                    <div class="wf-input-sm">1980-07-24</div>
+                  </div>
+                  <div class="wf-field-group" style="width:140px;">
+                    <div class="wf-field-label">Gender &#8594; gender</div>
+                    <div class="wf-input-sm">Male (m) &#9662;</div>
+                  </div>
+                </div>
+
+                <!-- Email + Phone — lead passenger only -->
+                <div class="ann">Email + phone on lead passenger only</div>
+                <div class="row" style="gap:16px;">
+                  <div class="wf-field-group grow">
+                    <div class="wf-field-label">Email &#8594; email</div>
+                    <div class="wf-input-sm">tony@example.com</div>
+                  </div>
+                  <div class="wf-field-group grow">
+                    <div class="wf-field-label">Phone &#8594; phone_number (E.164)</div>
+                    <div class="wf-input-sm">+60123456789</div>
+                  </div>
+                </div>
+
+                <!-- Inline error example -->
+                <div class="wf-field-group">
+                  <div class="wf-field-label">Phone &#8594; phone_number</div>
+                  <div class="wf-input-sm error">0123456789</div>
+                  <div class="wf-error-msg">Must start with country code, e.g. +60</div>
+                </div>
+
+              </div>
+            </div>
+
+            <!-- Passenger 2 card — collapsed -->
+            <div class="wf-card" style="padding:0;">
+              <div class="accordion-header">
+                <div class="col" style="gap:8px;">
+                  <div class="wf-text-sm">Passenger 2 &middot; Adult</div>
+                  <div class="wf-text-dim">Not filled yet</div>
+                </div>
+                <div class="accordion-chevron">&#8744;</div>
+              </div>
+            </div>
+
+            <!-- CTA -->
+            <div class="ann">POST /air/orders with balance payment — no separate payment screen</div>
+            <div class="wf-btn">Confirm booking</div>
+          </div>
+
+          <!-- Sticky sidebar -->
+          <div class="s3-sidebar">
+            <div class="ann">Booking summary (sticky)</div>
+            <div class="wf-card">
+              <div class="col" style="gap:16px;">
+                <div class="wf-h3">Your booking</div>
+                <div class="wf-divider"></div>
+                <!-- Mini flight summary -->
+                <div class="row" style="align-items:center; gap:8px;">
+                  <div class="wf-airline-logo">BA</div>
+                  <div class="col grow" style="gap:8px;">
+                    <div class="wf-text-sm">British Airways &middot; BA0105</div>
+                    <div class="wf-text-sm">KUL &#8594; SIN &middot; 15 May 2026</div>
+                  </div>
+                </div>
+                <div class="row" style="align-items:center; gap:8px;">
+                  <div class="wf-text" style="font-weight:600;">10:50</div>
+                  <div class="flight-line" style="flex:1;">
+                    <div class="line"></div>
+                    <div style="font-size:16px; color:var(--text-secondary);">&#9992;</div>
+                    <div class="line"></div>
+                  </div>
+                  <div class="wf-text" style="font-weight:600;">11:48</div>
+                  <div class="wf-badge nonstop" style="">Nonstop</div>
+                </div>
+                <div class="wf-divider"></div>
+                <!-- Price breakdown -->
+                <div class="row" style="justify-content:space-between;">
+                  <div class="wf-text-sm">Base fare (2 adults)</div>
+                  <div class="wf-text-sm">&#8364;78.68</div>
+                </div>
+                <div class="row" style="justify-content:space-between;">
+                  <div class="wf-text-sm">Taxes &amp; fees</div>
+                  <div class="wf-text-sm">&#8364;14.18</div>
+                </div>
+                <div class="wf-divider"></div>
+                <div class="row" style="justify-content:space-between;">
+                  <div class="wf-h3" style="font-size:16px;">Total</div>
+                  <div class="wf-h3" style="font-size:16px; color:var(--bg-highlight-secondary);">&#8364;92.86</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div><!-- /screen 3 -->
+
+
+  <!-- ════════════════════════════════════════
+       SCREEN 4 — BOOKING CONFIRMATION
+  ════════════════════════════════════════ -->
+  <div class="screen-block">
+    <div class="screen-label">
+      <span class="badge">Screen 4</span>
+      <h2>Booking Confirmation</h2>
+      <span class="route">/confirmation/[orderId]</span>
+    </div>
+
+    <div class="browser">
+      <div class="browser-bar">
+        <div class="dots"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+        <div class="url-bar">localhost:3000/confirmation/ord_0000B4NPqcQH1F9SaAwguI</div>
+      </div>
+      <div class="browser-body">
+
+        <!-- Nav bar (reuses .s1-nav) -->
+        <div class="s1-nav">
+          <div class="s1-nav-inner">
+            <div class="s1-nav-logo">&#9992; SkyBook</div>
+            <div class="s1-nav-links">
+              <span>Flights</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Progress stepper — all done — blue background (reuses .s3-progress-header) -->
+        <div class="s3-progress-header">
+          <div class="ann" style="margin-bottom:8px; color:rgba(255,255,255,0.6);">Progress stepper (all done)</div>
+          <div class="progress-bar">
+            <div class="prog-step"><div class="prog-dot done">&#10003;</div><div class="prog-label">Search</div></div>
+            <div class="prog-line done"></div>
+            <div class="prog-step"><div class="prog-dot done">&#10003;</div><div class="prog-label">Results</div></div>
+            <div class="prog-line done"></div>
+            <div class="prog-step"><div class="prog-dot done">&#10003;</div><div class="prog-label">Passengers</div></div>
+            <div class="prog-line done"></div>
+            <div class="prog-step"><div class="prog-dot done">&#10003;</div><div class="prog-label">Confirm</div></div>
+          </div>
+        </div>
+
+        <!-- Success card — #F1F2F8 background -->
+        <div class="s4-body">
+          <div class="s4-card">
+
+            <!-- Success header -->
+            <div class="s4-success-header">
+              <div class="ann">GET /air/orders/{orderId} on page mount for deep-link / refresh support</div>
+              <div class="check-circle">&#9989;</div>
+              <div style="font-size:24px; font-weight:700; letter-spacing:-0.02em; color:var(--text-secondary);">Booking confirmed!</div>
+              <div class="ann">Booking reference (order.booking_reference)</div>
+              <div class="wf-mono">ABCDEF</div>
+              <div class="wf-text-sm">A confirmation email has been sent to tony@example.com</div>
+            </div>
+
+            <!-- Flight summary -->
+            <div class="s4-section">
+              <div class="ann">Flight summary — from order.slices[]</div>
+              <div class="row" style="align-items:center; gap:16px;">
+                <div class="wf-airline-logo">BA</div>
+                <div class="col grow" style="gap:8px;">
+                  <div class="wf-h3" style="font-size:16px;">British Airways &middot; BA0105</div>
+                  <div class="wf-text-sm">Economy &middot; Basic &middot; Terminal 2 &#8594; Terminal 1</div>
+                </div>
+              </div>
+              <div class="row" style="align-items:center; gap:16px;">
+                <div class="col" style="gap:8px;">
+                  <div class="wf-time" style="">10:50</div>
+                  <div class="wf-text-sm">KUL &middot; 15 May</div>
+                </div>
+                <div class="flight-line" style="flex:1;">
+                  <div class="line"></div>
+                  <div style="font-size:16px; color:var(--text-secondary);">&#9992;</div>
+                  <div class="line"></div>
+                </div>
+                <div class="col" style="gap:8px; align-items:flex-end;">
+                  <div class="wf-time" style="">11:48</div>
+                  <div class="wf-text-sm">SIN &middot; 15 May</div>
+                </div>
+                <div class="wf-badge nonstop">Nonstop &middot; 58m</div>
+              </div>
+            </div>
+
+            <!-- Passengers list -->
+            <div class="s4-section">
+              <div class="ann">Passenger list — from order.passengers[]</div>
+              <div class="col" style="gap:var(--gap-xs);">
+                <div class="row" style="align-items:center; gap:8px;">
+                  <div class="wf-text-sm" style="width:16px;">1.</div>
+                  <div class="wf-text">Mr Tony Stark &middot; Adult</div>
+                </div>
+                <div class="row" style="align-items:center; gap:8px;">
+                  <div class="wf-text-sm" style="width:16px;">2.</div>
+                  <div class="wf-text">Ms Pepper Potts &middot; Adult</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Price breakdown -->
+            <div class="s4-section">
+              <div class="ann">Price breakdown — order.base_amount + order.tax_amount</div>
+              <div class="row" style="justify-content:space-between;">
+                <div class="wf-text">Base fare</div>
+                <div class="wf-text">&#8364;78.68</div>
+              </div>
+              <div class="row" style="justify-content:space-between;">
+                <div class="wf-text">Taxes &amp; fees</div>
+                <div class="wf-text">&#8364;14.18</div>
+              </div>
+              <div class="wf-divider"></div>
+              <div class="row" style="justify-content:space-between;">
+                <div class="wf-h3">Total charged</div>
+                <div class="wf-h3">&#8364;92.86 EUR</div>
+              </div>
+            </div>
+
+            <!-- Action buttons -->
+            <div class="s4-actions">
+              <div class="wf-btn-outline grow">Download PDF</div>
+              <div class="wf-btn-sm grow">Search again</div>
+            </div>
+
+            <!-- Error state variant -->
+            <div style="border-top:2px dashed var(--border); margin:0; padding:16px;">
+              <div class="ann" style="margin-bottom:16px;">Error state variant — codes: offer_expired &middot; offer_no_longer_available &middot; price_changed</div>
+              <div style="display:flex; flex-direction:column; align-items:center; gap:16px; padding:16px; background:#FFFFFF; border-radius:8px; border:1px solid var(--border);">
+                <div style="width:48px; height:48px; border-radius:50%; background:#FDECEA; border:2px solid var(--error); display:flex; align-items:center; justify-content:center; font-size:24px;">&#10060;</div>
+                <div class="wf-h3">Booking failed</div>
+                <div class="wf-text-dim" style="text-align:center;">This offer is no longer available. Please search again for updated prices.</div>
+                <div class="row" style="gap:8px;">
+                  <div class="wf-btn-outline" style="padding:0 16px;">View details</div>
+                  <div class="wf-btn-sm">Search again</div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div><!-- /screen 4 -->
+
+</div><!-- /screens -->
+
+</body>
+</html>

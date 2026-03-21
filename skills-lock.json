@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "skills": {
+    "golang-pro": {
+      "source": "jeffallan/claude-skills",
+      "sourceType": "github",
+      "computedHash": "517209072b5cbeb7dfdb41f634ecff658e34e7c9e081e425d618378e9818a941"
+    }
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "mcpServers": {
+    "vercel": {
+      "type": "http",
+      "url": "https://mcp.vercel.com",
+      "headers": {
+        "Authorization": "Bearer ${VERCEL_TOKEN}"
+      }
+    },
+    "supabase": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@supabase/mcp-server-supabase@latest",
+        "--access-token",
+        "SUPABASE_ACCESS_TOKEN"
+      ]
+    },
+    "stripe": {
+      "command": "npx",
+      "args": ["-y", "@stripe/mcp@latest"],
+      "env": {
+        "STRIPE_SECRET_KEY": "STRIPE_SECRET_KEY"
+      }
+    },
+    "tanstack": {
+      "command": "npx",
+      "args": ["-y", "@g7aro/tanstack-mcp"]
+    }
+  }
+}
