@@ -13,10 +13,13 @@ cp WORKFLOW.md /path/to/your-project/
 
 Antigravity will automatically detect the workflows from the `_agents/workflows/` directory and skills from the `skills/` directory. You will be able to trigger the workflows natively within the Antigravity environment.
 
+> 💡 **Important Setup Note:** To ensure Antigravity fully understands your routing logic, agent intents, and architecture boundaries (similar to `AGENTS.md` in Claude), you **must** load the instructions defined in `ANTIGRAVITY.md` into your Antigravity System Prompt (User Rules/Instructions).
+
 **What gets installed:**
 - `_agents/workflows/` — Antigravity-compatible workflow markdown files
 - `skills/` — Skills logic and prompts
 - `WORKFLOW.md` — 15-phase production delivery workflow reference
+- `ANTIGRAVITY.md` — The routing rules and instructions for the Antigravity System Prompt
 
 ---
 

@@ -132,6 +132,8 @@ Antigravity natively tracks and references the generated `.md` workflow files. A
 1. **Slash Commands**: You can explicitly trigger any workflow by typing a slash command matching the file's name. For example, typing `/code-reviewer` or `/devops-engineer` will instruct Antigravity to fetch the exact workflow logic from `_agents/workflows/code-reviewer.md`.
 2. **Autonomous Triggers**: The underlying Antigravity system prompt has built-in awareness of the workflows directory. When a user prompt matches the description of an existing workflow, Antigravity can autonomously choose to read the corresponding `.md` workflow file to ensure structured execution.
 
+> 💡 **Important Setup Note:** To ensure Antigravity fully understands your routing logic, agent intents, and architecture boundaries, you **must** load the instructions defined in `ANTIGRAVITY.md` into your Antigravity System Prompt (User Rules/Instructions). Make sure your environment is configured to read this file!
+
 ---
 
 ## Slash Commands
