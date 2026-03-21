@@ -1,4 +1,4 @@
-﻿## ⚡ Kit Maintenance (How to Sync & Update)
+## ⚡ Kit Maintenance (How to Sync & Update)
 
 > **Read this first if you need to update agents, add skills, or migrate to a new AI tool.**
 
@@ -69,6 +69,8 @@ Depending on the AI tool you are using, follow the specific setup guide below:
 
 tri-ai-kit installs a set of agents, skills, and hooks/workflows into your AI workspace. The main conversation acts as the orchestrator — it reads context, routes to the right agent, and merges results. Agents do not spawn other agents.
 
+> **Ecosystem Behavior**: Depending on the Agentic AI platform you are using, the toolkit adapts its form factor. It will appropriately leverage **skills**, **workflows**, or **custom agents** to fit the platform. Specifically, Claude Code and GitHub Copilot use the custom agents and routing logic natively, while Antigravity and Codex utilize them as standalone workflows.
+
 **Core loop:**
 ```
 /brainstorm → /plan → /cook → /review → /test → /git
@@ -77,6 +79,8 @@ tri-ai-kit installs a set of agents, skills, and hooks/workflows into your AI wo
 ---
 
 ## Agents
+
+*Note: The custom agents defined below operate as conversational entities in Claude Code and GitHub Copilot, but function as structured workflows in Antigravity and Codex.*
 
 ### Planning & Coordination
 | Agent | Role |
@@ -117,7 +121,22 @@ tri-ai-kit installs a set of agents, skills, and hooks/workflows into your AI wo
 
 ---
 
+## Workflows (Antigravity & Codex)
+
+In Antigravity and Codex, the capabilities of the agents listed above are packaged and exported as standalone **Workflows**. These workflows are generated into their respective platform folders (e.g., `_agents/workflows/` for Antigravity) during the sync process.
+
+### Triggering Workflows in Antigravity
+
+Antigravity natively tracks and references the generated `.md` workflow files. A workflow is executed in Antigravity via two primary methods:
+
+1. **Slash Commands**: You can explicitly trigger any workflow by typing a slash command matching the file's name. For example, typing `/code-reviewer` or `/devops-engineer` will instruct Antigravity to fetch the exact workflow logic from `_agents/workflows/code-reviewer.md`.
+2. **Autonomous Triggers**: The underlying Antigravity system prompt has built-in awareness of the workflows directory. When a user prompt matches the description of an existing workflow, Antigravity can autonomously choose to read the corresponding `.md` workflow file to ensure structured execution.
+
+---
+
 ## Slash Commands
+
+*Note: Custom slash commands are specifically supported in Claude Code.*
 
 ### Planning & Research
 | Command | What It Does |
@@ -216,6 +235,8 @@ tri-ai-kit/
 
 ## Hooks
 
+*Note: Hooks are lifecycle scripts currently specific to Claude Code sessions.*
+
 The toolkit ships hooks that run automatically during Claude Code sessions:
 
 | Hook | Purpose |
@@ -229,6 +250,8 @@ The toolkit ships hooks that run automatically during Claude Code sessions:
 ---
 
 ## Routing Logic
+
+*Note: This conversational routing logic is dictated by the `AGENTS.md` instructions for Claude Code and GitHub Copilot. For Antigravity and Codex, tasks are bound directly to workflows.*
 
 The orchestrator classifies every prompt before acting:
 
