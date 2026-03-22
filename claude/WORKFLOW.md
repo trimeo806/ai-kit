@@ -1,6 +1,6 @@
-﻿# Solution Architect Workflow
+# Solution Architect Workflow
 
-> Production-grade delivery process for fullstack engineers using tri-ai-kit agents.
+> Production-grade delivery process for fullstack engineers using Claude Code native agents.
 
 ---
 

@@ -184,7 +184,7 @@ Copy the core files into your project root:
 # From the tri-ai-kit directory, copy into your target project
 cp -r _agents /path/to/your-project/
 cp -r skills /path/to/your-project/
-cp WORKFLOW.md /path/to/your-project/
+cp antigravity/WORKFLOW.md /path/to/your-project/WORKFLOW.md
 ```
 
 Antigravity will automatically detect the workflows from the `_agents/workflows/` directory and skills from the `skills/` directory. You will be able to trigger the workflows natively within the Antigravity environment.

@@ -2,8 +2,8 @@
   "_comment": "Sync config for .claude/ → Antigravity (_agents/workflows/ + skills/). Edit this to tune transforms.",
 
   "agents": {
-    "source": ".claude/agents",
-    "target": "_agents/workflows",
+    "source": "claude/.claude/agents",
+    "target": "antigravity/_agents/workflows",
 
     "frontmatter": {
       "keep": ["description", "skills"],
@@ -62,8 +62,8 @@
   },
 
   "skills": {
-    "source": ".claude/skills",
-    "target": "skills",
+    "source": "claude/.claude/skills",
+    "target": "antigravity/skills",
     "exclude": [
       "skill-index.json"
     ],
@@ -85,23 +85,23 @@
   },
 
   "skillIndex": {
-    "output": "skills/skill-index.json",
+    "output": "antigravity/skills/skill-index.json",
     "generateOnSync": true,
     "indexFields": ["name", "description", "category", "tier", "keywords", "platforms", "triggers", "agent-affinity", "connections", "path"]
   },
 
   "adapters": {
     "antigravity": {
-      "agentTarget": "_agents/workflows",
-      "skillTarget": "skills",
+      "agentTarget": "antigravity/_agents/workflows",
+      "skillTarget": "antigravity/skills",
       "workflowFormat": "markdown-with-yaml-frontmatter",
       "requiredFrontmatterFields": ["description"],
       "optionalFrontmatterFields": ["skills"]
     },
     "codex": {
       "_comment": "Placeholder — fill in when Codex format is known",
-      "agentTarget": ".github/agents",
-      "skillTarget": "skills",
+      "agentTarget": "codex/.github/agents",
+      "skillTarget": "codex/skills",
       "workflowFormat": "unknown"
     }
   }

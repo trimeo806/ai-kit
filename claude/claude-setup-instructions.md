@@ -1,4 +1,4 @@
-﻿# Claude Code Setup Instructions
+# Claude Code Setup Instructions
 
 To use this kit with an existing project in Claude Code, copy the core files into your project root:
 
@@ -6,7 +6,7 @@ To use this kit with an existing project in Claude Code, copy the core files int
 # From the tri-ai-kit directory, copy into your target project
 cp -r .claude /path/to/your-project/
 cp AGENTS.md /path/to/your-project/
-cp WORKFLOW.md /path/to/your-project/
+cp claude/WORKFLOW.md /path/to/your-project/WORKFLOW.md
 ```
 
 Then open your project in Claude Code — the agents, skills, and hooks will load automatically on session start.
