@@ -58,7 +58,7 @@ Multi-agent development toolkit providing skills, agents, and workflows for Clau
 Depending on the AI tool you are using, follow the specific setup guide below:
 
 - **Claude Code:** [Claude Setup Instructions](./claude-setup-instructions.md)
-- **Antigravity:** [Antigravity Setup Instructions](./antigravity-setup-instructions.md)
+- **Antigravity:** [Antigravity Setup & Architecture](./ANTIGRAVITY.md)
 - **Codex (GitHub Copilot):** [Codex Setup Instructions](./codex-setup-instructions.md)
 
 > See [WORKFLOW.md](./WORKFLOW.md) for the full 15-phase production delivery workflow.
