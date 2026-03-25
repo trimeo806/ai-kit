@@ -1,4 +1,4 @@
-﻿# Codex (GitHub Copilot) Setup Instructions
+# Codex (GitHub Copilot) Setup Instructions
 
 To use this kit with Codex or GitHub Copilot, you first need to run the `.ps1` sync script to generate the appropriate format:
 
@@ -13,7 +13,7 @@ Once synced, copy the Codex-compatible files into your project root:
 # From the tri-ai-kit directory, copy into your target project
 cp -r .github/agents /path/to/your-project/.github/
 cp .github/copilot-instructions.md /path/to/your-project/.github/
-cp WORKFLOW.md /path/to/your-project/
+cp claude/WORKFLOW.md /path/to/your-project/WORKFLOW.md
 ```
 
 This ensures Copilot reads the necessary instructions and behaviors from `.github/copilot-instructions.md` and related agent files during its lifecycle.

@@ -43,9 +43,9 @@ $ErrorActionPreference = "Stop"
 # ─── Config ───────────────────────────────────────────────────────────────────
 # UPDATE THESE when official Codex format is confirmed:
 
-$CodexAgentTarget  = ".github/agents"          # Where Codex reads agent files
-$CodexSkillTarget  = ".github/skills"          # Where Codex reads skill files (if supported)
-$CodexGlobalFile   = ".github/copilot-instructions.md"  # Global instructions file
+$CodexAgentTarget  = "codex/.github/agents"          # Where Codex reads agent files
+$CodexSkillTarget  = "codex/.github/skills"          # Where Codex reads skill files (if supported)
+$CodexGlobalFile   = "codex/.github/copilot-instructions.md"  # Global instructions file
 
 # Codex frontmatter: keep only these fields (update based on actual Codex spec)
 $CodexKeepFields   = @("description")          # Codex likely only needs description
@@ -132,11 +132,11 @@ function Apply-CodexTransforms {
     # Path rewrites: Claude -> Codex paths
     $transforms = @(
         # Skill paths
-        @{ from = ".claude/skills/"; to = ".github/skills/" },
+        @{ from = ".claude/skills/"; to = "codex/.github/skills/" },
         # Agent paths
-        @{ from = ".claude/agents/"; to = ".github/agents/" },
-        @{ from = "_agents/workflows/"; to = ".github/agents/" },
-        @{ from = "skills/"; to = ".github/skills/" },
+        @{ from = ".claude/agents/"; to = "codex/.github/agents/" },
+        @{ from = "_agents/workflows/"; to = "codex/.github/agents/" },
+        @{ from = "skills/"; to = "codex/.github/skills/" },
         # Remove Claude-specific script references
         @{ from = "node .claude/scripts/"; to = "# " },
         # Tool references
@@ -264,8 +264,8 @@ function Sync-Skills-Codex {
 
             try {
                 $content    = Get-Content $file.FullName -Raw -Encoding UTF8
-                $newContent = $content.Replace(".claude/skills/", ".github/skills/")
-                             $newContent = $newContent.Replace(".claude/agents/", ".github/agents/")
+                $newContent = $content.Replace(".claude/skills/", "codex/.github/skills/")
+                             $newContent = $newContent.Replace(".claude/agents/", "codex/.github/agents/")
 
                 if ($DryRun) {
                     Write-Dr "Would copy: $($dir.Name)/SKILL.md"
@@ -291,7 +291,7 @@ function Sync-Skills-Codex {
 # ─── Global Instructions (copilot-instructions.md) ───────────────────────────
 
 function Generate-GlobalInstructions {
-    $claudeMdPath  = Join-Path $RepoRoot "AGENTS.md"
+    $claudeMdPath  = Join-Path $RepoRoot "claude/AGENTS.md"
     $targetFile    = Join-Path $RepoRoot $CodexGlobalFile
 
     Write-Host ""
@@ -313,8 +313,8 @@ function Generate-GlobalInstructions {
 "@
 
     # Path rewrites for global file
-    $output = $claudeMd.Replace(".claude/agents/", ".github/agents/")
-               $output = $output.Replace(".claude/skills/", ".github/skills/")
+    $output = $claudeMd.Replace(".claude/agents/", "codex/.github/agents/")
+               $output = $output.Replace(".claude/skills/", "codex/.github/skills/")
                $output = $output.Replace("Agent tool", "the relevant agent")
 
     $final = $header + $output
@@ -366,7 +366,7 @@ if ($Stats.Errors -gt 0) {
 Write-Host " Duration      : $([math]::Round($elapsed.TotalSeconds, 1))s" -ForegroundColor DarkGray
 Write-Host ""
 Write-Host "NEXT STEPS:" -ForegroundColor Yellow
-Write-Host "  1. Verify .github/agents/ format matches official Codex spec" -ForegroundColor Yellow
+Write-Host "  1. Verify codex/.github/agents/ format matches official Codex spec" -ForegroundColor Yellow
 Write-Host "  2. Update CodexAgentTarget & CodexKeepFields at top of this script if needed" -ForegroundColor Yellow
 Write-Host "  3. Test one agent before committing all" -ForegroundColor Yellow
 

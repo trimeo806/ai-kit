@@ -2,6 +2,10 @@
 
 This directory contains hooks for Claude Code sessions.
 
+## 📚 Documentation Reference
+
+- **[Developer Guide (Tiếng Việt)](docs/DEVELOPER_GUIDE.md)**: Kiến trúc tổng quan, mô tả chi tiết từng file hook (PreToolUse, Stop, v.v.) và hướng dẫn debug/chỉnh sửa.
+
 ## Hooks Overview
 
 | Hook | Location | Description |
@@ -23,9 +27,9 @@ Unified Node.js notification system with multi-provider support, smart throttlin
 
 | Provider | Env Variables Required | Setup Guide |
 |----------|----------------------|-------------|
-| **Telegram** | `TELEGRAM_BOT_TOKEN`, `TELEGRAM_CHAT_ID` | [telegram-hook-setup.md](../notifications/docs/telegram-hook-setup.md) |
-| **Discord** | `DISCORD_WEBHOOK_URL` | [discord-hook-setup.md](../notifications/docs/discord-hook-setup.md) |
-| **Slack** | `SLACK_WEBHOOK_URL` | [slack-hook-setup.md](../notifications/docs/slack-hook-setup.md) |
+| **Telegram** | `TELEGRAM_BOT_TOKEN`, `TELEGRAM_CHAT_ID` | [telegram-hook-setup.md](notifications/docs/telegram-hook-setup.md) |
+| **Discord** | `DISCORD_WEBHOOK_URL` | [discord-hook-setup.md](notifications/docs/discord-hook-setup.md) |
+| **Slack** | `SLACK_WEBHOOK_URL` | [slack-hook-setup.md](notifications/docs/slack-hook-setup.md) |
 
 ### Setup Guide
 
