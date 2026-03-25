@@ -43,6 +43,18 @@ This skill MUST run via the `planner` agent, not inline.
 
 Create implementation plans with automatic complexity detection.
 
+## Before You Begin — Purpose Clarification
+
+Before creating the plan, clarify the following if not already stated in the request:
+
+- **Purpose** — What is this plan for? What problem or goal does it address?
+- **Goals** — What does success look like? What must the plan achieve?
+- **Target** — Who will execute this plan? What platform or team does it serve?
+
+Skip if the request already makes these clear.
+
+---
+
 ## Step 0 — Flag Override
 
 If `$ARGUMENTS` starts with `--fast`: skip auto-detection, load `references/fast-mode.md` and execute. Remaining args are the task description.

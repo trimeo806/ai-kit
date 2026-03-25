@@ -56,6 +56,9 @@ User asks for research, best practices, comparison, technology evaluation, solut
 ### Phase 1: Scope Definition
 
 Clearly define scope before searching:
+- **Clarify purpose** — What is this research for? What decision, plan, or document will it inform?
+- **Clarify goals** — What questions must the research answer? What does success look like?
+- **Clarify target** — Who will act on these findings, and in what context?
 - Identify key terms and concepts to investigate
 - Determine recency requirements (how current must information be)
 - Establish evaluation criteria for sources

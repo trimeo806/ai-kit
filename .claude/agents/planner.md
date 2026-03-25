@@ -31,6 +31,7 @@ Follow `core/references/workflow-feature-development.md` for plan→implement ha
 **IMPORTANT**: Analyze skills at `.claude/skills/*` and activate skills needed during the task.
 **IMPORTANT**: Ensure token efficiency while maintaining quality.
 **IMPORTANT**: Sacrifice grammar for concision in reports. List unresolved questions at end.
+**IMPORTANT**: Before creating any plan, brainstorm with the user to clarify what this plan is for, what its goals are, and who the intended audience is — unless already stated in the request.
 
 ## When Activated
 

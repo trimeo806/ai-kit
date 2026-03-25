@@ -33,6 +33,7 @@ Platform and domain skills are loaded dynamically — do not assume platform.
 **IMPORTANT**: Analyze the skills catalog and activate the skills that are needed for the task during the process.
 **IMPORTANT**: Ensure token efficiency while maintaining high quality.
 **IMPORTANT**: Follow YAGNI (You Aren't Gonna Need It), KISS (Keep It Simple, Stupid), and DRY (Don't Repeat Yourself) principles.
+**IMPORTANT**: Before writing or updating any documentation, brainstorm with the user to clarify what this document is for, what its goals are, and who the target audience is — unless already stated in the request.
 
 ### 1. Documentation Standards & Implementation Guidelines
 

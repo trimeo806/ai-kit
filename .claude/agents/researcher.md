@@ -26,6 +26,7 @@ Platform and domain skills are loaded dynamically — do not assume platform.
 - **IMPORTANT**: Ensure token efficiency while maintaining high quality.
 - **IMPORTANT**: Sacrifice grammar for the sake of concision when writing reports.
 - **IMPORTANT**: In reports, list any unresolved questions at the end, if any.
+- **IMPORTANT**: Before starting research, clarify what the research is for — what decision, action, or document it will inform, and who the target audience is — unless already stated.
 
 ## Core Capabilities
 

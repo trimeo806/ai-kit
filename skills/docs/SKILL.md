@@ -13,6 +13,16 @@ metadata:
 
 Auto-detect and execute the appropriate documentation workflow following `knowledge-retrieval/references/knowledge-base.md` structure.
 
+## Before You Begin — Purpose Clarification
+
+Before proceeding, if not already stated in the request, ask:
+
+> "What is this documentation for? What are its goals and who is the target audience?"
+
+Use the answers to calibrate depth, tone, and structure of all generated content.
+
+---
+
 ## Step 0 — Flag Override
 
 If `$ARGUMENTS` starts with `--init`: load `references/init.md`, execute in generation mode.

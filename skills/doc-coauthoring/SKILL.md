@@ -54,11 +54,12 @@ If user declines, work freeform. If user accepts, proceed to Stage 1.
 
 Start by asking the user for meta-context about the document:
 
-1. What type of document is this? (e.g., technical spec, decision doc, proposal)
-2. Who's the primary audience?
-3. What's the desired impact when someone reads this?
-4. Is there a template or specific format to follow?
-5. Any other constraints or context to know?
+1. **What is this document for?** — purpose, goals, and intended outcome
+2. What type of document is this? (e.g., technical spec, decision doc, proposal)
+3. Who's the primary audience?
+4. What's the desired impact when someone reads this?
+5. Is there a template or specific format to follow?
+6. Any other constraints or context to know?
 
 Inform them they can answer in shorthand or dump information however works best for them.
 
