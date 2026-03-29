@@ -20,6 +20,16 @@ Use this template when writing a research findings report.
 
 ---
 
+## Problem Statement
+
+- **What**: {clear definition of the problem being investigated}
+- **Root Cause Analysis**:
+  - *Causal chain*: {why it occurs — sequence of conditions that lead to the problem}
+  - *Ownership*: {which system, component, or team is the trigger point}
+- **Severity**: High | Medium | Low
+
+---
+
 ## Findings
 
 ### {Finding 1}
@@ -30,9 +40,11 @@ Use this template when writing a research findings report.
 
 ## Options / Approaches
 
-| Option | Pros | Cons | Recommendation |
-|--------|------|------|---------------|
-| {option} | | | |
+> If only one viable approach exists, explain why alternatives were ruled out instead of leaving this table empty.
+
+| Option | Pros | Cons | Impact on Current System | Recommendation |
+|--------|------|------|--------------------------|---------------|
+| {option} | | | {technical, business, risk, or migration impact} | |
 
 ## Methodology
 

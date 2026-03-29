@@ -1,0 +1,37 @@
+{
+  "eval_id": 3,
+  "eval_name": "fullstack-jwt-cors-headers",
+  "prompt": "can you do a full security review of our next.js app? specifically worried about the auth and api setup\n\n[app/api/auth/route.ts with password in JWT payload + hardcoded admin creds + next.config.js with wildcard CORS + credentials:true + middleware.ts with missing algorithm enforcement]",
+  "assertions": [
+    {
+      "name": "flags_password_in_jwt_payload",
+      "description": "Identifies password included in JWT payload as critical finding",
+      "criteria": "Output flags password field in jwt.sign() payload as Critical security issue"
+    },
+    {
+      "name": "flags_cors_wildcard_with_credentials",
+      "description": "Identifies wildcard CORS with credentials:true as invalid/dangerous",
+      "criteria": "Output mentions the CORS misconfiguration with wildcard origin + credentials as High or Critical finding"
+    },
+    {
+      "name": "flags_hardcoded_credentials",
+      "description": "Identifies hardcoded admin credentials in auth route",
+      "criteria": "Output flags hardcoded username/password comparison as a Critical or High finding"
+    },
+    {
+      "name": "flags_missing_algorithm_enforcement",
+      "description": "Identifies missing algorithms option in jwt.verify()",
+      "criteria": "Output identifies missing { algorithms: ['HS256'] } in jwt.verify as a security finding"
+    },
+    {
+      "name": "flags_missing_security_headers",
+      "description": "Notes missing security headers (CSP, X-Frame-Options, etc.)",
+      "criteria": "Output mentions missing CSP or X-Frame-Options or X-Content-Type-Options as a finding"
+    },
+    {
+      "name": "covers_both_frontend_and_backend",
+      "description": "Covers both API/backend and frontend/config security issues",
+      "criteria": "Output addresses both API route security issues AND configuration-level issues (CORS/headers)"
+    }
+  ]
+}

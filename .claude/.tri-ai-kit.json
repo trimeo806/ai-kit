@@ -1,0 +1,58 @@
+{
+  "codingLevel": -1,
+  "statusline": "full",
+  "plan": {
+    "namingFormat": "{date}-{slug}",
+    "dateFormat": "YYMMDD-HHmm",
+    "issuePrefix": null,
+    "resolution": {
+      "order": [
+        "session",
+        "branch"
+      ],
+      "branchPattern": "(?:feat|fix|chore|refactor|docs)/(?:[^/]+/)?(.+)"
+    },
+    "validation": {
+      "mode": "prompt",
+      "minQuestions": 3,
+      "maxQuestions": 8,
+      "focusAreas": [
+        "assumptions",
+        "risks",
+        "tradeoffs",
+        "architecture"
+      ]
+    }
+  },
+  "paths": {
+    "docs": "docs",
+    "plans": "plans",
+    "reports": "reports"
+  },
+  "project": {
+    "type": "auto",
+    "packageManager": "npm",
+    "framework": "auto"
+  },
+  "hooks": {
+    "scout": {
+      "enabled": true,
+      "ignoreFile": ".claude/.tri-ignore"
+    },
+    "privacy": {
+      "enabled": true
+    },
+    "packagesGuard": {
+      "enabled": true
+    }
+  },
+  "assertions": [],
+  "skills": {
+    "research": {
+      "engine": "websearch",
+      "gemini": {
+        "model": "gemini-2.5-flash-preview-04-17"
+      }
+    }
+  }
+}

@@ -4,12 +4,26 @@ description: Use when user says "write docs", "update docs", "document this", "i
 user-invocable: true
 metadata:
   argument-hint: "[--init | --migrate | --reorganize | --scan | --verify | --batch [category]]"
+  agent-affinity:
+    - docs-manager
+    - planner
   connections:
     enhances: []
     requires: [knowledge-retrieval]
 ---
 
 # Docs — Unified Documentation Command
+
+## Delegation — REQUIRED
+
+This skill MUST run via the `docs-manager` agent, not inline.
+
+**When documentation intent is detected:**
+1. Use the **Agent tool** to spawn `docs-manager`
+2. Pass the full user request + detected mode flag + active context (CWD, docs/index.json path)
+3. Do NOT execute documentation steps inline in the main conversation
+
+---
 
 Auto-detect and execute the appropriate documentation workflow following `knowledge-retrieval/references/knowledge-base.md` structure.
 
@@ -31,6 +45,7 @@ If `$ARGUMENTS` starts with `--reorganize`: load `references/update.md`, execute
 If `$ARGUMENTS` starts with `--scan`: load `references/update.md`, execute in scan mode.
 If `$ARGUMENTS` starts with `--verify`: load `references/update.md`, execute in verify mode.
 If `$ARGUMENTS` starts with `--batch`: load `references/component.md`, execute in batch mode. Pass remaining args as category filter.
+If `$ARGUMENTS` starts with `--problem`: load `references/problem.md`, execute in problem-analysis mode.
 Otherwise: continue to Auto-Detection.
 
 ## Aspect Files
@@ -40,6 +55,7 @@ Otherwise: continue to Auto-Detection.
 | `references/init.md` | Scan codebase and generate or migrate KB documentation |
 | `references/update.md` | Update, scan, verify, or reorganize existing documentation |
 | `references/component.md` | Document a klara-theme component (Figma data + prop mapping) |
+| `references/problem.md` | Write a problem-analysis doc (RCA, incident report, post-mortem, ADR) |
 
 ## Auto-Detection
 
@@ -59,6 +75,7 @@ Otherwise: continue to Auto-Detection.
 | Intent: scan, staleness, health, gaps | `references/update.md` | scan |
 | Args match a component/library key AND component source exists | `references/component.md` | — |
 | `docs/index.json` present (default) | `references/update.md` | update |
+| Intent: RCA, incident, post-mortem, root cause, ADR | `references/problem.md` | problem-analysis |
 
 ## Execution
 

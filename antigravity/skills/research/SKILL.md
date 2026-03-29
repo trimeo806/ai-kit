@@ -141,6 +141,17 @@ Report must also:
 - Include diagrams (mermaid or ASCII art) where helpful
 - Conclude with specific, actionable next steps
 - List unresolved questions at the end
+- Include an **Agent & Skills** section recommending which agent and skills should act on the findings:
+
+```markdown
+## Agent & Skills
+
+- **Agent**: `{agent-name}`  ← agent best suited to implement/use these findings
+- **Skills**: `{skill-1}`, `{skill-2}`  ← skills to activate for implementation
+- **Handoffs**:
+  - After completion → `code-reviewer`
+  - On security concern → `security-auditor`
+```
 
 ---
 
