@@ -1,15 +1,24 @@
 {
-  "_comment": "Sync config for .claude/ → Antigravity (_agents/workflows/ + skills/). Edit this to tune transforms.",
-
+  "_comment": "Sync configuration for generated platform packages. The Claude package under claude/ remains the source of truth.",
   "agents": {
     "source": "claude/.claude/agents",
     "target": "antigravity/_agents/workflows",
-
     "frontmatter": {
-      "keep": ["description", "skills"],
-      "drop": ["name", "color", "model", "memory", "permissionMode", "handoffs", "tools", "allowedTools"]
+      "keep": [
+        "description",
+        "skills"
+      ],
+      "drop": [
+        "name",
+        "color",
+        "model",
+        "memory",
+        "permissionMode",
+        "handoffs",
+        "tools",
+        "allowedTools"
+      ]
     },
-
     "bodyTransforms": [
       {
         "_comment": "Skill path references",
@@ -60,14 +69,12 @@
       }
     ]
   },
-
   "skills": {
     "source": "claude/.claude/skills",
     "target": "antigravity/skills",
     "exclude": [
       "skill-index.json"
     ],
-
     "pathTransforms": [
       {
         "from": "\\.claude/skills/",
@@ -83,26 +90,291 @@
       }
     ]
   },
-
   "skillIndex": {
     "output": "antigravity/skills/skill-index.json",
     "generateOnSync": true,
-    "indexFields": ["name", "description", "category", "tier", "keywords", "platforms", "triggers", "agent-affinity", "connections", "path"]
+    "indexFields": [
+      "name",
+      "description",
+      "category",
+      "tier",
+      "keywords",
+      "platforms",
+      "triggers",
+      "agent-affinity",
+      "connections",
+      "path"
+    ]
   },
-
   "adapters": {
     "antigravity": {
       "agentTarget": "antigravity/_agents/workflows",
       "skillTarget": "antigravity/skills",
       "workflowFormat": "markdown-with-yaml-frontmatter",
-      "requiredFrontmatterFields": ["description"],
-      "optionalFrontmatterFields": ["skills"]
+      "requiredFrontmatterFields": [
+        "description"
+      ],
+      "optionalFrontmatterFields": [
+        "skills"
+      ]
+    }
+  },
+  "codex": {
+    "_comment": "Official Codex package layout under tri-ai-kit/codex.",
+    "packageRoot": "codex",
+    "generatedPaths": [
+      "codex/AGENTS.md",
+      "codex/WORKFLOW.md",
+      "codex/.agents/skills",
+      "codex/.codex/agents",
+      "codex/.codex/hooks",
+      "codex/.codex/hooks.json",
+      "codex/.codex/config.toml",
+      "codex/.codex/runtime",
+      "codex/.codex/agent-memory",
+      "codex/.codex/output-styles",
+      "codex/.codex/.tri-ai-kit.json",
+      "codex/.codex/.tri-ignore",
+      "codex/.kit-data/improvements"
+    ],
+    "documents": {
+      "instructionBase": "claude/CLAUDE.md",
+      "instructionSupplement": "claude/AGENTS.md",
+      "workflowSource": "claude/WORKFLOW.md",
+      "instructionOutput": "codex/AGENTS.md",
+      "workflowOutput": "codex/WORKFLOW.md",
+      "supplementSections": [
+        "Routing",
+        "Planning — Agent & Skill Analysis (REQUIRED)",
+        "Orchestration"
+      ]
     },
-    "codex": {
-      "_comment": "Placeholder — fill in when Codex format is known",
-      "agentTarget": "codex/.github/agents",
-      "skillTarget": "codex/skills",
-      "workflowFormat": "unknown"
+    "agents": {
+      "source": "claude/.claude/agents",
+      "target": "codex/.codex/agents"
+    },
+    "skills": {
+      "source": "claude/.claude/skills",
+      "target": "codex/.agents/skills",
+      "excludeDirectories": [],
+      "excludeFiles": [
+        "skill-index.json"
+      ]
+    },
+    "hooks": {
+      "source": "claude/.claude/hooks",
+      "target": "codex/.codex/hooks",
+      "excludeDirectories": [
+        ".logs"
+      ],
+      "excludeFiles": []
+    },
+    "agentMemory": {
+      "source": "claude/.claude/agent-memory",
+      "target": "codex/.codex/agent-memory"
+    },
+    "outputStyles": {
+      "source": "claude/.claude/output-styles",
+      "target": "codex/.codex/output-styles"
+    },
+    "assets": {
+      "source": "claude/.claude/assets",
+      "target": "codex/.codex/runtime/assets"
+    },
+    "runtimeFiles": [
+      {
+        "source": "claude/.claude/statusline-command.sh",
+        "target": "codex/.codex/runtime/statusline-command.sh"
+      },
+      {
+        "source": "claude/.claude/.tri-ai-kit.json",
+        "target": "codex/.codex/.tri-ai-kit.json"
+      },
+      {
+        "source": "claude/.claude/.tri-ignore",
+        "target": "codex/.codex/.tri-ignore"
+      }
+    ],
+    "improvementStore": {
+      "target": "codex/.kit-data/improvements"
+    },
+    "skillIndex": {
+      "source": "claude/.claude/skills/skill-index.json",
+      "output": "codex/.agents/skills/skill-index.json",
+      "normalizePathSeparators": true
+    },
+    "textExtensions": [
+      ".md",
+      ".txt",
+      ".json",
+      ".yaml",
+      ".yml",
+      ".toml",
+      ".cjs",
+      ".js",
+      ".mjs",
+      ".ts",
+      ".tsx",
+      ".ps1",
+      ".sh",
+      ".py",
+      ".rb"
+      ,
+      ".env",
+      ".example"
+    ],
+    "transforms": {
+      "removeLineContaining": [
+        "node .claude/scripts/",
+        "set-active-plan.cjs",
+        "complete-plan.cjs",
+        "archive-plan.cjs"
+      ],
+      "replacements": [
+        {
+          "from": "\\.claude/skills/",
+          "to": ".agents/skills/",
+          "isRegex": true
+        },
+        {
+          "from": "\\.claude/agents/",
+          "to": ".codex/agents/",
+          "isRegex": true
+        },
+        {
+          "from": "\\.claude/hooks/",
+          "to": ".codex/hooks/",
+          "isRegex": true
+        },
+        {
+          "from": "\\.claude/agent-memory/",
+          "to": ".codex/agent-memory/",
+          "isRegex": true
+        },
+        {
+          "from": "\\.claude/output-styles/",
+          "to": ".codex/output-styles/",
+          "isRegex": true
+        },
+        {
+          "from": "\\.claude/settings\\.json",
+          "to": ".codex/config.toml and .codex/hooks.json",
+          "isRegex": true
+        },
+        {
+          "from": "\\.claude/\\.tri-ai-kit\\.json",
+          "to": ".codex/.tri-ai-kit.json",
+          "isRegex": true
+        },
+        {
+          "from": "\\.claude/\\.tri-ignore",
+          "to": ".codex/.tri-ignore",
+          "isRegex": true
+        },
+        {
+          "from": "\\.claude/statusline-command\\.sh",
+          "to": ".codex/runtime/statusline-command.sh",
+          "isRegex": true
+        },
+        {
+          "from": "\\.claude/assets/",
+          "to": ".codex/runtime/assets/",
+          "isRegex": true
+        },
+        {
+          "from": "~/.claude/",
+          "to": "~/.codex/"
+        },
+        {
+          "from": "path\\.join\\(process\\.cwd\\(\\), '\\.claude'",
+          "to": "path.join(process.cwd(), '.codex'",
+          "isRegex": true
+        },
+        {
+          "from": "path\\.join\\(os\\.homedir\\(\\), '\\.claude'",
+          "to": "path.join(os.homedir(), '.codex'",
+          "isRegex": true
+        },
+        {
+          "from": "\\.claude/\\.env",
+          "to": ".codex/.env"
+          ,
+          "isRegex": true
+        },
+        {
+          "from": "'\\.claude'",
+          "to": "'.codex'",
+          "isRegex": true
+        },
+        {
+          "from": "\"\\.claude\"",
+          "to": "\".codex\"",
+          "isRegex": true
+        },
+        {
+          "from": "~\\\\\\.claude\\\\skills",
+          "to": "~\\\\.codex\\\\skills",
+          "isRegex": true
+        },
+        {
+          "from": "\\.claude/settings\\.local\\.json",
+          "to": ".codex/config.toml and .codex/hooks.json",
+          "isRegex": true
+        },
+        {
+          "from": "\\bCLAUDE\\.md\\b",
+          "to": "AGENTS.md",
+          "isRegex": true
+        },
+        {
+          "from": "Claude Code",
+          "to": "Codex"
+        },
+        {
+          "from": "claude.ai/code",
+          "to": "Codex"
+        },
+        {
+          "from": "via Agent tool",
+          "to": "via custom agent dispatch"
+        },
+        {
+          "from": "AskUserQuestion tool",
+          "to": "ask the user"
+        },
+        {
+          "from": "is an tri_ai_kit agent",
+          "to": "is a tri-ai-kit Codex agent"
+        },
+        {
+          "from": "is a tri-ai-kit workflow",
+          "to": "is a tri-ai-kit Codex agent"
+        }
+      ]
+    },
+    "modelMap": {
+      "haiku": {
+        "model": "gpt-5.4-mini",
+        "model_reasoning_effort": "medium"
+      },
+      "sonnet": {
+        "model": "gpt-5.4",
+        "model_reasoning_effort": "medium"
+      },
+      "opus": {
+        "model": "gpt-5.4",
+        "model_reasoning_effort": "high"
+      },
+      "inherit": {
+        "omit": true
+      }
+    },
+    "permissionMap": {
+      "acceptEdits": {
+        "sandbox_mode": "workspace-write",
+        "approval_policy": "on-request"
+      },
+      "default": {}
     }
   }
 }

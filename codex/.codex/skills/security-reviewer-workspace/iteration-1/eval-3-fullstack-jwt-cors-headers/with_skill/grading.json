@@ -1,0 +1,39 @@
+﻿{
+  "eval_id": 3,
+  "run": "with_skill",
+  "expectations": [
+    {
+      "text": "flags_password_in_jwt_payload",
+      "passed": true,
+      "evidence": "Finding: 'Password Stored in JWT Payload · 🔴 Critical · A02 Cryptographic Failures' at app/api/auth/route.ts:10 — with Evidence showing password field in jwt.sign()"
+    },
+    {
+      "text": "flags_cors_wildcard_with_credentials",
+      "passed": true,
+      "evidence": "Finding: 'Wildcard CORS Combined with Credentials Allowed · 🔴 Critical · A05 Security Misconfiguration' — explicitly flags both headers and explains the danger"
+    },
+    {
+      "text": "flags_hardcoded_credentials",
+      "passed": true,
+      "evidence": "Finding: 'Hardcoded Credentials Used as Authentication Source · 🔴 Critical · A07 Authentication Failures' — flags admin/admin123 with evidence code block"
+    },
+    {
+      "text": "flags_missing_algorithm_enforcement",
+      "passed": true,
+      "evidence": "Finding: 'JWT Algorithm Not Pinned · 🟠 High · A07' — shows jwt.verify without { algorithms: ['HS256'] } as evidence, and provides fix with the option"
+    },
+    {
+      "text": "flags_missing_security_headers",
+      "passed": true,
+      "evidence": "Finding: 'No Security Headers (CSP, HSTS, X-Frame-Options, etc.) · 🟡 Medium' — explicitly names CSP, HSTS, X-Frame-Options, X-Content-Type-Options as missing, with fix code block"
+    },
+    {
+      "text": "covers_both_frontend_and_backend",
+      "passed": true,
+      "evidence": "Covers API route issues (auth/route.ts — backend) AND configuration-level issues (next.config.js CORS + missing security headers). Also covers middleware.ts for JWT algorithm."
+    }
+  ],
+  "pass_count": 6,
+  "total_count": 6,
+  "pass_rate": 1.0
+}

@@ -1,0 +1,32 @@
+﻿{
+  "eval_id": 1,
+  "eval_name": "frontend-xss-localstorage",
+  "prompt": "hey can you check if this React component is secure? my lead said something about 'xss' but i'm not sure what to look for\n\n[CommentDisplay.tsx with dangerouslySetInnerHTML + useAuth.ts with localStorage token storage]",
+  "assertions": [
+    {
+      "name": "flags_dangerouslySetInnerHTML_xss",
+      "description": "Identifies dangerouslySetInnerHTML with user data as XSS vulnerability",
+      "criteria": "Output mentions dangerouslySetInnerHTML and XSS as a finding with Critical or High severity"
+    },
+    {
+      "name": "flags_localStorage_token",
+      "description": "Flags JWT/auth token stored in localStorage as insecure",
+      "criteria": "Output mentions localStorage and auth_token storage as a security issue"
+    },
+    {
+      "name": "provides_fix_for_xss",
+      "description": "Provides a concrete fix for the XSS issue",
+      "criteria": "Output includes a code fix showing DOMPurify, textContent, or plain text rendering as alternative"
+    },
+    {
+      "name": "references_owasp",
+      "description": "Maps findings to OWASP categories",
+      "criteria": "Output references OWASP A03 or mentions Injection/XSS category"
+    },
+    {
+      "name": "uses_structured_report",
+      "description": "Output is a structured security report, not a generic answer",
+      "criteria": "Output has severity labels (Critical/High/Medium/Low), finding titles, and evidence sections"
+    }
+  ]
+}

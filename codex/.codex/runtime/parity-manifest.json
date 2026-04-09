@@ -1,0 +1,122 @@
+﻿{
+    "sourceSettings":  "claude/.claude/settings.json",
+    "windows":  {
+                    "nativeHooksSupported":  false,
+                    "recommendedRuntime":  "WSL2",
+                    "note":  "Codex hooks are currently disabled natively on Windows; use WSL2 or another supported POSIX layer for parity validation."
+                },
+    "mappings":  [
+                     {
+                         "sourceEvent":  "SessionStart",
+                         "sourceMatcher":  null,
+                         "nativeEvent":  "SessionStart",
+                         "nativeMatcher":  "startup|resume",
+                         "parityMode":  "native",
+                         "commands":  [
+                                          "node \"$(git rev-parse --show-toplevel)/.codex/hooks/session-init.cjs\""
+                                      ],
+                         "notes":  [
+
+                                   ]
+                     },
+                     {
+                         "sourceEvent":  "SubagentStart",
+                         "sourceMatcher":  "*",
+                         "nativeEvent":  null,
+                         "nativeMatcher":  null,
+                         "parityMode":  "runtime_only",
+                         "commands":  [
+                                          "node \"$(git rev-parse --show-toplevel)/.codex/hooks/subagent-init.cjs\""
+                                      ],
+                         "notes":  [
+                                       "Codex does not currently expose this lifecycle event natively."
+                                   ]
+                     },
+                     {
+                         "sourceEvent":  "UserPromptSubmit",
+                         "sourceMatcher":  null,
+                         "nativeEvent":  "UserPromptSubmit",
+                         "nativeMatcher":  null,
+                         "parityMode":  "native",
+                         "commands":  [
+                                          "node \"$(git rev-parse --show-toplevel)/.codex/hooks/context-reminder.cjs\""
+                                      ],
+                         "notes":  [
+
+                                   ]
+                     },
+                     {
+                         "sourceEvent":  "PostToolUse",
+                         "sourceMatcher":  "Edit|Write|MultiEdit",
+                         "nativeEvent":  null,
+                         "nativeMatcher":  null,
+                         "parityMode":  "runtime_only",
+                         "commands":  [
+                                          "node \"$(git rev-parse --show-toplevel)/.codex/hooks/post-index-reminder.cjs\""
+                                      ],
+                         "notes":  [
+                                       "Codex currently only emits Bash for PostToolUse; this matcher cannot be expressed natively."
+                                   ]
+                     },
+                     {
+                         "sourceEvent":  "PreToolUse",
+                         "sourceMatcher":  "Bash|Glob|Grep|Read|Edit|Write",
+                         "nativeEvent":  "PreToolUse",
+                         "nativeMatcher":  "Bash",
+                         "parityMode":  "hybrid",
+                         "commands":  [
+                                          "node \"$(git rev-parse --show-toplevel)/.codex/hooks/scout-block.cjs\"",
+                                          "node \"$(git rev-parse --show-toplevel)/.codex/hooks/privacy-block.cjs\""
+                                      ],
+                         "notes":  [
+                                       "Codex currently only emits Bash for PreToolUse; non-Bash tool interception requires compatibility runtime coverage."
+                                   ]
+                     },
+                     {
+                         "sourceEvent":  "PreToolUse",
+                         "sourceMatcher":  "Bash",
+                         "nativeEvent":  "PreToolUse",
+                         "nativeMatcher":  "Bash",
+                         "parityMode":  "native",
+                         "commands":  [
+                                          "node \"$(git rev-parse --show-toplevel)/.codex/hooks/build-gate-hook.cjs\""
+                                      ],
+                         "notes":  [
+
+                                   ]
+                     },
+                     {
+                         "sourceEvent":  "SubagentStop",
+                         "sourceMatcher":  "*",
+                         "nativeEvent":  null,
+                         "nativeMatcher":  null,
+                         "parityMode":  "runtime_only",
+                         "commands":  [
+                                          "node \"$(git rev-parse --show-toplevel)/.codex/hooks/subagent-stop-reminder.cjs\""
+                                      ],
+                         "notes":  [
+                                       "Codex does not currently expose this lifecycle event natively."
+                                   ]
+                     },
+                     {
+                         "sourceEvent":  "Stop",
+                         "sourceMatcher":  null,
+                         "nativeEvent":  "Stop",
+                         "nativeMatcher":  null,
+                         "parityMode":  "native",
+                         "commands":  [
+                                          "node \"$(git rev-parse --show-toplevel)/.codex/hooks/session-metrics.cjs\" 2\u003e/dev/null || true",
+                                          "node \"$(git rev-parse --show-toplevel)/.codex/hooks/lesson-capture.cjs\" 2\u003e/dev/null || true",
+                                          "node \"$(git rev-parse --show-toplevel)/.codex/hooks/notifications/notify.cjs\" 2\u003e/dev/null || true"
+                                      ],
+                         "notes":  [
+
+                                   ]
+                     }
+                 ],
+    "statusLine":  {
+                       "source":  "claude/.claude/statusline-command.sh",
+                       "target":  ".codex/runtime/statusline-command.sh",
+                       "note":  "Codex does not expose the Claude statusLine hook; keep this as compatibility runtime support."
+                   }
+}

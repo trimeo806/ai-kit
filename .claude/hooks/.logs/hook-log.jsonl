@@ -429,3 +429,4 @@
 {"ts":"2026-03-28T05:31:19.830Z","hook":"scout-block","status":"crash","error":"path must not be empty"}
 {"ts":"2026-03-28T05:31:24.879Z","hook":"scout-block","status":"crash","error":"path must not be empty"}
 {"ts":"2026-03-28T05:53:02.868Z","hook":"scout-block","status":"crash","error":"path must not be empty"}
+{"ts":"2026-03-31T13:58:00.449Z","hook":"scout-block","status":"crash","error":"path must not be empty"}

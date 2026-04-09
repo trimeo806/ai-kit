@@ -1,0 +1,59 @@
+// Two-Stage Code Review Flow
+// Authoritative process definition — prose in SKILL.md and /review:code supports, doesn't replace.
+//
+// Render: dot -Tsvg review-flow.dot -o review-flow.svg
+
+digraph review_flow {
+    rankdir=TB;
+    node [shape=box, style=rounded, fontname="Helvetica", fontsize=11];
+    edge [fontname="Helvetica", fontsize=9];
+
+    // Entry
+    start [label="Review\nRequested", shape=ellipse, style=filled, fillcolor="#e8f5e9"];
+
+    // Stage 1: Spec Compliance
+    read_spec [label="Read Plan/\nRequirements"];
+    read_code [label="Read Actual Code\n(NOT self-report)"];
+    compare [label="Compare Code\nvs Spec Line-by-Line"];
+    spec_pass [label="Spec\nCompliant?", shape=diamond, style=filled, fillcolor="#fff3e0"];
+    fix_deviations [label="Fix Deviations\n(file:line refs)"];
+    recheck_spec [label="Re-check\nSpec Compliance"];
+
+    // Stage 2: Quality Review
+    edge_cases [label="Ultrathink\nEdge Cases"];
+    categorize [label="Categorize &\nAssign Reviewers"];
+    parallel_review [label="Parallel Quality\nVerification"];
+    aggregate [label="Aggregate\nResults"];
+
+    // Decision
+    issues_found [label="Unhandled\nEdge Cases?", shape=diamond, style=filled, fillcolor="#fff3e0"];
+    auto_fix [label="Auto-Fix\nPipeline"];
+    re_review [label="Single Re-Review\nPass (1 only)"];
+    re_pass [label="Re-review\nPasses?", shape=diamond, style=filled, fillcolor="#fff3e0"];
+
+    // Outcomes
+    done [label="Final Report\n+ Offer Commit", shape=ellipse, style=filled, fillcolor="#e8f5e9"];
+    stop [label="STOP:\nReport Remaining\nLet User Decide", shape=box, style="filled,bold", fillcolor="#ffcdd2"];
+
+    // Stage 1 flow
+    start -> read_spec;
+    read_spec -> read_code;
+    read_code -> compare;
+    compare -> spec_pass;
+    spec_pass -> edge_cases [label="✅ All match"];
+    spec_pass -> fix_deviations [label="❌ Deviations"];
+    fix_deviations -> recheck_spec;
+    recheck_spec -> spec_pass;
+
+    // Stage 2 flow
+    edge_cases -> categorize;
+    categorize -> parallel_review;
+    parallel_review -> aggregate;
+    aggregate -> issues_found;
+    issues_found -> done [label="None"];
+    issues_found -> auto_fix [label="Found — user\napproves fix"];
+    auto_fix -> re_review;
+    re_review -> re_pass;
+    re_pass -> done [label="Pass"];
+    re_pass -> stop [label="Fail — no\nthird loop"];
+}

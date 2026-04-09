@@ -1,0 +1,10 @@
+﻿# Auto-generated from claude/.claude/settings.json and tri-ai-kit runtime defaults.
+# Enable Codex hooks and keep a stable default config surface for installed projects.
+
+web_search = "cached"
+
+[features]
+codex_hooks = true
+
+[windows]
+sandbox = "elevated"

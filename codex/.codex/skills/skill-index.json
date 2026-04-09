@@ -1,0 +1,2290 @@
+﻿{
+    "generated":  "2026-03-18T06:45:04.645Z",
+    "version":  "2.0.0",
+    "count":  60,
+    "categories":  {
+                       "uncategorized":  32,
+                       "development-tools":  11,
+                       "analysis-reasoning":  12,
+                       "infrastructure":  2,
+                       "frontend-web":  3
+                   },
+    "connectedSkills":  13,
+    "skills":  [
+                   {
+                       "name":  "api-designer",
+                       "description":  "Use when designing REST or GraphQL APIs, creating OpenAPI specifications, or planning API architecture. Invoke for resource modeling, versioning strategies, pagination patterns, error handling standards.",
+                       "category":  "uncategorized",
+                       "tier":  "discoverable",
+                       "keywords":  [
+
+                                    ],
+                       "platforms":  [
+                                         "all"
+                                     ],
+                       "triggers":  "API design, REST API, OpenAPI, API specification, API architecture, resource modeling, API versioning, GraphQL schema, API documentation",
+                       "agent-affinity":  [
+
+                                          ],
+                       "connections":  {
+                                           "extends":  [
+
+                                                       ],
+                                           "requires":  [
+
+                                                        ],
+                                           "enhances":  [
+
+                                                        ],
+                                           "conflicts":  [
+
+                                                         ]
+                                       },
+                       "path":  "api-designer/SKILL.md"
+                   },
+                   {
+                       "name":  "architecture-designer",
+                       "description":  "Use when designing new high-level system architecture, reviewing existing designs, or making architectural decisions. Invoke to create architecture diagrams, write Architecture Decision Records (ADRs), evaluate technology trade-offs, design component interactions, and plan for scalability. Use for system design, architecture review, microservices structuring, ADR authoring, scalability planning, and infrastructure pattern selection — distinct from code-level design patterns or database-only design tasks.",
+                       "category":  "uncategorized",
+                       "tier":  "discoverable",
+                       "keywords":  [
+
+                                    ],
+                       "platforms":  [
+                                         "all"
+                                     ],
+                       "triggers":  "architecture, system design, design pattern, microservices, scalability, ADR, technical design, infrastructure",
+                       "agent-affinity":  [
+
+                                          ],
+                       "connections":  {
+                                           "extends":  [
+
+                                                       ],
+                                           "requires":  [
+
+                                                        ],
+                                           "enhances":  [
+
+                                                        ],
+                                           "conflicts":  [
+
+                                                         ]
+                                       },
+                       "path":  "architecture-designer/SKILL.md"
+                   },
+                   {
+                       "name":  "ask",
+                       "description":  "Use when user asks questions about the codebase — how does X work, where is Y used, what\u0027s the architecture of Z, why is this implemented this way",
+                       "category":  "uncategorized",
+                       "tier":  "discoverable",
+                       "keywords":  [
+                                        "ask",
+                                        "question",
+                                        "how",
+                                        "where",
+                                        "what",
+                                        "why",
+                                        "codebase",
+                                        "explain",
+                                        "understand",
+                                        "architecture"
+                                    ],
+                       "platforms":  [
+                                         "all"
+                                     ],
+                       "triggers":  [
+                                        "/ask",
+                                        "how does",
+                                        "where is",
+                                        "what is",
+                                        "explain this",
+                                        "why is"
+                                    ],
+                       "agent-affinity":  [
+                                              "researcher",
+                                              "developer"
+                                          ],
+                       "connections":  {
+                                           "extends":  [
+
+                                                       ],
+                                           "requires":  [
+
+                                                        ],
+                                           "enhances":  [
+
+                                                        ],
+                                           "conflicts":  [
+
+                                                         ]
+                                       },
+                       "path":  "ask/SKILL.md"
+                   },
+                   {
+                       "name":  "audit",
+                       "description":  "Use when user says \"audit\", \"run an audit\", \"check quality\", \"review before merge\", \"a11y audit\", or \"code audit\" — detects audit type (UI component, a11y, or code) and dispatches the right specialist",
+                       "category":  "development-tools",
+                       "tier":  "discoverable",
+                       "keywords":  [
+                                        "audit",
+                                        "review",
+                                        "component",
+                                        "a11y",
+                                        "accessibility",
+                                        "code",
+                                        "quality",
+                                        "ui-lib",
+                                        "muji",
+                                        "tokens"
+                                    ],
+                       "platforms":  [
+                                         "all"
+                                     ],
+                       "triggers":  [
+                                        "\"audit\"",
+                                        "\"audit component\"",
+                                        "\"audit ui\"",
+                                        "\"audit a11y\"",
+                                        "\"audit code\"",
+                                        "\"code audit\"",
+                                        "\"component audit\""
+                                    ],
+                       "agent-affinity":  [
+                                              "muji",
+                                              "code-reviewer",
+                                              "a11y-specialist"
+                                          ],
+                       "connections":  {
+                                           "extends":  [
+
+                                                       ],
+                                           "requires":  [
+
+                                                        ],
+                                           "enhances":  [
+                                                            "review"
+                                                        ],
+                                           "conflicts":  [
+
+                                                         ]
+                                       },
+                       "path":  "audit/SKILL.md"
+                   },
+                   {
+                       "name":  "auto-improvement",
+                       "description":  "Use when reviewing session performance, analyzing improvement trends, or understanding the metrics-capture-detection pipeline",
+                       "category":  "development-tools",
+                       "tier":  "discoverable",
+                       "keywords":  [
+                                        "metrics",
+                                        "improvement",
+                                        "lessons",
+                                        "trends",
+                                        "detection",
+                                        "rework",
+                                        "session"
+                                    ],
+                       "platforms":  [
+                                         "all"
+                                     ],
+                       "triggers":  [
+                                        "improvement report",
+                                        "session metrics",
+                                        "detect patterns",
+                                        "rework analysis"
+                                    ],
+                       "agent-affinity":  [
+                                              "project-manager",
+                                              "code-reviewer",
+                                              "debugger"
+                                          ],
+                       "connections":  {
+                                           "extends":  [
+
+                                                       ],
+                                           "requires":  [
+
+                                                        ],
+                                           "enhances":  [
+                                                            "skill-discovery"
+                                                        ],
+                                           "conflicts":  [
+
+                                                         ]
+                                       },
+                       "path":  "auto-improvement/SKILL.md"
+                   },
+                   {
+                       "name":  "brainstorm",
+                       "description":  "Use when the user presents a problem, idea, decision, or challenge they want to think through — produces a structured analysis covering pros/cons, risks, trade-offs vs alternatives, and recommended directions. Always invoke this skill when someone says \"brainstorm\", \"help me think through\", \"I\u0027m considering\", \"what should I do about\", \"analyze this\", \"think with me\", or describes a problem they haven\u0027t yet decided how to solve. Don\u0027t wait for the word \"brainstorm\" — any problem-framing or decision-under-uncertainty prompt should trigger this skill.",
+                       "category":  "uncategorized",
+                       "tier":  "discoverable",
+                       "keywords":  [
+                                        "brainstorm",
+                                        "analysis",
+                                        "pros",
+                                        "cons",
+                                        "risks",
+                                        "trade-offs",
+                                        "alternatives",
+                                        "decision",
+                                        "problem",
+                                        "approach",
+                                        "strategy"
+                                    ],
+                       "platforms":  [
+                                         "all"
+                                     ],
+                       "triggers":  [
+                                        "/brainstorm",
+                                        "brainstorm",
+                                        "think through",
+                                        "help me decide",
+                                        "analyze this problem"
+                                    ],
+                       "agent-affinity":  [
+                                              "brainstormer",
+                                              "planner",
+                                              "researcher"
+                                          ],
+                       "connections":  {
+                                           "extends":  [
+
+                                                       ],
+                                           "requires":  [
+
+                                                        ],
+                                           "enhances":  [
+
+                                                        ],
+                                           "conflicts":  [
+
+                                                         ]
+                                       },
+                       "path":  "brainstorm/SKILL.md"
+                   },
+                   {
+                       "name":  "ckm:banner-design",
+                       "description":  "Design banners for social media, ads, website heroes, creative assets, and print. Multiple art direction options with AI-generated visuals. Actions: design, create, generate banner. Platforms: Facebook, Twitter/X, LinkedIn, YouTube, Instagram, Google Display, website hero, print. Styles: minimalist, gradient, bold typography, photo-based, illustrated, geometric, retro, glassmorphism, 3D, neon, duotone, editorial, collage. Uses ui-ux-pro-max, frontend-design, ai-artist, ai-multimodal skills.",
+                       "category":  "uncategorized",
+                       "tier":  "discoverable",
+                       "keywords":  [
+
+                                    ],
+                       "platforms":  [
+                                         "all"
+                                     ],
+                       "triggers":  [
+
+                                    ],
+                       "agent-affinity":  [
+
+                                          ],
+                       "connections":  {
+                                           "extends":  [
+
+                                                       ],
+                                           "requires":  [
+
+                                                        ],
+                                           "enhances":  [
+
+                                                        ],
+                                           "conflicts":  [
+
+                                                         ]
+                                       },
+                       "path":  "banner-design/SKILL.md"
+                   },
+                   {
+                       "name":  "ckm:brand",
+                       "description":  "Brand voice, visual identity, messaging frameworks, asset management, brand consistency. Activate for branded content, tone of voice, marketing assets, brand compliance, style guides.",
+                       "category":  "uncategorized",
+                       "tier":  "discoverable",
+                       "keywords":  [
+
+                                    ],
+                       "platforms":  [
+                                         "all"
+                                     ],
+                       "triggers":  [
+
+                                    ],
+                       "agent-affinity":  [
+
+                                          ],
+                       "connections":  {
+                                           "extends":  [
+
+                                                       ],
+                                           "requires":  [
+
+                                                        ],
+                                           "enhances":  [
+
+                                                        ],
+                                           "conflicts":  [
+
+                                                         ]
+                                       },
+                       "path":  "brand/SKILL.md"
+                   },
+                   {
+                       "name":  "ckm:design",
+                       "description":  "Comprehensive design skill: brand identity, design tokens, UI styling, logo generation (55 styles, Gemini AI), corporate identity program (50 deliverables, CIP mockups), HTML presentations (Chart.js), banner design (22 styles, social/ads/web/print), icon design (15 styles, SVG, Gemini 3.1 Pro), social photos (HTML→screenshot, multi-platform). Actions: design logo, create CIP, generate mockups, build slides, design banner, generate icon, create social photos, social media images, brand identity, design system. Platforms: Facebook, Twitter, LinkedIn, YouTube, Instagram, Pinterest, TikTok, Threads, Google Ads.",
+                       "category":  "uncategorized",
+                       "tier":  "discoverable",
+                       "keywords":  [
+
+                                    ],
+                       "platforms":  [
+                                         "all"
+                                     ],
+                       "triggers":  [
+
+                                    ],
+                       "agent-affinity":  [
+
+                                          ],
+                       "connections":  {
+                                           "extends":  [
+
+                                                       ],
+                                           "requires":  [
+
+                                                        ],
+                                           "enhances":  [
+
+                                                        ],
+                                           "conflicts":  [
+
+                                                         ]
+                                       },
+                       "path":  "design/SKILL.md"
+                   },
+                   {
+                       "name":  "ckm:design-system",
+                       "description":  "Token architecture, component specifications, and slide generation. Three-layer tokens (primitive→semantic→component), CSS variables, spacing/typography scales, component specs, strategic slide creation. Use for design tokens, systematic design, brand-compliant presentations.",
+                       "category":  "uncategorized",
+                       "tier":  "discoverable",
+                       "keywords":  [
+
+                                    ],
+                       "platforms":  [
+                                         "all"
+                                     ],
+                       "triggers":  [
+
+                                    ],
+                       "agent-affinity":  [
+
+                                          ],
+                       "connections":  {
+                                           "extends":  [
+
+                                                       ],
+                                           "requires":  [
+
+                                                        ],
+                                           "enhances":  [
+
+                                                        ],
+                                           "conflicts":  [
+
+                                                         ]
+                                       },
+                       "path":  "design-system/SKILL.md"
+                   },
+                   {
+                       "name":  "ckm:slides",
+                       "description":  "Create strategic HTML presentations with Chart.js, design tokens, responsive layouts, copywriting formulas, and contextual slide strategies.",
+                       "category":  "uncategorized",
+                       "tier":  "discoverable",
+                       "keywords":  [
+
+                                    ],
+                       "platforms":  [
+                                         "all"
+                                     ],
+                       "triggers":  [
+
+                                    ],
+                       "agent-affinity":  [
+
+                                          ],
+                       "connections":  {
+                                           "extends":  [
+
+                                                       ],
+                                           "requires":  [
+
+                                                        ],
+                                           "enhances":  [
+
+                                                        ],
+                                           "conflicts":  [
+
+                                                         ]
+                                       },
+                       "path":  "slides/SKILL.md"
+                   },
+                   {
+                       "name":  "ckm:ui-styling",
+                       "description":  "Create beautiful, accessible user interfaces with shadcn/ui components (built on Radix UI + Tailwind), Tailwind CSS utility-first styling, and canvas-based visual designs. Use when building user interfaces, implementing design systems, creating responsive layouts, adding accessible components (dialogs, dropdowns, forms, tables), customizing themes and colors, implementing dark mode, generating visual designs and posters, or establishing consistent styling patterns across applications.",
+                       "category":  "uncategorized",
+                       "tier":  "discoverable",
+                       "keywords":  [
+
+                                    ],
+                       "platforms":  [
+                                         "all"
+                                     ],
+                       "triggers":  [
+
+                                    ],
+                       "agent-affinity":  [
+
+                                          ],
+                       "connections":  {
+                                           "extends":  [
+
+                                                       ],
+                                           "requires":  [
+
+                                                        ],
+                                           "enhances":  [
+
+                                                        ],
+                                           "conflicts":  [
+
+                                                         ]
+                                       },
+                       "path":  "ui-styling/SKILL.md"
+                   },
+                   {
+                       "name":  "cloud-architect",
+                       "description":  "Designs cloud architectures, creates migration plans, generates cost optimization recommendations, and produces disaster recovery strategies across AWS, Azure, and GCP. Use when designing cloud architectures, planning migrations, or optimizing multi-cloud deployments. Invoke for Well-Architected Framework, cost optimization, disaster recovery, landing zones, security architecture, serverless design.",
+                       "category":  "uncategorized",
+                       "tier":  "discoverable",
+                       "keywords":  [
+
+                                    ],
+                       "platforms":  [
+                                         "all"
+                                     ],
+                       "triggers":  "AWS, Azure, GCP, Google Cloud, cloud migration, cloud architecture, multi-cloud, cloud cost, Well-Architected, landing zone, cloud security, disaster recovery, cloud native, serverless architecture",
+                       "agent-affinity":  [
+
+                                          ],
+                       "connections":  {
+                                           "extends":  [
+
+                                                       ],
+                                           "requires":  [
+
+                                                        ],
+                                           "enhances":  [
+
+                                                        ],
+                                           "conflicts":  [
+
+                                                         ]
+                                       },
+                       "path":  "cloud-architect/SKILL.md"
+                   },
+                   {
+                       "name":  "code-documenter",
+                       "description":  "Generates, formats, and validates technical documentation — including docstrings, OpenAPI/Swagger specs, JSDoc annotations, doc portals, and user guides. Use when adding docstrings to functions or classes, creating API documentation, building documentation sites, or writing tutorials and user guides. Invoke for OpenAPI/Swagger specs, JSDoc, doc portals, getting started guides.",
+                       "category":  "uncategorized",
+                       "tier":  "discoverable",
+                       "keywords":  [
+
+                                    ],
+                       "platforms":  [
+                                         "all"
+                                     ],
+                       "triggers":  "documentation, docstrings, OpenAPI, Swagger, JSDoc, comments, API docs, tutorials, user guides, doc site",
+                       "agent-affinity":  [
+
+                                          ],
+                       "connections":  {
+                                           "extends":  [
+
+                                                       ],
+                                           "requires":  [
+
+                                                        ],
+                                           "enhances":  [
+
+                                                        ],
+                                           "conflicts":  [
+
+                                                         ]
+                                       },
+                       "path":  "code-documenter/SKILL.md"
+                   },
+                   {
+                       "name":  "code-review",
+                       "description":  "Use when reviewing code, checking quality before commit, or auditing changed files for issues",
+                       "category":  "analysis-reasoning",
+                       "tier":  "core",
+                       "keywords":  [
+                                        "review",
+                                        "code-quality",
+                                        "security",
+                                        "performance",
+                                        "testing",
+                                        "verification"
+                                    ],
+                       "platforms":  [
+                                         "all"
+                                     ],
+                       "triggers":  [
+                                        "/review",
+                                        "code review",
+                                        "review code"
+                                    ],
+                       "agent-affinity":  [
+                                              "code-reviewer",
+                                              "developer"
+                                          ],
+                       "connections":  {
+                                           "extends":  [
+
+                                                       ],
+                                           "requires":  [
+
+                                                        ],
+                                           "enhances":  [
+
+                                                        ],
+                                           "conflicts":  [
+
+                                                         ]
+                                       },
+                       "path":  "code-review/SKILL.md"
+                   },
+                   {
+                       "name":  "code-reviewer",
+                       "description":  "Analyzes code diffs and files to identify bugs, security vulnerabilities (SQL injection, XSS, insecure deserialization), code smells, N+1 queries, naming issues, and architectural concerns, then produces a structured review report with prioritized, actionable feedback. Use when reviewing pull requests, conducting code quality audits, identifying refactoring opportunities, or checking for security issues. Invoke for PR reviews, code quality checks, refactoring suggestions, review code, code quality. Complements specialized skills (security-reviewer, test-master) by providing broad-scope review across correctness, performance, maintainability, and test coverage in a single pass.",
+                       "category":  "uncategorized",
+                       "tier":  "discoverable",
+                       "keywords":  [
+
+                                    ],
+                       "platforms":  [
+                                         "all"
+                                     ],
+                       "triggers":  "code review, PR review, pull request, review code, code quality",
+                       "agent-affinity":  [
+
+                                          ],
+                       "connections":  {
+                                           "extends":  [
+
+                                                       ],
+                                           "requires":  [
+
+                                                        ],
+                                           "enhances":  [
+
+                                                        ],
+                                           "conflicts":  [
+
+                                                         ]
+                                       },
+                       "path":  "code-reviewer/SKILL.md"
+                   },
+                   {
+                       "name":  "cook",
+                       "description":  "Use when user says \"implement\", \"build\", \"add a feature\", \"cook\", \"make this work\", or \"continue the plan\" — dispatches platform-aware feature implementation for web, iOS, Android, or backend",
+                       "category":  "development-tools",
+                       "tier":  "discoverable",
+                       "keywords":  [
+
+                                    ],
+                       "platforms":  [
+                                         "all"
+                                     ],
+                       "triggers":  [
+
+                                    ],
+                       "agent-affinity":  [
+
+                                          ],
+                       "connections":  {
+                                           "extends":  [
+
+                                                       ],
+                                           "requires":  [
+
+                                                        ],
+                                           "enhances":  [
+                                                            "plan"
+                                                        ],
+                                           "conflicts":  [
+
+                                                         ]
+                                       },
+                       "path":  "cook/SKILL.md"
+                   },
+                   {
+                       "name":  "core",
+                       "description":  "Use when any agent modifies files, makes architectural decisions, or needs safety and documentation rules",
+                       "category":  "analysis-reasoning",
+                       "tier":  "core",
+                       "keywords":  [
+
+                                    ],
+                       "platforms":  [
+                                         "all"
+                                     ],
+                       "triggers":  [
+
+                                    ],
+                       "agent-affinity":  [
+
+                                          ],
+                       "connections":  {
+                                           "extends":  [
+
+                                                       ],
+                                           "requires":  [
+
+                                                        ],
+                                           "enhances":  [
+
+                                                        ],
+                                           "conflicts":  [
+
+                                                         ]
+                                       },
+                       "path":  "core/SKILL.md"
+                   },
+                   {
+                       "name":  "debug",
+                       "description":  "Use when user says \"debug\", \"trace this\", \"diagnose\", \"it crashes\", \"why is this failing\", or provides a stack trace — investigates root cause using platform-specific debugging tools",
+                       "category":  "development-tools",
+                       "tier":  "core",
+                       "keywords":  [
+                                        "debug",
+                                        "error",
+                                        "bug",
+                                        "troubleshoot",
+                                        "root-cause",
+                                        "stack-trace",
+                                        "logging",
+                                        "crash",
+                                        "exception",
+                                        "fix"
+                                    ],
+                       "platforms":  [
+                                         "all"
+                                     ],
+                       "triggers":  [
+                                        "/debug",
+                                        "error",
+                                        "bug",
+                                        "crash",
+                                        "exception"
+                                    ],
+                       "agent-affinity":  [
+                                              "debugger",
+                                              "developer"
+                                          ],
+                       "connections":  {
+                                           "extends":  [
+
+                                                       ],
+                                           "requires":  [
+
+                                                        ],
+                                           "enhances":  [
+                                                            "fix"
+                                                        ],
+                                           "conflicts":  [
+
+                                                         ]
+                                       },
+                       "path":  "debug/SKILL.md"
+                   },
+                   {
+                       "name":  "doc-coauthoring",
+                       "description":  "Use when user wants to write a doc, proposal, spec, RFC, PRD, or decision record collaboratively",
+                       "category":  "analysis-reasoning",
+                       "tier":  "discoverable",
+                       "keywords":  [
+                                        "documentation",
+                                        "writing",
+                                        "proposal",
+                                        "spec",
+                                        "technical-writing",
+                                        "collaboration",
+                                        "prd",
+                                        "rfc",
+                                        "decision",
+                                        "write",
+                                        "draft",
+                                        "coauthor",
+                                        "adr"
+                                    ],
+                       "platforms":  [
+                                         "all"
+                                     ],
+                       "triggers":  [
+
+                                    ],
+                       "agent-affinity":  [
+                                              "docs-manager",
+                                              "planner"
+                                          ],
+                       "connections":  {
+                                           "extends":  [
+
+                                                       ],
+                                           "requires":  [
+
+                                                        ],
+                                           "enhances":  [
+                                                            "plan"
+                                                        ],
+                                           "conflicts":  [
+
+                                                         ]
+                                       },
+                       "path":  "doc-coauthoring/SKILL.md"
+                   },
+                   {
+                       "name":  "docs",
+                       "description":  "Use when user says \"write docs\", \"update docs\", \"document this\", \"init docs\", \"reorganize documentation\", or \"add component docs\" — detects docs intent (init, update, migrate, component) and runs the right workflow",
+                       "category":  "development-tools",
+                       "tier":  "discoverable",
+                       "keywords":  [
+
+                                    ],
+                       "platforms":  [
+                                         "all"
+                                     ],
+                       "triggers":  [
+
+                                    ],
+                       "agent-affinity":  [
+
+                                          ],
+                       "connections":  {
+                                           "extends":  [
+
+                                                       ],
+                                           "requires":  [
+
+                                                        ],
+                                           "enhances":  [
+
+                                                        ],
+                                           "conflicts":  [
+
+                                                         ]
+                                       },
+                       "path":  "docs/SKILL.md"
+                   },
+                   {
+                       "name":  "docs-seeker",
+                       "description":  "Use when you need API docs, library references, or framework documentation for an unfamiliar package",
+                       "category":  "analysis-reasoning",
+                       "tier":  "discoverable",
+                       "keywords":  [
+                                        "docs",
+                                        "documentation",
+                                        "search",
+                                        "context7",
+                                        "api-reference",
+                                        "library",
+                                        "research",
+                                        "best-practices"
+                                    ],
+                       "platforms":  [
+                                         "all"
+                                     ],
+                       "triggers":  [
+                                        "documentation",
+                                        "docs",
+                                        "api reference",
+                                        "how to use"
+                                    ],
+                       "agent-affinity":  [
+                                              "researcher",
+                                              "developer",
+                                              "mcp-manager"
+                                          ],
+                       "connections":  {
+                                           "extends":  [
+
+                                                       ],
+                                           "requires":  [
+
+                                                        ],
+                                           "enhances":  [
+                                                            "research"
+                                                        ],
+                                           "conflicts":  [
+
+                                                         ]
+                                       },
+                       "path":  "docs-seeker/SKILL.md"
+                   },
+                   {
+                       "name":  "error-recovery",
+                       "description":  "Retry strategies, circuit breakers, fallbacks, and graceful degradation patterns for handling transient and persistent failures",
+                       "category":  "analysis-reasoning",
+                       "tier":  "discoverable",
+                       "keywords":  [
+                                        "retry",
+                                        "timeout",
+                                        "circuit-breaker",
+                                        "fallback",
+                                        "resilience",
+                                        "error-handling",
+                                        "backoff",
+                                        "graceful-degradation"
+                                    ],
+                       "platforms":  [
+                                         "all"
+                                     ],
+                       "triggers":  [
+                                        "retry logic",
+                                        "timeout handling",
+                                        "circuit breaker",
+                                        "fallback strategy",
+                                        "transient error",
+                                        "error recovery"
+                                    ],
+                       "agent-affinity":  [
+                                              "debugger",
+                                              "developer",
+                                              "backend-developer"
+                                          ],
+                       "connections":  {
+                                           "extends":  [
+
+                                                       ],
+                                           "requires":  [
+
+                                                        ],
+                                           "enhances":  [
+                                                            "debug"
+                                                        ],
+                                           "conflicts":  [
+
+                                                         ]
+                                       },
+                       "path":  "error-recovery/SKILL.md"
+                   },
+                   {
+                       "name":  "fastapi-python",
+                       "description":  "Use when building Python backend APIs with FastAPI. Invoke for FastAPI route handlers, Pydantic v2 schemas, async HTTP clients with httpx, dependency injection, middleware, OpenAPI documentation, or BFF (Backend-for-Frontend) wrapper layers. Load this skill whenever the task involves FastAPI, Python REST APIs, uvicorn, Pydantic, or Python async backend services — even if the user just says \"implement the API\" in a Python project.",
+                       "category":  "uncategorized",
+                       "tier":  "discoverable",
+                       "keywords":  [
+                                        "fastapi",
+                                        "python",
+                                        "pydantic",
+                                        "uvicorn",
+                                        "httpx",
+                                        "async",
+                                        "BFF",
+                                        "REST",
+                                        "backend",
+                                        "middleware"
+                                    ],
+                       "platforms":  [
+                                         "backend"
+                                     ],
+                       "triggers":  [
+
+                                    ],
+                       "agent-affinity":  [
+                                              "backend-developer",
+                                              "backend-architect"
+                                          ],
+                       "connections":  {
+                                           "extends":  [
+
+                                                       ],
+                                           "requires":  [
+
+                                                        ],
+                                           "enhances":  [
+
+                                                        ],
+                                           "conflicts":  [
+
+                                                         ]
+                                       },
+                       "path":  "fastapi-python/SKILL.md"
+                   },
+                   {
+                       "name":  "fastapi-templates",
+                       "description":  "Use when you need production-ready FastAPI boilerplate, copy-paste code templates, or starter patterns. Load when implementing FastAPI services and you need ready-to-use code for BFF wrappers, upstream HTTP clients, Pydantic v2 schemas for flight/booking domains, unified error middleware, async cache decorators, or pagination helpers. Always load alongside fastapi-python when building a new FastAPI project from scratch.",
+                       "category":  "uncategorized",
+                       "tier":  "discoverable",
+                       "keywords":  [
+                                        "fastapi",
+                                        "templates",
+                                        "boilerplate",
+                                        "BFF",
+                                        "pydantic",
+                                        "schemas",
+                                        "caching",
+                                        "retry",
+                                        "flight",
+                                        "booking"
+                                    ],
+                       "platforms":  [
+                                         "backend"
+                                     ],
+                       "triggers":  [
+
+                                    ],
+                       "agent-affinity":  [
+                                              "backend-developer"
+                                          ],
+                       "connections":  {
+                                           "extends":  [
+
+                                                       ],
+                                           "requires":  [
+
+                                                        ],
+                                           "enhances":  [
+
+                                                        ],
+                                           "conflicts":  [
+
+                                                         ]
+                                       },
+                       "path":  "fastapi-templates/SKILL.md"
+                   },
+                   {
+                       "name":  "fix",
+                       "description":  "Use when user says \"fix\", \"broken\", \"error\", \"failing\", \"this doesn\u0027t work\", or pastes an error message — identifies error type and applies platform-appropriate fix",
+                       "category":  "development-tools",
+                       "tier":  "discoverable",
+                       "keywords":  [
+
+                                    ],
+                       "platforms":  [
+                                         "all"
+                                     ],
+                       "triggers":  [
+
+                                    ],
+                       "agent-affinity":  [
+
+                                          ],
+                       "connections":  {
+                                           "extends":  [
+
+                                                       ],
+                                           "requires":  [
+
+                                                        ],
+                                           "enhances":  [
+
+                                                        ],
+                                           "conflicts":  [
+
+                                                         ]
+                                       },
+                       "path":  "fix/SKILL.md"
+                   },
+                   {
+                       "name":  "fullstack-guardian",
+                       "description":  "Builds security-focused full-stack web applications by implementing integrated frontend and backend components with layered security at every level. Covers the complete stack from database to UI, enforcing auth, input validation, output encoding, and parameterized queries across all layers. Use when implementing features across frontend and backend, building REST APIs with corresponding UI, connecting frontend components to backend endpoints, creating end-to-end data flows from database to UI, or implementing CRUD operations with UI forms. Distinct from frontend-only, backend-only, or API-only skills in that it simultaneously addresses all three perspectives—Frontend, Backend, and Security—within a single implementation workflow. Invoke for full-stack feature work, web app development, authenticated API routes with views, microservices, real-time features, monorepo architecture, or technology selection decisions.",
+                       "category":  "uncategorized",
+                       "tier":  "discoverable",
+                       "keywords":  [
+
+                                    ],
+                       "platforms":  [
+                                         "all"
+                                     ],
+                       "triggers":  "fullstack, implement feature, build feature, create API, frontend and backend, full stack, new feature, implement, microservices, websocket, real-time, deployment pipeline, monorepo, architecture decision, technology selection, end-to-end",
+                       "agent-affinity":  [
+
+                                          ],
+                       "connections":  {
+                                           "extends":  [
+
+                                                       ],
+                                           "requires":  [
+
+                                                        ],
+                                           "enhances":  [
+
+                                                        ],
+                                           "conflicts":  [
+
+                                                         ]
+                                       },
+                       "path":  "fullstack-guardian/SKILL.md"
+                   },
+                   {
+                       "name":  "golang-pro",
+                       "description":  "Implements concurrent Go patterns using goroutines and channels, designs and builds microservices with gRPC or REST, optimizes Go application performance with pprof, and enforces idiomatic Go with generics, interfaces, and robust error handling. Use when building Go applications requiring concurrent programming, microservices architecture, or high-performance systems. Invoke for goroutines, channels, Go generics, gRPC integration, CLI tools, benchmarks, or table-driven testing.",
+                       "category":  "uncategorized",
+                       "tier":  "discoverable",
+                       "keywords":  [
+
+                                    ],
+                       "platforms":  [
+                                         "all"
+                                     ],
+                       "triggers":  "Go, Golang, goroutines, channels, gRPC, microservices Go, Go generics, concurrent programming, Go interfaces, net/http, http.Server, ServeMux, HTTP handler, HTTP middleware, Go HTTP client, REST API Go",
+                       "agent-affinity":  [
+
+                                          ],
+                       "connections":  {
+                                           "extends":  [
+
+                                                       ],
+                                           "requires":  [
+
+                                                        ],
+                                           "enhances":  [
+
+                                                        ],
+                                           "conflicts":  [
+
+                                                         ]
+                                       },
+                       "path":  "golang-pro/SKILL.md"
+                   },
+                   {
+                       "name":  "graphql-architect",
+                       "description":  "Use when designing GraphQL schemas, implementing Apollo Federation, or building real-time subscriptions. Invoke for schema design, resolvers with DataLoader, query optimization, federation directives.",
+                       "category":  "uncategorized",
+                       "tier":  "discoverable",
+                       "keywords":  [
+
+                                    ],
+                       "platforms":  [
+                                         "all"
+                                     ],
+                       "triggers":  "GraphQL, Apollo Federation, GraphQL schema, API graph, GraphQL subscriptions, Apollo Server, schema design, GraphQL resolvers, DataLoader",
+                       "agent-affinity":  [
+
+                                          ],
+                       "connections":  {
+                                           "extends":  [
+
+                                                       ],
+                                           "requires":  [
+
+                                                        ],
+                                           "enhances":  [
+
+                                                        ],
+                                           "conflicts":  [
+
+                                                         ]
+                                       },
+                       "path":  "graphql-architect/SKILL.md"
+                   },
+                   {
+                       "name":  "infra-cloud",
+                       "description":  "Use when working with GCP infrastructure — Terraform, Cloud Build, Cloud Run, GKE, deployment pipelines. Scope: GCP-specific operational patterns. For multi-cloud architecture strategy and design, use cloud-architect instead.",
+                       "category":  "infrastructure",
+                       "tier":  "discoverable",
+                       "keywords":  [
+                                        "gcp",
+                                        "terraform",
+                                        "cloud-build",
+                                        "cloud-run",
+                                        "gke",
+                                        "infrastructure",
+                                        "deployment-pipeline"
+                                    ],
+                       "platforms":  [
+                                         "all"
+                                     ],
+                       "triggers":  [
+
+                                    ],
+                       "agent-affinity":  [
+                                              "devops-engineer",
+                                              "planner"
+                                          ],
+                       "connections":  {
+                                           "extends":  [
+
+                                                       ],
+                                           "requires":  [
+
+                                                        ],
+                                           "enhances":  [
+
+                                                        ],
+                                           "conflicts":  [
+
+                                                         ]
+                                       },
+                       "path":  "infra-cloud/SKILL.md"
+                   },
+                   {
+                       "name":  "infra-docker",
+                       "description":  "Use when working with Dockerfiles, docker-compose, containers, or containerized deployments",
+                       "category":  "infrastructure",
+                       "tier":  "discoverable",
+                       "keywords":  [
+                                        "docker",
+                                        "container",
+                                        "dockerfile",
+                                        "compose",
+                                        "deployment",
+                                        "devops"
+                                    ],
+                       "platforms":  [
+                                         "all"
+                                     ],
+                       "triggers":  [
+                                        "Dockerfile",
+                                        "docker-compose.yml",
+                                        "container",
+                                        "docker"
+                                    ],
+                       "agent-affinity":  [
+                                              "developer",
+                                              "planner"
+                                          ],
+                       "connections":  {
+                                           "extends":  [
+
+                                                       ],
+                                           "requires":  [
+
+                                                        ],
+                                           "enhances":  [
+
+                                                        ],
+                                           "conflicts":  [
+
+                                                         ]
+                                       },
+                       "path":  "infra-docker/SKILL.md"
+                   },
+                   {
+                       "name":  "javascript-pro",
+                       "description":  "Writes, debugs, and refactors JavaScript code using modern ES2023+ features, async/await patterns, ESM module systems, and Node.js APIs. Use when building vanilla JavaScript applications, implementing Promise-based async flows, optimising browser or Node.js performance, working with Web Workers or Fetch API, or reviewing .js/.mjs/.cjs files for correctness and best practices.",
+                       "category":  "uncategorized",
+                       "tier":  "discoverable",
+                       "keywords":  [
+
+                                    ],
+                       "platforms":  [
+                                         "all"
+                                     ],
+                       "triggers":  "JavaScript, ES2023, async await, Node.js, vanilla JavaScript, Web Workers, Fetch API, browser API, module system",
+                       "agent-affinity":  [
+
+                                          ],
+                       "connections":  {
+                                           "extends":  [
+
+                                                       ],
+                                           "requires":  [
+
+                                                        ],
+                                           "enhances":  [
+
+                                                        ],
+                                           "conflicts":  [
+
+                                                         ]
+                                       },
+                       "path":  "javascript-pro/SKILL.md"
+                   },
+                   {
+                       "name":  "knowledge-capture",
+                       "description":  "Use after completing a task — capture learnings, save patterns, record post-mortems to docs/",
+                       "category":  "analysis-reasoning",
+                       "tier":  "discoverable",
+                       "keywords":  [
+                                        "capture",
+                                        "learn",
+                                        "persist",
+                                        "record",
+                                        "post-mortem",
+                                        "retrospective"
+                                    ],
+                       "platforms":  [
+                                         "all"
+                                     ],
+                       "triggers":  [
+                                        "capture learnings",
+                                        "save pattern",
+                                        "record finding",
+                                        "what did we learn"
+                                    ],
+                       "agent-affinity":  [
+                                              "debugger",
+                                              "developer",
+                                              "researcher",
+                                              "code-reviewer",
+                                              "planner",
+                                              "journal-writer"
+                                          ],
+                       "connections":  {
+                                           "extends":  [
+
+                                                       ],
+                                           "requires":  [
+                                                            "knowledge-retrieval"
+                                                        ],
+                                           "enhances":  [
+
+                                                        ],
+                                           "conflicts":  [
+
+                                                         ]
+                                       },
+                       "path":  "knowledge-capture/SKILL.md"
+                   },
+                   {
+                       "name":  "knowledge-retrieval",
+                       "description":  "Use when you need prior art, past decisions, or existing patterns — checks docs/, skills, and RAG before external sources",
+                       "category":  "analysis-reasoning",
+                       "tier":  "discoverable",
+                       "keywords":  [
+                                        "retrieve",
+                                        "search",
+                                        "knowledge",
+                                        "context",
+                                        "rag",
+                                        "lookup",
+                                        "prior-art"
+                                    ],
+                       "platforms":  [
+                                         "all"
+                                     ],
+                       "triggers":  [
+                                        "what do we know about",
+                                        "check knowledge",
+                                        "prior art",
+                                        "previous decision"
+                                    ],
+                       "agent-affinity":  [
+                                              "planner",
+                                              "developer",
+                                              "debugger",
+                                              "researcher",
+                                              "code-reviewer"
+                                          ],
+                       "connections":  {
+                                           "extends":  [
+
+                                                       ],
+                                           "requires":  [
+
+                                                        ],
+                                           "enhances":  [
+                                                            "research",
+                                                            "plan"
+                                                        ],
+                                           "conflicts":  [
+
+                                                         ]
+                                       },
+                       "path":  "knowledge-retrieval/SKILL.md"
+                   },
+                   {
+                       "name":  "kubernetes-specialist",
+                       "description":  "Use when deploying or managing Kubernetes workloads. Invoke to create deployment manifests, configure pod security policies, set up service accounts, define network isolation rules, debug pod crashes, analyze resource limits, inspect container logs, or right-size workloads. Use for Helm charts, RBAC policies, NetworkPolicies, storage configuration, performance optimization, GitOps pipelines, and multi-cluster management.",
+                       "category":  "uncategorized",
+                       "tier":  "discoverable",
+                       "keywords":  [
+
+                                    ],
+                       "platforms":  [
+                                         "all"
+                                     ],
+                       "triggers":  "Kubernetes, K8s, kubectl, Helm, container orchestration, pod deployment, RBAC, NetworkPolicy, Ingress, StatefulSet, Operator, CRD, CustomResourceDefinition, ArgoCD, Flux, GitOps, Istio, Linkerd, service mesh, multi-cluster, cost optimization, VPA, spot instances",
+                       "agent-affinity":  [
+
+                                          ],
+                       "connections":  {
+                                           "extends":  [
+
+                                                       ],
+                                           "requires":  [
+
+                                                        ],
+                                           "enhances":  [
+
+                                                        ],
+                                           "conflicts":  [
+
+                                                         ]
+                                       },
+                       "path":  "kubernetes-specialist/SKILL.md"
+                   },
+                   {
+                       "name":  "microservices-architect",
+                       "description":  "Designs distributed system architectures, decomposes monoliths into bounded-context services, recommends communication patterns, and produces service boundary diagrams and resilience strategies. Use when designing distributed systems, decomposing monoliths, or implementing microservices patterns — including service boundaries, DDD, saga patterns, event sourcing, CQRS, service mesh, or distributed tracing.",
+                       "category":  "uncategorized",
+                       "tier":  "discoverable",
+                       "keywords":  [
+
+                                    ],
+                       "platforms":  [
+                                         "all"
+                                     ],
+                       "triggers":  "microservices, service mesh, distributed systems, service boundaries, domain-driven design, event sourcing, CQRS, saga pattern, Kubernetes microservices, Istio, distributed tracing",
+                       "agent-affinity":  [
+
+                                          ],
+                       "connections":  {
+                                           "extends":  [
+
+                                                       ],
+                                           "requires":  [
+
+                                                        ],
+                                           "enhances":  [
+
+                                                        ],
+                                           "conflicts":  [
+
+                                                         ]
+                                       },
+                       "path":  "microservices-architect/SKILL.md"
+                   },
+                   {
+                       "name":  "nextjs-developer",
+                       "description":  "Use when building Next.js 14+ applications with App Router, server components, or server actions. Invoke to configure route handlers, implement middleware, set up API routes, add streaming SSR, write generateMetadata for SEO, scaffold loading.tsx/error.tsx boundaries, or deploy to Vercel. Triggers on: Next.js, Next.js 14, App Router, RSC, use server, Server Components, Server Actions, React Server Components, generateMetadata, loading.tsx, Next.js deployment, Vercel, Next.js performance.",
+                       "category":  "uncategorized",
+                       "tier":  "discoverable",
+                       "keywords":  [
+
+                                    ],
+                       "platforms":  [
+                                         "all"
+                                     ],
+                       "triggers":  "Next.js, Next.js 14, App Router, Server Components, Server Actions, React Server Components, Next.js deployment, Vercel, Next.js performance",
+                       "agent-affinity":  [
+
+                                          ],
+                       "connections":  {
+                                           "extends":  [
+
+                                                       ],
+                                           "requires":  [
+
+                                                        ],
+                                           "enhances":  [
+
+                                                        ],
+                                           "conflicts":  [
+
+                                                         ]
+                                       },
+                       "path":  "nextjs-developer/SKILL.md"
+                   },
+                   {
+                       "name":  "plan",
+                       "description":  "Use when user says \"plan\", \"design this\", \"architect\", \"spec out\", \"how should we build\", or \"create a roadmap\" — produces a phased implementation plan scaled to task complexity",
+                       "category":  "development-tools",
+                       "tier":  "discoverable",
+                       "keywords":  [
+                                        "plan",
+                                        "planning",
+                                        "requirements",
+                                        "tasks",
+                                        "estimation",
+                                        "roadmap",
+                                        "design",
+                                        "spec",
+                                        "architecture",
+                                        "blueprint"
+                                    ],
+                       "platforms":  [
+                                         "all"
+                                     ],
+                       "triggers":  [
+                                        "/plan",
+                                        "create plan",
+                                        "implementation plan"
+                                    ],
+                       "agent-affinity":  [
+                                              "planner",
+                                              "project-manager"
+                                          ],
+                       "connections":  {
+                                           "extends":  [
+
+                                                       ],
+                                           "requires":  [
+
+                                                        ],
+                                           "enhances":  [
+
+                                                        ],
+                                           "conflicts":  [
+
+                                                         ]
+                                       },
+                       "path":  "plan/SKILL.md"
+                   },
+                   {
+                       "name":  "plan-hard",
+                       "description":  "Deep plan with sequential research and comprehensive analysis — use for moderate to complex features requiring investigation",
+                       "category":  "development-tools",
+                       "tier":  "discoverable",
+                       "keywords":  [
+                                        "plan",
+                                        "hard",
+                                        "deep",
+                                        "research",
+                                        "complex"
+                                    ],
+                       "platforms":  [
+                                         "all"
+                                     ],
+                       "triggers":  [
+                                        "plan deep",
+                                        "deep plan",
+                                        "plan hard",
+                                        "detailed plan"
+                                    ],
+                       "agent-affinity":  [
+                                              "planner",
+                                              "researcher"
+                                          ],
+                       "connections":  {
+                                           "extends":  [
+
+                                                       ],
+                                           "requires":  [
+
+                                                        ],
+                                           "enhances":  [
+
+                                                        ],
+                                           "conflicts":  [
+
+                                                         ]
+                                       },
+                       "path":  "plan-hard/SKILL.md"
+                   },
+                   {
+                       "name":  "playwright-expert",
+                       "description":  "Use when writing E2E tests with Playwright, setting up test infrastructure, or debugging flaky browser tests. Invoke to write test scripts, create page objects, configure test fixtures, set up reporters, add CI integration, implement API mocking, or perform visual regression testing. Trigger terms: Playwright, E2E test, end-to-end, browser testing, automation, UI testing, visual testing, Page Object Model, test flakiness.",
+                       "category":  "uncategorized",
+                       "tier":  "discoverable",
+                       "keywords":  [
+
+                                    ],
+                       "platforms":  [
+                                         "all"
+                                     ],
+                       "triggers":  "Playwright, E2E test, end-to-end, browser testing, automation, UI testing, visual testing",
+                       "agent-affinity":  [
+
+                                          ],
+                       "connections":  {
+                                           "extends":  [
+
+                                                       ],
+                                           "requires":  [
+
+                                                        ],
+                                           "enhances":  [
+
+                                                        ],
+                                           "conflicts":  [
+
+                                                         ]
+                                       },
+                       "path":  "playwright-expert/SKILL.md"
+                   },
+                   {
+                       "name":  "postgres-pro",
+                       "description":  "Use when optimizing PostgreSQL queries, configuring replication, or implementing advanced database features. Invoke for EXPLAIN analysis, JSONB operations, extension usage, VACUUM tuning, performance monitoring.",
+                       "category":  "uncategorized",
+                       "tier":  "discoverable",
+                       "keywords":  [
+
+                                    ],
+                       "platforms":  [
+                                         "all"
+                                     ],
+                       "triggers":  "PostgreSQL, Postgres, EXPLAIN ANALYZE, pg_stat, JSONB, streaming replication, logical replication, VACUUM, PostGIS, pgvector",
+                       "agent-affinity":  [
+
+                                          ],
+                       "connections":  {
+                                           "extends":  [
+
+                                                       ],
+                                           "requires":  [
+
+                                                        ],
+                                           "enhances":  [
+
+                                                        ],
+                                           "conflicts":  [
+
+                                                         ]
+                                       },
+                       "path":  "postgres-pro/SKILL.md"
+                   },
+                   {
+                       "name":  "problem-solving",
+                       "description":  "Use when stuck, facing a complex bug, or need root cause analysis — 5 whys, bisection, inversion techniques",
+                       "category":  "analysis-reasoning",
+                       "tier":  "discoverable",
+                       "keywords":  [
+                                        "problem-solving",
+                                        "root-cause",
+                                        "analysis",
+                                        "debugging",
+                                        "5-whys",
+                                        "bisection",
+                                        "crash",
+                                        "error",
+                                        "stuck"
+                                    ],
+                       "platforms":  [
+                                         "all"
+                                     ],
+                       "triggers":  [
+                                        "stuck",
+                                        "problem",
+                                        "root cause",
+                                        "why"
+                                    ],
+                       "agent-affinity":  [
+                                              "debugger",
+                                              "developer",
+                                              "planner",
+                                              "brainstormer"
+                                          ],
+                       "connections":  {
+                                           "extends":  [
+
+                                                       ],
+                                           "requires":  [
+
+                                                        ],
+                                           "enhances":  [
+                                                            "debug"
+                                                        ],
+                                           "conflicts":  [
+
+                                                         ]
+                                       },
+                       "path":  "problem-solving/SKILL.md"
+                   },
+                   {
+                       "name":  "react-expert",
+                       "description":  "Use when building React 18+ applications in .jsx or .tsx files, Next.js App Router projects, or create-react-app setups. Creates components, implements custom hooks, debugs rendering issues, migrates class components to functional, and implements state management. Invoke for Server Components, Suspense boundaries, useActionState forms, performance optimization, or React 19 features.",
+                       "category":  "uncategorized",
+                       "tier":  "discoverable",
+                       "keywords":  [
+
+                                    ],
+                       "platforms":  [
+                                         "all"
+                                     ],
+                       "triggers":  "React, JSX, hooks, useState, useEffect, useContext, Server Components, React 19, Suspense, TanStack Query, Redux, Zustand, component, frontend",
+                       "agent-affinity":  [
+
+                                          ],
+                       "connections":  {
+                                           "extends":  [
+
+                                                       ],
+                                           "requires":  [
+
+                                                        ],
+                                           "enhances":  [
+
+                                                        ],
+                                           "conflicts":  [
+
+                                                         ]
+                                       },
+                       "path":  "react-expert/SKILL.md"
+                   },
+                   {
+                       "name":  "research",
+                       "description":  "Use when user asks to research, compare options, find best practices, or investigate a technology",
+                       "category":  "analysis-reasoning",
+                       "tier":  "discoverable",
+                       "keywords":  [
+                                        "research",
+                                        "investigation",
+                                        "documentation",
+                                        "sources",
+                                        "validation",
+                                        "best-practices",
+                                        "how-to",
+                                        "compare",
+                                        "evaluate",
+                                        "library"
+                                    ],
+                       "platforms":  [
+                                         "all"
+                                     ],
+                       "triggers":  [
+                                        "/research",
+                                        "research",
+                                        "best practices",
+                                        "how to"
+                                    ],
+                       "agent-affinity":  [
+                                              "researcher",
+                                              "planner",
+                                              "mcp-manager"
+                                          ],
+                       "connections":  {
+                                           "extends":  [
+
+                                                       ],
+                                           "requires":  [
+
+                                                        ],
+                                           "enhances":  [
+
+                                                        ],
+                                           "conflicts":  [
+
+                                                         ]
+                                       },
+                       "path":  "research/SKILL.md"
+                   },
+                   {
+                       "name":  "review",
+                       "description":  "Use when user says \"review\", \"check my code\", \"is this good\", \"look at this before I commit\", or \"suggest improvements\" — detects review type (code quality, a11y, or general improvements) and runs the appropriate review",
+                       "category":  "development-tools",
+                       "tier":  "discoverable",
+                       "keywords":  [
+
+                                    ],
+                       "platforms":  [
+                                         "all"
+                                     ],
+                       "triggers":  [
+
+                                    ],
+                       "agent-affinity":  [
+
+                                          ],
+                       "connections":  {
+                                           "extends":  [
+
+                                                       ],
+                                           "requires":  [
+
+                                                        ],
+                                           "enhances":  [
+
+                                                        ],
+                                           "conflicts":  [
+
+                                                         ]
+                                       },
+                       "path":  "review/SKILL.md"
+                   },
+                   {
+                       "name":  "security-reviewer",
+                       "description":  "Use when doing a security review or audit of web application code — frontend (React, Vue, Next.js, HTML/JS), backend (Node.js, Go, Python, Java), or both. Always invoke when user says \u0027security review\u0027, \u0027check for vulnerabilities\u0027, \u0027OWASP audit\u0027, \u0027is this secure\u0027, \u0027security audit\u0027, \u0027find security issues\u0027, \u0027check auth\u0027, \u0027pen test\u0027, or pastes code they want security-vetted. Also invoke when the user asks about XSS, CSRF, injection attacks, JWT security, authentication flaws, insecure headers, secrets leakage, or dependency vulnerabilities in their code. Do NOT wait for an explicit \u0027security\u0027 keyword — any time code is shared and the concern is about whether it can be exploited, use this skill.",
+                       "category":  "uncategorized",
+                       "tier":  "discoverable",
+                       "keywords":  [
+                                        "security",
+                                        "owasp",
+                                        "xss",
+                                        "csrf",
+                                        "injection",
+                                        "sqli",
+                                        "jwt",
+                                        "auth",
+                                        "vulnerability",
+                                        "audit",
+                                        "pentest",
+                                        "headers",
+                                        "csp",
+                                        "cors",
+                                        "secrets"
+                                    ],
+                       "platforms":  [
+                                         "web",
+                                         "backend",
+                                         "all"
+                                     ],
+                       "triggers":  [
+
+                                    ],
+                       "agent-affinity":  [
+                                              "security-auditor",
+                                              "code-reviewer"
+                                          ],
+                       "connections":  {
+                                           "extends":  [
+
+                                                       ],
+                                           "requires":  [
+
+                                                        ],
+                                           "enhances":  [
+
+                                                        ],
+                                           "conflicts":  [
+
+                                                         ]
+                                       },
+                       "path":  "security-reviewer/SKILL.md"
+                   },
+                   {
+                       "name":  "sequential-thinking",
+                       "description":  "Use when facing a complex problem that needs step-by-step breakdown, branching analysis, or iterative reasoning",
+                       "category":  "analysis-reasoning",
+                       "tier":  "discoverable",
+                       "keywords":  [
+                                        "sequential",
+                                        "thinking",
+                                        "analysis",
+                                        "step-by-step",
+                                        "reasoning",
+                                        "logic",
+                                        "stuck",
+                                        "complex",
+                                        "bug"
+                                    ],
+                       "platforms":  [
+                                         "all"
+                                     ],
+                       "triggers":  [
+                                        "complex problem",
+                                        "step by step",
+                                        "analyze"
+                                    ],
+                       "agent-affinity":  [
+                                              "debugger",
+                                              "planner",
+                                              "developer",
+                                              "brainstormer"
+                                          ],
+                       "connections":  {
+                                           "extends":  [
+
+                                                       ],
+                                           "requires":  [
+
+                                                        ],
+                                           "enhances":  [
+                                                            "debug"
+                                                        ],
+                                           "conflicts":  [
+
+                                                         ]
+                                       },
+                       "path":  "sequential-thinking/SKILL.md"
+                   },
+                   {
+                       "name":  "skill-creator",
+                       "description":  "Create new skills, modify and improve existing skills, and measure skill performance. Use when users want to create a skill from scratch, edit, or optimize an existing skill, run evals to test a skill, benchmark skill performance with variance analysis, or optimize a skill\u0027s description for better triggering accuracy.",
+                       "category":  "uncategorized",
+                       "tier":  "discoverable",
+                       "keywords":  [
+
+                                    ],
+                       "platforms":  [
+                                         "all"
+                                     ],
+                       "triggers":  [
+
+                                    ],
+                       "agent-affinity":  [
+
+                                          ],
+                       "connections":  {
+                                           "extends":  [
+
+                                                       ],
+                                           "requires":  [
+
+                                                        ],
+                                           "enhances":  [
+
+                                                        ],
+                                           "conflicts":  [
+
+                                                         ]
+                                       },
+                       "path":  "skill-creator/SKILL.md"
+                   },
+                   {
+                       "name":  "skill-discovery",
+                       "description":  "Use at the START of every task to discover and load relevant skills you don\u0027t already have. Detects platform, task type, and domain signals then loads matching skills from the index on demand.",
+                       "category":  "analysis-reasoning",
+                       "tier":  "core",
+                       "keywords":  [
+                                        "platform",
+                                        "discovery",
+                                        "skill-index",
+                                        "context",
+                                        "conventions",
+                                        "lazy-loading"
+                                    ],
+                       "platforms":  [
+                                         "all"
+                                     ],
+                       "triggers":  [
+
+                                    ],
+                       "agent-affinity":  [
+                                              "planner",
+                                              "developer",
+                                              "debugger",
+                                              "tester",
+                                              "code-reviewer",
+                                              "project-manager"
+                                          ],
+                       "connections":  {
+                                           "extends":  [
+
+                                                       ],
+                                           "requires":  [
+
+                                                        ],
+                                           "enhances":  [
+
+                                                        ],
+                                           "conflicts":  [
+
+                                                         ]
+                                       },
+                       "path":  "skill-discovery/SKILL.md"
+                   },
+                   {
+                       "name":  "subagent-driven-development",
+                       "description":  "Use when a plan has 3+ independent tasks, phases have non-overlapping file ownership, or user says \"parallel implementation\", \"execute all phases\" — provides per-task subagent dispatch with two-stage review",
+                       "category":  "analysis-reasoning",
+                       "tier":  "discoverable",
+                       "keywords":  [
+                                        "parallel",
+                                        "subagent",
+                                        "dispatch",
+                                        "implementation-loop",
+                                        "two-stage-review"
+                                    ],
+                       "platforms":  [
+                                         "all"
+                                     ],
+                       "triggers":  [
+
+                                    ],
+                       "agent-affinity":  [
+                                              "project-manager",
+                                              "developer",
+                                              "planner"
+                                          ],
+                       "connections":  {
+                                           "extends":  [
+
+                                                       ],
+                                           "requires":  [
+
+                                                        ],
+                                           "enhances":  [
+                                                            "plan"
+                                                        ],
+                                           "conflicts":  [
+
+                                                         ]
+                                       },
+                       "path":  "subagent-driven-development/SKILL.md"
+                   },
+                   {
+                       "name":  "tanstack-start",
+                       "description":  "Use when building full-stack React applications with TanStack Start — file-based routing, server functions, SSR, or type-safe client-server integration. Invoke whenever the user mentions TanStack Start, TanStack Router, createServerFn, createFileRoute, createRootRoute, or wants to scaffold a new TanStack Start project from scratch. Also trigger for questions about data loading with loaders, beforeLoad hooks, streaming SSR, or deploying TanStack Start to Netlify, Cloudflare, or Vercel.",
+                       "category":  "uncategorized",
+                       "tier":  "discoverable",
+                       "keywords":  [
+
+                                    ],
+                       "platforms":  [
+                                         "web"
+                                     ],
+                       "triggers":  "TanStack Start, TanStack Router, createFileRoute, createRootRoute, createServerFn, file-based routing, tanstack, fullstack react, vite ssr, useQuery, useMutation, @tanstack/react-query, TanStack Query",
+                       "agent-affinity":  [
+
+                                          ],
+                       "connections":  {
+                                           "extends":  [
+
+                                                       ],
+                                           "requires":  [
+
+                                                        ],
+                                           "enhances":  [
+
+                                                        ],
+                                           "conflicts":  [
+
+                                                         ]
+                                       },
+                       "path":  "tanstack-start/SKILL.md"
+                   },
+                   {
+                       "name":  "terraform-engineer",
+                       "description":  "Use when implementing infrastructure as code with Terraform across AWS, Azure, or GCP. Invoke for module development (create reusable modules, manage module versioning), state management (migrate backends, import existing resources, resolve state conflicts), provider configuration, multi-environment workflows, and infrastructure testing.",
+                       "category":  "uncategorized",
+                       "tier":  "discoverable",
+                       "keywords":  [
+
+                                    ],
+                       "platforms":  [
+                                         "all"
+                                     ],
+                       "triggers":  "Terraform, infrastructure as code, IaC, terraform module, terraform state, AWS provider, Azure provider, GCP provider, terraform plan, terraform apply",
+                       "agent-affinity":  [
+
+                                          ],
+                       "connections":  {
+                                           "extends":  [
+
+                                                       ],
+                                           "requires":  [
+
+                                                        ],
+                                           "enhances":  [
+
+                                                        ],
+                                           "conflicts":  [
+
+                                                         ]
+                                       },
+                       "path":  "terraform-engineer/SKILL.md"
+                   },
+                   {
+                       "name":  "test",
+                       "description":  "Use when user says \"run tests\", \"add tests\", \"check coverage\", \"write unit tests\", or \"validate this works\" — detects platform and runs the appropriate test suite (Jest, XCTest, JUnit, Espresso)",
+                       "category":  "development-tools",
+                       "tier":  "discoverable",
+                       "keywords":  [
+
+                                    ],
+                       "platforms":  [
+                                         "all"
+                                     ],
+                       "triggers":  [
+
+                                    ],
+                       "agent-affinity":  [
+
+                                          ],
+                       "connections":  {
+                                           "extends":  [
+
+                                                       ],
+                                           "requires":  [
+
+                                                        ],
+                                           "enhances":  [
+                                                            "code-review"
+                                                        ],
+                                           "conflicts":  [
+
+                                                         ]
+                                       },
+                       "path":  "test/SKILL.md"
+                   },
+                   {
+                       "name":  "tri-ai-kit",
+                       "description":  "Kit conventions, agent catalog, skill architecture, and routing rules for tri_ai_kit. Load when answering kit-level questions, authoring agents/skills, or routing ambiguous requests.",
+                       "category":  "development-tools",
+                       "tier":  "discoverable",
+                       "keywords":  [
+                                        "kit",
+                                        "agent",
+                                        "skill",
+                                        "routing",
+                                        "conventions",
+                                        "catalog",
+                                        "tri-ai-kit",
+                                        "architecture"
+                                    ],
+                       "platforms":  [
+                                         "all"
+                                     ],
+                       "triggers":  [
+                                        "which agent",
+                                        "list agents",
+                                        "kit conventions",
+                                        "agent catalog",
+                                        "skill catalog",
+                                        "how does the kit work"
+                                    ],
+                       "agent-affinity":  [
+                                              "project-manager",
+                                              "planner",
+                                              "developer"
+                                          ],
+                       "connections":  {
+                                           "extends":  [
+
+                                                       ],
+                                           "requires":  [
+
+                                                        ],
+                                           "enhances":  [
+
+                                                        ],
+                                           "conflicts":  [
+
+                                                         ]
+                                       },
+                       "path":  "tri-ai-kit/SKILL.md"
+                   },
+                   {
+                       "name":  "typescript-pro",
+                       "description":  "Implements advanced TypeScript type systems, creates custom type guards, utility types, and branded types, and configures tRPC for end-to-end type safety. Use when building TypeScript applications requiring advanced generics, conditional or mapped types, discriminated unions, monorepo setup, or full-stack type safety with tRPC.",
+                       "category":  "uncategorized",
+                       "tier":  "discoverable",
+                       "keywords":  [
+
+                                    ],
+                       "platforms":  [
+                                         "all"
+                                     ],
+                       "triggers":  "TypeScript, generics, type safety, conditional types, mapped types, tRPC, tsconfig, type guards, discriminated unions",
+                       "agent-affinity":  [
+
+                                          ],
+                       "connections":  {
+                                           "extends":  [
+
+                                                       ],
+                                           "requires":  [
+
+                                                        ],
+                                           "enhances":  [
+
+                                                        ],
+                                           "conflicts":  [
+
+                                                         ]
+                                       },
+                       "path":  "typescript-pro/SKILL.md"
+                   },
+                   {
+                       "name":  "ui-ux-pro-max",
+                       "description":  "UI/UX design intelligence for web and mobile. Includes 50+ styles, 161 color palettes, 57 font pairings, 161 product types, 99 UX guidelines, and 25 chart types across 10 stacks (React, Next.js, Vue, Svelte, SwiftUI, React Native, Flutter, Tailwind, shadcn/ui, and HTML/CSS). Actions: plan, build, create, design, implement, review, fix, improve, optimize, enhance, refactor, and check UI/UX code. Projects: website, landing page, dashboard, admin panel, e-commerce, SaaS, portfolio, blog, and mobile app. Elements: button, modal, navbar, sidebar, card, table, form, and chart. Styles: glassmorphism, claymorphism, minimalism, brutalism, neumorphism, bento grid, dark mode, responsive, skeuomorphism, and flat design. Topics: color systems, accessibility, animation, layout, typography, font pairing, spacing, interaction states, shadow, and gradient. Integrations: shadcn/ui MCP for component search and examples.",
+                       "category":  "uncategorized",
+                       "tier":  "discoverable",
+                       "keywords":  [
+
+                                    ],
+                       "platforms":  [
+                                         "all"
+                                     ],
+                       "triggers":  [
+
+                                    ],
+                       "agent-affinity":  [
+
+                                          ],
+                       "connections":  {
+                                           "extends":  [
+
+                                                       ],
+                                           "requires":  [
+
+                                                        ],
+                                           "enhances":  [
+
+                                                        ],
+                                           "conflicts":  [
+
+                                                         ]
+                                       },
+                       "path":  "ui-ux-pro-max/SKILL.md"
+                   },
+                   {
+                       "name":  "web-frontend",
+                       "description":  "Use when working with .tsx/.jsx files, React components, hooks, state management, or frontend UI",
+                       "category":  "frontend-web",
+                       "tier":  "discoverable",
+                       "keywords":  [
+                                        "react",
+                                        "frontend",
+                                        "ui",
+                                        "hooks",
+                                        "components",
+                                        "state",
+                                        "typescript",
+                                        "redux"
+                                    ],
+                       "platforms":  [
+                                         "web"
+                                     ],
+                       "triggers":  [
+                                        ".tsx",
+                                        ".jsx",
+                                        "react",
+                                        "frontend",
+                                        "ui component",
+                                        "redux",
+                                        "hook"
+                                    ],
+                       "agent-affinity":  [
+                                              "frontend-developer",
+                                              "developer",
+                                              "tester",
+                                              "debugger",
+                                              "code-reviewer"
+                                          ],
+                       "connections":  {
+                                           "extends":  [
+
+                                                       ],
+                                           "requires":  [
+
+                                                        ],
+                                           "enhances":  [
+
+                                                        ],
+                                           "conflicts":  [
+
+                                                         ]
+                                       },
+                       "path":  "web-frontend/SKILL.md"
+                   },
+                   {
+                       "name":  "web-i18n",
+                       "description":  "Use when working with translations, locale routing, next-intl configuration, or internationalization patterns",
+                       "category":  "frontend-web",
+                       "tier":  "discoverable",
+                       "keywords":  [
+                                        "i18n",
+                                        "translation",
+                                        "locale",
+                                        "next-intl",
+                                        "internationalization",
+                                        "language"
+                                    ],
+                       "platforms":  [
+                                         "web"
+                                     ],
+                       "triggers":  [
+                                        "translation",
+                                        "locale",
+                                        "i18n",
+                                        "useTranslations",
+                                        "getTranslations",
+                                        "next-intl"
+                                    ],
+                       "agent-affinity":  [
+                                              "frontend-developer",
+                                              "developer"
+                                          ],
+                       "connections":  {
+                                           "extends":  [
+
+                                                       ],
+                                           "requires":  [
+
+                                                        ],
+                                           "enhances":  [
+
+                                                        ],
+                                           "conflicts":  [
+
+                                                         ]
+                                       },
+                       "path":  "web-i18n/SKILL.md"
+                   },
+                   {
+                       "name":  "web-testing",
+                       "description":  "Use when writing tests, configuring Jest/Playwright, checking coverage, or working with test patterns",
+                       "category":  "frontend-web",
+                       "tier":  "discoverable",
+                       "keywords":  [
+                                        "test",
+                                        "jest",
+                                        "playwright",
+                                        "coverage",
+                                        "e2e",
+                                        "unit-test",
+                                        "rtl",
+                                        "testing-library"
+                                    ],
+                       "platforms":  [
+                                         "web"
+                                     ],
+                       "triggers":  [
+                                        "test",
+                                        "jest",
+                                        "playwright",
+                                        "coverage",
+                                        "e2e",
+                                        "unit test",
+                                        "spec"
+                                    ],
+                       "agent-affinity":  [
+                                              "frontend-developer",
+                                              "tester",
+                                              "developer"
+                                          ],
+                       "connections":  {
+                                           "extends":  [
+
+                                                       ],
+                                           "requires":  [
+
+                                                        ],
+                                           "enhances":  [
+
+                                                        ],
+                                           "conflicts":  [
+
+                                                         ]
+                                       },
+                       "path":  "web-testing/SKILL.md"
+                   },
+                   {
+                       "name":  "websocket-engineer",
+                       "description":  "Use when building real-time communication systems with WebSockets or Socket.IO. Invoke for bidirectional messaging, horizontal scaling with Redis, presence tracking, room management.",
+                       "category":  "uncategorized",
+                       "tier":  "discoverable",
+                       "keywords":  [
+
+                                    ],
+                       "platforms":  [
+                                         "all"
+                                     ],
+                       "triggers":  "WebSocket, Socket.IO, real-time communication, bidirectional messaging, pub/sub, server push, live updates, chat systems, presence tracking",
+                       "agent-affinity":  [
+
+                                          ],
+                       "connections":  {
+                                           "extends":  [
+
+                                                       ],
+                                           "requires":  [
+
+                                                        ],
+                                           "enhances":  [
+
+                                                        ],
+                                           "conflicts":  [
+
+                                                         ]
+                                       },
+                       "path":  "websocket-engineer/SKILL.md"
+                   }
+               ]
+}
