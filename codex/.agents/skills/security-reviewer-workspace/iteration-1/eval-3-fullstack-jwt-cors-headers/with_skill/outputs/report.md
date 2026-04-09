@@ -1,4 +1,4 @@
-﻿# Security Review Report
+# Security Review Report
 **Date**: 2026-03-15
 **Scope**: Full-stack (Next.js API route, middleware, config)
 **Files Reviewed**: 3 files (app/api/auth/route.ts, next.config.js, middleware.ts)

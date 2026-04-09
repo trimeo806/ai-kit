@@ -1,4 +1,4 @@
-﻿# GCP Architecture Reference
+# GCP Architecture Reference
 
 Comprehensive guide for Google Cloud Platform services, patterns, and architecture framework.
 

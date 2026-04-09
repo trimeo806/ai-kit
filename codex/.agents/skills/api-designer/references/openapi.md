@@ -1,4 +1,4 @@
-﻿# OpenAPI 3.1 Specification
+# OpenAPI 3.1 Specification
 
 ## What is OpenAPI?
 

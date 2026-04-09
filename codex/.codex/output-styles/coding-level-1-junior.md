@@ -1,4 +1,4 @@
-﻿---
+---
 name: Junior Developer Mode (Level 1)
 description: Educational explanations for developers with 0-2 years experience
 keep-coding-instructions: true

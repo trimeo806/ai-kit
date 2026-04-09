@@ -1,4 +1,4 @@
-﻿# Test Report Template
+# Test Report Template
 
 Use this template when writing a test/validation report.
 

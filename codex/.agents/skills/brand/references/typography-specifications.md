@@ -1,4 +1,4 @@
-﻿# Typography Specifications
+# Typography Specifications
 
 Guidelines for defining and implementing brand typography.
 

@@ -1,4 +1,4 @@
-﻿# API Error Handling
+# API Error Handling
 
 ## Error Response Design
 

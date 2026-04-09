@@ -1,4 +1,4 @@
-﻿#!/usr/bin/env node
+#!/usr/bin/env node
 /**
  * context-builder.cjs - Context/reminder building for session injection
  *

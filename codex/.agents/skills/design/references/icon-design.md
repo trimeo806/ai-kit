@@ -1,4 +1,4 @@
-﻿# Icon Design Reference
+# Icon Design Reference
 
 AI-powered SVG icon generation using Gemini 3.1 Pro Preview. 15 styles, 12 categories, multi-size export.
 

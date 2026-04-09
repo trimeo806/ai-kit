@@ -1,4 +1,4 @@
-﻿# FastAPI Testing Patterns
+# FastAPI Testing Patterns
 
 ## Setup (pyproject.toml / requirements-dev.txt)
 

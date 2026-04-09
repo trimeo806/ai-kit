@@ -1,4 +1,4 @@
-﻿---
+---
 name: docs-update
 description: "Update existing documentation or scan for staleness"
 user-invocable: false

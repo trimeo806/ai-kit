@@ -1,4 +1,4 @@
-﻿# Advanced Types
+# Advanced Types
 
 ## Generic Constraints
 

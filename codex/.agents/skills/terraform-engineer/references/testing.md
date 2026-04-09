@@ -1,4 +1,4 @@
-﻿# Terraform Testing Strategies
+# Terraform Testing Strategies
 
 ## Terraform Plan Validation
 

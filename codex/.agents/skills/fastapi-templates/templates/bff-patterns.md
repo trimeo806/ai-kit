@@ -1,4 +1,4 @@
-﻿# BFF Layer Patterns
+# BFF Layer Patterns
 
 Full-stack templates for the Upstream Client → Service → Router pipeline.
 

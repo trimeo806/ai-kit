@@ -1,4 +1,4 @@
-﻿# Tailwind CSS Customization
+# Tailwind CSS Customization
 
 Config file structure, custom utilities, plugins, and theme extensions.
 

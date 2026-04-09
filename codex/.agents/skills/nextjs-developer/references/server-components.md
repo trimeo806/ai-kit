@@ -1,4 +1,4 @@
-﻿# React Server Components
+# React Server Components
 
 ## Server Components (Default)
 

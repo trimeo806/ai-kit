@@ -1,4 +1,4 @@
-﻿---
+---
 name: arch/cloud/gcp-patterns
 description: "GCP service patterns for tri-ai-kit infrastructure"
 ---

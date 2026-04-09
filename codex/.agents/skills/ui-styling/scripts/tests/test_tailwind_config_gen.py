@@ -1,4 +1,4 @@
-﻿"""Tests for tailwind_config_gen.py"""
+"""Tests for tailwind_config_gen.py"""
 
 from pathlib import Path
 

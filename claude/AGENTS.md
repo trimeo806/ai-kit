@@ -1,4 +1,4 @@
-﻿# AGENTS.md
+# AGENTS.md
 
 This file provides guidance to Claude Code when working with code in this repository.
 
@@ -160,11 +160,17 @@ Do not guess. A wrong agent assignment causes the wrong skills to activate durin
 
 **Parallel work** (3+ independent tasks, cross-platform) → use `subagent-driven-development` skill from main context.
 
+
+**Auto-trigger rule**: If the user's prompt, the routed intent, an active plan, a handoff chain, or the loaded skill set indicates that one or more specialist agents are relevant, you must trigger those agents automatically from the main conversation. Do **not** require the user to explicitly ask for the Agent tool.
+
+**Delegation default**: Use `spawn_agent` automatically when the prompt clearly matches a known agent workflow. Avoid delegation only when the task is trivial, the work is tightly coupled to the current context, or the immediate next step is blocked on local work you should do first.
+
+**Skill-to-agent dispatch**: After the main agent loads the related skills and determines that specialist execution is required, it must dispatch every related subagent needed to complete the workflow. Do not stop at skill loading or intent classification when downstream agents are implied by the prompt or plan.
 **Subagent constraint**: Subagents cannot spawn further subagents. Multi-agent workflows must be orchestrated from the main conversation. Skills that need multi-agent dispatch must NOT use `context: fork`.
 
 **Hybrid audits** (klara-theme code): Orchestrated from main context via `/audit` skill. Dispatch muji (Template A+) first, then code-reviewer with muji's report. Never free-form prompt muji — use structured delegation templates from `audit/references/delegation-templates.md`.
 
-**Document-driven agent sequencing** — When executing a plan or any document that mentions multiple agents (in `## Agents & Skills` tables, `## Agent & Skills` blocks, handoff chains, or inline text like "then run `code-reviewer`"), you **must trigger every listed agent in the order they appear**, not just the first one. This applies to:
+**Document-driven agent sequencing** — When executing a plan or any document that mentions multiple agents (in `## Agents & Skills` tables, `## Agent & Skills` blocks, handoff chains, or inline text like "then run `code-reviewer`"), the main conversation must **trigger every listed agent in the order they appear**, not just the first one. This applies to:
 - Post-implementation agents: `code-reviewer`, `security-auditor`, `tester`, `docs-manager`
 - Handoffs declared in phase files under `## Agent & Skills → Handoffs`
 - Any agent named after a connector word: "then", "followed by", "after completion", "next", "finally"

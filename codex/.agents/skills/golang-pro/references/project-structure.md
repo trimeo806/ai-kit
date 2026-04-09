@@ -1,4 +1,4 @@
-﻿# Project Structure and Module Management
+# Project Structure and Module Management
 
 ## Standard Project Layout
 

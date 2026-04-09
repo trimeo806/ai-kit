@@ -1,4 +1,4 @@
-﻿# Agent Memory Index
+# Agent Memory Index
 
 | File | Type | Description |
 |------|------|-------------|

@@ -1,4 +1,4 @@
-﻿---
+---
 name: docs-seeker
 description: Use when you need API docs, library references, or framework documentation for an unfamiliar package
 

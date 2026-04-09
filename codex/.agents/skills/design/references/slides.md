@@ -1,4 +1,4 @@
-﻿# Slides Reference
+# Slides Reference
 
 Strategic HTML presentation design with Chart.js data visualization, design tokens, responsive layouts, and copywriting formulas.
 

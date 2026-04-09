@@ -1,4 +1,4 @@
-﻿# Common Issues
+# Common Issues
 
 ## N+1 Query Problem
 

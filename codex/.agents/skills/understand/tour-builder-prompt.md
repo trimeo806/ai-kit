@@ -1,4 +1,4 @@
-﻿# Tour Builder — Prompt Template
+# Tour Builder — Prompt Template
 
 > Used by `/understand` Phase 5. Dispatch as a subagent with this full content as the prompt.
 

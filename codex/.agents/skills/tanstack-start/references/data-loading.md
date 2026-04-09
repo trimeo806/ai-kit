@@ -1,4 +1,4 @@
-﻿# TanStack Start — Data Loading
+# TanStack Start — Data Loading
 
 ## loader vs beforeLoad
 

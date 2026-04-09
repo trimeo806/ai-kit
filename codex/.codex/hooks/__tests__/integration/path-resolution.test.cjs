@@ -1,4 +1,4 @@
-﻿#!/usr/bin/env node
+#!/usr/bin/env node
 /**
  * Integration tests for Issue #327: Path Resolution
  * Run: node --test .codex/hooks/__tests__/integration/path-resolution.test.cjs

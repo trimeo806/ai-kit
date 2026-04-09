@@ -1,4 +1,4 @@
-﻿# shadcn/ui Component Reference
+# shadcn/ui Component Reference
 
 Complete catalog of shadcn/ui components with usage patterns and installation.
 

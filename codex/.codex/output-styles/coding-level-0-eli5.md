@@ -1,4 +1,4 @@
-﻿---
+---
 name: ELI5 Mode (Level 0)
 description: Explain Like I'm 5 - For complete beginners with zero coding experience
 keep-coding-instructions: true

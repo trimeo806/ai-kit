@@ -1,4 +1,4 @@
-﻿#!/usr/bin/env python3
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
 Slide Search CLI - Search slide design databases for strategies, layouts, copy, and charts

@@ -1,4 +1,4 @@
-﻿# HTML Slide Template
+# HTML Slide Template
 
 Complete HTML structure with navigation, tokens, and Chart.js integration.
 

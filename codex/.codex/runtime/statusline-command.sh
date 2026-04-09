@@ -1,4 +1,4 @@
-﻿#!/usr/bin/env bash
+#!/usr/bin/env bash
 # Codex status line — Developer preset
 input=$(cat)
 

@@ -1,4 +1,4 @@
-﻿---
+---
 name: research
 description: Use when user asks to research, compare options, find best practices, or investigate a technology
 user-invocable: false

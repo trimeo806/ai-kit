@@ -1,4 +1,4 @@
-﻿---
+---
 name: fix
 description: Use when user says "fix", "broken", "error", "failing", "this doesn't work", or pastes an error message — identifies error type and applies platform-appropriate fix
 user-invocable: true

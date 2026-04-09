@@ -1,4 +1,4 @@
-﻿#!/usr/bin/env node
+#!/usr/bin/env node
 /**
  * Notification Router - Main entry point for hook notifications
  * Reads stdin JSON, routes to enabled providers

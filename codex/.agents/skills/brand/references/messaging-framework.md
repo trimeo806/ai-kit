@@ -1,4 +1,4 @@
-﻿# Messaging Framework
+# Messaging Framework
 
 ## Framework Structure
 

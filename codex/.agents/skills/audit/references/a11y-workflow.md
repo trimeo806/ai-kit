@@ -1,4 +1,4 @@
-﻿---
+---
 name: audit-a11y
 description: "Audit staged changes for WCAG 2.1 AA accessibility violations"
 user-invocable: false

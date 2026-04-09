@@ -1,4 +1,4 @@
-﻿# Observability in Microservices
+# Observability in Microservices
 
 Comprehensive guide for monitoring, tracing, and debugging distributed systems.
 

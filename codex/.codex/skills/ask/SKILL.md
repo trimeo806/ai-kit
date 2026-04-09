@@ -1,4 +1,4 @@
-﻿---
+---
 name: ask
 description: Use when user asks questions about the codebase — how does X work, where is Y used, what's the architecture of Z, why is this implemented this way
 user-invocable: true

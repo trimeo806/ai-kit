@@ -1,4 +1,4 @@
-﻿# Audit Output Contract
+# Audit Output Contract
 
 Single source of truth for ALL audit output paths, file names, and agent responsibilities. Every agent and workflow file references this — do NOT define output paths elsewhere.
 

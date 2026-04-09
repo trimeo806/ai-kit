@@ -1,4 +1,4 @@
-﻿/**
+/**
  * HTTP sender with smart throttling
  * Uses native fetch (Node 18+) - zero dependencies
  */

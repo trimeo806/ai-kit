@@ -1,4 +1,4 @@
-﻿# Cook Fast Mode
+# Cook Fast Mode
 
 Direct implementation — skip "Should I create a plan first?" question, implement immediately.
 

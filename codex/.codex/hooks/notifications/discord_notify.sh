@@ -1,4 +1,4 @@
-﻿#!/bin/bash
+#!/bin/bash
 
 # ┌─────────────────────────────────────────────────────────────────────────┐
 # │ DEPRECATED: This script is no longer maintained                         │

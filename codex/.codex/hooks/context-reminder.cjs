@@ -1,4 +1,4 @@
-﻿#!/usr/bin/env node
+#!/usr/bin/env node
 /**
  * Context Reminder - UserPromptSubmit Hook (Optimized)
  *

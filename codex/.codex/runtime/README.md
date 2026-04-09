@@ -1,4 +1,4 @@
-﻿# tri-ai-kit Codex Runtime
+# tri-ai-kit Codex Runtime
 
 This directory contains the compatibility runtime required to preserve tri-ai-kit behavior that Codex does not expose natively.
 

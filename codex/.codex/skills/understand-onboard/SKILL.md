@@ -1,4 +1,4 @@
-﻿---
+---
 name: understand-onboard
 description: Use when you need to generate an onboarding guide for new team members joining a project
 ---

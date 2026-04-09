@@ -1,4 +1,4 @@
-﻿/**
+/**
  * ignore v5.3.0 - Vendored for scout-block hook
  * https://github.com/kaelzhang/node-ignore
  * MIT License - Copyright (c) 2013 Kael Zhang

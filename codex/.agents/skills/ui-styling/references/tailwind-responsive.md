@@ -1,4 +1,4 @@
-﻿# Tailwind CSS Responsive Design
+# Tailwind CSS Responsive Design
 
 Mobile-first breakpoints, responsive utilities, and adaptive layouts.
 

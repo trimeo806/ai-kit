@@ -1,4 +1,4 @@
-﻿# API Documentation: NestJS & Express
+# API Documentation: NestJS & Express
 
 ## NestJS (@nestjs/swagger)
 

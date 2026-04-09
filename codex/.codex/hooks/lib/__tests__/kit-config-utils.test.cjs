@@ -1,4 +1,4 @@
-﻿/**
+/**
  * Tests for kit-config-utils edge case handling
  * Run: node .codex/hooks/lib/__tests__/kit-config-utils.test.cjs
  */

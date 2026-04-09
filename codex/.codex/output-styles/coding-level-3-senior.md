@@ -1,4 +1,4 @@
-﻿---
+---
 name: Senior Engineer Mode (Level 3)
 description: Trade-offs, business context, and architectural decisions for 5-8 years experience
 keep-coding-instructions: true

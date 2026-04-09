@@ -1,4 +1,4 @@
-﻿# REST Design Patterns
+# REST Design Patterns
 
 ## Resource-Oriented Architecture
 

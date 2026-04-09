@@ -1,4 +1,4 @@
-﻿---
+---
 name: plan-deep
 description: "Deep plan with sequential research and comprehensive analysis"
 user-invocable: false

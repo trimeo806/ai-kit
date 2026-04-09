@@ -1,4 +1,4 @@
-﻿#!/usr/bin/env node
+#!/usr/bin/env node
 /**
  * privacy-block.cjs - Block access to sensitive files unless user-approved
  *

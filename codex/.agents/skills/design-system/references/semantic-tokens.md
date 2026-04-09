@@ -1,4 +1,4 @@
-﻿# Semantic Tokens
+# Semantic Tokens
 
 Purpose-based aliases referencing primitive tokens.
 

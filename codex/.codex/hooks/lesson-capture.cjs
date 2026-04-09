@@ -1,4 +1,4 @@
-﻿#!/usr/bin/env node
+#!/usr/bin/env node
 /**
  * Lesson Capture Hook — Evaluates session significance on Stop
  *

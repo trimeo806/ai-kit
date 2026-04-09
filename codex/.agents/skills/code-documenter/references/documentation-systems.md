@@ -1,4 +1,4 @@
-﻿# Documentation Systems & Infrastructure
+# Documentation Systems & Infrastructure
 
 ## Static Site Generators
 

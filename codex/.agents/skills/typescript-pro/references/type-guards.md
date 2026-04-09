@@ -1,4 +1,4 @@
-﻿# Type Guards and Narrowing
+# Type Guards and Narrowing
 
 ## Type Predicates
 

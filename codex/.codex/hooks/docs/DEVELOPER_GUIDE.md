@@ -1,4 +1,4 @@
-﻿# 📘 tri_ai_kit Hooks - Developer Guide
+# 📘 tri_ai_kit Hooks - Developer Guide
 
 Mục đích của tài liệu này là giải thích chi tiết kiến trúc, chức năng và cách chỉnh sửa các file bên trong thư mục `@[.claude/hooks]`. Giúp đội ngũ lập trình viên có thể hiểu rõ và tùy biến (customize) theo nhu cầu.
 

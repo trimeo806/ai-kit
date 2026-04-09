@@ -1,4 +1,4 @@
-﻿# Report Template
+# Report Template
 
 ## Full Review Report Template
 

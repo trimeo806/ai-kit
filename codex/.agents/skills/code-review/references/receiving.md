@@ -1,4 +1,4 @@
-﻿---
+---
 name: receiving-code-review
 description: "Use when receiving code review feedback, processing reviewer comments, or responding to suggested changes from human or automated reviewers."
 user-invocable: false

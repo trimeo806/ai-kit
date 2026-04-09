@@ -1,6 +1,6 @@
 ---
 name: infra-cloud
-description: Use when working with GCP infrastructure — Terraform, Cloud Build, Cloud Run, GKE, deployment pipelines. Scope: GCP-specific operational patterns. For multi-cloud architecture strategy and design, use cloud-architect instead.
+description: "Use when working with GCP infrastructure — Terraform, Cloud Build, Cloud Run, GKE, deployment pipelines. Scope: GCP-specific operational patterns. For multi-cloud architecture strategy and design, use cloud-architect instead."
 user-invocable: false
 
 metadata:

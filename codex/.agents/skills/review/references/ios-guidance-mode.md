@@ -1,4 +1,4 @@
-﻿---
+---
 name: a11y-mode-guidance
 description: Guidance mode — real-time accessibility advice with proactive WCAG 2.1 AA compliance during Swift coding
 user-invocable: false

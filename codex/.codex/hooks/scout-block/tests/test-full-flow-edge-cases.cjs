@@ -1,4 +1,4 @@
-﻿#!/usr/bin/env node
+#!/usr/bin/env node
 /**
  * test-full-flow-edge-cases.cjs - Edge case validation for full hook flow
  */

@@ -1,4 +1,4 @@
-﻿# Workflow: Architecture Review
+# Workflow: Architecture Review
 
 Brainstorm → Research → Decide → Document. For evaluating trade-offs and making architectural decisions.
 

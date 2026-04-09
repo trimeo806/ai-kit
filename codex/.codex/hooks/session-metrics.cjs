@@ -1,4 +1,4 @@
-﻿#!/usr/bin/env node
+#!/usr/bin/env node
 /**
  * Session Metrics Hook — Collects session metrics on Stop
  *

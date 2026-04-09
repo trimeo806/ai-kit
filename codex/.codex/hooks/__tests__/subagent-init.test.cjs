@@ -1,4 +1,4 @@
-﻿#!/usr/bin/env node
+#!/usr/bin/env node
 /**
  * Tests for subagent-init.cjs hook - monorepo and edge case handling (Issue #291)
  * Run: node --test .codex/hooks/__tests__/subagent-init.test.cjs

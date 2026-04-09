@@ -1,4 +1,4 @@
-﻿# Workflow: Feature Development
+# Workflow: Feature Development
 
 6-step canonical workflow for building features. Agents follow this sequence by default.
 

@@ -1,4 +1,4 @@
-﻿#!/usr/bin/env node
+#!/usr/bin/env node
 /**
  * test-broad-pattern-detector.cjs - Unit tests for broad pattern detection
  *

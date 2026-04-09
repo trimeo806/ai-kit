@@ -1,4 +1,4 @@
-﻿# API Versioning Strategies
+# API Versioning Strategies
 
 ## Why Version APIs?
 

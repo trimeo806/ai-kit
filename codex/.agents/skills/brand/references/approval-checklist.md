@@ -1,4 +1,4 @@
-﻿# Asset Approval Checklist
+# Asset Approval Checklist
 
 Comprehensive checklist for reviewing marketing assets before approval.
 

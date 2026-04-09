@@ -1,4 +1,4 @@
-﻿# Service Mesh
+# Service Mesh
 
 ---
 

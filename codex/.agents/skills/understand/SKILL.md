@@ -1,4 +1,4 @@
-﻿---
+---
 name: understand
 description: Analyze a codebase to produce an interactive knowledge graph for understanding architecture, components, and relationships
 argument-hint: [options]

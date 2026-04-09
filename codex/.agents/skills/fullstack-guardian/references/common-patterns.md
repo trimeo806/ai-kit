@@ -1,4 +1,4 @@
-﻿# Common Patterns
+# Common Patterns
 
 ## API + Frontend Flow
 

@@ -1,4 +1,4 @@
-﻿# Database Maintenance
+# Database Maintenance
 
 ## VACUUM Fundamentals
 

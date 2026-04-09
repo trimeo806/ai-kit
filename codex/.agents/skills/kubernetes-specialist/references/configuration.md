@@ -1,4 +1,4 @@
-﻿# Kubernetes Configuration Management
+# Kubernetes Configuration Management
 
 ## ConfigMap Patterns
 

@@ -1,4 +1,4 @@
-﻿# Database Selection
+# Database Selection
 
 ## Database Types
 

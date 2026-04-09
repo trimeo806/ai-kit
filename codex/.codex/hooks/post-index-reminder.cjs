@@ -1,4 +1,4 @@
-﻿#!/usr/bin/env node
+#!/usr/bin/env node
 /**
  * post-index-reminder.cjs — PostToolUse(Edit|Write|MultiEdit) Hook
  *

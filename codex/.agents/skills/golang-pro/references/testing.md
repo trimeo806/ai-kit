@@ -1,4 +1,4 @@
-﻿# Testing and Benchmarking
+# Testing and Benchmarking
 
 ## Table-Driven Tests
 

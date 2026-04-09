@@ -1,4 +1,4 @@
-﻿---
+---
 name: review-ui-mode
 description: "Lightweight UI component review by focus area"
 user-invocable: false

@@ -1,4 +1,4 @@
-﻿---
+---
 name: audit-session-json-schema
 description: "Schema for session.json — per-audit-session metadata file written to every session folder"
 user-invocable: false

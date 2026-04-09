@@ -1,4 +1,4 @@
-﻿# Project Scanner — Prompt Template
+# Project Scanner — Prompt Template
 
 > Used by `/understand` Phase 1. Dispatch as a subagent with this full content as the prompt.
 

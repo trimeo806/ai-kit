@@ -1,4 +1,4 @@
-﻿---
+---
 name: android-guidance-mode
 description: Android guidance mode — real-time accessibility advice with Compose and Views/XML code examples
 user-invocable: false

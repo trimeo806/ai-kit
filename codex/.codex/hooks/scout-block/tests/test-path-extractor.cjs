@@ -1,4 +1,4 @@
-﻿#!/usr/bin/env node
+#!/usr/bin/env node
 /**
  * test-path-extractor.cjs - Unit tests for path-extractor module
  */

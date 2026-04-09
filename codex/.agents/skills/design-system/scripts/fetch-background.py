@@ -1,4 +1,4 @@
-﻿#!/usr/bin/env python3
+#!/usr/bin/env python3
 """
 Background Image Fetcher
 Fetches real images from Pexels for slide backgrounds.

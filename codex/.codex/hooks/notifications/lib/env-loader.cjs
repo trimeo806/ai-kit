@@ -1,4 +1,4 @@
-﻿/**
+/**
  * Environment loader with cascade: process.env > ~/.codex/.env > .codex/.env
  * Zero dependencies - manual .env parsing
  */

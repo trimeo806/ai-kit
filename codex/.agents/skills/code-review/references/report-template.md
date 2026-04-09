@@ -1,4 +1,4 @@
-﻿# Code Review Report Template
+# Code Review Report Template
 
 **One report per review session.** If multiple scopes are covered in the same task, group findings by scope in one report — do NOT create separate report files per scope.
 

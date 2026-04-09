@@ -1,4 +1,4 @@
-﻿# Interactive API Documentation
+# Interactive API Documentation
 
 ## OpenAPI 3.1 Advanced Features
 

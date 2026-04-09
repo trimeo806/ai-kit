@@ -1,4 +1,4 @@
-﻿#!/usr/bin/env node
+#!/usr/bin/env node
 /**
  * test-monorepo-scenarios.cjs - Integration tests for monorepo patterns
  *

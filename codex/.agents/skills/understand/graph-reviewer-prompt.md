@@ -1,4 +1,4 @@
-﻿# Graph Reviewer — Prompt Template
+# Graph Reviewer — Prompt Template
 
 > Used by `/understand` Phase 6. Dispatch as a subagent with this full content as the prompt.
 

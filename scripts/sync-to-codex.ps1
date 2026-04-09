@@ -99,6 +99,16 @@ function Ensure-Directory {
     New-Item -ItemType Directory -Force -Path $Path | Out-Null
 }
 
+function Write-Utf8NoBomFile {
+    param(
+        [Parameter(Mandatory = $true)][string]$Path,
+        [AllowEmptyString()][string]$Content
+    )
+
+    $encoding = New-Object System.Text.UTF8Encoding($false)
+    [System.IO.File]::WriteAllText($Path, $Content, $encoding)
+}
+
 function Remove-GeneratedPaths {
     param([string[]]$RelativePaths)
 
@@ -348,6 +358,12 @@ function Apply-TextTransforms {
     $result = [regex]::Replace($result, '\bAgent tool\b', 'custom agent dispatch')
     $result = [regex]::Replace($result, '\bAskUserQuestion\b', 'ask the user')
     $result = $result.Replace('via the custom agent dispatch', 'via custom agent dispatch')
+    $result = [regex]::Replace(
+        $result,
+        '(?ms)\*\*Parallel work\*\* \(3\+ independent tasks, cross-platform\) → use `subagent-driven-development` skill from main context\.\s+\*\*Subagent constraint\*\*: Subagents cannot spawn further subagents\. Multi-agent workflows must be orchestrated from the main conversation\. Skills that need multi-agent dispatch must NOT use `context: fork`\.',
+        '**Parallel work** (3+ independent tasks, cross-platform) → use `subagent-driven-development` skill from main context.`n`n**Auto-trigger rule**: If the user''s prompt, the routed intent, an active plan, a handoff chain, or the loaded skill set indicates that one or more specialist agents are relevant, you must trigger those agents automatically from the main conversation. Do **not** require the user to explicitly ask for `spawn_agent` or custom agent dispatch usage.`n`n**Delegation default**: Use `spawn_agent` automatically when the prompt clearly matches a known agent workflow. Avoid delegation only when the task is trivial, the work is tightly coupled to the current context, or the immediate next step is blocked on local work you should do first.`n`n**Subagent constraint**: Subagents cannot spawn further subagents. Multi-agent workflows must be orchestrated from the main conversation. Skills that need multi-agent dispatch must NOT use `context: fork`.`n`n**Skill-to-agent dispatch**: After the main agent loads the related skills and determines that specialist execution is required, it must dispatch every related subagent needed to complete the workflow. Do not stop at skill loading or intent classification when downstream agents are implied by the prompt or plan.'
+    )
+
     $result = [regex]::Replace($result, '\.codex/agents/\{name\}\.md', '.codex/agents/{name}.toml')
     $result = $result.Replace('Agents declare which skills they activate in their frontmatter', 'Agents declare which skills they activate in their configuration')
     $result = $result.Replace('Hooks are registered in `.codex/config.toml and .codex/hooks.json`', 'Hooks are enabled via `.codex/config.toml` and registered in `.codex/hooks.json`')
@@ -447,6 +463,14 @@ function Build-DeveloperInstructions {
     param([hashtable]$Agent)
 
     $sections = New-Object System.Collections.Generic.List[string]
+    $sections.Add(@'
+## Delegation Policy
+- Use `spawn_agent` automatically when the user prompt clearly matches this agent's workflow or a known multi-agent workflow that includes this agent.
+- Do not wait for the user to explicitly request delegation when the workflow match is clear.
+- Keep orchestration in the main conversation. Do not delegate orchestration to subagents.
+- Avoid delegation only when the task is trivial, tightly coupled to the current local context, or blocked on an immediate local step that should be completed first.
+'@.Trim())
+
     $body = Apply-TextTransforms $Agent.Body
     if (-not [string]::IsNullOrWhiteSpace($body)) {
         $sections.Add($body.Trim())
@@ -828,7 +852,7 @@ function Copy-TransformedFile {
     if (Test-IsTextFile $SourceFile) {
         $content = Get-Content $SourceFile -Raw -Encoding UTF8
         $transformed = Apply-TextTransforms $content
-        Set-Content -Path $TargetFile -Value $transformed -Encoding UTF8 -NoNewline
+        Write-Utf8NoBomFile -Path $TargetFile -Content $transformed
     } else {
         Copy-Item -LiteralPath $SourceFile -Destination $TargetFile -Force
     }

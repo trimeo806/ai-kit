@@ -1,4 +1,4 @@
-﻿# API Documentation: FastAPI & Django
+# API Documentation: FastAPI & Django
 
 ## FastAPI (Auto-generates from types)
 

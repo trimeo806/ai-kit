@@ -1,4 +1,4 @@
-﻿# Banner Sizes & Art Direction Styles Reference
+# Banner Sizes & Art Direction Styles Reference
 
 ## Complete Banner Sizes
 

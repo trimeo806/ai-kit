@@ -1,4 +1,4 @@
-﻿#!/usr/bin/env node
+#!/usr/bin/env node
 /**
  * test-build-command-allowlist.cjs - Tests for build command allowlist patterns
  *

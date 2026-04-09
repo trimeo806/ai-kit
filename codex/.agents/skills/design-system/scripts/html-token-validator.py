@@ -1,4 +1,4 @@
-﻿#!/usr/bin/env python3
+#!/usr/bin/env python3
 """
 HTML Design Token Validator
 Ensures all HTML assets (slides, infographics, etc.) use design tokens.

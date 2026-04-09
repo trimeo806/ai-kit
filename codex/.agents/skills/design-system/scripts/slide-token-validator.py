@@ -1,4 +1,4 @@
-﻿#!/usr/bin/env python3
+#!/usr/bin/env python3
 """
 Slide Token Validator (Legacy Wrapper)
 Now delegates to html-token-validator.py for unified HTML validation.

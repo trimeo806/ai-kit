@@ -1,4 +1,4 @@
-﻿#!/bin/bash
+#!/bin/bash
 
 # Usage: ./send-discord.sh 'Your message here'
 # Note: Remember to escape the string

@@ -1,4 +1,4 @@
-﻿# TanStack Start — Deployment
+# TanStack Start — Deployment
 
 ## Platform Adapters
 

@@ -1,4 +1,4 @@
-﻿# Render Optimization
+# Render Optimization
 
 Rules absorbed from Vercel react-best-practices, adapted for React 18 + TypeScript projects.
 

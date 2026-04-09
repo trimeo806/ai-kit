@@ -1,4 +1,4 @@
-﻿#!/usr/bin/env node
+#!/usr/bin/env node
 /**
  * test-error-formatter.cjs - Unit tests for error-formatter module
  */

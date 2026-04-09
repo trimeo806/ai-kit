@@ -1,4 +1,4 @@
-﻿# Brand Voice Framework
+# Brand Voice Framework
 
 ## Voice vs. Tone
 

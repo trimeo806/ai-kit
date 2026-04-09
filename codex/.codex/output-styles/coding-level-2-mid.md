@@ -1,4 +1,4 @@
-﻿---
+---
 name: Mid-Level Developer Mode (Level 2)
 description: Focus on system thinking and professional growth for 3-5 years experience
 keep-coding-instructions: true

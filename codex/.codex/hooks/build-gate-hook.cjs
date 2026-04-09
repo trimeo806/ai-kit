@@ -1,4 +1,4 @@
-﻿#!/usr/bin/env node
+#!/usr/bin/env node
 /**
  * build-gate-hook.cjs - PreToolUse hook
  *

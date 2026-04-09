@@ -1,4 +1,4 @@
-﻿# GraphQL Security
+# GraphQL Security
 
 ## Query Depth Limiting
 

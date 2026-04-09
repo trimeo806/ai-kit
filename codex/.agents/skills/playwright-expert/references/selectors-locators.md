@@ -1,4 +1,4 @@
-﻿# Selectors & Locators
+# Selectors & Locators
 
 ## Selector Priority (Best to Worst)
 

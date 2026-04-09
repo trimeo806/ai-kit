@@ -1,4 +1,4 @@
-﻿# TanStack Start — TanStack Query Integration
+# TanStack Start — TanStack Query Integration
 
 TanStack Query (`@tanstack/react-query`) pairs with TanStack Start for client-side caching, background refetching, and optimistic updates — complementing route loaders which handle SSR data.
 

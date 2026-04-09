@@ -1,4 +1,4 @@
-﻿---
+---
 name: room-booking-phase1
 description: Phase 1 scaffold for the Room Booking App monorepo — Go + PostgreSQL + sqlc + Turborepo
 type: project

@@ -1,4 +1,4 @@
-﻿---
+---
 name: audit-close-ui
 description: "Mark a UI finding as resolved in reports/known-findings/ui-components.json"
 user-invocable: false

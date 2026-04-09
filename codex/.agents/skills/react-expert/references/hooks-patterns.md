@@ -1,4 +1,4 @@
-﻿# Hooks Patterns
+# Hooks Patterns
 
 ## Custom Hook Pattern
 

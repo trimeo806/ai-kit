@@ -1,4 +1,4 @@
-﻿# GitOps
+# GitOps
 
 ---
 

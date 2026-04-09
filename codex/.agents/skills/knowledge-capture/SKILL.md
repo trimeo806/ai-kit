@@ -1,4 +1,4 @@
-﻿---
+---
 name: knowledge-capture
 description: Use after completing a task — capture learnings, save patterns, record post-mortems to docs/
 user-invocable: false

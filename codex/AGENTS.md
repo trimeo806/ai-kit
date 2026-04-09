@@ -1,4 +1,4 @@
-﻿# AGENTS.md
+# AGENTS.md
 
 This file provides guidance to Codex when working with code in this repository.
 
@@ -6,7 +6,7 @@ This file provides guidance to Codex when working with code in this repository.
 
 ## What This Is
 
-tri-ai-kit is a multi-agent development toolkit for Codex. It provides 22 specialized agents, 60+ skills, hooks, and a 15-phase production delivery workflow. The main conversation always acts as orchestrator — it routes to agents via custom agent dispatch and merges results. Agents never spawn other agents.
+tri-ai-kit is a multi-agent development toolkit for Codex. It provides 22 specialized agents, 60+ skills, hooks, and a 15-phase production delivery workflow. The main conversation always acts as orchestrator — it routes to agents via `spawn_agent`, waits for results, and merges them. Subagents never spawn other subagents.
 
 This package is intended to be installed at the target repository root. Treat `AGENTS.md`, `.agents/skills/`, `.codex/agents/`, `.codex/hooks.json`, and `.codex/config.toml` as the Codex runtime surface.
 
@@ -124,20 +124,20 @@ On every user prompt, sense context before acting:
 
 | Intent | Natural prompts (examples) | Routes To |
 |--------|---------------------------|-----------|
-| Build / Create (frontend) | "add a button", "build a form", "implement this UI", "React component" | `frontend-developer` via custom agent dispatch |
-| Build / Create (backend) | "add an endpoint", "implement this API", "write a migration", "server function" | `backend-developer` via custom agent dispatch |
-| Build / Create (generic/fullstack) | "continue the plan", "implement X" (unclear layer) | `developer` via custom agent dispatch |
-| Fix / Debug | "something is broken", "this crashes", "why does X happen", "it's not working" | `debugger` via custom agent dispatch |
-| Plan / Design | "how should we build X", "let's plan", "what's the approach for" | `planner` via custom agent dispatch |
-| Architecture (backend) | "design the API", "data model", "schema design", "auth strategy" | `backend-architect` via custom agent dispatch |
-| Architecture (frontend) | "routing structure", "component hierarchy", "state management strategy" | `frontend-architect` via custom agent dispatch |
-| Research | "how does X work", "best practices for", "compare A vs B" | `researcher` via custom agent dispatch |
-| Review / Audit | "check my code", "is this good", "review before merge", "audit this" | `code-reviewer` via custom agent dispatch |
-| Security | "security audit", "harden this", "OWASP", "check for vulnerabilities" | `security-auditor` via custom agent dispatch |
-| Infra / CI/CD / Observability | "set up CI/CD", "deploy this", "add monitoring", "Terraform", "Docker" | `devops-engineer` via custom agent dispatch |
-| Test | "add tests", "is this covered", "validate this works" | `tester` via custom agent dispatch |
-| Docs | "document this", "update the docs", "write a spec" | `docs-manager` via custom agent dispatch |
-| Git | "commit", "push", "create a PR", "ship it", "done" | `git-manager` via custom agent dispatch |
+| Build / Create (frontend) | "add a button", "build a form", "implement this UI", "React component" | `frontend-developer` via `spawn_agent` |
+| Build / Create (backend) | "add an endpoint", "implement this API", "write a migration", "server function" | `backend-developer` via `spawn_agent` |
+| Build / Create (generic/fullstack) | "continue the plan", "implement X" (unclear layer) | `developer` via `spawn_agent` |
+| Fix / Debug | "something is broken", "this crashes", "why does X happen", "it's not working" | `debugger` via `spawn_agent` |
+| Plan / Design | "how should we build X", "let's plan", "what's the approach for" | `planner` via `spawn_agent` |
+| Architecture (backend) | "design the API", "data model", "schema design", "auth strategy" | `backend-architect` via `spawn_agent` |
+| Architecture (frontend) | "routing structure", "component hierarchy", "state management strategy" | `frontend-architect` via `spawn_agent` |
+| Research | "how does X work", "best practices for", "compare A vs B" | `researcher` via `spawn_agent` |
+| Review / Audit | "check my code", "is this good", "review before merge", "audit this" | `code-reviewer` via `spawn_agent` |
+| Security | "security audit", "harden this", "OWASP", "check for vulnerabilities" | `security-auditor` via `spawn_agent` |
+| Infra / CI/CD / Observability | "set up CI/CD", "deploy this", "add monitoring", "Terraform", "Docker" | `devops-engineer` via `spawn_agent` |
+| Test | "add tests", "is this covered", "validate this works" | `tester` via `spawn_agent` |
+| Docs | "document this", "update the docs", "write a spec" | `docs-manager` via `spawn_agent` |
+| Git | "commit", "push", "create a PR", "ship it", "done" | `git-manager` via `spawn_agent` |
 | Onboard | "what is this project", "I'm new", "get started" | `/get-started` skill |
 
 **Fuzzy matching** — classify by verb type when no exact signal word:
@@ -227,17 +227,23 @@ Do not guess. A wrong agent assignment causes the wrong skills to activate durin
 
 ## Orchestration
 
-**Single intent** → spawn the matched agent directly via custom agent dispatch.
+**Single intent** → spawn the matched agent directly via `spawn_agent`.
 
 **Multi-intent** ("plan and build X", "research then implement") → spawn `project-manager`, which decomposes and delegates sequentially.
 
 **Parallel work** (3+ independent tasks, cross-platform) → use `subagent-driven-development` skill from main context.
 
+
+**Auto-trigger rule**: If the user's prompt, the routed intent, an active plan, a handoff chain, or the loaded skill set indicates that one or more specialist agents are relevant, you must trigger those agents automatically from the main conversation. Do **not** require the user to explicitly ask for `spawn_agent`.
+
+**Delegation default**: Use `spawn_agent` automatically when the prompt clearly matches a known agent workflow. Avoid delegation only when the task is trivial, the work is tightly coupled to the current context, or the immediate next step is blocked on local work you should do first.
+
+**Skill-to-agent dispatch**: After the main agent loads the related skills and determines that specialist execution is required, it must dispatch every related subagent needed to complete the workflow. Do not stop at skill loading or intent classification when downstream agents are implied by the prompt or plan.
 **Subagent constraint**: Subagents cannot spawn further subagents. Multi-agent workflows must be orchestrated from the main conversation. Skills that need multi-agent dispatch must NOT use `context: fork`.
 
 **Hybrid audits** (klara-theme code): Orchestrated from main context via `/audit` skill. Dispatch muji (Template A+) first, then code-reviewer with muji's report. Never free-form prompt muji — use structured delegation templates from `audit/references/delegation-templates.md`.
 
-**Document-driven agent sequencing** — When executing a plan or any document that mentions multiple agents (in `## Agents & Skills` tables, `## Agent & Skills` blocks, handoff chains, or inline text like "then run `code-reviewer`"), you **must trigger every listed agent in the order they appear**, not just the first one. This applies to:
+**Document-driven agent sequencing** — When executing a plan or any document that mentions multiple agents (in `## Agents & Skills` tables, `## Agent & Skills` blocks, handoff chains, or inline text like "then run `code-reviewer`"), the main conversation must **trigger every listed agent in the order they appear**, not just the first one. This applies to:
 - Post-implementation agents: `code-reviewer`, `security-auditor`, `tester`, `docs-manager`
 - Handoffs declared in phase files under `## Agent & Skills → Handoffs`
 - Any agent named after a connector word: "then", "followed by", "after completion", "next", "finally"
@@ -248,7 +254,7 @@ Do not guess. A wrong agent assignment causes the wrong skills to activate durin
 
 1. **Parse** — Scan the entire document for every agent reference: `## Agents & Skills` tables, `## Agent & Skills` blocks, inline handoff declarations, and connector words ("then", "after", "followed by", "next", "finally", "handoff to").
 2. **Build the chain** — Construct an ordered list of all agents to run, from first to last (e.g. `frontend-developer` → `code-reviewer` → `security-auditor`).
-3. **Execute sequentially** — Spawn each agent via custom agent dispatch one at a time, in order. Wait for the current agent to finish before spawning the next. Pass the previous agent's output as context to the next agent.
+3. **Execute sequentially** — Spawn each agent via `spawn_agent` one at a time, in order. Use `wait_agent` to wait for the current agent to finish before spawning the next. Pass the previous agent's output as context to the next agent.
 4. **Announce each step** — Before spawning each agent, tell the user: `"[Step N/Total] Running \`agent-name\`…"` so progress is visible.
 5. **Never skip** — Every agent in the chain must run unless the user explicitly says to stop. If a step fails, surface the error and ask the user whether to retry, skip, or abort.
 6. **Confirm completion** — After the final agent finishes, summarize what each agent did and confirm the full chain is done.
@@ -266,3 +272,22 @@ Example chain for a frontend plan with handoff:
 See `core/references/orchestration.md` for full protocol.
 
 ---
+
+## Guidelines
+
+### Decision Authority
+**Auto-execute**: dependency installs, lint fixes, documentation formatting
+**Ask first**: deleting files, modifying production configs, introducing new dependencies, multi-file refactors, changing API contracts
+
+### Code Changes
+- Verify environment state before operations
+- Use relative paths from project root
+- Prefer existing patterns over introducing new conventions
+- Conservative defaults: safety over speed, clarity over cleverness
+
+### Core Rules
+See `.agents/skills/core/SKILL.md` for operational boundaries.
+
+## Related Documents
+- `.agents/skills/core/SKILL.md` — Operational rules and boundaries
+- `WORKFLOW.md` — Full 15-phase solution architect workflow (Problem → Go-Live → Post-Launch)

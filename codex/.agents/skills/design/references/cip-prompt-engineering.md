@@ -1,4 +1,4 @@
-﻿# CIP Mockup Prompt Engineering
+# CIP Mockup Prompt Engineering
 
 ## Base Prompt Structure
 

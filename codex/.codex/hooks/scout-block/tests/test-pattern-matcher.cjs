@@ -1,4 +1,4 @@
-﻿#!/usr/bin/env node
+#!/usr/bin/env node
 /**
  * test-pattern-matcher.cjs - Unit tests for pattern-matcher module
  */

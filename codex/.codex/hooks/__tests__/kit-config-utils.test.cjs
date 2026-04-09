@@ -1,4 +1,4 @@
-﻿#!/usr/bin/env node
+#!/usr/bin/env node
 /**
  * Tests for kit-config-utils.cjs - Config and path utilities
  * Run: node --test .codex/hooks/__tests__/kit-config-utils.test.cjs

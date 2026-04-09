@@ -1,4 +1,4 @@
-﻿---
+---
 name: a11y-mode-audit
 description: Audit mode — batch accessibility analysis producing structured JSON violation reports
 user-invocable: false

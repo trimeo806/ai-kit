@@ -1,4 +1,4 @@
-﻿{
+{
   "eval_id": 1,
   "eval_name": "frontend-xss-localstorage",
   "prompt": "hey can you check if this React component is secure? my lead said something about 'xss' but i'm not sure what to look for\n\n[CommentDisplay.tsx with dangerouslySetInnerHTML + useAuth.ts with localStorage token storage]",

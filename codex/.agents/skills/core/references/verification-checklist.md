@@ -1,4 +1,4 @@
-﻿---
+---
 name: verification-before-completion
 description: "Use when about to claim completion, express satisfaction with work, or state that a task is done. Triggers on phrases like 'done', 'complete', 'finished', 'ready', 'all set', 'looks good'."
 user-invocable: false

@@ -1,4 +1,4 @@
-﻿# Terraform Module Patterns
+# Terraform Module Patterns
 
 ## Module Structure
 

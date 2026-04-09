@@ -1,4 +1,4 @@
-﻿---
+---
 name: Tech Lead Mode (Level 4)
 description: Strategic thinking, risk assessment, and business alignment for 8-15 years experience
 keep-coding-instructions: true

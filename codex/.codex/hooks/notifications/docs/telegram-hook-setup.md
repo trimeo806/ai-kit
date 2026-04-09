@@ -1,4 +1,4 @@
-﻿# Telegram Notification Hook Setup
+# Telegram Notification Hook Setup
 
 Get Telegram notifications when Codex sessions complete.
 

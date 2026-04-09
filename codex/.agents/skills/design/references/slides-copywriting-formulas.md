@@ -1,4 +1,4 @@
-﻿# Copywriting Formulas
+# Copywriting Formulas
 
 25 formulas for persuasive slide copy.
 

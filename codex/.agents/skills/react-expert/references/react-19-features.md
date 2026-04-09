@@ -1,4 +1,4 @@
-﻿# React 19 Features
+# React 19 Features
 
 ## use() Hook
 

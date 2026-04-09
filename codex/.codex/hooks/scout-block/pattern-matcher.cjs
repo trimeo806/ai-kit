@@ -1,4 +1,4 @@
-﻿#!/usr/bin/env node
+#!/usr/bin/env node
 /**
  * pattern-matcher.cjs - Gitignore-spec compliant pattern matching
  *

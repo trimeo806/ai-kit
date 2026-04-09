@@ -1,4 +1,4 @@
-﻿/**
+/**
  * Slack notification provider using Block Kit format
  * Uses incoming webhooks - zero dependencies
  */

@@ -1,4 +1,4 @@
-﻿# Component Tokens
+# Component Tokens
 
 Component-specific tokens referencing semantic layer.
 

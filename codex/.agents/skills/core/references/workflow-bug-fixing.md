@@ -1,4 +1,4 @@
-﻿# Workflow: Bug Fixing
+# Workflow: Bug Fixing
 
 Investigation-first workflow. Scout → Debug → Fix → Test → Review → Capture → Git.
 

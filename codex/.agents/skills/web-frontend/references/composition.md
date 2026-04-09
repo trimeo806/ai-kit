@@ -1,4 +1,4 @@
-﻿# Composition Patterns
+# Composition Patterns
 
 Rules absorbed from Vercel composition-patterns, adapted for React 18 + TypeScript projects.
 

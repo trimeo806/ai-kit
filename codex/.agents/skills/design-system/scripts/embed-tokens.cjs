@@ -1,4 +1,4 @@
-﻿#!/usr/bin/env node
+#!/usr/bin/env node
 /**
  * embed-tokens.cjs
  * Reads design-tokens.css and outputs embeddable inline CSS.

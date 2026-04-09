@@ -1,4 +1,4 @@
-﻿---
+---
 name: understand-diff
 description: Use when you need to analyze git diffs or pull requests to understand what changed, affected components, and risks
 ---

@@ -1,4 +1,4 @@
-﻿# Architecture Analyzer — Prompt Template
+# Architecture Analyzer — Prompt Template
 
 > Used by `/understand` Phase 4. Dispatch as a subagent with this full content as the prompt.
 

@@ -1,4 +1,4 @@
-﻿# Utility Types
+# Utility Types
 
 ## Built-in Utility Types
 

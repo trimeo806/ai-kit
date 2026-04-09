@@ -1,4 +1,4 @@
-﻿# Primitive Tokens
+# Primitive Tokens
 
 Raw design values - foundation of the design system.
 

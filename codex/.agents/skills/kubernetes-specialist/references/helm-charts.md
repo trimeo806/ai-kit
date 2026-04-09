@@ -1,4 +1,4 @@
-﻿# Helm Charts
+# Helm Charts
 
 ## Chart Structure
 

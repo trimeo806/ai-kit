@@ -1,4 +1,4 @@
-﻿# WebSocket Patterns Reference
+# WebSocket Patterns Reference
 
 ## Rooms and Namespaces
 

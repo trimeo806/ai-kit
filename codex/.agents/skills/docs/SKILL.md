@@ -1,4 +1,4 @@
-﻿---
+---
 name: docs
 description: Use when user says "write docs", "update docs", "document this", "init docs", "reorganize documentation", or "add component docs" — detects docs intent (init, update, migrate, component) and runs the right workflow
 user-invocable: true

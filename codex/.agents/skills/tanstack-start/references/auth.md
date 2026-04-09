@@ -1,4 +1,4 @@
-﻿# TanStack Start — Authentication
+# TanStack Start — Authentication
 
 ## Overview
 

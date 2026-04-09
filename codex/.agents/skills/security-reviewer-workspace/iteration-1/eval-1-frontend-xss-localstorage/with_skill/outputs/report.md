@@ -1,4 +1,4 @@
-﻿# Security Review Report
+# Security Review Report
 **Date**: 2026-03-15
 **Scope**: Frontend
 **Files Reviewed**: 2 files (inline — `src/components/CommentDisplay.tsx`, `src/hooks/useAuth.ts`)

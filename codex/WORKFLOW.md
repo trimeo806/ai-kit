@@ -1,4 +1,4 @@
-﻿# Solution Architect Workflow
+# Solution Architect Workflow
 
 > Production-grade delivery process for fullstack engineers using Codex native agents.
 

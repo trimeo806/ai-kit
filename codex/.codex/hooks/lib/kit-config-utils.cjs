@@ -1,4 +1,4 @@
-﻿/**
+/**
  * Shared utilities for tri-ai-kit hooks
  *
  * Contains config loading, path sanitization, and common constants

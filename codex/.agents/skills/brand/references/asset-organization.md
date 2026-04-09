@@ -1,4 +1,4 @@
-﻿# Asset Organization Guide
+# Asset Organization Guide
 
 Guidelines for organizing marketing assets in a structured, searchable system.
 

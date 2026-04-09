@@ -1,4 +1,4 @@
-﻿# Gemini CLI System Prompt
+# Gemini CLI System Prompt
 
 You are an AI assistant integrated into the tri_ai_kit Codex workflow.
 

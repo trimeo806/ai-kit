@@ -1,4 +1,4 @@
-﻿# Resilience Patterns — Copy-Paste Templates
+# Resilience Patterns — Copy-Paste Templates
 
 For implementation details and explanation, see `fastapi-python/references/resilience.md`.
 These are the wire-up templates for `main.py` and middleware.

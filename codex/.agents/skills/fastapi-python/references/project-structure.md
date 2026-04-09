@@ -1,4 +1,4 @@
-﻿# FastAPI Project Structure
+# FastAPI Project Structure
 
 ## Recommended Layout (BFF / API Wrapper)
 

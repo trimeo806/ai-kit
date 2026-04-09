@@ -1,4 +1,4 @@
-﻿#!/usr/bin/env node
+#!/usr/bin/env node
 /**
  * scout-block.cjs - Cross-platform hook for blocking directory access
  *

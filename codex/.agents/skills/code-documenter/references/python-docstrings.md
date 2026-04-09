@@ -1,4 +1,4 @@
-﻿# Python Docstrings
+# Python Docstrings
 
 ## Google Style (Recommended)
 

@@ -1,4 +1,4 @@
-﻿# Logo Color Psychology
+# Logo Color Psychology
 
 ## Primary Color Meanings
 

@@ -1,4 +1,4 @@
-﻿#!/usr/bin/env node
+#!/usr/bin/env node
 /**
  * Tests for context-reminder.cjs hook - path resolution (Issue #327)
  * Run: node --test .codex/hooks/__tests__/context-reminder.test.cjs

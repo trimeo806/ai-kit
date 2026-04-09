@@ -1,4 +1,4 @@
-﻿---
+---
 name: docs-problem
 description: "Problem-analysis document mode — RCA, incident report, post-mortem, ADR"
 user-invocable: false

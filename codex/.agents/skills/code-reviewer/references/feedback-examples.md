@@ -1,4 +1,4 @@
-﻿# Feedback Examples
+# Feedback Examples
 
 ## Good vs Bad Feedback
 

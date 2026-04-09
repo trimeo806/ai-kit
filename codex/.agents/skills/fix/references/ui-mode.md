@@ -1,4 +1,4 @@
-﻿---
+---
 name: fix-ui-mode
 description: "Fix UI component findings from known-findings DB"
 user-invocable: false

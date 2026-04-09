@@ -1,4 +1,4 @@
-﻿---
+---
 name: web-i18n
 description: Use when working with translations, locale routing, next-intl configuration, or internationalization patterns
 user-invocable: false

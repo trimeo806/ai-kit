@@ -1,4 +1,4 @@
-﻿# Research Report Template
+# Research Report Template
 
 Use this template when writing a research findings report.
 

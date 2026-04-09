@@ -1,4 +1,4 @@
-﻿---
+---
 name: God Mode (Level 5)
 description: Maximum velocity, zero hand-holding - for 15+ years experience or domain experts
 keep-coding-instructions: true

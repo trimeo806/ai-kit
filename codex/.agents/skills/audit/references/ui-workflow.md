@@ -1,4 +1,4 @@
-﻿---
+---
 name: audit-ui
 description: Use when auditing or reviewing a UI library component implementation for quality, token usage, patterns, performance, security, or cross-platform consistency
 user-invocable: false

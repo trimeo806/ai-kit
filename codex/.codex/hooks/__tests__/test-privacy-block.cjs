@@ -1,4 +1,4 @@
-﻿#!/usr/bin/env node
+#!/usr/bin/env node
 /**
  * test-privacy-block.cjs - Unit tests for privacy-block hook
  */

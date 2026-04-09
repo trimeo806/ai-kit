@@ -1,4 +1,4 @@
-﻿# Receiving Feedback
+# Receiving Feedback
 
 ---
 

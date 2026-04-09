@@ -1,4 +1,4 @@
-﻿# States and Variants
+# States and Variants
 
 Component state definitions and variant patterns.
 

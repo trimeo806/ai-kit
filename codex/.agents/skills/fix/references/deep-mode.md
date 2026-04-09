@@ -1,4 +1,4 @@
-﻿# Fix Deep Mode
+# Fix Deep Mode
 
 Systematic deep fix — skip auto-detection, run full investigation.
 

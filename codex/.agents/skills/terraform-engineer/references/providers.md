@@ -1,4 +1,4 @@
-﻿# Terraform Provider Configuration
+# Terraform Provider Configuration
 
 ## AWS Provider
 

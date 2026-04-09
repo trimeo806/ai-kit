@@ -1,4 +1,4 @@
-﻿# App Router Architecture
+# App Router Architecture
 
 ## File-Based Routing
 

@@ -1,4 +1,4 @@
-﻿# Canvas Design System
+# Canvas Design System
 
 Visual design philosophy, systematic composition, and sophisticated visual communication.
 

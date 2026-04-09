@@ -1,4 +1,4 @@
-﻿# CIP Deliverable Guide
+# CIP Deliverable Guide
 
 ## Core Identity
 

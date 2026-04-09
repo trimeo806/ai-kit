@@ -1,4 +1,4 @@
-﻿# WebSocket Security Reference
+# WebSocket Security Reference
 
 ## Authentication
 

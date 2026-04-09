@@ -1,4 +1,4 @@
-﻿#!/usr/bin/env node
+#!/usr/bin/env node
 /**
  * broad-pattern-detector.cjs - Detect overly broad glob patterns
  *

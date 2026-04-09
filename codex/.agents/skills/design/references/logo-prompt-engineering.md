@@ -1,4 +1,4 @@
-﻿# Logo AI Prompt Engineering
+# Logo AI Prompt Engineering
 
 ## Core Prompt Structure
 

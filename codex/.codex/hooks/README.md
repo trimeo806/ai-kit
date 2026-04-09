@@ -1,4 +1,4 @@
-﻿# Codex Hooks
+# Codex Hooks
 
 This directory contains hooks for Codex sessions.
 

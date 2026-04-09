@@ -1,4 +1,4 @@
-﻿# Brand Guidelines Template
+# Brand Guidelines Template
 
 Use this template to create comprehensive brand guidelines for any project.
 

@@ -1,4 +1,4 @@
-﻿---
+---
 name: knowledge-base
 description: Use when recording ADRs, saving debug findings, persisting patterns, or referencing past decisions in docs/
 user-invocable: false

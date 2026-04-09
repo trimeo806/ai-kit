@@ -1,4 +1,4 @@
-﻿# Multi-Cloud Architecture Reference
+# Multi-Cloud Architecture Reference
 
 Comprehensive guide for multi-cloud strategies, abstraction layers, portability patterns, and vendor lock-in mitigation.
 

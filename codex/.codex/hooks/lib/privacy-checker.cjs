@@ -1,4 +1,4 @@
-﻿#!/usr/bin/env node
+#!/usr/bin/env node
 /**
  * privacy-checker.cjs - Privacy pattern matching logic for sensitive file detection
  *

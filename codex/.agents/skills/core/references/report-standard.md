@@ -1,4 +1,4 @@
-﻿# Report Standard
+# Report Standard
 
 Common output format for all tri-ai-kit agent reports.
 

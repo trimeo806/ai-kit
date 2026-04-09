@@ -1,4 +1,4 @@
-﻿---
+---
 name: plan-hard
 description: Deep plan with sequential research and comprehensive analysis — use for moderate to complex features requiring investigation
 user-invocable: true

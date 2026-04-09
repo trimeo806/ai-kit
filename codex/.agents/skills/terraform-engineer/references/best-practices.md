@@ -1,4 +1,4 @@
-﻿# Terraform Best Practices
+# Terraform Best Practices
 
 ## DRY Principles
 

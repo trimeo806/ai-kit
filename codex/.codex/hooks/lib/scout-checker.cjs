@@ -1,4 +1,4 @@
-﻿#!/usr/bin/env node
+#!/usr/bin/env node
 /**
  * scout-checker.cjs - Facade for scout-block modules
  *

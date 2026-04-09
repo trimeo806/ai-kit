@@ -1,4 +1,4 @@
-﻿# REST to GraphQL Migration Guide
+# REST to GraphQL Migration Guide
 
 ---
 

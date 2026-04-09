@@ -1,4 +1,4 @@
-﻿# Interface Design and Composition
+# Interface Design and Composition
 
 ## Small, Focused Interfaces
 

@@ -1,4 +1,4 @@
-﻿# shadcn/ui Theming & Customization
+# shadcn/ui Theming & Customization
 
 Theme configuration, CSS variables, dark mode, and component customization.
 

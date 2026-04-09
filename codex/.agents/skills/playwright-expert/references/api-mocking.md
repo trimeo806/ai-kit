@@ -1,4 +1,4 @@
-﻿# API Mocking
+# API Mocking
 
 ## Basic Route Mocking
 

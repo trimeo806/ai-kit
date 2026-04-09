@@ -1,4 +1,4 @@
-﻿# Integration Patterns
+# Integration Patterns
 
 ## Type Safety Across Stack
 

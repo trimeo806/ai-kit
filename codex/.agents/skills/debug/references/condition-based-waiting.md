@@ -1,4 +1,4 @@
-﻿# Condition-Based Waiting Patterns
+# Condition-Based Waiting Patterns
 
 ## The Problem
 

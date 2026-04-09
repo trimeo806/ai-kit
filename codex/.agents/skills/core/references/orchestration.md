@@ -1,4 +1,4 @@
-﻿# Orchestration Protocol
+# Orchestration Protocol
 
 Rules for agent delegation, context passing, execution modes, and escalation.
 
@@ -20,16 +20,16 @@ Hooks inject most of this automatically. Agents must verify context is present b
 ## Delegation Config
 
 ### Who Delegates
-- **project-manager** — top-level router, delegates to any agent
-- **planner** — delegates to researchers (parallel fan-out)
-- **developer** — delegates to subagents per phase (via `subagent-driven-development`)
-- **Any agent** — can delegate to Explore subagent for codebase search
+- **Main conversation** — only context that orchestrates multi-agent workflows
+- **project-manager** — router used by the main conversation for multi-step workflows
+- **developer** — specialist selected by the main conversation for implementation dispatch
+- **Subagents** — execute assigned work only; they do not delegate further
 
 ### Delegation Rules
 1. Include full context (see above)
 2. One clear task per subagent (no multi-intent delegation)
 3. Subagent gets fresh context — don't assume it knows prior conversation
-4. Wait for subagent result before next step (unless parallel-safe)
+4. Wait for subagent result before next step (unless the main conversation has confirmed parallel-safe ownership)
 5. Review subagent output before presenting to user
 
 ## Execution Modes
@@ -86,12 +86,12 @@ For high-stakes decisions where no clear best practice exists, use consensus vot
 - Time-sensitive fixes (clear best practice exists)
 - CRUD or routine implementation work
 
-**Flow** (all dispatched from main context — never from within a subagent):
+**Flow** (all spawned from the main conversation — never from within a subagent):
 
 ```
-Main context → [custom agent dispatch] → brainstormer   (generates 3 independent options)
-Main context → [custom agent dispatch] → researcher     (evaluates options against criteria)
-Main context → [custom agent dispatch] → planner        (selects winner, writes implementation spec)
+Main conversation → `spawn_agent(brainstormer)`   (generates 3 independent options)
+Main conversation → `spawn_agent(researcher)`     (evaluates options against criteria)
+Main conversation → `spawn_agent(planner)`        (selects winner, writes implementation spec)
 ```
 
 **Evaluation criteria template:**
@@ -110,21 +110,21 @@ Main context → [custom agent dispatch] → planner        (selects winner, wri
 
 ## Subagent Spawn Constraint
 
-Subagents (agents spawned via custom agent dispatch) **cannot spawn further subagents**. Neither custom agent dispatch nor Task tool is available in subagent context.
+Subagents (agents spawned via `spawn_agent`) **cannot spawn further subagents**. They do not orchestrate further agent chains.
 
 **Implication**: Multi-agent workflows (hybrid audit, parallel research) must be orchestrated from the **main conversation context**, not from within a subagent.
 
 **Pattern**:
 ```
-Main context → [custom agent dispatch] → specialist-1 (independent subagent)
-Main context → [custom agent dispatch] → specialist-2 (independent subagent)
-Main context reads both results and merges
+Main conversation → `spawn_agent(specialist-1)` (independent subagent)
+Main conversation → `spawn_agent(specialist-2)` (independent subagent)
+Main conversation reads both results and merges
 ```
 
 **Anti-pattern** (will fail):
 ```
-Main context → [custom agent dispatch] → agent-A (subagent)
-                                 → [custom agent dispatch] → agent-B  ❌ BLOCKED
+Main conversation → `spawn_agent(agent-A)` (subagent)
+                 agent-A → `spawn_agent(agent-B)`  ❌ BLOCKED
 ```
 
 Skills that orchestrate multi-agent workflows (e.g., `audit/SKILL.md` hybrid mode) must NOT use `context: fork` — they run inline in the main context.
@@ -135,7 +135,7 @@ When you load a skill, check its frontmatter before executing:
 
 | Frontmatter | How to execute |
 |-------------|---------------|
-| `context: fork` + `agent: {name}` | **MUST** spawn `{name}` via custom agent dispatch. Do NOT execute inline. Do NOT use raw Bash. |
+| `context: fork` + `agent: {name}` | **MUST** spawn `{name}` from the main conversation via `spawn_agent`. Do NOT execute inline. Do NOT use raw Bash. |
 | `context: inline` | Execute the skill content directly in the main conversation. |
 | No `context` field | Execute inline (default). |
 

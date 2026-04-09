@@ -1,4 +1,4 @@
-﻿#!/usr/bin/env node
+#!/usr/bin/env node
 /**
  * Tests for session-init.cjs hook - specifically the compact mitigation (Issue #277)
  * Run: node --test .codex/hooks/__tests__/session-init.test.cjs

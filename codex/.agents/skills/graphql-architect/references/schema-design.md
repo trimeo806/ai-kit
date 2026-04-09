@@ -1,4 +1,4 @@
-﻿# GraphQL Schema Design
+# GraphQL Schema Design
 
 ## Object Types
 

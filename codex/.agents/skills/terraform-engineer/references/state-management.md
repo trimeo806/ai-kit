@@ -1,4 +1,4 @@
-﻿# Terraform State Management
+# Terraform State Management
 
 ## Remote Backend - S3 (AWS)
 

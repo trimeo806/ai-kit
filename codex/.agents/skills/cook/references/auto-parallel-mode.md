@@ -1,4 +1,4 @@
-﻿# Cook Auto Parallel Mode
+# Cook Auto Parallel Mode
 
 Research → parallel plan → parallel implement → test → review → commit.
 

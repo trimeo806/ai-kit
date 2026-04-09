@@ -1,4 +1,4 @@
-﻿# Security Review Report — Next.js Auth & API Setup
+# Security Review Report — Next.js Auth & API Setup
 
 **Date**: 2026-03-15
 **Scope**: Authentication route, Next.js configuration, and middleware

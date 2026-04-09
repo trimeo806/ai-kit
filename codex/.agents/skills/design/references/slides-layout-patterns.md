@@ -1,4 +1,4 @@
-﻿# Layout Patterns
+# Layout Patterns
 
 25 slide layouts with CSS structures and animation classes.
 

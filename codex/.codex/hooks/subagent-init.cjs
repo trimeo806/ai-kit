@@ -1,4 +1,4 @@
-﻿#!/usr/bin/env node
+#!/usr/bin/env node
 /**
  * SubagentStart Hook - Injects context to subagents (Optimized)
  *

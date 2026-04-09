@@ -1,4 +1,4 @@
-﻿---
+---
 name: test
 description: Use when user says "run tests", "add tests", "check coverage", "write unit tests", or "validate this works" — detects platform and runs the appropriate test suite (Jest, XCTest, JUnit, Espresso)
 user-invocable: true

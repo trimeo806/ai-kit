@@ -1,4 +1,4 @@
-﻿# Web Component Audit Checklist
+# Web Component Audit Checklist
 
 Platform: web (klara-theme / React / TypeScript / Tailwind)
 

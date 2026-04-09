@@ -1,4 +1,4 @@
-﻿# Token Architecture
+# Token Architecture
 
 Three-layer token system for scalable, themeable design systems.
 

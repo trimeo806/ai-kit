@@ -1,4 +1,4 @@
-﻿# File Analyzer — Prompt Template
+# File Analyzer — Prompt Template
 
 > Used by `/understand` Phase 2. Dispatch as a subagent with this full content as the prompt.
 

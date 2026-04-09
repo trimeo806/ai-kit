@@ -1,4 +1,4 @@
-﻿# Inter-Service Communication Patterns
+# Inter-Service Communication Patterns
 
 Comprehensive guide for designing communication between microservices.
 

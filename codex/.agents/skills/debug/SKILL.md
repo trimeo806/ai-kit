@@ -1,4 +1,4 @@
-﻿---
+---
 name: debug
 description: Use when user says "debug", "trace this", "diagnose", "it crashes", "why is this failing", or provides a stack trace — investigates root cause using platform-specific debugging tools
 user-invocable: true

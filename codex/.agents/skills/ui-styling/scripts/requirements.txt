@@ -1,4 +1,4 @@
-﻿# UI Styling Skill Dependencies
+# UI Styling Skill Dependencies
 # Python 3.10+ required
 
 # No Python package dependencies - uses only standard library

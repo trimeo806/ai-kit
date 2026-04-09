@@ -1,4 +1,4 @@
-﻿# Workflow: Code Review
+# Workflow: Code Review
 
 Scout-first review pattern. Edge-case detection before quality audit.
 

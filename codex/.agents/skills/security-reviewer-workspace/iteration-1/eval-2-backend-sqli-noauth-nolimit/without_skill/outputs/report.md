@@ -1,4 +1,4 @@
-﻿# Security Audit Report — Express API (routes/users.js)
+# Security Audit Report — Express API (routes/users.js)
 
 **Date**: 2026-03-15
 **Risk Rating**: CRITICAL — Do not go live without addressing the issues below.

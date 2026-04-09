@@ -1,4 +1,4 @@
-﻿# API Design Standards
+# API Design Standards
 
 ## RESTful API Conventions
 

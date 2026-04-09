@@ -1,4 +1,4 @@
-﻿# FastAPI Data Transformation Patterns
+# FastAPI Data Transformation Patterns
 
 ## Core Principle
 

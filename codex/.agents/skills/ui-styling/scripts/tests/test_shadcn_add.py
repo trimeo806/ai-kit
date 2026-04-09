@@ -1,4 +1,4 @@
-﻿"""Tests for shadcn_add.py"""
+"""Tests for shadcn_add.py"""
 
 import json
 import subprocess

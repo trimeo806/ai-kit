@@ -1,4 +1,4 @@
-﻿# Search Strategy Reference
+# Search Strategy Reference
 
 How to search each knowledge source effectively.
 

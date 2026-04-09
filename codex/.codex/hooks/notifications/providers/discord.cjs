@@ -1,4 +1,4 @@
-﻿/**
+/**
  * Discord notification provider
  * Sends rich embed messages to Discord webhooks
  */

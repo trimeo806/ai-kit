@@ -1,4 +1,4 @@
-﻿# Coverage Reports
+# Coverage Reports
 
 ## Documentation Coverage Report Template
 

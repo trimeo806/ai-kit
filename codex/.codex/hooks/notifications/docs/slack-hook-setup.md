@@ -1,4 +1,4 @@
-﻿# Slack Notification Hook Setup
+# Slack Notification Hook Setup
 
 ## Overview
 

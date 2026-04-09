@@ -1,4 +1,4 @@
-﻿Update brand colors, typography, and style - automatically syncs to all design system files.
+Update brand colors, typography, and style - automatically syncs to all design system files.
 
 <args>$ARGUMENTS</args>
 

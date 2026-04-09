@@ -1,4 +1,4 @@
-﻿---
+---
 name: skill-discovery
 description: Use at the START of every task to discover and load relevant skills you don't already have. Detects platform, task type, and domain signals then loads matching skills from the index on demand.
 user-invocable: false

@@ -1,4 +1,4 @@
-﻿#!/usr/bin/env python3
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
 CIP Design Core - BM25 search engine for Corporate Identity Program design guidelines

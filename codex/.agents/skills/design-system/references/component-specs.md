@@ -1,4 +1,4 @@
-﻿# Component Specifications
+# Component Specifications
 
 Detailed specs for core components with states and variants.
 

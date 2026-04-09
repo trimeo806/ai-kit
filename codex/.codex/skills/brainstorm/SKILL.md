@@ -1,4 +1,4 @@
-﻿---
+---
 name: brainstorm
 description: Use when the user presents a problem, idea, decision, or challenge they want to think through — produces a structured analysis covering pros/cons, risks, trade-offs vs alternatives, and recommended directions. Always invoke this skill when someone says "brainstorm", "help me think through", "I'm considering", "what should I do about", "analyze this", "think with me", or describes a problem they haven't yet decided how to solve. Don't wait for the word "brainstorm" — any problem-framing or decision-under-uncertainty prompt should trigger this skill.
 user-invocable: true

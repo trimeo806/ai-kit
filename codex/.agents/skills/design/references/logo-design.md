@@ -1,4 +1,4 @@
-﻿# Logo Design Reference
+# Logo Design Reference
 
 AI-powered logo design with 55+ styles, 30 color palettes, 25 industry guides. Uses Gemini Nano Banana models.
 

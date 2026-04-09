@@ -1,4 +1,4 @@
-﻿# GraphQL Resolvers
+# GraphQL Resolvers
 
 ## Basic Resolver Pattern
 

@@ -20,16 +20,16 @@ Hooks inject most of this automatically. Agents must verify context is present b
 ## Delegation Config
 
 ### Who Delegates
-- **project-manager** — top-level router, delegates to any agent
-- **planner** — delegates to researchers (parallel fan-out)
-- **developer** — delegates to subagents per phase (via `subagent-driven-development`)
-- **Any agent** — can delegate to Explore subagent for codebase search
+- **Main conversation** — only context that orchestrates multi-agent workflows
+- **project-manager** — router used by the main conversation for multi-step workflows
+- **developer** — specialist selected by the main conversation for implementation dispatch
+- **Subagents** — execute assigned work only; they do not delegate further
 
 ### Delegation Rules
 1. Include full context (see above)
 2. One clear task per subagent (no multi-intent delegation)
 3. Subagent gets fresh context — don't assume it knows prior conversation
-4. Wait for subagent result before next step (unless parallel-safe)
+4. Wait for subagent result before next step (unless the main conversation has confirmed parallel-safe ownership)
 5. Review subagent output before presenting to user
 
 ## Execution Modes

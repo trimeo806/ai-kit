@@ -1,4 +1,4 @@
-﻿# Debugging & Flaky Tests
+# Debugging & Flaky Tests
 
 ## Debugging Tools
 

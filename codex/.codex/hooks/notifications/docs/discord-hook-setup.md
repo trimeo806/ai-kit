@@ -1,4 +1,4 @@
-﻿# Discord Notification Hook Setup
+# Discord Notification Hook Setup
 
 Get Discord notifications when Codex sessions complete.
 

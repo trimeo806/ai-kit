@@ -1,4 +1,4 @@
-﻿# Kubernetes Networking
+# Kubernetes Networking
 
 ## Service Types
 

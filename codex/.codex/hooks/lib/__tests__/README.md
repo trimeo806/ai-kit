@@ -1,4 +1,4 @@
-﻿# Statusline Test Suite
+# Statusline Test Suite
 
 Comprehensive tests for statusline implementation modules.
 

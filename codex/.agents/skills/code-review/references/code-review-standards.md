@@ -1,4 +1,4 @@
-﻿---
+---
 name: code-review-standards
 description: "Use when reviewing code for security, performance, type safety, logic, architecture, or state machine issues"
 user-invocable: false

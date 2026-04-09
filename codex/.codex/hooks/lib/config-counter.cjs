@@ -1,4 +1,4 @@
-﻿#!/usr/bin/env node
+#!/usr/bin/env node
 'use strict';
 
 // Config Counter - Count AGENTS.md, rules, MCPs, hooks across user and project scopes

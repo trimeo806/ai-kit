@@ -1,4 +1,4 @@
-﻿# Page Object Model
+# Page Object Model
 
 ## Basic Page Object
 
