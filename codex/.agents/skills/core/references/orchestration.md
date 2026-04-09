@@ -86,12 +86,12 @@ For high-stakes decisions where no clear best practice exists, use consensus vot
 - Time-sensitive fixes (clear best practice exists)
 - CRUD or routine implementation work
 
-**Flow** (all spawned from the main conversation — never from within a subagent):
+**Flow** (all dispatched from main context — never from within a subagent):
 
 ```
-Main conversation → `spawn_agent(brainstormer)`   (generates 3 independent options)
-Main conversation → `spawn_agent(researcher)`     (evaluates options against criteria)
-Main conversation → `spawn_agent(planner)`        (selects winner, writes implementation spec)
+Main context → [custom agent dispatch] → brainstormer   (generates 3 independent options)
+Main context → [custom agent dispatch] → researcher     (evaluates options against criteria)
+Main context → [custom agent dispatch] → planner        (selects winner, writes implementation spec)
 ```
 
 **Evaluation criteria template:**
@@ -110,21 +110,21 @@ Main conversation → `spawn_agent(planner)`        (selects winner, writes impl
 
 ## Subagent Spawn Constraint
 
-Subagents (agents spawned via `spawn_agent`) **cannot spawn further subagents**. They do not orchestrate further agent chains.
+Subagents (agents spawned via custom agent dispatch) **cannot spawn further subagents**. Neither custom agent dispatch nor Task tool is available in subagent context.
 
 **Implication**: Multi-agent workflows (hybrid audit, parallel research) must be orchestrated from the **main conversation context**, not from within a subagent.
 
 **Pattern**:
 ```
-Main conversation → `spawn_agent(specialist-1)` (independent subagent)
-Main conversation → `spawn_agent(specialist-2)` (independent subagent)
-Main conversation reads both results and merges
+Main context → [custom agent dispatch] → specialist-1 (independent subagent)
+Main context → [custom agent dispatch] → specialist-2 (independent subagent)
+Main context reads both results and merges
 ```
 
 **Anti-pattern** (will fail):
 ```
-Main conversation → `spawn_agent(agent-A)` (subagent)
-                 agent-A → `spawn_agent(agent-B)`  ❌ BLOCKED
+Main context → [custom agent dispatch] → agent-A (subagent)
+                                 → [custom agent dispatch] → agent-B  ❌ BLOCKED
 ```
 
 Skills that orchestrate multi-agent workflows (e.g., `audit/SKILL.md` hybrid mode) must NOT use `context: fork` — they run inline in the main context.
@@ -135,7 +135,7 @@ When you load a skill, check its frontmatter before executing:
 
 | Frontmatter | How to execute |
 |-------------|---------------|
-| `context: fork` + `agent: {name}` | **MUST** spawn `{name}` from the main conversation via `spawn_agent`. Do NOT execute inline. Do NOT use raw Bash. |
+| `context: fork` + `agent: {name}` | **MUST** spawn `{name}` via custom agent dispatch. Do NOT execute inline. Do NOT use raw Bash. |
 | `context: inline` | Execute the skill content directly in the main conversation. |
 | No `context` field | Execute inline (default). |
 
