@@ -31,6 +31,18 @@ Hooks inject most of this automatically. Agents must verify context is present b
 3. Subagent gets fresh context — don't assume it knows prior conversation
 4. Wait for subagent result before next step (unless the main conversation has confirmed parallel-safe ownership)
 5. Review subagent output before presenting to user
+6. Host-level prompt policy must permit automatic delegation. If a higher-priority system/developer instruction says `spawn_agent` requires explicit user authorization, that host rule wins and this protocol cannot auto-route until the host prompt is changed.
+
+### Host Prompt Compatibility
+
+For tri-ai-kit to auto-route correctly, the outer Codex prompt should include guidance equivalent to:
+
+```text
+Use spawn_agent automatically when the prompt clearly matches a known agent workflow.
+Do not wait for the user to explicitly request subagents, delegation, or parallel work.
+Keep orchestration in the main conversation.
+Avoid delegation only when the task is trivial, tightly coupled to the current thread, or blocked on an immediate local step.
+```
 
 ## Execution Modes
 

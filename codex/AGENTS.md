@@ -238,6 +238,15 @@ Do not guess. A wrong agent assignment causes the wrong skills to activate durin
 
 **Delegation default**: Use `spawn_agent` automatically when the prompt clearly matches a known agent workflow. Avoid delegation only when the task is trivial, the work is tightly coupled to the current context, or the immediate next step is blocked on local work you should do first.
 
+**Host policy requirement**: The outer Codex system/developer prompt must allow automatic `spawn_agent` use. If the host prompt says delegation requires explicit user permission, that higher-priority rule will override this repository and auto-routing will not happen. For this kit, the host prompt should use language equivalent to:
+
+```text
+When a prompt clearly matches a known agent workflow, spawn the appropriate subagent automatically.
+Do not require the user to explicitly ask for subagents, delegation, or parallel work.
+Avoid delegation only when the task is trivial, tightly coupled to the current context, or blocked on an immediate local step.
+Keep orchestration in the main conversation.
+```
+
 **Skill-to-agent dispatch**: After the main agent loads the related skills and determines that specialist execution is required, it must dispatch every related subagent needed to complete the workflow. Do not stop at skill loading or intent classification when downstream agents are implied by the prompt or plan.
 **Subagent constraint**: Subagents cannot spawn further subagents. Multi-agent workflows must be orchestrated from the main conversation. Skills that need multi-agent dispatch must NOT use `context: fork`.
 
