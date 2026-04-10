@@ -6,7 +6,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 tri-ai-kit is a multi-agent development toolkit for Claude Code. It provides 22 specialized agents, 60+ skills, hooks, and a 15-phase production delivery workflow. The main conversation always acts as orchestrator — it routes to agents via the Agent tool and merges results. Agents never spawn other agents.
 
-This is the `claude/` subdirectory of the tri-ai-kit monorepo. The `.claude/` folder here is the **source of truth** for all agents and skills. Never edit `antigravity/` or `codex/` directly — they are auto-generated via sync scripts.
+This is the `claude/` subdirectory of the tri-ai-kit monorepo. The `.claude/` folder here is the **source of truth** for all agents and skills. Never edit `antigravity/`, `codex/`, or `opencode/` directly — they are auto-generated via sync scripts.
 
 ## Architecture
 
@@ -84,6 +84,9 @@ After editing agents or skills, sync to other platforms (run from repo root in P
 
 # Sync to Codex/Copilot
 .\scripts\sync-to-codex.ps1
+
+# Sync to OpenCode
+.\scripts\sync-to-opencode.ps1
 ```
 
 ## Decision Authority

@@ -376,5 +376,279 @@
       },
       "default": {}
     }
+  },
+  "opencode": {
+    "_comment": "Official OpenCode package layout under tri-ai-kit/opencode.",
+    "packageRoot": "opencode",
+    "generatedPaths": [
+      "opencode/AGENTS.md",
+      "opencode/WORKFLOW.md",
+      "opencode/opencode.json",
+      "opencode/.agents/skills",
+      "opencode/.opencode/agents",
+      "opencode/.opencode/commands"
+    ],
+    "documents": {
+      "instructionBase": "claude/CLAUDE.md",
+      "instructionSupplement": "claude/AGENTS.md",
+      "workflowSource": "claude/WORKFLOW.md",
+      "instructionOutput": "opencode/AGENTS.md",
+      "workflowOutput": "opencode/WORKFLOW.md",
+      "supplementSections": [
+        "Routing",
+        "Planning — Agent & Skill Analysis (REQUIRED)",
+        "Orchestration",
+        "Guidelines",
+        "Related Documents"
+      ]
+    },
+    "agents": {
+      "source": "claude/.claude/agents",
+      "target": "opencode/.opencode/agents",
+      "coordinatorAgents": [
+        "developer",
+        "planner",
+        "project-manager"
+      ],
+      "readOnlyAgents": [
+        "a11y-specialist",
+        "backend-architect",
+        "brainstormer",
+        "code-reviewer",
+        "frontend-architect",
+        "knowledge-graph-guide",
+        "muji",
+        "planner",
+        "project-manager",
+        "researcher",
+        "security-auditor"
+      ]
+    },
+    "commands": {
+      "target": "opencode/.opencode/commands",
+      "entries": [
+        {
+          "name": "brainstorm",
+          "description": "Structured problem framing and trade-off analysis",
+          "agent": "brainstormer",
+          "subtask": true,
+          "template": "Use the current conversation, repository, and plan context. Load the `brainstorm` skill and produce a structured analysis of the user's request, including options, risks, trade-offs, and a recommendation. Additional command input: $ARGUMENTS"
+        },
+        {
+          "name": "research",
+          "description": "Research a technical topic or implementation approach",
+          "agent": "researcher",
+          "subtask": true,
+          "template": "Use the current conversation and repository context. Load the `research` skill, gather the most relevant evidence from the codebase first, then produce a concise recommendation. Additional command input: $ARGUMENTS"
+        },
+        {
+          "name": "plan",
+          "description": "Create or refine an implementation plan",
+          "agent": "planner",
+          "subtask": true,
+          "template": "Use the current conversation, repository, and active plan context. Load the `plan` skill and create or refine the implementation plan for the user's request. Additional command input: $ARGUMENTS"
+        },
+        {
+          "name": "plan-hard",
+          "description": "Create a deeper research-heavy implementation plan",
+          "agent": "planner",
+          "subtask": true,
+          "template": "Use the current conversation, repository, and active plan context. Load the `plan-hard` skill and create a deep implementation plan with explicit research, architecture, dependencies, and risks. Additional command input: $ARGUMENTS"
+        },
+        {
+          "name": "cook",
+          "description": "Implement work from the current request or active plan",
+          "agent": "developer",
+          "subtask": true,
+          "template": "Use the current conversation, repository, and active plan context. Load the `cook` skill and implement the requested work end-to-end, following the plan when one exists. Additional command input: $ARGUMENTS"
+        },
+        {
+          "name": "fix",
+          "description": "Diagnose and fix a bug or failure",
+          "agent": "debugger",
+          "subtask": true,
+          "template": "Use the current conversation, repository, and failure context. Load the `fix` skill, identify the root cause, implement the fix, and validate it. Additional command input: $ARGUMENTS"
+        },
+        {
+          "name": "review",
+          "description": "Run a focused code review",
+          "agent": "code-reviewer",
+          "subtask": true,
+          "template": "Use the current conversation, repository, and diff context. Load the `review` skill and perform a review that prioritizes correctness, regressions, risks, and missing tests. Additional command input: $ARGUMENTS"
+        },
+        {
+          "name": "audit",
+          "description": "Run a structured quality, UI, or a11y audit",
+          "agent": "build",
+          "template": "Use the current conversation, repository, and diff context. Load the `audit` skill and route to the appropriate specialists needed to complete the audit. Additional command input: $ARGUMENTS"
+        },
+        {
+          "name": "test",
+          "description": "Add, run, or evaluate tests",
+          "agent": "tester",
+          "subtask": true,
+          "template": "Use the current conversation, repository, and active plan context. Load the `test` skill and handle the requested testing work, including verification and follow-up fixes when appropriate. Additional command input: $ARGUMENTS"
+        },
+        {
+          "name": "debug",
+          "description": "Investigate and explain a bug or failure",
+          "agent": "debugger",
+          "subtask": true,
+          "template": "Use the current conversation and repository context. Load the `debug` skill and investigate the issue thoroughly before proposing or applying changes. Additional command input: $ARGUMENTS"
+        },
+        {
+          "name": "docs",
+          "description": "Write or update project documentation",
+          "agent": "docs-manager",
+          "subtask": true,
+          "template": "Use the current conversation, repository, and active plan context. Load the `docs` skill and complete the requested documentation work in the project's established style. Additional command input: $ARGUMENTS"
+        },
+        {
+          "name": "ask",
+          "description": "Answer a question about the codebase",
+          "agent": "researcher",
+          "subtask": true,
+          "template": "Use the current conversation and repository context. Load the `ask` skill and answer the user's codebase question with concrete file references. Additional command input: $ARGUMENTS"
+        },
+        {
+          "name": "sequential-thinking",
+          "description": "Break a complex problem into explicit reasoning steps",
+          "agent": "plan",
+          "template": "Use the current conversation and repository context. Load the `sequential-thinking` skill and reason through the problem step by step before recommending an action. Additional command input: $ARGUMENTS"
+        },
+        {
+          "name": "cloud-architect",
+          "description": "Evaluate cloud architecture and deployment decisions",
+          "agent": "devops-engineer",
+          "subtask": true,
+          "template": "Use the current conversation and repository context. Load the `cloud-architect` skill and produce a practical cloud architecture recommendation with trade-offs and rollout notes. Additional command input: $ARGUMENTS"
+        },
+        {
+          "name": "infra-docker",
+          "description": "Design or update containerization and local runtime setup",
+          "agent": "devops-engineer",
+          "subtask": true,
+          "template": "Use the current conversation and repository context. Load the `infra-docker` skill and complete the requested Docker or containerization work. Additional command input: $ARGUMENTS"
+        },
+        {
+          "name": "infra-cloud",
+          "description": "Design or update cloud infrastructure and deployment setup",
+          "agent": "devops-engineer",
+          "subtask": true,
+          "template": "Use the current conversation and repository context. Load the `infra-cloud` skill and complete the requested cloud infrastructure work. Additional command input: $ARGUMENTS"
+        },
+        {
+          "name": "git",
+          "description": "Handle commit, branch, and pull request workflows",
+          "agent": "git-manager",
+          "subtask": true,
+          "template": "Use the current conversation, repository, and git context. Complete the requested git workflow safely and non-interactively. Additional command input: $ARGUMENTS"
+        }
+      ]
+    },
+    "skills": {
+      "source": "claude/.claude/skills",
+      "target": "opencode/.agents/skills",
+      "excludeDirectories": [],
+      "excludeFiles": [
+        "skill-index.json"
+      ]
+    },
+    "skillIndex": {
+      "source": "claude/.claude/skills/skill-index.json",
+      "output": "opencode/.agents/skills/skill-index.json",
+      "normalizePathSeparators": true
+    },
+    "config": {
+      "output": "opencode/opencode.json",
+      "defaultAgent": "build",
+      "instructions": [
+        "WORKFLOW.md"
+      ]
+    },
+    "textExtensions": [
+      ".md",
+      ".txt",
+      ".json",
+      ".yaml",
+      ".yml",
+      ".toml",
+      ".cjs",
+      ".js",
+      ".mjs",
+      ".ts",
+      ".tsx",
+      ".ps1",
+      ".sh",
+      ".py",
+      ".rb",
+      ".env",
+      ".example"
+    ],
+    "transforms": {
+      "removeLineContaining": [
+        "node .claude/scripts/",
+        "set-active-plan.cjs",
+        "complete-plan.cjs",
+        "archive-plan.cjs",
+        "statusline-command.sh"
+      ],
+      "replacements": [
+        {
+          "from": "\\.claude/skills/",
+          "to": ".agents/skills/",
+          "isRegex": true
+        },
+        {
+          "from": "\\.claude/agents/",
+          "to": ".opencode/agents/",
+          "isRegex": true
+        },
+        {
+          "from": "\\.claude/commands/",
+          "to": ".opencode/commands/",
+          "isRegex": true
+        },
+        {
+          "from": "\\.claude/settings\\.json",
+          "to": "opencode.json",
+          "isRegex": true
+        },
+        {
+          "from": "\\.claude/settings\\.local\\.json",
+          "to": "opencode.json",
+          "isRegex": true
+        },
+        {
+          "from": "\\bCLAUDE\\.md\\b",
+          "to": "AGENTS.md",
+          "isRegex": true
+        },
+        {
+          "from": "Claude Code",
+          "to": "OpenCode"
+        },
+        {
+          "from": "claude.ai/code",
+          "to": "OpenCode"
+        },
+        {
+          "from": "via Agent tool",
+          "to": "via OpenCode subagent dispatch"
+        },
+        {
+          "from": "AskUserQuestion tool",
+          "to": "ask the user"
+        },
+        {
+          "from": "is an tri_ai_kit agent",
+          "to": "is a tri-ai-kit OpenCode subagent"
+        },
+        {
+          "from": "is a tri-ai-kit workflow",
+          "to": "is a tri-ai-kit OpenCode subagent"
+        }
+      ]
+    }
   }
 }

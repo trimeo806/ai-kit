@@ -1,0 +1,39 @@
+{
+  "eval_id": 2,
+  "run": "without_skill",
+  "expectations": [
+    {
+      "text": "flags_sql_injection",
+      "passed": true,
+      "evidence": "Section '1. SQL Injection — All Three Endpoints' rated Critical with OWASP A03 in summary table. Groups all 3 SQLi as one finding rather than separate."
+    },
+    {
+      "text": "flags_hardcoded_jwt_secret",
+      "passed": true,
+      "evidence": "Section '2. Hardcoded JWT Secret' rated Critical with OWASP A02 in summary table"
+    },
+    {
+      "text": "flags_no_auth_on_routes",
+      "passed": true,
+      "evidence": "Section '4. No Auth / IDOR' rated High with OWASP A01 in summary table — flags both /profile/:id and /update/:id"
+    },
+    {
+      "text": "flags_plaintext_password",
+      "passed": true,
+      "evidence": "Section '3. Plaintext Password Comparison' rated Critical with OWASP A02 — identifies plaintext storage"
+    },
+    {
+      "text": "provides_parameterized_query_fix",
+      "passed": true,
+      "evidence": "Fix mentions '$1, $2 placeholders with values as a separate array' — no code block but describes parameterized query approach"
+    },
+    {
+      "text": "provides_owasp_mapping",
+      "passed": true,
+      "evidence": "Summary table includes OWASP column: A03 Injection, A02 Crypto Failures, A01 Broken Access Control, A07 Auth Failures, A05 Misconfiguration"
+    }
+  ],
+  "pass_count": 6,
+  "total_count": 6,
+  "pass_rate": 1.0
+}
