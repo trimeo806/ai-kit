@@ -39,6 +39,7 @@ const DEFAULT_CONFIG = {
       enabled: true
     },
     'session-init': true,
+    'subagent-dispatch': true,
     'subagent-init': true,
     'context-reminder': true,
     'subagent-stop-reminder': true,

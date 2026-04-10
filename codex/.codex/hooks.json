@@ -46,6 +46,11 @@
             "type": "command",
             "command": "d=\"$PWD\"; while [ \"$d\" != \"/\" ] && [ ! -d \"$d/.codex/hooks\" ]; do d=\"$(dirname \"$d\")\"; done; node \"$d/.codex/hooks/context-reminder.cjs\"",
             "statusMessage": "Injecting project context"
+          },
+          {
+            "type": "command",
+            "command": "d=\"$PWD\"; while [ \"$d\" != \"/\" ] && [ ! -d \"$d/.codex/hooks\" ]; do d=\"$(dirname \"$d\")\"; done; node \"$d/.codex/hooks/subagent-dispatch.cjs\"",
+            "statusMessage": "Routing prompt to subagent"
           }
         ]
       }

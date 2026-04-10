@@ -37,7 +37,8 @@
       "nativeMatcher": null,
       "parityMode": "native",
       "commands": [
-        "d=\"$PWD\"; while [ \"$d\" != \"/\" ] && [ ! -d \"$d/.codex/hooks\" ]; do d=\"$(dirname \"$d\")\"; done; node \"$d/.codex/hooks/context-reminder.cjs\""
+        "d=\"$PWD\"; while [ \"$d\" != \"/\" ] && [ ! -d \"$d/.codex/hooks\" ]; do d=\"$(dirname \"$d\")\"; done; node \"$d/.codex/hooks/context-reminder.cjs\"",
+        "d=\"$PWD\"; while [ \"$d\" != \"/\" ] && [ ! -d \"$d/.codex/hooks\" ]; do d=\"$(dirname \"$d\")\"; done; node \"$d/.codex/hooks/subagent-dispatch.cjs\""
       ],
       "notes": []
     },
