@@ -397,6 +397,8 @@ function buildReminderContext({ sessionId, config, staticEnv, configDirName = '.
   // Resolve paths
   const devRulesPath = resolveRulesPath('development-rules.md', configDirName);
   const catalogScript = resolveScriptPath('generate_catalogs.py', configDirName);
+  const setActivePlanScript = resolveScriptPath('set-active-plan.cjs', configDirName)
+    || resolveScriptPath('set-active-plan.js', configDirName);
   const skillsVenv = resolveSkillsVenv(configDirName);
 
   // Build plan context

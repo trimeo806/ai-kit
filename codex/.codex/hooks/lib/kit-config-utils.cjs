@@ -254,7 +254,7 @@ function findMostRecentPlan(plansDir) {
  * Default timeout for git commands (5 seconds)
  * Prevents indefinite hangs on network mounts or corrupted repos
  */
-const DEFAULT_EXEC_TIMEOUT_MS = 5000;
+const DEFAULT_EXEC_TIMEOUT_MS = 500;
 
 /**
  * Safely execute shell command (internal helper)
@@ -266,27 +266,29 @@ const DEFAULT_EXEC_TIMEOUT_MS = 5000;
  * @returns {string|null} Command output or null
  */
 function execSafe(cmd, options = {}) {
-  // Whitelist of safe read-only commands
-  const allowedCommands = [
-    'git branch --show-current',
-    'git rev-parse --abbrev-ref HEAD',
-    'git rev-parse --show-toplevel'
-  ];
-  if (!allowedCommands.includes(cmd)) {
+  const allowedCommands = {
+    'git branch --show-current': ['git', ['branch', '--show-current']],
+    'git rev-parse --abbrev-ref HEAD': ['git', ['rev-parse', '--abbrev-ref', 'HEAD']],
+    'git rev-parse --show-toplevel': ['git', ['rev-parse', '--show-toplevel']]
+  };
+  const command = allowedCommands[cmd];
+  if (!command) {
     return null;
   }
 
   const { cwd = undefined, timeout = DEFAULT_EXEC_TIMEOUT_MS } = options;
 
   try {
-    return require('child_process')
-      .execSync(cmd, {
+    const [file, args] = command;
+    const result = require('child_process')
+      .spawnSync(file, args, {
         encoding: 'utf8',
         timeout,
         cwd,
-        stdio: ['pipe', 'pipe', 'pipe']
-      })
-      .trim();
+        stdio: ['ignore', 'pipe', 'pipe']
+      });
+    if (result.status !== 0 || result.error) return null;
+    return (result.stdout || '').trim();
   } catch (e) {
     return null;
   }
@@ -742,7 +744,7 @@ function resolveNamingPattern(planConfig, gitBranch) {
   const validation = validateNamingPattern(pattern);
   if (!validation.valid) {
     // Log warning but return pattern anyway (fail-safe)
-    if (process.env.tri-ai-kit_DEBUG) {
+    if (process.env.TRI_AI_KIT_DEBUG) {
       console.error(`[tri-ai-kit-config] Warning: ${validation.error}`);
     }
   }

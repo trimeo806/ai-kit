@@ -7,10 +7,11 @@
  * are properly blocked in monorepo structures.
  */
 
-const { execSync } = require('child_process');
 const path = require('path');
+const { checkScoutBlock } = require('../../lib/scout-checker.cjs');
 
 const hookPath = path.join(__dirname, '..', '..', 'scout-block.cjs');
+const ignoreFilePath = path.join(__dirname, '..', '..', '..', '.tri-ignore');
 
 const scenarios = [
   // === THE BUG CASES - These MUST be BLOCKED ===
@@ -139,8 +140,8 @@ const scenarios = [
   },
   {
     input: { tool_name: 'Glob', tool_input: { pattern: '**/*.ts' } },
-    expected: 'ALLOWED',
-    desc: 'Glob all .ts files'
+    expected: 'BLOCKED',
+    desc: 'Glob all .ts files is broad'
   },
   {
     input: { tool_name: 'Bash', tool_input: { command: 'find packages -name "*.json" | head' } },
@@ -168,36 +169,23 @@ let passed = 0;
 let failed = 0;
 
 for (const scenario of scenarios) {
-  try {
-    execSync(`node "${hookPath}"`, {
-      input: JSON.stringify(scenario.input),
-      encoding: 'utf-8',
-      stdio: ['pipe', 'pipe', 'pipe']
-    });
-    // Exit 0 = ALLOWED
-    const actual = 'ALLOWED';
-    const success = actual === scenario.expected;
-    if (success) {
-      console.log(`\x1b[32m✓\x1b[0m ${scenario.desc}: ${actual}`);
-      passed++;
-    } else {
-      console.log(`\x1b[31m✗\x1b[0m ${scenario.desc}: expected ${scenario.expected}, got ${actual}`);
-      failed++;
+  const result = checkScoutBlock({
+    toolName: scenario.input.tool_name,
+    toolInput: scenario.input.tool_input,
+    options: {
+      claudeDir: path.join(__dirname, '..', '..', '..'),
+      ignoreFilePath,
+      checkBroadPatterns: true
     }
-  } catch (error) {
-    // Exit 2 = BLOCKED
-    const actual = error.status === 2 ? 'BLOCKED' : `ERROR(${error.status})`;
-    const success = actual === scenario.expected;
-    if (success) {
-      console.log(`\x1b[32m✓\x1b[0m ${scenario.desc}: ${actual}`);
-      passed++;
-    } else {
-      console.log(`\x1b[31m✗\x1b[0m ${scenario.desc}: expected ${scenario.expected}, got ${actual}`);
-      if (error.stderr) {
-        console.log(`  stderr: ${error.stderr.toString().trim().split('\n')[0]}`);
-      }
-      failed++;
-    }
+  });
+  const actual = result.blocked ? 'BLOCKED' : 'ALLOWED';
+  const success = actual === scenario.expected;
+  if (success) {
+    console.log(`\x1b[32m✓\x1b[0m ${scenario.desc}: ${actual}`);
+    passed++;
+  } else {
+    console.log(`\x1b[31m✗\x1b[0m ${scenario.desc}: expected ${scenario.expected}, got ${actual}`);
+    failed++;
   }
 }
 
@@ -205,16 +193,16 @@ console.log(`\nResults: ${passed} passed, ${failed} failed`);
 
 // Highlight if any bug fix cases failed
 const bugFixFailed = scenarios.filter(s => s.desc.includes('[BUG FIX]')).some(s => {
-  try {
-    execSync(`node "${hookPath}"`, {
-      input: JSON.stringify(s.input),
-      encoding: 'utf-8',
-      stdio: ['pipe', 'pipe', 'pipe']
-    });
-    return s.expected === 'BLOCKED'; // Should have been blocked but wasn't
-  } catch (error) {
-    return error.status !== 2 && s.expected === 'BLOCKED';
-  }
+  const result = checkScoutBlock({
+    toolName: s.input.tool_name,
+    toolInput: s.input.tool_input,
+    options: {
+      claudeDir: path.join(__dirname, '..', '..', '..'),
+      ignoreFilePath,
+      checkBroadPatterns: true
+    }
+  });
+  return s.expected === 'BLOCKED' && !result.blocked;
 });
 
 if (bugFixFailed) {

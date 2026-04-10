@@ -6,7 +6,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "node \"$(git rev-parse --show-toplevel)/.codex/hooks/session-init.cjs\"",
+            "command": "d=\"$PWD\"; while [ \"$d\" != \"/\" ] && [ ! -d \"$d/.codex/hooks\" ]; do d=\"$(dirname \"$d\")\"; done; node \"$d/.codex/hooks/session-init.cjs\"",
             "statusMessage": "Initializing tri-ai-kit runtime"
           }
         ]
@@ -18,12 +18,12 @@
         "hooks": [
           {
             "type": "command",
-            "command": "node \"$(git rev-parse --show-toplevel)/.codex/hooks/scout-block.cjs\"",
+            "command": "d=\"$PWD\"; while [ \"$d\" != \"/\" ] && [ ! -d \"$d/.codex/hooks\" ]; do d=\"$(dirname \"$d\")\"; done; node \"$d/.codex/hooks/scout-block.cjs\"",
             "statusMessage": "Checking Bash command scope"
           },
           {
             "type": "command",
-            "command": "node \"$(git rev-parse --show-toplevel)/.codex/hooks/privacy-block.cjs\"",
+            "command": "d=\"$PWD\"; while [ \"$d\" != \"/\" ] && [ ! -d \"$d/.codex/hooks\" ]; do d=\"$(dirname \"$d\")\"; done; node \"$d/.codex/hooks/privacy-block.cjs\"",
             "statusMessage": "Checking sensitive paths"
           }
         ]
@@ -33,7 +33,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "node \"$(git rev-parse --show-toplevel)/.codex/hooks/build-gate-hook.cjs\"",
+            "command": "d=\"$PWD\"; while [ \"$d\" != \"/\" ] && [ ! -d \"$d/.codex/hooks\" ]; do d=\"$(dirname \"$d\")\"; done; node \"$d/.codex/hooks/build-gate-hook.cjs\"",
             "statusMessage": "Checking build gate"
           }
         ]
@@ -44,7 +44,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "node \"$(git rev-parse --show-toplevel)/.codex/hooks/context-reminder.cjs\"",
+            "command": "d=\"$PWD\"; while [ \"$d\" != \"/\" ] && [ ! -d \"$d/.codex/hooks\" ]; do d=\"$(dirname \"$d\")\"; done; node \"$d/.codex/hooks/context-reminder.cjs\"",
             "statusMessage": "Injecting project context"
           }
         ]
@@ -55,17 +55,17 @@
         "hooks": [
           {
             "type": "command",
-            "command": "node \"$(git rev-parse --show-toplevel)/.codex/hooks/session-metrics.cjs\" 2>/dev/null || true",
+            "command": "d=\"$PWD\"; while [ \"$d\" != \"/\" ] && [ ! -d \"$d/.codex/hooks\" ]; do d=\"$(dirname \"$d\")\"; done; node \"$d/.codex/hooks/session-metrics.cjs\" 2>/dev/null || true",
             "statusMessage": "Writing session metrics"
           },
           {
             "type": "command",
-            "command": "node \"$(git rev-parse --show-toplevel)/.codex/hooks/lesson-capture.cjs\" 2>/dev/null || true",
+            "command": "d=\"$PWD\"; while [ \"$d\" != \"/\" ] && [ ! -d \"$d/.codex/hooks\" ]; do d=\"$(dirname \"$d\")\"; done; node \"$d/.codex/hooks/lesson-capture.cjs\" 2>/dev/null || true",
             "statusMessage": "Capturing session lessons"
           },
           {
             "type": "command",
-            "command": "node \"$(git rev-parse --show-toplevel)/.codex/hooks/notifications/notify.cjs\" 2>/dev/null || true",
+            "command": "d=\"$PWD\"; while [ \"$d\" != \"/\" ] && [ ! -d \"$d/.codex/hooks\" ]; do d=\"$(dirname \"$d\")\"; done; node \"$d/.codex/hooks/notifications/notify.cjs\" 2>/dev/null || true",
             "statusMessage": "Sending notifications"
           }
         ]

@@ -13,7 +13,7 @@
       "nativeMatcher": "startup|resume",
       "parityMode": "native",
       "commands": [
-        "node \"$(git rev-parse --show-toplevel)/.codex/hooks/session-init.cjs\""
+        "d=\"$PWD\"; while [ \"$d\" != \"/\" ] && [ ! -d \"$d/.codex/hooks\" ]; do d=\"$(dirname \"$d\")\"; done; node \"$d/.codex/hooks/session-init.cjs\""
       ],
       "notes": []
     },
@@ -24,7 +24,7 @@
       "nativeMatcher": null,
       "parityMode": "runtime_only",
       "commands": [
-        "node \"$(git rev-parse --show-toplevel)/.codex/hooks/subagent-init.cjs\""
+        "d=\"$PWD\"; while [ \"$d\" != \"/\" ] && [ ! -d \"$d/.codex/hooks\" ]; do d=\"$(dirname \"$d\")\"; done; node \"$d/.codex/hooks/subagent-init.cjs\""
       ],
       "notes": [
         "Codex does not currently expose this lifecycle event natively."
@@ -37,7 +37,7 @@
       "nativeMatcher": null,
       "parityMode": "native",
       "commands": [
-        "node \"$(git rev-parse --show-toplevel)/.codex/hooks/context-reminder.cjs\""
+        "d=\"$PWD\"; while [ \"$d\" != \"/\" ] && [ ! -d \"$d/.codex/hooks\" ]; do d=\"$(dirname \"$d\")\"; done; node \"$d/.codex/hooks/context-reminder.cjs\""
       ],
       "notes": []
     },
@@ -48,7 +48,7 @@
       "nativeMatcher": null,
       "parityMode": "runtime_only",
       "commands": [
-        "node \"$(git rev-parse --show-toplevel)/.codex/hooks/post-index-reminder.cjs\""
+        "d=\"$PWD\"; while [ \"$d\" != \"/\" ] && [ ! -d \"$d/.codex/hooks\" ]; do d=\"$(dirname \"$d\")\"; done; node \"$d/.codex/hooks/post-index-reminder.cjs\""
       ],
       "notes": [
         "Codex currently only emits Bash for PostToolUse; this matcher cannot be expressed natively."
@@ -61,8 +61,8 @@
       "nativeMatcher": "Bash",
       "parityMode": "hybrid",
       "commands": [
-        "node \"$(git rev-parse --show-toplevel)/.codex/hooks/scout-block.cjs\"",
-        "node \"$(git rev-parse --show-toplevel)/.codex/hooks/privacy-block.cjs\""
+        "d=\"$PWD\"; while [ \"$d\" != \"/\" ] && [ ! -d \"$d/.codex/hooks\" ]; do d=\"$(dirname \"$d\")\"; done; node \"$d/.codex/hooks/scout-block.cjs\"",
+        "d=\"$PWD\"; while [ \"$d\" != \"/\" ] && [ ! -d \"$d/.codex/hooks\" ]; do d=\"$(dirname \"$d\")\"; done; node \"$d/.codex/hooks/privacy-block.cjs\""
       ],
       "notes": [
         "Codex currently only emits Bash for PreToolUse; non-Bash tool interception requires compatibility runtime coverage."
@@ -75,7 +75,7 @@
       "nativeMatcher": "Bash",
       "parityMode": "native",
       "commands": [
-        "node \"$(git rev-parse --show-toplevel)/.codex/hooks/build-gate-hook.cjs\""
+        "d=\"$PWD\"; while [ \"$d\" != \"/\" ] && [ ! -d \"$d/.codex/hooks\" ]; do d=\"$(dirname \"$d\")\"; done; node \"$d/.codex/hooks/build-gate-hook.cjs\""
       ],
       "notes": []
     },
@@ -86,7 +86,7 @@
       "nativeMatcher": null,
       "parityMode": "runtime_only",
       "commands": [
-        "node \"$(git rev-parse --show-toplevel)/.codex/hooks/subagent-stop-reminder.cjs\""
+        "d=\"$PWD\"; while [ \"$d\" != \"/\" ] && [ ! -d \"$d/.codex/hooks\" ]; do d=\"$(dirname \"$d\")\"; done; node \"$d/.codex/hooks/subagent-stop-reminder.cjs\""
       ],
       "notes": [
         "Codex does not currently expose this lifecycle event natively."
@@ -99,9 +99,9 @@
       "nativeMatcher": null,
       "parityMode": "native",
       "commands": [
-        "node \"$(git rev-parse --show-toplevel)/.codex/hooks/session-metrics.cjs\" 2>/dev/null || true",
-        "node \"$(git rev-parse --show-toplevel)/.codex/hooks/lesson-capture.cjs\" 2>/dev/null || true",
-        "node \"$(git rev-parse --show-toplevel)/.codex/hooks/notifications/notify.cjs\" 2>/dev/null || true"
+        "d=\"$PWD\"; while [ \"$d\" != \"/\" ] && [ ! -d \"$d/.codex/hooks\" ]; do d=\"$(dirname \"$d\")\"; done; node \"$d/.codex/hooks/session-metrics.cjs\" 2>/dev/null || true",
+        "d=\"$PWD\"; while [ \"$d\" != \"/\" ] && [ ! -d \"$d/.codex/hooks\" ]; do d=\"$(dirname \"$d\")\"; done; node \"$d/.codex/hooks/lesson-capture.cjs\" 2>/dev/null || true",
+        "d=\"$PWD\"; while [ \"$d\" != \"/\" ] && [ ! -d \"$d/.codex/hooks\" ]; do d=\"$(dirname \"$d\")\"; done; node \"$d/.codex/hooks/notifications/notify.cjs\" 2>/dev/null || true"
       ],
       "notes": []
     }

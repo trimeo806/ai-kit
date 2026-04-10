@@ -25,7 +25,7 @@ Thư mục hooks được chia làm 2 phần tĩnh cơ bản:
 Nhóm này bơm dữ liệu ngữ cảnh vào Session, giúp AI lấy được dữ liệu cấu hình dự án mà không tốn Tokens đi quét bằng lệnh Bash.
 
 - **`session-init.cjs`** (Sự kiện: `SessionStart`)
-  - **Tác dụng:** Chạy một lần duy nhất khi mở Terminal/Chat. Nó gọi module `lib/project-detector.cjs` để scan xem project đang dùng React, Go hay Node.js; branch git hiện tại là gì. Sinh ra các biến môi trường (`tri-ai-kit_ACTIVE_PLAN`, `tri-ai-kit_PROJECT_TYPE`, v.v) lưu xuống bộ nhớ tạm.
+  - **Tác dụng:** Chạy một lần duy nhất khi mở Terminal/Chat. Nó gọi module `lib/project-detector.cjs` để scan xem project đang dùng React, Go hay Node.js; branch git hiện tại là gì. Sinh ra các biến môi trường (`TRI_AI_KIT_ACTIVE_PLAN`, `TRI_AI_KIT_PROJECT_TYPE`, v.v) lưu xuống bộ nhớ tạm.
   - **Cách chỉnh sửa:** Sửa logic nhận diện project stack trong `lib/project-detector.cjs`. Chỉnh sửa các ENV cần bơm lưu ý add prefix `tri-ai-kit_` để chuẩn form.
 
 - **`context-reminder.cjs`** (Sự kiện: `UserPromptSubmit`)

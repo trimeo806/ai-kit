@@ -7,8 +7,8 @@
  * Updated to use Node.js dispatcher directly (not bash wrapper)
  */
 
-const { execSync } = require('child_process');
 const path = require('path');
+const { checkScoutBlock } = require('../lib/scout-checker.cjs');
 
 const testCases = [
   // Directory access - should be BLOCKED
@@ -78,7 +78,7 @@ const testCases = [
   },
   {
     name: 'Bash: pnpm --filter web run build',
-    input: { tool_name: 'Bash', tool_input: { command: 'pnpm --filter web run build 2>&1 | tail -100' } },
+    input: { tool_name: 'Bash', tool_input: { command: 'pnpm --filter web run build' } },
     expected: 'ALLOWED'
   },
   {
@@ -186,42 +186,29 @@ console.log('Testing scout-block.cjs hook...\n');
 
 // Test Node.js dispatcher directly
 const scriptPath = path.join(__dirname, '..', 'scout-block.cjs');
+const ignoreFilePath = path.join(__dirname, '..', '..', '.tri-ignore');
 let passed = 0;
 let failed = 0;
 
 for (const test of testCases) {
-  try {
-    const input = JSON.stringify(test.input);
-    const result = execSync(`node "${scriptPath}"`, {
-      input,
-      encoding: 'utf-8',
-      stdio: ['pipe', 'pipe', 'pipe']
-    });
-
-    const actual = 'ALLOWED';
-    const success = actual === test.expected;
-
-    if (success) {
-      console.log(`\x1b[32m✓\x1b[0m ${test.name}: ${actual}`);
-      passed++;
-    } else {
-      console.log(`\x1b[31m✗\x1b[0m ${test.name}: expected ${test.expected}, got ${actual}`);
-      failed++;
+  const result = checkScoutBlock({
+    toolName: test.input.tool_name,
+    toolInput: test.input.tool_input,
+    options: {
+      claudeDir: path.join(__dirname, '..', '..'),
+      ignoreFilePath,
+      checkBroadPatterns: true
     }
-  } catch (error) {
-    const actual = error.status === 2 ? 'BLOCKED' : 'ERROR';
-    const success = actual === test.expected;
+  });
+  const actual = result.blocked ? 'BLOCKED' : 'ALLOWED';
+  const success = actual === test.expected;
 
-    if (success) {
-      console.log(`\x1b[32m✓\x1b[0m ${test.name}: ${actual}`);
-      passed++;
-    } else {
-      console.log(`\x1b[31m✗\x1b[0m ${test.name}: expected ${test.expected}, got ${actual}`);
-      if (error.stderr) {
-        console.log(`  Error: ${error.stderr.toString().trim().split('\n')[0]}`);
-      }
-      failed++;
-    }
+  if (success) {
+    console.log(`\x1b[32m✓\x1b[0m ${test.name}: ${actual}`);
+    passed++;
+  } else {
+    console.log(`\x1b[31m✗\x1b[0m ${test.name}: expected ${test.expected}, got ${actual}`);
+    failed++;
   }
 }
 

@@ -121,68 +121,68 @@ async function main() {
 
     if (envFile) {
       // Session & plan config
-      writeEnv(envFile, 'tri-ai-kit_SESSION_ID', sessionId || '');
-      writeEnv(envFile, 'tri-ai-kit_PLAN_NAMING_FORMAT', config.plan.namingFormat);
-      writeEnv(envFile, 'tri-ai-kit_PLAN_DATE_FORMAT', config.plan.dateFormat);
-      writeEnv(envFile, 'tri-ai-kit_PLAN_ISSUE_PREFIX', config.plan.issuePrefix || '');
-      writeEnv(envFile, 'tri-ai-kit_PLAN_REPORTS_DIR', config.plan.reportsDir);
+      writeEnv(envFile, 'TRI_AI_KIT_SESSION_ID', sessionId || '');
+      writeEnv(envFile, 'TRI_AI_KIT_PLAN_NAMING_FORMAT', config.plan.namingFormat);
+      writeEnv(envFile, 'TRI_AI_KIT_PLAN_DATE_FORMAT', config.plan.dateFormat);
+      writeEnv(envFile, 'TRI_AI_KIT_PLAN_ISSUE_PREFIX', config.plan.issuePrefix || '');
+      writeEnv(envFile, 'TRI_AI_KIT_PLAN_REPORTS_DIR', config.plan.reportsDir);
 
       // NEW: Resolved naming pattern for DRY file naming in agents
       // Example: "251212-1830-GH-88-{slug}" or "251212-1830-{slug}"
-      // Agents use: `{agent-type}-$tri-ai-kit_NAME_PATTERN.md` and substitute {slug}
-      writeEnv(envFile, 'tri-ai-kit_NAME_PATTERN', namePattern);
+      // Agents use: `{agent-type}-$TRI_AI_KIT_NAME_PATTERN.md` and substitute {slug}
+      writeEnv(envFile, 'TRI_AI_KIT_NAME_PATTERN', namePattern);
 
       // Plan resolution
-      writeEnv(envFile, 'tri-ai-kit_ACTIVE_PLAN', resolved.resolvedBy === 'session' ? resolved.path : '');
-      writeEnv(envFile, 'tri-ai-kit_SUGGESTED_PLAN', resolved.resolvedBy === 'branch' ? resolved.path : '');
+      writeEnv(envFile, 'TRI_AI_KIT_ACTIVE_PLAN', resolved.resolvedBy === 'session' ? resolved.path : '');
+      writeEnv(envFile, 'TRI_AI_KIT_SUGGESTED_PLAN', resolved.resolvedBy === 'branch' ? resolved.path : '');
 
       // Paths - use absolute paths based on CWD for subdirectory workflow support (Issue #327)
-      writeEnv(envFile, 'tri-ai-kit_GIT_ROOT', staticEnv.gitRoot || '');
-      writeEnv(envFile, 'tri-ai-kit_REPORTS_PATH', path.join(baseDir, reportsPath));
-      writeEnv(envFile, 'tri-ai-kit_DOCS_PATH', path.join(baseDir, config.paths.docs));
-      writeEnv(envFile, 'tri-ai-kit_PLANS_PATH', path.join(baseDir, config.paths.plans));
-      writeEnv(envFile, 'tri-ai-kit_PROJECT_ROOT', process.cwd());
+      writeEnv(envFile, 'TRI_AI_KIT_GIT_ROOT', staticEnv.gitRoot || '');
+      writeEnv(envFile, 'TRI_AI_KIT_REPORTS_PATH', path.join(baseDir, reportsPath));
+      writeEnv(envFile, 'TRI_AI_KIT_DOCS_PATH', path.join(baseDir, config.paths.docs));
+      writeEnv(envFile, 'TRI_AI_KIT_PLANS_PATH', path.join(baseDir, config.paths.plans));
+      writeEnv(envFile, 'TRI_AI_KIT_PROJECT_ROOT', process.cwd());
 
       // Project detection
-      writeEnv(envFile, 'tri-ai-kit_PROJECT_TYPE', detections.type || '');
-      writeEnv(envFile, 'tri-ai-kit_PACKAGE_MANAGER', detections.pm || '');
-      writeEnv(envFile, 'tri-ai-kit_FRAMEWORK', detections.framework || '');
+      writeEnv(envFile, 'TRI_AI_KIT_PROJECT_TYPE', detections.type || '');
+      writeEnv(envFile, 'TRI_AI_KIT_PACKAGE_MANAGER', detections.pm || '');
+      writeEnv(envFile, 'TRI_AI_KIT_FRAMEWORK', detections.framework || '');
 
       // NEW: Static environment info (so other hooks don't need to recompute)
-      writeEnv(envFile, 'tri-ai-kit_NODE_VERSION', staticEnv.nodeVersion);
-      writeEnv(envFile, 'tri-ai-kit_PYTHON_VERSION', staticEnv.pythonVersion || '');
-      writeEnv(envFile, 'tri-ai-kit_OS_PLATFORM', staticEnv.osPlatform);
-      writeEnv(envFile, 'tri-ai-kit_GIT_URL', staticEnv.gitUrl || '');
-      writeEnv(envFile, 'tri-ai-kit_GIT_BRANCH', staticEnv.gitBranch || '');
-      writeEnv(envFile, 'tri-ai-kit_USER', staticEnv.user);
-      writeEnv(envFile, 'tri-ai-kit_LOCALE', staticEnv.locale);
-      writeEnv(envFile, 'tri-ai-kit_TIMEZONE', staticEnv.timezone);
-      writeEnv(envFile, 'tri-ai-kit_CLAUDE_SETTINGS_DIR', staticEnv.claudeSettingsDir);
+      writeEnv(envFile, 'TRI_AI_KIT_NODE_VERSION', staticEnv.nodeVersion);
+      writeEnv(envFile, 'TRI_AI_KIT_PYTHON_VERSION', staticEnv.pythonVersion || '');
+      writeEnv(envFile, 'TRI_AI_KIT_OS_PLATFORM', staticEnv.osPlatform);
+      writeEnv(envFile, 'TRI_AI_KIT_GIT_URL', staticEnv.gitUrl || '');
+      writeEnv(envFile, 'TRI_AI_KIT_GIT_BRANCH', staticEnv.gitBranch || '');
+      writeEnv(envFile, 'TRI_AI_KIT_USER', staticEnv.user);
+      writeEnv(envFile, 'TRI_AI_KIT_LOCALE', staticEnv.locale);
+      writeEnv(envFile, 'TRI_AI_KIT_TIMEZONE', staticEnv.timezone);
+      writeEnv(envFile, 'TRI_AI_KIT_CLAUDE_SETTINGS_DIR', staticEnv.claudeSettingsDir);
 
       // Locale config
       if (config.locale?.thinkingLanguage) {
-        writeEnv(envFile, 'tri-ai-kit_THINKING_LANGUAGE', config.locale.thinkingLanguage);
+        writeEnv(envFile, 'TRI_AI_KIT_THINKING_LANGUAGE', config.locale.thinkingLanguage);
       }
       if (config.locale?.responseLanguage) {
-        writeEnv(envFile, 'tri-ai-kit_RESPONSE_LANGUAGE', config.locale.responseLanguage);
+        writeEnv(envFile, 'TRI_AI_KIT_RESPONSE_LANGUAGE', config.locale.responseLanguage);
       }
 
       // Plan validation config (for /plan:validate, /plan:deep, /plan:parallel)
       const validation = config.plan?.validation || {};
-      writeEnv(envFile, 'tri-ai-kit_VALIDATION_MODE', validation.mode || 'prompt');
-      writeEnv(envFile, 'tri-ai-kit_VALIDATION_MIN_QUESTIONS', validation.minQuestions || 3);
-      writeEnv(envFile, 'tri-ai-kit_VALIDATION_MAX_QUESTIONS', validation.maxQuestions || 8);
-      writeEnv(envFile, 'tri-ai-kit_VALIDATION_FOCUS_AREAS', (validation.focusAreas || ['assumptions', 'risks', 'tradeoffs', 'architecture']).join(','));
+      writeEnv(envFile, 'TRI_AI_KIT_VALIDATION_MODE', validation.mode || 'prompt');
+      writeEnv(envFile, 'TRI_AI_KIT_VALIDATION_MIN_QUESTIONS', validation.minQuestions || 3);
+      writeEnv(envFile, 'TRI_AI_KIT_VALIDATION_MAX_QUESTIONS', validation.maxQuestions || 8);
+      writeEnv(envFile, 'TRI_AI_KIT_VALIDATION_FOCUS_AREAS', (validation.focusAreas || ['assumptions', 'risks', 'tradeoffs', 'architecture']).join(','));
 
       // Coding level config (for output style selection)
       const codingLevel = config.codingLevel ?? 5;
-      writeEnv(envFile, 'tri-ai-kit_CODING_LEVEL', codingLevel);
-      writeEnv(envFile, 'tri-ai-kit_CODING_LEVEL_STYLE', getCodingLevelStyleName(codingLevel));
+      writeEnv(envFile, 'TRI_AI_KIT_CODING_LEVEL', codingLevel);
+      writeEnv(envFile, 'TRI_AI_KIT_CODING_LEVEL_STYLE', getCodingLevelStyleName(codingLevel));
 
       // Research engine config
       const researchCfg = getResearchConfig(config);
-      writeEnv(envFile, 'tri-ai-kit_RESEARCH_ENGINE', researchCfg.engine);
-      writeEnv(envFile, 'tri-ai-kit_GEMINI_MODEL', researchCfg.geminiModel);
+      writeEnv(envFile, 'TRI_AI_KIT_RESEARCH_ENGINE', researchCfg.engine);
+      writeEnv(envFile, 'TRI_AI_KIT_GEMINI_MODEL', researchCfg.geminiModel);
 
       // Propagate API keys from .codex/.env to subagent shells
       if (process.env.GEMINI_API_KEY) writeEnv(envFile, 'GEMINI_API_KEY', process.env.GEMINI_API_KEY);

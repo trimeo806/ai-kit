@@ -23,13 +23,23 @@ const { execSync, execFileSync } = require('child_process');
  * @param {number} [timeoutMs=5000] - Timeout in milliseconds
  * @returns {string|null} Output or null on error
  */
-function execSafe(cmd, timeoutMs = 5000) {
+function execSafe(cmd, timeoutMs = 500) {
+  const allowedCommands = {
+    'git config --get remote.origin.url': ['git', ['config', '--get', 'remote.origin.url']],
+    'git branch --show-current': ['git', ['branch', '--show-current']],
+    'git rev-parse --show-toplevel': ['git', ['rev-parse', '--show-toplevel']]
+  };
+  const command = allowedCommands[cmd];
+  if (!command) return null;
+
   try {
-    return execSync(cmd, {
+    const [file, args] = command;
+    const result = execFileSync(file, args, {
       encoding: 'utf8',
       timeout: timeoutMs,
       stdio: ['pipe', 'pipe', 'pipe']
-    }).trim();
+    });
+    return result.trim();
   } catch (e) {
     return null;
   }

@@ -13,7 +13,7 @@ This directory contains hooks for Codex sessions.
 | **Notifications** | `notifications/` | Multi-provider notification system (Telegram, Discord, Slack) |
 | **Scout Block** | `scout-block.cjs` | Blocks heavy directories (node_modules, .git, etc.) |
 | **Privacy Block** | `privacy-block.cjs` | Prevents access to sensitive files |
-| **Modularization** | `modularization-hook.js` | Suggests code modularization for large files |
+| **Modularization** | Optional legacy hook | Not included in this Codex hook package |
 | **Session Init** | `session-init.cjs` | Session startup initialization |
 | **Context Reminder** | `context-reminder.cjs` | Session context injection |
 
@@ -150,7 +150,7 @@ notifications/
 
 Cross-platform hook blocking heavy directories to improve Claude performance.
 
-**Blocked Patterns** (configured in `.claude/.ckignore`):
+**Blocked Patterns** (configured in `.codex/.tri-ignore`):
 - `node_modules`, `__pycache__`, `.git`, `dist`, `build`
 
 **Testing:**
