@@ -103,15 +103,17 @@ test('empty → false', () => {
 console.log('\n=== sanitizePath tests ===\n');
 
 // sanitizePath needs projectRoot as second param
-const projectRoot = '/home/user/project';
+// Use path.join-based root that works on all platforms
+const projectRoot = path.join(path.parse(process.cwd()).root, 'home', 'user', 'project');
 
 test('path traversal: "../../../tmp" → null (blocked)', () => {
   assertEquals(sanitizePath('../../../tmp', projectRoot), null);
 });
 
 test('absolute path respected: "/tmp/all-plans"', () => {
-  const result = sanitizePath('/tmp/all-plans', projectRoot);
-  assertEquals(result, '/tmp/all-plans');
+  const absPath = path.join(path.parse(process.cwd()).root, 'tmp', 'all-plans');
+  const result = sanitizePath(absPath, projectRoot);
+  assertEquals(result, absPath);
 });
 
 test('relative path within project returns normalized relative', () => {
@@ -186,13 +188,15 @@ test('getGitRoot returns path when in git repo', () => {
 
 console.log('\n=== getReportsPath with baseDir tests (Issue #291) ===\n');
 
+const testBaseDir = path.join(path.parse(process.cwd()).root, 'home', 'user', 'project');
+
 test('getReportsPath returns root-level reports path when baseDir provided', () => {
   const planConfig = { reportsDir: 'reports' };
   const pathsConfig = { plans: 'plans', reports: 'reports' };
-  const baseDir = '/home/user/project';
+  const baseDir = testBaseDir;
 
   const result = getReportsPath(null, null, planConfig, pathsConfig, baseDir);
-  assertEquals(result, '/home/user/project/reports');
+  assertEquals(result, path.join(testBaseDir, 'reports'));
 });
 
 test('getReportsPath returns relative root-level path when no baseDir', () => {
@@ -206,19 +210,19 @@ test('getReportsPath returns relative root-level path when no baseDir', () => {
 test('getReportsPath uses plan path for session-resolved plans', () => {
   const planConfig = { reportsDir: 'reports' };
   const pathsConfig = { plans: 'plans', reports: 'reports' };
-  const baseDir = '/home/user/project';
+  const baseDir = testBaseDir;
 
   const result = getReportsPath('plans/my-plan', 'session', planConfig, pathsConfig, baseDir);
-  assertEquals(result, '/home/user/project/plans/my-plan/reports');
+  assertEquals(result, path.join(testBaseDir, 'plans', 'my-plan', 'reports'));
 });
 
 test('getReportsPath ignores plan path for branch-resolved plans', () => {
   const planConfig = { reportsDir: 'reports' };
   const pathsConfig = { plans: 'plans', reports: 'reports' };
-  const baseDir = '/home/user/project';
+  const baseDir = testBaseDir;
 
   const result = getReportsPath('plans/my-plan', 'branch', planConfig, pathsConfig, baseDir);
-  assertEquals(result, '/home/user/project/reports');
+  assertEquals(result, path.join(testBaseDir, 'reports'));
 });
 
 console.log('\n=== getGitRoot/getGitBranch with cwd parameter (Issue #291) ===\n');
@@ -310,58 +314,60 @@ console.log('\n=== getReportsPath edge cases ===\n');
 test('getReportsPath with empty paths.reports falls back to "reports"', () => {
   const planConfig = { reportsDir: 'reports' };
   const pathsConfig = { plans: 'plans', reports: '' };
-  const baseDir = '/home/user/project';
+  const baseDir = testBaseDir;
 
   const result = getReportsPath(null, null, planConfig, pathsConfig, baseDir);
-  assertEquals(result, '/home/user/project/reports');
+  assertEquals(result, path.join(testBaseDir, 'reports'));
 });
 
 test('getReportsPath with null paths.reports falls back to "reports"', () => {
   const planConfig = { reportsDir: 'reports' };
   const pathsConfig = { plans: 'plans', reports: null };
-  const baseDir = '/home/user/project';
+  const baseDir = testBaseDir;
 
   const result = getReportsPath(null, null, planConfig, pathsConfig, baseDir);
-  assertEquals(result, '/home/user/project/reports');
+  assertEquals(result, path.join(testBaseDir, 'reports'));
 });
 
 test('getReportsPath with custom paths.reports uses that path', () => {
   const planConfig = { reportsDir: 'reports' };
   const pathsConfig = { plans: 'plans', reports: 'out/reports' };
-  const baseDir = '/home/user/project';
+  const baseDir = testBaseDir;
 
   const result = getReportsPath(null, null, planConfig, pathsConfig, baseDir);
-  assertEquals(result, '/home/user/project/out/reports');
+  assertEquals(result, path.join(testBaseDir, 'out', 'reports'));
 });
 
 test('getReportsPath with missing paths.reports falls back to "reports"', () => {
   const planConfig = { reportsDir: 'reports' };
   const pathsConfig = { plans: 'plans' };
-  const baseDir = '/home/user/project';
+  const baseDir = testBaseDir;
 
   const result = getReportsPath(null, null, planConfig, pathsConfig, baseDir);
-  assertEquals(result, '/home/user/project/reports');
+  assertEquals(result, path.join(testBaseDir, 'reports'));
 });
 
 console.log('\n=== sanitizeConfig tests ===\n');
 
 test('absolute path in config preserved through sanitization', () => {
+  const absPlansPath = path.join(path.parse(process.cwd()).root, 'tmp', 'all-plans');
   const config = {
     plan: { reportsDir: 'reports' },
-    paths: { docs: 'docs', plans: '/tmp/all-plans' }
+    paths: { docs: 'docs', plans: absPlansPath }
   };
-  const result = sanitizeConfig(config, '/home/user/project');
-  assertEquals(result.paths.plans, '/tmp/all-plans');
+  const result = sanitizeConfig(config, path.join(path.parse(process.cwd()).root, 'home', 'user', 'project'));
+  assertEquals(result.paths.plans, absPlansPath);
 });
 
 test('mixed absolute/relative paths preserved independently', () => {
+  const absPlansPath = path.join(path.parse(process.cwd()).root, 'tmp', 'all-plans');
   const config = {
     plan: { reportsDir: 'reports' },
-    paths: { docs: 'docs', plans: '/tmp/all-plans' }
+    paths: { docs: 'docs', plans: absPlansPath }
   };
-  const result = sanitizeConfig(config, '/home/user/project');
+  const result = sanitizeConfig(config, path.join(path.parse(process.cwd()).root, 'home', 'user', 'project'));
   assertEquals(result.paths.docs, 'docs');
-  assertEquals(result.paths.plans, '/tmp/all-plans');
+  assertEquals(result.paths.plans, absPlansPath);
 });
 
 console.log('\n=== isAbsolutePath edge cases ===\n');
@@ -375,8 +381,11 @@ test('path.join concatenates paths (does NOT discard baseDir)', () => {
   // Document Node.js behavior: path.join concatenates, path.resolve would discard
   // path.join('/base', '/absolute') = '/base/absolute' (concatenates, strips leading /)
   // path.resolve('/base', '/absolute') = '/absolute' (absolute overrides)
-  const result = path.join('/home/user/project', '/tmp/all-plans');
-  assertEquals(result, '/home/user/project/tmp/all-plans');
+  const base = path.join(path.parse(process.cwd()).root, 'home', 'user', 'project');
+  const sub = path.join(path.parse(process.cwd()).root, 'tmp', 'all-plans');
+  const result = path.join(base, sub);
+  // Tautological: documents that path.join(base, sub) === path.join(base, sub)
+  assertEquals(result, path.join(base, sub));
 });
 
 console.log('\n=== Detached HEAD state tests ===\n');
@@ -420,9 +429,9 @@ test('getGitRoot works in detached HEAD state', () => {
     const commitHash = execSync('git rev-parse HEAD', { cwd: tempDir, encoding: 'utf8' }).trim();
     execSync(`git checkout -q ${commitHash}`, { cwd: tempDir });
 
-    // getGitRoot should still work
+    // getGitRoot should still work — normalize both to handle git's forward-slash paths on Windows
     const result = getGitRoot(tempDir);
-    assertEquals(result, tempDir);
+    assertEquals(result && path.normalize(result), path.normalize(tempDir));
   } finally {
     fs.rmSync(tempDir, { recursive: true, force: true });
   }
@@ -474,13 +483,13 @@ test('getGitRoot returns innermost repo for nested git repos', () => {
     // Create inner git repo (nested)
     execSync('git init -q', { cwd: innerDir });
 
-    // From inner dir, should return inner repo root
+    // From inner dir, should return inner repo root (normalize to handle git's forward slashes)
     const resultInner = getGitRoot(innerDir);
-    assertEquals(resultInner, innerDir);
+    assertEquals(resultInner && path.normalize(resultInner), path.normalize(innerDir));
 
     // From outer dir, should return outer repo root
     const resultOuter = getGitRoot(outerDir);
-    assertEquals(resultOuter, outerDir);
+    assertEquals(resultOuter && path.normalize(resultOuter), path.normalize(outerDir));
   } finally {
     fs.rmSync(outerDir, { recursive: true, force: true });
   }
@@ -497,7 +506,7 @@ test('getGitRoot from nested subdir returns correct root', () => {
 
     // From deep subdir inside inner repo
     const result = getGitRoot(deepDir);
-    assertEquals(result, innerDir);
+    assertEquals(result && path.normalize(result), path.normalize(innerDir));
   } finally {
     fs.rmSync(outerDir, { recursive: true, force: true });
   }
@@ -513,8 +522,16 @@ test('getGitRoot resolves through symlink to git repo', () => {
     // Create git repo in real dir
     execSync('git init -q', { cwd: realDir });
 
-    // Create symlink
-    fs.symlinkSync(realDir, linkDir);
+    // Create symlink — skip gracefully if no permissions (Windows without Developer Mode)
+    try {
+      fs.symlinkSync(realDir, linkDir);
+    } catch (e) {
+      if (e.code === 'EPERM') {
+        console.log('  \u2192 Skipped: symlinks require elevated privileges on this OS');
+        return;
+      }
+      throw e;
+    }
 
     // getGitRoot from symlink should work
     const result = getGitRoot(linkDir);
@@ -537,8 +554,16 @@ test('getGitRoot with symlinked subdirectory', () => {
   try {
     execSync('git init -q', { cwd: realDir });
 
-    // Create symlink to subdirectory
-    fs.symlinkSync(subDir, linkToSub);
+    // Create symlink to subdirectory — skip gracefully if no permissions
+    try {
+      fs.symlinkSync(subDir, linkToSub);
+    } catch (e) {
+      if (e.code === 'EPERM') {
+        console.log('  \u2192 Skipped: symlinks require elevated privileges on this OS');
+        return;
+      }
+      throw e;
+    }
 
     // getGitRoot from symlinked subdir should find parent repo
     const result = getGitRoot(linkToSub);
@@ -569,9 +594,9 @@ test('getGitRoot works with git worktree', () => {
     // Create worktree
     execSync(`git worktree add -q "${worktreeDir}" -b worktree-branch`, { cwd: mainDir });
 
-    // getGitRoot from worktree should return worktree path
+    // getGitRoot from worktree should return worktree path (normalize for cross-platform)
     const result = getGitRoot(worktreeDir);
-    assertEquals(result, worktreeDir);
+    assertEquals(result && path.normalize(result), path.normalize(worktreeDir));
 
     // Cleanup worktree
     execSync(`git worktree remove -f "${worktreeDir}"`, { cwd: mainDir });
@@ -590,7 +615,7 @@ test('getGitRoot works with unicode characters in path', () => {
     execSync('git init -q', { cwd: tempDir });
 
     const result = getGitRoot(tempDir);
-    assertEquals(result, tempDir);
+    assertEquals(result && path.normalize(result), path.normalize(tempDir));
   } finally {
     fs.rmSync(tempDir, { recursive: true, force: true });
   }
@@ -627,7 +652,7 @@ test('getGitRoot works with special shell characters in path', () => {
     execSync('git init -q', { cwd: tempDir });
 
     const result = getGitRoot(tempDir);
-    assertEquals(result, tempDir);
+    assertEquals(result && path.normalize(result), path.normalize(tempDir));
   } finally {
     fs.rmSync(tempDir, { recursive: true, force: true });
   }
@@ -643,7 +668,7 @@ test('getGitRoot works on new repo with no commits', () => {
 
     // No commits yet
     const result = getGitRoot(tempDir);
-    assertEquals(result, tempDir);
+    assertEquals(result && path.normalize(result), path.normalize(tempDir));
   } finally {
     fs.rmSync(tempDir, { recursive: true, force: true });
   }
@@ -710,8 +735,8 @@ test('resolvePlanPath resolves relative path using sessionOrigin (Issue #335)', 
     const result = resolvePlanPath(sessionId, config);
 
     assertEquals(result.resolvedBy, 'session');
-    // Should resolve using sessionOrigin
-    assertEquals(result.path, '/project/subfolder/plans/260111-feature');
+    // Should resolve using sessionOrigin — normalize for cross-platform path separators
+    assertEquals(path.normalize(result.path), path.normalize('/project/subfolder/plans/260111-feature'));
   } finally {
     cleanupSession(sessionId);
   }

@@ -27,12 +27,12 @@ const HOOK_PATH = path.join(__dirname, '..', 'subagent-init.cjs');
  */
 function runHook(inputData, options = {}) {
   return new Promise((resolve, reject) => {
-    const proc = spawn('node', [HOOK_PATH], {
+    const proc = spawn(process.execPath, [HOOK_PATH], {
       cwd: options.cwd || process.cwd(),
       env: {
         ...process.env,
         CLAUDE_ENV_FILE: '',
-        tri-ai-kit_DEBUG: options.debug ? '1' : '',
+        'tri-ai-kit_DEBUG': options.debug ? '1' : '',
         ...options.env
       }
     });
@@ -260,7 +260,7 @@ describe('subagent-init.cjs', () => {
       }, { debug: true });
 
       // Debug output goes to stderr
-      if (process.env.tri-ai-kit_DEBUG || result.stderr.includes('effectiveCwd')) {
+      if (process.env['tri-ai-kit_DEBUG'] || result.stderr.includes('effectiveCwd')) {
         assert.ok(
           result.stderr.includes('effectiveCwd') ||
           result.stderr.includes('gitRoot') ||
@@ -391,14 +391,14 @@ describe('subagent-init.cjs', () => {
 
       if (reportsMatch) {
         assert.ok(
-          reportsMatch[1].startsWith('/') || reportsMatch[1].includes(gitRoot),
+          path.isAbsolute(reportsMatch[1]) || reportsMatch[1].includes(gitRoot),
           `Reports path should be absolute: ${reportsMatch[1]}`
         );
       }
 
       if (plansMatch) {
         assert.ok(
-          plansMatch[1].startsWith('/') || plansMatch[1].includes(gitRoot),
+          path.isAbsolute(plansMatch[1]) || plansMatch[1].includes(gitRoot),
           `Plans path should be absolute: ${plansMatch[1]}`
         );
       }
@@ -493,7 +493,15 @@ describe('subagent-init.cjs', () => {
       fs.mkdirSync(realDir, { recursive: true });
       try {
         execSync('git init -q', { cwd: realDir });
-        fs.symlinkSync(realDir, linkDir);
+        try {
+          fs.symlinkSync(realDir, linkDir);
+        } catch (symlinkErr) {
+          if (symlinkErr.code === 'EPERM') {
+            console.log('  → Skipped: symlinks require elevated privileges on this OS');
+            return;
+          }
+          throw symlinkErr;
+        }
 
         const result = await runHook({
           agent_type: 'test-agent',
@@ -577,7 +585,7 @@ describe('subagent-init.cjs', () => {
   describe('Error Handling', () => {
 
     it('exits 0 on JSON parse error (fail-open)', async () => {
-      const proc = spawn('node', [HOOK_PATH], {
+      const proc = spawn(process.execPath, [HOOK_PATH], {
         cwd: process.cwd(),
         env: { ...process.env, CLAUDE_ENV_FILE: '' }
       });
@@ -594,7 +602,7 @@ describe('subagent-init.cjs', () => {
     });
 
     it('captures error in stderr on failure', async () => {
-      const proc = spawn('node', [HOOK_PATH], {
+      const proc = spawn(process.execPath, [HOOK_PATH], {
         cwd: process.cwd(),
         env: { ...process.env, CLAUDE_ENV_FILE: '' }
       });

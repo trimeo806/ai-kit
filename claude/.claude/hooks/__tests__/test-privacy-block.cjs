@@ -13,7 +13,7 @@ const CK_CONFIG_PATH = path.join(__dirname, '..', '.tri-ai-kit.json');
 async function runHook(hookData, cwd = undefined) {
   return new Promise((resolve) => {
     const options = cwd ? { cwd } : {};
-    const proc = spawn('node', [HOOK_PATH], options);
+    const proc = spawn(process.execPath, [HOOK_PATH], options);
     let stderr = '';
 
     proc.stderr.on('data', (data) => {
@@ -41,7 +41,7 @@ const blockTests = [
     name: '.env.local - should block',
     input: { tool_input: { file_path: '.env.local' } },
     expectBlock: true,
-    expectContains: 'APPROVED:'
+    expectContains: 'PRIVACY BLOCK'
   },
   {
     name: 'credentials.json - should block',
