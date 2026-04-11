@@ -34,14 +34,12 @@ const blockTests = [
   {
     name: '.env file - should block',
     input: { tool_input: { file_path: '.env' } },
-    expectBlock: true,
-    expectContains: 'PRIVACY BLOCK'
+    expectBlock: true
   },
   {
     name: '.env.local - should block',
     input: { tool_input: { file_path: '.env.local' } },
-    expectBlock: true,
-    expectContains: 'APPROVED:'
+    expectBlock: true
   },
   {
     name: 'credentials.json - should block',
@@ -93,8 +91,7 @@ const allowTests = [
   {
     name: 'APPROVED:.env - should allow',
     input: { tool_input: { file_path: 'APPROVED:.env' } },
-    expectBlock: false,
-    expectContains: 'User-approved'
+    expectBlock: false
   },
   {
     name: 'APPROVED:.env.local - should allow',

@@ -1,0 +1,6 @@
+{"ts":"2026-04-10T15:33:52.019Z","hook":"scout-block","status":"crash","error":"path should be a `path.relative()`d string, but got \"..\""}
+{"ts":"2026-04-10T15:37:22.667Z","hook":"scout-block","status":"crash","error":"path should be a `path.relative()`d string, but got \"..\""}
+{"ts":"2026-04-10T15:37:46.169Z","hook":"scout-block","status":"crash","error":"path should be a `path.relative()`d string, but got \"..\""}
+{"ts":"2026-04-10T15:37:46.186Z","hook":"scout-block","status":"crash","error":"path should be a `path.relative()`d string, but got \"..\""}
+{"ts":"2026-04-10T15:37:56.953Z","hook":"scout-block","status":"crash","error":"path should be a `path.relative()`d string, but got \"..\""}
+{"ts":"2026-04-10T15:37:57.127Z","hook":"scout-block","status":"crash","error":"path should be a `path.relative()`d string, but got \"..\""}

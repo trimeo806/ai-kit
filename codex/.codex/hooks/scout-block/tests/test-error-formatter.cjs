@@ -31,9 +31,9 @@ console.log('Testing error-formatter module...\n');
 
 // formatConfigPath tests
 console.log('--- formatConfigPath Tests ---');
-test('formatConfigPath with claudeDir', formatConfigPath('/home/user/.claude').includes('.ckignore'));
-test('formatConfigPath without claudeDir', formatConfigPath(null) === '.claude/.ckignore');
-test('formatConfigPath empty string', formatConfigPath('') === '.claude/.ckignore');
+test('formatConfigPath with config dir', formatConfigPath('/home/user/.codex') === '/home/user/.codex/.tri-ignore');
+test('formatConfigPath without config dir', formatConfigPath(null) === '.codex/.tri-ignore');
+test('formatConfigPath empty string', formatConfigPath('') === '.codex/.tri-ignore');
 
 // formatBlockedError tests
 console.log('\n--- formatBlockedError Tests ---');
@@ -41,7 +41,7 @@ const blockError = formatBlockedError({
   path: 'packages/web/node_modules/react',
   pattern: 'node_modules',
   tool: 'Bash',
-  claudeDir: '/home/user/project/.claude'
+  claudeDir: '/home/user/project/.codex'
 });
 test('formatBlockedError contains BLOCKED', blockError.includes('BLOCKED'));
 test('formatBlockedError contains path', blockError.includes('packages/web/node_modules/react'));

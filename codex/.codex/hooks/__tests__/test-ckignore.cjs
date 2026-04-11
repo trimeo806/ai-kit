@@ -5,37 +5,31 @@
  * Tests that scout-block.sh respects .tri-ignore patterns
  */
 
-const { execSync } = require('child_process');
 const fs = require('fs');
 const path = require('path');
+const os = require('os');
+const { checkScoutBlock } = require('../lib/scout-checker.cjs');
 
-const scriptPath = path.join(__dirname, '..', 'scout-block', 'scout-block.sh');
-const ignoreFilePath = path.join(__dirname, '..', '..', '.tri-ignore');
-const ignoreFileBackupPath = ignoreFilePath + '.backup';
-
-// Backup original .tri-ignore if exists
-let originalCkignore = null;
-if (fs.existsSync(ignoreFilePath)) {
-  originalCkignore = fs.readFileSync(ignoreFilePath, 'utf-8');
-  fs.copyFileSync(ignoreFilePath, ignoreFileBackupPath);
-}
+const hookPath = path.join(__dirname, '..', 'scout-block.cjs');
+const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'tri-ignore-test-'));
+const ignoreDir = path.join(tempDir, '.codex');
+const ignoreFilePath = path.join(ignoreDir, '.tri-ignore');
+fs.mkdirSync(ignoreDir, { recursive: true });
+writeCkignore(['node_modules', '.git', 'dist', 'build', '__pycache__']);
 
 function runTest(name, input, expected) {
-  try {
-    const inputJson = JSON.stringify(input);
-    execSync(`bash "${scriptPath}"`, {
-      input: inputJson,
-      encoding: 'utf-8',
-      stdio: ['pipe', 'pipe', 'pipe']
-    });
-    const actual = 'ALLOWED';
-    const success = actual === expected;
-    return { name, expected, actual, success };
-  } catch (error) {
-    const actual = error.status === 2 ? 'BLOCKED' : 'ERROR';
-    const success = actual === expected;
-    return { name, expected, actual, success, error: error.stderr?.toString().trim() };
-  }
+  const result = checkScoutBlock({
+    toolName: input.tool_name,
+    toolInput: input.tool_input,
+    options: {
+      claudeDir: ignoreDir,
+      ignoreFilePath,
+      checkBroadPatterns: true
+    }
+  });
+  const actual = result.blocked ? 'BLOCKED' : 'ALLOWED';
+  const success = actual === expected;
+  return { name, expected, actual, success, error: result.reason };
 }
 
 function writeCkignore(patterns) {
@@ -43,12 +37,7 @@ function writeCkignore(patterns) {
 }
 
 function restoreCkignore() {
-  if (originalCkignore !== null) {
-    fs.writeFileSync(ignoreFilePath, originalCkignore);
-    if (fs.existsSync(ignoreFileBackupPath)) {
-      fs.unlinkSync(ignoreFileBackupPath);
-    }
-  }
+  fs.rmSync(tempDir, { recursive: true, force: true });
 }
 
 console.log('Testing .tri-ignore functionality...\n');

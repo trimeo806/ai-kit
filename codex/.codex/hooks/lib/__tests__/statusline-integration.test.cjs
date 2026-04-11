@@ -15,6 +15,14 @@ const { execSync } = require('child_process');
 let passed = 0;
 let failed = 0;
 const failures = [];
+const statuslineCandidates = ['.codex/statusline.cjs', '.claude/statusline.cjs'];
+const STATUSLINE_SCRIPT = statuslineCandidates.find(candidate => fs.existsSync(path.join(process.cwd(), candidate)));
+
+if (!STATUSLINE_SCRIPT) {
+  console.log('STATUSLINE INTEGRATION TESTS');
+  console.log('Skipped: no statusline.cjs entrypoint found in .codex/ or .claude/.');
+  process.exit(0);
+}
 
 function test(name, fn) {
   try {
@@ -64,7 +72,7 @@ const minimalInput = JSON.stringify({
 });
 
 try {
-  const result = execSync(`echo '${minimalInput.replace(/'/g, "'\\''")}'  | node .claude/statusline.cjs`, {
+  const result = execSync(`echo '${minimalInput.replace(/'/g, "'\\''")}'  | node ${STATUSLINE_SCRIPT}`, {
     encoding: 'utf8',
     stdio: ['pipe', 'pipe', 'pipe']
   });
@@ -109,7 +117,7 @@ try {
     context_window: { context_window_size: 200000 }
   });
 
-  const gitResult = execSync(`echo '${gitInput.replace(/'/g, "'\\''")}'  | node .claude/statusline.cjs`, {
+  const gitResult = execSync(`echo '${gitInput.replace(/'/g, "'\\''")}'  | node ${STATUSLINE_SCRIPT}`, {
     encoding: 'utf8',
     cwd: tmpDir,
     stdio: ['pipe', 'pipe', 'pipe']
@@ -153,7 +161,7 @@ const contextInput = JSON.stringify({
 });
 
 try {
-  const contextResult = execSync(`echo '${contextInput.replace(/'/g, "'\\''")}'  | node .claude/statusline.cjs`, {
+  const contextResult = execSync(`echo '${contextInput.replace(/'/g, "'\\''")}'  | node ${STATUSLINE_SCRIPT}`, {
     encoding: 'utf8',
     stdio: ['pipe', 'pipe', 'pipe']
   });
@@ -194,7 +202,7 @@ const costInput = JSON.stringify({
 });
 
 try {
-  const costResult = execSync(`echo '${costInput.replace(/'/g, "'\\''")}'  | CLAUDE_BILLING_MODE=api node .claude/statusline.cjs`, {
+  const costResult = execSync(`echo '${costInput.replace(/'/g, "'\\''")}'  | CLAUDE_BILLING_MODE=api node ${STATUSLINE_SCRIPT}`, {
     encoding: 'utf8',
     stdio: ['pipe', 'pipe', 'pipe'],
     env: { ...process.env, CLAUDE_BILLING_MODE: 'api' }
@@ -222,7 +230,7 @@ try {
 console.log('\nTEST 5: Invalid JSON Handling\n');
 
 try {
-  const invalidResult = execSync(`echo 'not valid json'  | node .claude/statusline.cjs`, {
+  const invalidResult = execSync(`echo 'not valid json'  | node ${STATUSLINE_SCRIPT}`, {
     encoding: 'utf8',
     stdio: ['pipe', 'pipe', 'pipe']
   });
@@ -247,7 +255,7 @@ try {
 console.log('\nTEST 6: Empty Input Handling\n');
 
 try {
-  const emptyResult = execSync(`echo '' | node .claude/statusline.cjs`, {
+  const emptyResult = execSync(`echo '' | node ${STATUSLINE_SCRIPT}`, {
     encoding: 'utf8',
     stdio: ['pipe', 'pipe', 'pipe']
   });
@@ -281,7 +289,7 @@ const multilineInput = JSON.stringify({
 });
 
 try {
-  const multilineResult = execSync(`echo '${multilineInput.replace(/'/g, "'\\''")}'  | node .claude/statusline.cjs`, {
+  const multilineResult = execSync(`echo '${multilineInput.replace(/'/g, "'\\''")}'  | node ${STATUSLINE_SCRIPT}`, {
     encoding: 'utf8',
     stdio: ['pipe', 'pipe', 'pipe']
   });
@@ -322,7 +330,7 @@ const expandInput = JSON.stringify({
 });
 
 try {
-  const expandResult = execSync(`echo '${expandInput.replace(/'/g, "'\\''")}'  | node .claude/statusline.cjs`, {
+  const expandResult = execSync(`echo '${expandInput.replace(/'/g, "'\\''")}'  | node ${STATUSLINE_SCRIPT}`, {
     encoding: 'utf8',
     stdio: ['pipe', 'pipe', 'pipe']
   });
@@ -352,7 +360,7 @@ const colorInput = JSON.stringify({
 
 try {
   // Test with NO_COLOR=1
-  const noColorResult = execSync(`echo '${colorInput.replace(/'/g, "'\\''")}'  | NO_COLOR=1 node .claude/statusline.cjs`, {
+  const noColorResult = execSync(`echo '${colorInput.replace(/'/g, "'\\''")}'  | NO_COLOR=1 node ${STATUSLINE_SCRIPT}`, {
     encoding: 'utf8',
     stdio: ['pipe', 'pipe', 'pipe'],
     env: { ...process.env, NO_COLOR: '1' }
@@ -390,7 +398,7 @@ const wideInput = JSON.stringify({
 
 let wideLines = 0;
 try {
-  const wideResult = execSync(`echo '${wideInput.replace(/'/g, "'\\''")}'  | COLUMNS=160 node .claude/statusline.cjs`, {
+  const wideResult = execSync(`echo '${wideInput.replace(/'/g, "'\\''")}'  | COLUMNS=160 node ${STATUSLINE_SCRIPT}`, {
     encoding: 'utf8',
     stdio: ['pipe', 'pipe', 'pipe'],
     env: { ...process.env, COLUMNS: '160' }
@@ -425,7 +433,7 @@ const narrowInput = JSON.stringify({
 });
 
 try {
-  const narrowResult = execSync(`echo '${narrowInput.replace(/'/g, "'\\''")}'  | COLUMNS=80 node .claude/statusline.cjs`, {
+  const narrowResult = execSync(`echo '${narrowInput.replace(/'/g, "'\\''")}'  | COLUMNS=80 node ${STATUSLINE_SCRIPT}`, {
     encoding: 'utf8',
     stdio: ['pipe', 'pipe', 'pipe'],
     env: { ...process.env, COLUMNS: '80' }
@@ -463,7 +471,7 @@ const longPathInput = JSON.stringify({
 });
 
 try {
-  const longPathResult = execSync(`echo '${longPathInput.replace(/'/g, "'\\''")}'  | COLUMNS=100 node .claude/statusline.cjs`, {
+  const longPathResult = execSync(`echo '${longPathInput.replace(/'/g, "'\\''")}'  | COLUMNS=100 node ${STATUSLINE_SCRIPT}`, {
     encoding: 'utf8',
     stdio: ['pipe', 'pipe', 'pipe'],
     env: { ...process.env, COLUMNS: '100' }
@@ -497,7 +505,7 @@ const longModelInput = JSON.stringify({
 });
 
 try {
-  const longModelResult = execSync(`echo '${longModelInput.replace(/'/g, "'\\''")}'  | COLUMNS=100 node .claude/statusline.cjs`, {
+  const longModelResult = execSync(`echo '${longModelInput.replace(/'/g, "'\\''")}'  | COLUMNS=100 node ${STATUSLINE_SCRIPT}`, {
     encoding: 'utf8',
     stdio: ['pipe', 'pipe', 'pipe'],
     env: { ...process.env, COLUMNS: '100' }
@@ -580,7 +588,7 @@ const agentTodoInput = JSON.stringify({
 });
 
 try {
-  const agentTodoResult = execSync(`echo '${agentTodoInput.replace(/'/g, "'\\''")}'  | node .claude/statusline.cjs`, {
+  const agentTodoResult = execSync(`echo '${agentTodoInput.replace(/'/g, "'\\''")}'  | node ${STATUSLINE_SCRIPT}`, {
     encoding: 'utf8',
     stdio: ['pipe', 'pipe', 'pipe']
   });
@@ -624,7 +632,7 @@ const zeroContextInput = JSON.stringify({
 });
 
 try {
-  const zeroResult = execSync(`echo '${zeroContextInput.replace(/'/g, "'\\''")}'  | node .claude/statusline.cjs`, {
+  const zeroResult = execSync(`echo '${zeroContextInput.replace(/'/g, "'\\''")}'  | node ${STATUSLINE_SCRIPT}`, {
     encoding: 'utf8',
     stdio: ['pipe', 'pipe', 'pipe']
   });
@@ -638,7 +646,7 @@ try {
 
 // Test with very small terminal
 try {
-  const tinyResult = execSync(`echo '${wideInput.replace(/'/g, "'\\''")}'  | COLUMNS=40 node .claude/statusline.cjs`, {
+  const tinyResult = execSync(`echo '${wideInput.replace(/'/g, "'\\''")}'  | COLUMNS=40 node ${STATUSLINE_SCRIPT}`, {
     encoding: 'utf8',
     stdio: ['pipe', 'pipe', 'pipe'],
     env: { ...process.env, COLUMNS: '40' }

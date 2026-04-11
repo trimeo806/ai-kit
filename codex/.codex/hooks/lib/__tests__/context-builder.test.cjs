@@ -78,44 +78,44 @@ describe('context-builder.cjs', () => {
     });
 
     it('finds file in rules/ directory (new location)', () => {
-      tempDir = createTempDir(['.claude/rules']);
-      createTestFile(path.join(tempDir, '.claude/rules'), 'development-rules.md');
+      tempDir = createTempDir(['.codex/rules']);
+      createTestFile(path.join(tempDir, '.codex/rules'), 'development-rules.md');
       process.chdir(tempDir);
 
       const result = contextBuilder.resolveRulesPath('development-rules.md');
-      assert.strictEqual(result, '.claude/rules/development-rules.md',
+      assert.strictEqual(result, '.codex/rules/development-rules.md',
         'Should find file in rules/ directory');
     });
 
     it('falls back to workflows/ when rules/ does not exist', () => {
-      tempDir = createTempDir(['.claude/workflows']);
-      createTestFile(path.join(tempDir, '.claude/workflows'), 'development-rules.md');
+      tempDir = createTempDir(['.codex/workflows']);
+      createTestFile(path.join(tempDir, '.codex/workflows'), 'development-rules.md');
       process.chdir(tempDir);
 
       const result = contextBuilder.resolveRulesPath('development-rules.md');
-      assert.strictEqual(result, '.claude/workflows/development-rules.md',
+      assert.strictEqual(result, '.codex/workflows/development-rules.md',
         'Should fall back to workflows/ directory');
     });
 
     it('prefers rules/ over workflows/ when both exist', () => {
-      tempDir = createTempDir(['.claude/rules', '.claude/workflows']);
-      createTestFile(path.join(tempDir, '.claude/rules'), 'development-rules.md', '# Rules version\n');
-      createTestFile(path.join(tempDir, '.claude/workflows'), 'development-rules.md', '# Workflows version\n');
+      tempDir = createTempDir(['.codex/rules', '.codex/workflows']);
+      createTestFile(path.join(tempDir, '.codex/rules'), 'development-rules.md', '# Rules version\n');
+      createTestFile(path.join(tempDir, '.codex/workflows'), 'development-rules.md', '# Workflows version\n');
       process.chdir(tempDir);
 
       const result = contextBuilder.resolveRulesPath('development-rules.md');
-      assert.strictEqual(result, '.claude/rules/development-rules.md',
+      assert.strictEqual(result, '.codex/rules/development-rules.md',
         'Should prefer rules/ over workflows/');
     });
 
     it('finds file in workflows/ when rules/ exists but file is only in workflows/', () => {
-      tempDir = createTempDir(['.claude/rules', '.claude/workflows']);
+      tempDir = createTempDir(['.codex/rules', '.codex/workflows']);
       // rules/ exists but file is only in workflows/
-      createTestFile(path.join(tempDir, '.claude/workflows'), 'legacy-file.md');
+      createTestFile(path.join(tempDir, '.codex/workflows'), 'legacy-file.md');
       process.chdir(tempDir);
 
       const result = contextBuilder.resolveRulesPath('legacy-file.md');
-      assert.strictEqual(result, '.claude/workflows/legacy-file.md',
+      assert.strictEqual(result, '.codex/workflows/legacy-file.md',
         'Should find file in workflows/ when not in rules/');
     });
 
@@ -144,8 +144,8 @@ describe('context-builder.cjs', () => {
     });
 
     it('resolveWorkflowPath works identically to resolveRulesPath', () => {
-      const tempDir = createTempDir(['.claude/rules']);
-      createTestFile(path.join(tempDir, '.claude/rules'), 'test.md');
+      const tempDir = createTempDir(['.codex/rules']);
+      createTestFile(path.join(tempDir, '.codex/rules'), 'test.md');
       const originalCwd = process.cwd();
       process.chdir(tempDir);
 
@@ -209,8 +209,8 @@ describe('context-builder.cjs', () => {
     });
 
     it('returns content, lines, and sections', () => {
-      tempDir = createTempDir(['.claude/rules']);
-      createTestFile(path.join(tempDir, '.claude/rules'), 'development-rules.md');
+      tempDir = createTempDir(['.codex/rules']);
+      createTestFile(path.join(tempDir, '.codex/rules'), 'development-rules.md');
       process.chdir(tempDir);
 
       const result = contextBuilder.buildReminderContext({});
@@ -221,8 +221,8 @@ describe('context-builder.cjs', () => {
     });
 
     it('includes devRulesPath when rules/ exists', () => {
-      tempDir = createTempDir(['.claude/rules']);
-      createTestFile(path.join(tempDir, '.claude/rules'), 'development-rules.md');
+      tempDir = createTempDir(['.codex/rules']);
+      createTestFile(path.join(tempDir, '.codex/rules'), 'development-rules.md');
       process.chdir(tempDir);
 
       const result = contextBuilder.buildReminderContext({});
@@ -233,8 +233,8 @@ describe('context-builder.cjs', () => {
     });
 
     it('includes devRulesPath when only workflows/ exists (backward compat)', () => {
-      tempDir = createTempDir(['.claude/workflows']);
-      createTestFile(path.join(tempDir, '.claude/workflows'), 'development-rules.md');
+      tempDir = createTempDir(['.codex/workflows']);
+      createTestFile(path.join(tempDir, '.codex/workflows'), 'development-rules.md');
       process.chdir(tempDir);
 
       const result = contextBuilder.buildReminderContext({});
@@ -335,11 +335,11 @@ describe('context-builder.cjs', () => {
     it('resolves @rules/ references correctly', () => {
       // This test verifies that the rules path resolution works
       // which is used by AGENTS.md @references
-      tempDir = createTempDir(['.claude/rules']);
-      createTestFile(path.join(tempDir, '.claude/rules'), 'primary-workflow.md');
-      createTestFile(path.join(tempDir, '.claude/rules'), 'development-rules.md');
-      createTestFile(path.join(tempDir, '.claude/rules'), 'orchestration-protocol.md');
-      createTestFile(path.join(tempDir, '.claude/rules'), 'documentation-management.md');
+      tempDir = createTempDir(['.codex/rules']);
+      createTestFile(path.join(tempDir, '.codex/rules'), 'primary-workflow.md');
+      createTestFile(path.join(tempDir, '.codex/rules'), 'development-rules.md');
+      createTestFile(path.join(tempDir, '.codex/rules'), 'orchestration-protocol.md');
+      createTestFile(path.join(tempDir, '.codex/rules'), 'documentation-management.md');
       process.chdir(tempDir);
 
       // All files referenced in AGENTS.md should resolve
@@ -359,8 +359,8 @@ describe('context-builder.cjs', () => {
 
     it('resolves legacy @workflows/ references via fallback', () => {
       // Test that legacy references still work
-      tempDir = createTempDir(['.claude/workflows']);
-      createTestFile(path.join(tempDir, '.claude/workflows'), 'primary-workflow.md');
+      tempDir = createTempDir(['.codex/workflows']);
+      createTestFile(path.join(tempDir, '.codex/workflows'), 'primary-workflow.md');
       process.chdir(tempDir);
 
       const result = contextBuilder.resolveRulesPath('primary-workflow.md');
