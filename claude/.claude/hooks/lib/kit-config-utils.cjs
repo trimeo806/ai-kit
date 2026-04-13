@@ -744,7 +744,7 @@ function resolveNamingPattern(planConfig, gitBranch) {
   const validation = validateNamingPattern(pattern);
   if (!validation.valid) {
     // Log warning but return pattern anyway (fail-safe)
-    if (process.env.tri-ai-kit_DEBUG) {
+    if (process.env['tri-ai-kit_DEBUG']) {
       console.error(`[tri-ai-kit-config] Warning: ${validation.error}`);
     }
   }

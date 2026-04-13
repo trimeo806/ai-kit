@@ -27,12 +27,12 @@ const HOOK_PATH = path.join(__dirname, '..', 'context-reminder.cjs');
  */
 function runHook(inputData, options = {}) {
   return new Promise((resolve, reject) => {
-    const proc = spawn('node', [HOOK_PATH], {
+    const proc = spawn(process.execPath, [HOOK_PATH], {
       cwd: options.cwd || process.cwd(),
       env: {
         ...process.env,
         CLAUDE_ENV_FILE: '',
-        tri-ai-kit_DEBUG: options.debug ? '1' : '',
+        'tri-ai-kit_DEBUG': options.debug ? '1' : '',
         ...options.env
       }
     });
@@ -288,7 +288,7 @@ describe('context-reminder.cjs', () => {
 
     it('exits 0 on error (fail-open)', async () => {
       // Send invalid JSON-like input via write
-      const proc = spawn('node', [HOOK_PATH], {
+      const proc = spawn(process.execPath, [HOOK_PATH], {
         cwd: process.cwd(),
         env: { ...process.env, CLAUDE_ENV_FILE: '' }
       });

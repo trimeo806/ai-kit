@@ -21,7 +21,7 @@ const HOOK_PATH = path.join(__dirname, '..', 'session-init.cjs');
  */
 function runHook(inputData) {
   return new Promise((resolve, reject) => {
-    const proc = spawn('node', [HOOK_PATH], {
+    const proc = spawn(process.execPath, [HOOK_PATH], {
       cwd: process.cwd(),
       env: {
         ...process.env,
@@ -231,7 +231,7 @@ describe('session-init.cjs', () => {
         .execSync('git rev-parse --show-toplevel', { encoding: 'utf8' }).trim();
 
       const result = await new Promise((resolve, reject) => {
-        const proc = spawn('node', [HOOK_PATH], {
+        const proc = spawn(process.execPath, [HOOK_PATH], {
           cwd: gitRoot,  // Run from git root
           env: { ...process.env, CLAUDE_ENV_FILE: '' }
         });
@@ -258,11 +258,12 @@ describe('session-init.cjs', () => {
       const gitRoot = require('child_process')
         .execSync('git rev-parse --show-toplevel', { encoding: 'utf8' }).trim();
 
-      // Use .claude/hooks as subdirectory (guaranteed to exist)
-      const subdirPath = require('path').join(gitRoot, '.claude', 'hooks');
+      // Use .claude/hooks as subdirectory — compute from __dirname to get the correct
+      // native path format for this OS, avoiding git forward-slash path issues on Windows.
+      const subdirPath = path.resolve(__dirname, '..');  // = .claude/hooks (a subdir of git root)
 
       const result = await new Promise((resolve, reject) => {
-        const proc = spawn('node', [HOOK_PATH], {
+        const proc = spawn(process.execPath, [HOOK_PATH], {
           cwd: subdirPath,  // Run from subdirectory
           env: { ...process.env, CLAUDE_ENV_FILE: '' }
         });

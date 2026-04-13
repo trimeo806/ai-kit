@@ -242,7 +242,9 @@ async function main() {
     }
 
     // Info: Show git root when running from subdirectory (Issue #327: now supported)
-    if (staticEnv.gitRoot && staticEnv.gitRoot !== process.cwd()) {
+    // Normalize both paths to handle git's forward-slash output on Windows (e.g. C:/foo vs C:\foo)
+    const normalizedGitRoot = staticEnv.gitRoot ? require('path').normalize(staticEnv.gitRoot) : null;
+    if (normalizedGitRoot && normalizedGitRoot !== process.cwd()) {
       console.log(`📁 Subdirectory mode: Plans/docs will be created in current directory`);
       console.log(`   Git root: ${staticEnv.gitRoot}`);
     }

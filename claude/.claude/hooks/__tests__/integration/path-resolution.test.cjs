@@ -24,7 +24,7 @@ const HOOKS_DIR = path.join(__dirname, '..', '..');
 function runHook(hookName, inputData, options = {}) {
   return new Promise((resolve, reject) => {
     const hookPath = path.join(HOOKS_DIR, hookName);
-    const proc = spawn('node', [hookPath], {
+    const proc = spawn(process.execPath, [hookPath], {
       cwd: options.cwd || process.cwd(),
       env: {
         ...process.env,
@@ -60,7 +60,9 @@ function runHook(hookName, inputData, options = {}) {
  */
 function getGitRoot(cwd = process.cwd()) {
   try {
-    return execSync('git rev-parse --show-toplevel', { encoding: 'utf8', cwd }).trim();
+    const raw = execSync('git rev-parse --show-toplevel', { encoding: 'utf8', cwd }).trim();
+    // Normalize to OS path separators (git returns forward slashes even on Windows)
+    return path.normalize(raw);
   } catch (e) {
     return null;
   }
@@ -278,11 +280,11 @@ describe('Issue #327: Path Resolution Integration', () => {
       assert.strictEqual(result.exitCode, 0);
       const context = result.output?.hookSpecificOutput?.additionalContext || '';
 
-      // Reports and Plans paths should be absolute (start with /)
+      // Reports and Plans paths should be absolute (cross-platform check)
       const reportsMatch = context.match(/Reports:\s*([^\n]+)/);
       if (reportsMatch) {
         assert.ok(
-          reportsMatch[1].startsWith('/'),
+          path.isAbsolute(reportsMatch[1].trim()),
           `Reports path should be absolute: ${reportsMatch[1]}`
         );
       }
@@ -298,7 +300,7 @@ describe('Issue #327: Path Resolution Integration', () => {
 
       for (const hookName of hooks) {
         const hookPath = path.join(HOOKS_DIR, hookName);
-        const proc = spawn('node', [hookPath], {
+        const proc = spawn(process.execPath, [hookPath], {
           cwd: process.cwd(),
           env: { ...process.env, CLAUDE_ENV_FILE: '' }
         });

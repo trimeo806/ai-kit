@@ -36,7 +36,7 @@ async function main() {
     const payload = JSON.parse(stdin);
     if (wasRecentlyInjected(payload.transcript_path)) process.exit(0);
 
-    const sessionId = process.env.tri-ai-kit_SESSION_ID || null;
+    const sessionId = process.env['tri-ai-kit_SESSION_ID'] || null;
 
     // Issue #327: Use CWD as base for subdirectory workflow support
     // The baseDir is passed to buildReminderContext for absolute path resolution
