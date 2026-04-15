@@ -328,7 +328,6 @@ Files Modified:
 - `tester` - Test execution and analysis
 - `debugger` - Log collection and debugging
 - `code-reviewer` - Code quality review
-- `docs-manager` - Documentation updates
 - `git-manager` - Git operations
 - `project-manager` - Progress tracking
 

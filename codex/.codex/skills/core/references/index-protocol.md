@@ -1,4 +1,4 @@
-﻿# Index Protocol
+# Index Protocol
 
 Defines how agents maintain the three project index files: `docs/index.json`, `plans/index.json`, and `reports/index.json`.
 
@@ -8,7 +8,7 @@ Defines how agents maintain the three project index files: `docs/index.json`, `p
 
 ## 1. `docs/index.json` — Knowledge Base Registry
 
-Maintained by: `docs-manager`, `developer`, `debugger`, `planner`
+Maintained by: `developer`, `debugger`, `planner`
 
 Schema defined in `knowledge-retrieval/references/knowledge-base.md`. Key fields:
 
@@ -63,6 +63,7 @@ Maintained by: `planner`, `project-manager`
 
 **Key names**: `"version"` (not `"schemaVersion"`), `"updated"` (not `"updatedAt"`), `"plans"` array (not `"entries"`), `"counts"` object for totals.
 
+`plans/README.md` is the human-readable board — updated automatically by lifecycle scripts (`set-active-plan.cjs`, `complete-plan.cjs`, `archive-plan.cjs`). Do NOT manually edit it.
 
 **Update rule**: Append entry to `plans[]` after creating a plan directory. Increment relevant `counts` field. Update `updated` + `status` on lifecycle changes.
 
@@ -110,9 +111,8 @@ Maintained by: `code-reviewer`, `muji`, `a11y-specialist`, `researcher`, `planne
 | `muji` | — | — | `index.json` |
 | `a11y-specialist` | — | — | `index.json` |
 | `tester` | — | — | `index.json` |
-| `developer` | `index.json` (knowledge capture) | — | — |
+| `developer` | `index.json` (when writing docs/ entries) | — | — |
 | `debugger` | `index.json` (findings) | — | `index.json` |
-| `docs-manager` | `index.json` | — | — |
 
 ---
 

@@ -210,11 +210,10 @@ See `verification-before-completion` skill for anti-rationalization table, red f
 
 ### Related Skills
 - `knowledge-retrieval` — Knowledge storage format and `docs/` directory
-- `knowledge-capture` — Post-task capture workflow
 - `problem-solving` — Root cause analysis techniques
 - `error-recovery` — Error handling and recovery patterns
 - `verification-before-completion` — Verify fixes before claiming done
-- `auto-improvement` — Error metrics auto-captured by session-metrics hook on Stop
+- Session metrics are auto-captured by the stop hooks for later trend analysis
 
 ## References
 - `references/debugging-flow.dot` — Authoritative debugging process flowchart

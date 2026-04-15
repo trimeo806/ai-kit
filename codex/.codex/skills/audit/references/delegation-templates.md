@@ -1,10 +1,10 @@
-﻿# Audit Delegation Templates
+# Audit Delegation Templates
 
 Structured handoff templates for dispatching audit work to specialist agents.
 
-**Usage:** These templates are dispatched by the **main conversation** (via `audit/SKILL.md`), NOT by subagents. Subagents cannot spawn further subagents — neither custom agent dispatch nor Task tool is available in subagent context.
+**Usage:** These templates are dispatched by the **main conversation** (via `audit/SKILL.md`), NOT by subagents. Subagents cannot spawn further subagents — neither Agent tool nor Task tool is available in subagent context.
 
-Select the matching template, fill all `{placeholders}`, dispatch via **custom agent dispatch**, wait for specialist report, then merge findings.
+Select the matching template, fill all `{placeholders}`, dispatch via **Agent tool**, wait for specialist report, then merge findings.
 
 **Session folder rule**: The calling agent (code-reviewer) creates the session folder via `mkdir -p reports/{date}-{slug}-audit/` BEFORE dispatching any sub-agent. Sub-agents write to the `Output path:` provided — they do NOT create the folder themselves.
 
@@ -143,33 +143,6 @@ Boundaries:
 - Do not re-review areas already covered in original review
 
 Report back to: {calling_agent}
-```
-
----
-
-## Template D: Documentation Audit Delegation (→ docs-manager)
-
-```
-## Delegated Docs Audit
-
-Scope: {component_name} — {file_list}
-Mode: {library | consumer}
-Trigger: {missing_docs | stale_docs | undocumented_api}
-Existing registry: {docs/index.json path if found, or "not found"}
-
-Expectations:
-- Check if component has a docs/index.json entry (FEAT-* or CONV-*)
-- If entry exists, verify it matches current API surface (props, variants, exports)
-- If entry missing, draft a new FEAT-* entry for the component
-- Flag stale docs with specific field-level mismatches
-
-Boundaries:
-- Do not modify source code
-- Do not create full documentation from scratch — flag gaps and draft entry stubs only
-- Report which docs paths you checked
-
-Report back to: {calling_agent}
-Output path: {reports_path}
 ```
 
 ---

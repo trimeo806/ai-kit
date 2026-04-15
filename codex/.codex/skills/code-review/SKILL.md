@@ -83,7 +83,7 @@ After initial review, the reviewer decides based on findings:
 
 ### Subagent Constraint
 
-Code-reviewer runs as a **subagent** (spawned via custom agent dispatch). Subagents **cannot spawn further subagents**. Therefore:
+Code-reviewer runs as a **subagent** (spawned via Agent tool). Subagents **cannot spawn further subagents**. Therefore:
 - Code-reviewer does NOT dispatch muji, a11y-specialist, or any other agent
 - Hybrid orchestration (muji + code-reviewer) is handled by the **main context** via `audit/SKILL.md`
 - Code-reviewer is a pure reviewer: reads files, applies rules, writes report
@@ -97,7 +97,7 @@ If the caller provides a muji report path (hybrid audit):
 4. **Dedup**: skip any file:line already in muji's finding set
 5. Write report to the provided `output_path`
 
-### Critical Escalation (self-dispatch, no custom agent dispatch needed)
+### Critical Escalation (self-dispatch, no Agent tool needed)
 
 When a Critical finding is detected during review:
 1. Load `knowledge-retrieval` skill (already in agent skills list)
@@ -164,5 +164,4 @@ Key requirements:
 
 ### Related Skills
 - `knowledge-retrieval` — activated on Critical escalation
-- `knowledge-capture` — use after task to persist learnings
-- `auto-improvement` — session metrics and improvement trends
+- Session metrics and improvement trends are available from the runtime hooks

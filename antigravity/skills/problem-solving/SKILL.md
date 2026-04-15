@@ -1,4 +1,4 @@
-﻿---
+---
 name: problem-solving
 description: Use when stuck, facing a complex bug, or need root cause analysis — 5 whys, bisection, inversion techniques
 
@@ -75,5 +75,4 @@ Fix: [Address root, not symptom]
 ### Related Skills
 - `debug` — Systematic debugging methodology
 - `error-recovery` — Error handling and recovery patterns
-- `knowledge-capture` — Persist root cause findings
 - `sequential-thinking` — Structured step-by-step reasoning

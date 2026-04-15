@@ -1,4 +1,4 @@
-﻿---
+---
 name: plan-deep
 description: "Deep plan with sequential research and comprehensive analysis"
 user-invocable: false
@@ -27,7 +27,7 @@ Extract from $ARGUMENTS: original_request, complexity_scores, planning_requireme
 ### 1.5. Platform Skill Discovery + Agent Assignment
 
 **Skill discovery** (if platform detected from arguments or changed files):
-1. Read `.agents/skills/skill-index.json`
+1. Read `.claude/skills/skill-index.json`
 2. Filter skills where name contains platform prefix (`ios-`, `android-`, `web-`, `backend-`, `golang-`)
 3. Read matching SKILL.md files for platform conventions, patterns, constraints
 4. Use these patterns when generating phase files and research prompts
@@ -35,14 +35,14 @@ Extract from $ARGUMENTS: original_request, complexity_scores, planning_requireme
 If no platform detected, skip skill scan.
 
 **Agent assignment** (always required — run before generating any phase file):
-Scan `.codex/agents/*.md`, extract `name`, `description`, `skills` fields. Then assign:
+Scan `.claude/agents/*.md`, extract `name`, `description`, `skills` fields. Then assign:
 
 | Phase type | Agent | Skills to activate |
 |------------|-------|--------------------|
 | Go / Node.js backend | `backend-developer` | `golang-pro`, `postgres-pro`, `api-designer` |
 | React / TanStack UI | `frontend-developer` | `tanstack-start`, `react-expert`, `typescript-pro`, `web-frontend` |
 | Auth / OAuth / JWT | `backend-developer` | `golang-pro`, `typescript-pro` |
-| SSE / real-time backend | `backend-developer` | `golang-pro`, `websocket-engineer`, `postgres-pro` |
+| SSE / real-time backend | `backend-developer` | `golang-pro`, `typescript-pro`, `postgres-pro` |
 | Test / E2E | `tester` | `playwright-expert`, `web-testing`, `test` |
 | CI/CD / Docker | `devops-engineer` | `infra-docker`, `terraform-engineer` |
 | Security audit | `security-auditor` | `fullstack-guardian` |
@@ -281,6 +281,7 @@ Max 200 lines per phase.
 
 ### 9. Set Active Plan
 ```bash
+node .claude/scripts/set-active-plan.cjs {plan_path}
 ```
 If fails: warn with manual command.
 

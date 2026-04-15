@@ -1,15 +1,15 @@
 {
-  "generated": "2026-03-18T06:45:04.645Z",
+  "generated": "2026-04-15T06:55:55.490Z",
   "version": "2.0.0",
-  "count": 60,
+  "count": 44,
   "categories": {
-    "uncategorized": 32,
-    "development-tools": 11,
-    "analysis-reasoning": 12,
+    "uncategorized": 23,
+    "development-tools": 8,
+    "analysis-reasoning": 8,
     "infrastructure": 2,
     "frontend-web": 3
   },
-  "connectedSkills": 13,
+  "connectedSkills": 9,
   "skills": [
     {
       "name": "api-designer",
@@ -28,7 +28,7 @@
         "enhances": [],
         "conflicts": []
       },
-      "path": "api-designer\\SKILL.md"
+      "path": "api-designer/SKILL.md"
     },
     {
       "name": "architecture-designer",
@@ -47,7 +47,7 @@
         "enhances": [],
         "conflicts": []
       },
-      "path": "architecture-designer\\SKILL.md"
+      "path": "architecture-designer/SKILL.md"
     },
     {
       "name": "ask",
@@ -87,7 +87,7 @@
         "enhances": [],
         "conflicts": []
       },
-      "path": "ask\\SKILL.md"
+      "path": "ask/SKILL.md"
     },
     {
       "name": "audit",
@@ -131,45 +131,7 @@
         ],
         "conflicts": []
       },
-      "path": "audit\\SKILL.md"
-    },
-    {
-      "name": "auto-improvement",
-      "description": "Use when reviewing session performance, analyzing improvement trends, or understanding the metrics-capture-detection pipeline",
-      "category": "development-tools",
-      "tier": "discoverable",
-      "keywords": [
-        "metrics",
-        "improvement",
-        "lessons",
-        "trends",
-        "detection",
-        "rework",
-        "session"
-      ],
-      "platforms": [
-        "all"
-      ],
-      "triggers": [
-        "improvement report",
-        "session metrics",
-        "detect patterns",
-        "rework analysis"
-      ],
-      "agent-affinity": [
-        "project-manager",
-        "code-reviewer",
-        "debugger"
-      ],
-      "connections": {
-        "extends": [],
-        "requires": [],
-        "enhances": [
-          "skill-discovery"
-        ],
-        "conflicts": []
-      },
-      "path": "auto-improvement\\SKILL.md"
+      "path": "audit/SKILL.md"
     },
     {
       "name": "brainstorm",
@@ -210,64 +172,7 @@
         "enhances": [],
         "conflicts": []
       },
-      "path": "brainstorm\\SKILL.md"
-    },
-    {
-      "name": "ckm:banner-design",
-      "description": "Design banners for social media, ads, website heroes, creative assets, and print. Multiple art direction options with AI-generated visuals. Actions: design, create, generate banner. Platforms: Facebook, Twitter/X, LinkedIn, YouTube, Instagram, Google Display, website hero, print. Styles: minimalist, gradient, bold typography, photo-based, illustrated, geometric, retro, glassmorphism, 3D, neon, duotone, editorial, collage. Uses ui-ux-pro-max, frontend-design, ai-artist, ai-multimodal skills.",
-      "category": "uncategorized",
-      "tier": "discoverable",
-      "keywords": [],
-      "platforms": [
-        "all"
-      ],
-      "triggers": [],
-      "agent-affinity": [],
-      "connections": {
-        "extends": [],
-        "requires": [],
-        "enhances": [],
-        "conflicts": []
-      },
-      "path": "banner-design\\SKILL.md"
-    },
-    {
-      "name": "ckm:brand",
-      "description": "Brand voice, visual identity, messaging frameworks, asset management, brand consistency. Activate for branded content, tone of voice, marketing assets, brand compliance, style guides.",
-      "category": "uncategorized",
-      "tier": "discoverable",
-      "keywords": [],
-      "platforms": [
-        "all"
-      ],
-      "triggers": [],
-      "agent-affinity": [],
-      "connections": {
-        "extends": [],
-        "requires": [],
-        "enhances": [],
-        "conflicts": []
-      },
-      "path": "brand\\SKILL.md"
-    },
-    {
-      "name": "ckm:design",
-      "description": "Comprehensive design skill: brand identity, design tokens, UI styling, logo generation (55 styles, Gemini AI), corporate identity program (50 deliverables, CIP mockups), HTML presentations (Chart.js), banner design (22 styles, social/ads/web/print), icon design (15 styles, SVG, Gemini 3.1 Pro), social photos (HTML→screenshot, multi-platform). Actions: design logo, create CIP, generate mockups, build slides, design banner, generate icon, create social photos, social media images, brand identity, design system. Platforms: Facebook, Twitter, LinkedIn, YouTube, Instagram, Pinterest, TikTok, Threads, Google Ads.",
-      "category": "uncategorized",
-      "tier": "discoverable",
-      "keywords": [],
-      "platforms": [
-        "all"
-      ],
-      "triggers": [],
-      "agent-affinity": [],
-      "connections": {
-        "extends": [],
-        "requires": [],
-        "enhances": [],
-        "conflicts": []
-      },
-      "path": "design\\SKILL.md"
+      "path": "brainstorm/SKILL.md"
     },
     {
       "name": "ckm:design-system",
@@ -286,45 +191,7 @@
         "enhances": [],
         "conflicts": []
       },
-      "path": "design-system\\SKILL.md"
-    },
-    {
-      "name": "ckm:slides",
-      "description": "Create strategic HTML presentations with Chart.js, design tokens, responsive layouts, copywriting formulas, and contextual slide strategies.",
-      "category": "uncategorized",
-      "tier": "discoverable",
-      "keywords": [],
-      "platforms": [
-        "all"
-      ],
-      "triggers": [],
-      "agent-affinity": [],
-      "connections": {
-        "extends": [],
-        "requires": [],
-        "enhances": [],
-        "conflicts": []
-      },
-      "path": "slides\\SKILL.md"
-    },
-    {
-      "name": "ckm:ui-styling",
-      "description": "Create beautiful, accessible user interfaces with shadcn/ui components (built on Radix UI + Tailwind), Tailwind CSS utility-first styling, and canvas-based visual designs. Use when building user interfaces, implementing design systems, creating responsive layouts, adding accessible components (dialogs, dropdowns, forms, tables), customizing themes and colors, implementing dark mode, generating visual designs and posters, or establishing consistent styling patterns across applications.",
-      "category": "uncategorized",
-      "tier": "discoverable",
-      "keywords": [],
-      "platforms": [
-        "all"
-      ],
-      "triggers": [],
-      "agent-affinity": [],
-      "connections": {
-        "extends": [],
-        "requires": [],
-        "enhances": [],
-        "conflicts": []
-      },
-      "path": "ui-styling\\SKILL.md"
+      "path": "design-system/SKILL.md"
     },
     {
       "name": "cloud-architect",
@@ -343,26 +210,7 @@
         "enhances": [],
         "conflicts": []
       },
-      "path": "cloud-architect\\SKILL.md"
-    },
-    {
-      "name": "code-documenter",
-      "description": "Generates, formats, and validates technical documentation — including docstrings, OpenAPI/Swagger specs, JSDoc annotations, doc portals, and user guides. Use when adding docstrings to functions or classes, creating API documentation, building documentation sites, or writing tutorials and user guides. Invoke for OpenAPI/Swagger specs, JSDoc, doc portals, getting started guides.",
-      "category": "uncategorized",
-      "tier": "discoverable",
-      "keywords": [],
-      "platforms": [
-        "all"
-      ],
-      "triggers": "documentation, docstrings, OpenAPI, Swagger, JSDoc, comments, API docs, tutorials, user guides, doc site",
-      "agent-affinity": [],
-      "connections": {
-        "extends": [],
-        "requires": [],
-        "enhances": [],
-        "conflicts": []
-      },
-      "path": "code-documenter\\SKILL.md"
+      "path": "cloud-architect/SKILL.md"
     },
     {
       "name": "code-review",
@@ -395,7 +243,7 @@
         "enhances": [],
         "conflicts": []
       },
-      "path": "code-review\\SKILL.md"
+      "path": "code-review/SKILL.md"
     },
     {
       "name": "code-reviewer",
@@ -414,7 +262,7 @@
         "enhances": [],
         "conflicts": []
       },
-      "path": "code-reviewer\\SKILL.md"
+      "path": "code-reviewer/SKILL.md"
     },
     {
       "name": "cook",
@@ -435,26 +283,7 @@
         ],
         "conflicts": []
       },
-      "path": "cook\\SKILL.md"
-    },
-    {
-      "name": "core",
-      "description": "Use when any agent modifies files, makes architectural decisions, or needs safety and documentation rules",
-      "category": "analysis-reasoning",
-      "tier": "core",
-      "keywords": [],
-      "platforms": [
-        "all"
-      ],
-      "triggers": [],
-      "agent-affinity": [],
-      "connections": {
-        "extends": [],
-        "requires": [],
-        "enhances": [],
-        "conflicts": []
-      },
-      "path": "core\\SKILL.md"
+      "path": "cook/SKILL.md"
     },
     {
       "name": "debug",
@@ -495,103 +324,7 @@
         ],
         "conflicts": []
       },
-      "path": "debug\\SKILL.md"
-    },
-    {
-      "name": "doc-coauthoring",
-      "description": "Use when user wants to write a doc, proposal, spec, RFC, PRD, or decision record collaboratively",
-      "category": "analysis-reasoning",
-      "tier": "discoverable",
-      "keywords": [
-        "documentation",
-        "writing",
-        "proposal",
-        "spec",
-        "technical-writing",
-        "collaboration",
-        "prd",
-        "rfc",
-        "decision",
-        "write",
-        "draft",
-        "coauthor",
-        "adr"
-      ],
-      "platforms": [
-        "all"
-      ],
-      "triggers": [],
-      "agent-affinity": [
-        "docs-manager",
-        "planner"
-      ],
-      "connections": {
-        "extends": [],
-        "requires": [],
-        "enhances": [
-          "plan"
-        ],
-        "conflicts": []
-      },
-      "path": "doc-coauthoring\\SKILL.md"
-    },
-    {
-      "name": "docs",
-      "description": "Use when user says \"write docs\", \"update docs\", \"document this\", \"init docs\", \"reorganize documentation\", or \"add component docs\" — detects docs intent (init, update, migrate, component) and runs the right workflow",
-      "category": "development-tools",
-      "tier": "discoverable",
-      "keywords": [],
-      "platforms": [
-        "all"
-      ],
-      "triggers": [],
-      "agent-affinity": [],
-      "connections": {
-        "extends": [],
-        "requires": [],
-        "enhances": [],
-        "conflicts": []
-      },
-      "path": "docs\\SKILL.md"
-    },
-    {
-      "name": "docs-seeker",
-      "description": "Use when you need API docs, library references, or framework documentation for an unfamiliar package",
-      "category": "analysis-reasoning",
-      "tier": "discoverable",
-      "keywords": [
-        "docs",
-        "documentation",
-        "search",
-        "context7",
-        "api-reference",
-        "library",
-        "research",
-        "best-practices"
-      ],
-      "platforms": [
-        "all"
-      ],
-      "triggers": [
-        "documentation",
-        "docs",
-        "api reference",
-        "how to use"
-      ],
-      "agent-affinity": [
-        "researcher",
-        "developer",
-        "mcp-manager"
-      ],
-      "connections": {
-        "extends": [],
-        "requires": [],
-        "enhances": [
-          "research"
-        ],
-        "conflicts": []
-      },
-      "path": "docs-seeker\\SKILL.md"
+      "path": "debug/SKILL.md"
     },
     {
       "name": "error-recovery",
@@ -632,7 +365,7 @@
         ],
         "conflicts": []
       },
-      "path": "error-recovery\\SKILL.md"
+      "path": "error-recovery/SKILL.md"
     },
     {
       "name": "fastapi-python",
@@ -665,39 +398,7 @@
         "enhances": [],
         "conflicts": []
       },
-      "path": "fastapi-python\\SKILL.md"
-    },
-    {
-      "name": "fastapi-templates",
-      "description": "Use when you need production-ready FastAPI boilerplate, copy-paste code templates, or starter patterns. Load when implementing FastAPI services and you need ready-to-use code for BFF wrappers, upstream HTTP clients, Pydantic v2 schemas for flight/booking domains, unified error middleware, async cache decorators, or pagination helpers. Always load alongside fastapi-python when building a new FastAPI project from scratch.",
-      "category": "uncategorized",
-      "tier": "discoverable",
-      "keywords": [
-        "fastapi",
-        "templates",
-        "boilerplate",
-        "BFF",
-        "pydantic",
-        "schemas",
-        "caching",
-        "retry",
-        "flight",
-        "booking"
-      ],
-      "platforms": [
-        "backend"
-      ],
-      "triggers": [],
-      "agent-affinity": [
-        "backend-developer"
-      ],
-      "connections": {
-        "extends": [],
-        "requires": [],
-        "enhances": [],
-        "conflicts": []
-      },
-      "path": "fastapi-templates\\SKILL.md"
+      "path": "fastapi-python/SKILL.md"
     },
     {
       "name": "fix",
@@ -716,7 +417,7 @@
         "enhances": [],
         "conflicts": []
       },
-      "path": "fix\\SKILL.md"
+      "path": "fix/SKILL.md"
     },
     {
       "name": "fullstack-guardian",
@@ -735,7 +436,7 @@
         "enhances": [],
         "conflicts": []
       },
-      "path": "fullstack-guardian\\SKILL.md"
+      "path": "fullstack-guardian/SKILL.md"
     },
     {
       "name": "golang-pro",
@@ -754,7 +455,7 @@
         "enhances": [],
         "conflicts": []
       },
-      "path": "golang-pro\\SKILL.md"
+      "path": "golang-pro/SKILL.md"
     },
     {
       "name": "graphql-architect",
@@ -773,7 +474,7 @@
         "enhances": [],
         "conflicts": []
       },
-      "path": "graphql-architect\\SKILL.md"
+      "path": "graphql-architect/SKILL.md"
     },
     {
       "name": "infra-cloud",
@@ -803,7 +504,7 @@
         "enhances": [],
         "conflicts": []
       },
-      "path": "infra-cloud\\SKILL.md"
+      "path": "infra-cloud/SKILL.md"
     },
     {
       "name": "infra-docker",
@@ -837,7 +538,7 @@
         "enhances": [],
         "conflicts": []
       },
-      "path": "infra-docker\\SKILL.md"
+      "path": "infra-docker/SKILL.md"
     },
     {
       "name": "javascript-pro",
@@ -856,47 +557,7 @@
         "enhances": [],
         "conflicts": []
       },
-      "path": "javascript-pro\\SKILL.md"
-    },
-    {
-      "name": "knowledge-capture",
-      "description": "Use after completing a task — capture learnings, save patterns, record post-mortems to docs/",
-      "category": "analysis-reasoning",
-      "tier": "discoverable",
-      "keywords": [
-        "capture",
-        "learn",
-        "persist",
-        "record",
-        "post-mortem",
-        "retrospective"
-      ],
-      "platforms": [
-        "all"
-      ],
-      "triggers": [
-        "capture learnings",
-        "save pattern",
-        "record finding",
-        "what did we learn"
-      ],
-      "agent-affinity": [
-        "debugger",
-        "developer",
-        "researcher",
-        "code-reviewer",
-        "planner",
-        "journal-writer"
-      ],
-      "connections": {
-        "extends": [],
-        "requires": [
-          "knowledge-retrieval"
-        ],
-        "enhances": [],
-        "conflicts": []
-      },
-      "path": "knowledge-capture\\SKILL.md"
+      "path": "javascript-pro/SKILL.md"
     },
     {
       "name": "knowledge-retrieval",
@@ -937,7 +598,7 @@
         ],
         "conflicts": []
       },
-      "path": "knowledge-retrieval\\SKILL.md"
+      "path": "knowledge-retrieval/SKILL.md"
     },
     {
       "name": "kubernetes-specialist",
@@ -956,7 +617,7 @@
         "enhances": [],
         "conflicts": []
       },
-      "path": "kubernetes-specialist\\SKILL.md"
+      "path": "kubernetes-specialist/SKILL.md"
     },
     {
       "name": "microservices-architect",
@@ -975,7 +636,7 @@
         "enhances": [],
         "conflicts": []
       },
-      "path": "microservices-architect\\SKILL.md"
+      "path": "microservices-architect/SKILL.md"
     },
     {
       "name": "nextjs-developer",
@@ -994,7 +655,7 @@
         "enhances": [],
         "conflicts": []
       },
-      "path": "nextjs-developer\\SKILL.md"
+      "path": "nextjs-developer/SKILL.md"
     },
     {
       "name": "plan",
@@ -1031,7 +692,7 @@
         "enhances": [],
         "conflicts": []
       },
-      "path": "plan\\SKILL.md"
+      "path": "plan/SKILL.md"
     },
     {
       "name": "plan-hard",
@@ -1064,7 +725,7 @@
         "enhances": [],
         "conflicts": []
       },
-      "path": "plan-hard\\SKILL.md"
+      "path": "plan-hard/SKILL.md"
     },
     {
       "name": "playwright-expert",
@@ -1083,7 +744,7 @@
         "enhances": [],
         "conflicts": []
       },
-      "path": "playwright-expert\\SKILL.md"
+      "path": "playwright-expert/SKILL.md"
     },
     {
       "name": "postgres-pro",
@@ -1102,7 +763,7 @@
         "enhances": [],
         "conflicts": []
       },
-      "path": "postgres-pro\\SKILL.md"
+      "path": "postgres-pro/SKILL.md"
     },
     {
       "name": "problem-solving",
@@ -1143,7 +804,7 @@
         ],
         "conflicts": []
       },
-      "path": "problem-solving\\SKILL.md"
+      "path": "problem-solving/SKILL.md"
     },
     {
       "name": "react-expert",
@@ -1162,7 +823,7 @@
         "enhances": [],
         "conflicts": []
       },
-      "path": "react-expert\\SKILL.md"
+      "path": "react-expert/SKILL.md"
     },
     {
       "name": "research",
@@ -1201,7 +862,7 @@
         "enhances": [],
         "conflicts": []
       },
-      "path": "research\\SKILL.md"
+      "path": "research/SKILL.md"
     },
     {
       "name": "review",
@@ -1220,7 +881,7 @@
         "enhances": [],
         "conflicts": []
       },
-      "path": "review\\SKILL.md"
+      "path": "review/SKILL.md"
     },
     {
       "name": "security-reviewer",
@@ -1260,7 +921,7 @@
         "enhances": [],
         "conflicts": []
       },
-      "path": "security-reviewer\\SKILL.md"
+      "path": "security-reviewer/SKILL.md"
     },
     {
       "name": "sequential-thinking",
@@ -1300,7 +961,7 @@
         ],
         "conflicts": []
       },
-      "path": "sequential-thinking\\SKILL.md"
+      "path": "sequential-thinking/SKILL.md"
     },
     {
       "name": "skill-creator",
@@ -1319,7 +980,7 @@
         "enhances": [],
         "conflicts": []
       },
-      "path": "skill-creator\\SKILL.md"
+      "path": "skill-creator/SKILL.md"
     },
     {
       "name": "skill-discovery",
@@ -1352,7 +1013,7 @@
         "enhances": [],
         "conflicts": []
       },
-      "path": "skill-discovery\\SKILL.md"
+      "path": "skill-discovery/SKILL.md"
     },
     {
       "name": "subagent-driven-development",
@@ -1383,7 +1044,7 @@
         ],
         "conflicts": []
       },
-      "path": "subagent-driven-development\\SKILL.md"
+      "path": "subagent-driven-development/SKILL.md"
     },
     {
       "name": "tanstack-start",
@@ -1402,7 +1063,7 @@
         "enhances": [],
         "conflicts": []
       },
-      "path": "tanstack-start\\SKILL.md"
+      "path": "tanstack-start/SKILL.md"
     },
     {
       "name": "terraform-engineer",
@@ -1421,7 +1082,7 @@
         "enhances": [],
         "conflicts": []
       },
-      "path": "terraform-engineer\\SKILL.md"
+      "path": "terraform-engineer/SKILL.md"
     },
     {
       "name": "test",
@@ -1442,46 +1103,7 @@
         ],
         "conflicts": []
       },
-      "path": "test\\SKILL.md"
-    },
-    {
-      "name": "tri-ai-kit",
-      "description": "Kit conventions, agent catalog, skill architecture, and routing rules for tri_ai_kit. Load when answering kit-level questions, authoring agents/skills, or routing ambiguous requests.",
-      "category": "development-tools",
-      "tier": "discoverable",
-      "keywords": [
-        "kit",
-        "agent",
-        "skill",
-        "routing",
-        "conventions",
-        "catalog",
-        "tri-ai-kit",
-        "architecture"
-      ],
-      "platforms": [
-        "all"
-      ],
-      "triggers": [
-        "which agent",
-        "list agents",
-        "kit conventions",
-        "agent catalog",
-        "skill catalog",
-        "how does the kit work"
-      ],
-      "agent-affinity": [
-        "project-manager",
-        "planner",
-        "developer"
-      ],
-      "connections": {
-        "extends": [],
-        "requires": [],
-        "enhances": [],
-        "conflicts": []
-      },
-      "path": "tri-ai-kit\\SKILL.md"
+      "path": "test/SKILL.md"
     },
     {
       "name": "typescript-pro",
@@ -1500,26 +1122,7 @@
         "enhances": [],
         "conflicts": []
       },
-      "path": "typescript-pro\\SKILL.md"
-    },
-    {
-      "name": "ui-ux-pro-max",
-      "description": "UI/UX design intelligence for web and mobile. Includes 50+ styles, 161 color palettes, 57 font pairings, 161 product types, 99 UX guidelines, and 25 chart types across 10 stacks (React, Next.js, Vue, Svelte, SwiftUI, React Native, Flutter, Tailwind, shadcn/ui, and HTML/CSS). Actions: plan, build, create, design, implement, review, fix, improve, optimize, enhance, refactor, and check UI/UX code. Projects: website, landing page, dashboard, admin panel, e-commerce, SaaS, portfolio, blog, and mobile app. Elements: button, modal, navbar, sidebar, card, table, form, and chart. Styles: glassmorphism, claymorphism, minimalism, brutalism, neumorphism, bento grid, dark mode, responsive, skeuomorphism, and flat design. Topics: color systems, accessibility, animation, layout, typography, font pairing, spacing, interaction states, shadow, and gradient. Integrations: shadcn/ui MCP for component search and examples.",
-      "category": "uncategorized",
-      "tier": "discoverable",
-      "keywords": [],
-      "platforms": [
-        "all"
-      ],
-      "triggers": [],
-      "agent-affinity": [],
-      "connections": {
-        "extends": [],
-        "requires": [],
-        "enhances": [],
-        "conflicts": []
-      },
-      "path": "ui-ux-pro-max\\SKILL.md"
+      "path": "typescript-pro/SKILL.md"
     },
     {
       "name": "web-frontend",
@@ -1561,7 +1164,7 @@
         "enhances": [],
         "conflicts": []
       },
-      "path": "web-frontend\\SKILL.md"
+      "path": "web-frontend/SKILL.md"
     },
     {
       "name": "web-i18n",
@@ -1597,7 +1200,7 @@
         "enhances": [],
         "conflicts": []
       },
-      "path": "web-i18n\\SKILL.md"
+      "path": "web-i18n/SKILL.md"
     },
     {
       "name": "web-testing",
@@ -1637,26 +1240,7 @@
         "enhances": [],
         "conflicts": []
       },
-      "path": "web-testing\\SKILL.md"
-    },
-    {
-      "name": "websocket-engineer",
-      "description": "Use when building real-time communication systems with WebSockets or Socket.IO. Invoke for bidirectional messaging, horizontal scaling with Redis, presence tracking, room management.",
-      "category": "uncategorized",
-      "tier": "discoverable",
-      "keywords": [],
-      "platforms": [
-        "all"
-      ],
-      "triggers": "WebSocket, Socket.IO, real-time communication, bidirectional messaging, pub/sub, server push, live updates, chat systems, presence tracking",
-      "agent-affinity": [],
-      "connections": {
-        "extends": [],
-        "requires": [],
-        "enhances": [],
-        "conflicts": []
-      },
-      "path": "websocket-engineer\\SKILL.md"
+      "path": "web-testing/SKILL.md"
     }
   ]
 }

@@ -29,11 +29,11 @@ Brainstorm → Research → Decide → Document. For evaluating trade-offs and m
 **Agent**: planner
 
 - Synthesize brainstormer output + researcher findings
-- Create ADR (Architecture Decision Record) via `knowledge-capture`
+- Create an ADR in `docs/` when the decision should be preserved
 - Define implementation plan if decision is approved
 
 ### 4. Document
-**Agent**: journal-writer
+**Agent**: planner
 
 - Record decision rationale, alternatives considered
 - Document performance benchmarks before/after

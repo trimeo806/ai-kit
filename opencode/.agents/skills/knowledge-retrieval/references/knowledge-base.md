@@ -4,7 +4,7 @@ description: Use when recording ADRs, saving debug findings, persisting patterns
 user-invocable: false
 
 metadata:
-  agent-affinity: [planner, debugger, docs-manager, developer]
+  agent-affinity: [planner, debugger, developer]
   keywords: [knowledge, adr, decision, pattern, learning, memory, persist, capture]
   platforms: [all]
   triggers: ["ADR", "decision record", "learned pattern", "save finding"]
@@ -297,7 +297,7 @@ This creates a knowledge graph linking related concepts.
 | File | Purpose |
 |------|---------|
 | `adr-patterns.md` | ADR template and lifecycle |
-| `knowledge-capture-guide.md` | When and how to capture knowledge |
+| `manual-capture-guide.md` | When and how to capture knowledge manually |
 | `sidecar-format-spec.md` | Data formats and schemas |
 
 ## Workflow Integration
@@ -315,17 +315,15 @@ When this skill is active and user intent matches a sub-skill, delegate:
 
 | Intent | Sub-Skill | When |
 |--------|-----------|------|
-| Capture knowledge | `knowledge-capture` | After debug/plan, persist learning |
 | Retrieve knowledge | `knowledge-retrieval` | Before planning/research, search internal |
 | Store data | `data-store` | `.kit-data/` directory patterns |
 
 ## Related Skills
 
 - `knowledge-retrieval` — Search and retrieve knowledge entries
-- `knowledge-capture` — Post-task knowledge persistence workflow
 
 ## References
 
 - `references/adr-patterns.md` — ADR template and lifecycle
-- `references/knowledge-capture-guide.md` — Capture guidelines
+- `references/manual-capture-guide.md` — Manual capture guidelines
 - `references/sidecar-format-spec.md` — Data format specifications

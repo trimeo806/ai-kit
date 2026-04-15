@@ -71,7 +71,6 @@ const CATEGORY_MAP = {
   'convert': 'development-tools',
   'simulator': 'development-tools',
   'tri-ai-kit': 'development-tools',
-  'auto-improvement': 'development-tools',
   'get-started': 'development-tools',
 
   // analysis-reasoning
@@ -81,10 +80,7 @@ const CATEGORY_MAP = {
   'error-recovery': 'analysis-reasoning',
   'sequential-thinking': 'analysis-reasoning',
   'research': 'analysis-reasoning',
-  'docs-seeker': 'analysis-reasoning',
-  'doc-coauthoring': 'analysis-reasoning',
   'knowledge-retrieval': 'analysis-reasoning',
-  'knowledge-capture': 'analysis-reasoning',
   'repomix': 'analysis-reasoning',
   'skill-discovery': 'analysis-reasoning',
   'data-store': 'analysis-reasoning',
@@ -135,9 +131,7 @@ const CONNECTION_MAP = {
   'problem-solving':     { enhances: ['debug'] },
   'sequential-thinking': { enhances: ['debug'] },
   'error-recovery':      { enhances: ['debug'] },
-  'docs-seeker':         { enhances: ['research'] },
   'knowledge-retrieval': { enhances: ['research', 'plan'] },
-  'knowledge-capture':   { requires: ['knowledge-retrieval'] },
 
   // RAG enhances
   'web-rag': { enhances: ['web-frontend'] },
@@ -145,10 +139,8 @@ const CONNECTION_MAP = {
 
   // Cross-cutting enhances
   'subagent-driven-development':   { enhances: ['plan'] },
-  'auto-improvement':              { enhances: ['skill-discovery'] },
   'data-store':                    { enhances: ['knowledge-retrieval'] },
   'repomix':                       { enhances: ['research'] },
-  'doc-coauthoring':               { enhances: ['plan'] },
 
   // Workflow enhances
   'cook':    { enhances: ['plan'] },

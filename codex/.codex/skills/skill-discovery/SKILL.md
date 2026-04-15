@@ -39,7 +39,7 @@ Check request keywords → git diff extensions → CWD path:
 | `tri-ai-kit-cli/` path, `src/domains/`, "CLI", "kit cli" | cli | *(kit-cli skill not installed — use `tri-ai-kit/SKILL.md` for kit conventions)* |
 | `.css/.scss` + design tokens, "Figma", "klara" | design | *(figma/web-ui-lib skills not installed — describe conventions from context)* |
 
-> **Note**: Platform packs (ios-development, android-development, backend-javaee, etc.) are planned for future installation. Until installed, fall back to generic reasoning skills and external research via `docs-seeker`.
+> **Note**: Platform packs (ios-development, android-development, backend-javaee, etc.) are planned for future installation. Until installed, fall back to generic reasoning skills and targeted research.
 
 Multiple platforms: ask user (max 1 question). If 80%+ files = one platform, use that.
 
@@ -55,9 +55,9 @@ Scan the user request for these patterns:
 | Signal Words | Task Type | Likely Skills |
 |-------------|-----------|---------------|
 | error, stack trace, crash, bug, failing | debug | problem-solving, error-recovery |
-| docs, library, API reference, how to use | research | docs-seeker, research |
+| docs, library, API reference, how to use | research | knowledge-retrieval, research |
 | ADR, prior art, existing pattern, similar | knowledge | knowledge-retrieval |
-| write docs, spec, proposal, RFC | documentation | doc-coauthoring |
+| write docs, spec, proposal, RFC | documentation | knowledge-retrieval, research |
 | retry, timeout, circuit breaker, fallback | resilience | error-recovery |
 | step by step, complex, analyze, root cause | reasoning | sequential-thinking, problem-solving |
 | repo overview, codebase summary | exploration | repomix |
@@ -73,7 +73,7 @@ Scan the user request for these patterns:
 
 ## Step 2: Query Skill Index
 
-Read `.agents/skills/skill-index.json`. Filter candidates:
+Read `.claude/skills/skill-index.json`. Filter candidates:
 
 ```
 For each skill in index:
@@ -157,7 +157,7 @@ This overrides Steps 1-2 when a clear flow match exists. Falls back to standard 
 | any agent | Backend task (.java) | api-designer, microservices-architect *(backend pack not installed)* |
 | debugger | stuck on bug | sequential-thinking, problem-solving |
 | fullstack-developer | API timeout | error-recovery, problem-solving |
-| planner | plan with research | research, docs-seeker |
-| any agent | a11y | *(a11y skill packs not installed — use external research via docs-seeker)* |
-| any agent | Figma / design system | *(figma/design-token skills not installed — use external research via docs-seeker)* |
+| planner | plan with research | research, knowledge-retrieval |
+| any agent | a11y | *(a11y skill packs not installed — use targeted research)* |
+| any agent | Figma / design system | *(figma/design-token skills not installed — use targeted research)* |
 | any agent | kit authoring | skill-creator |

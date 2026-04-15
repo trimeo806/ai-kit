@@ -51,22 +51,13 @@ Per-phase implementation follows `subagent-driven-development` skill when 3+ ind
 
 If issues found → fullstack-developer fixes → re-test → re-review (max 3 loops).
 
-### 5. Docs
-**Agent**: docs-manager
-**Trigger**: auto after review pass
-
-- Update API documentation with new endpoints
-- Add architecture diagrams for new components
-- Update onboarding guide if developer workflow changed
-- Generate changelog entry with migration notes
-
-### 6. Git
+### 5. Git
 **Agent**: git-manager
 **Trigger**: `/git` or explicit user request
 
 - Review changes via `git diff`
 - Create meaningful conventional commit (`feat:` prefix)
-- No "Generated with Codex" attribution nonsense
+- No "Generated with Claude Code" attribution nonsense
 - Create PR with proper description and checklist
 - Link related issues automatically
 

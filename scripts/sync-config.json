@@ -416,7 +416,6 @@
         "brainstormer",
         "code-reviewer",
         "frontend-architect",
-        "knowledge-graph-guide",
         "muji",
         "planner",
         "project-manager",
@@ -495,13 +494,6 @@
           "agent": "debugger",
           "subtask": true,
           "template": "Use the current conversation and repository context. Load the `debug` skill and investigate the issue thoroughly before proposing or applying changes. Additional command input: $ARGUMENTS"
-        },
-        {
-          "name": "docs",
-          "description": "Write or update project documentation",
-          "agent": "docs-manager",
-          "subtask": true,
-          "template": "Use the current conversation, repository, and active plan context. Load the `docs` skill and complete the requested documentation work in the project's established style. Additional command input: $ARGUMENTS"
         },
         {
           "name": "ask",

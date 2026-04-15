@@ -213,7 +213,7 @@ See `references/state-machine-guide.md` for notation, patterns, and validation c
 - Consider testing strategy
 - Estimate conservatively, track actuals
 - Mark file ownership for parallel execution safety (parallel mode)
-- Use `knowledge-retrieval` before planning, `knowledge-capture` after
+- Use `knowledge-retrieval` before planning
 
 ## Mode Reference
 
@@ -253,7 +253,6 @@ Agents available in this kit:
 | `frontend-architect` | routing hierarchy, component design |
 | `researcher` | best practices, library research |
 | `debugger` | root cause analysis, stack trace diagnosis |
-| `docs-manager` | docs write/update/migrate |
 | `muji` | UI design system, component audits |
 
 ### Step B — Scan the Skills Catalog
@@ -264,7 +263,7 @@ Read `.claude/skills/skill-index.json`. For each phase, match skills by domain s
 |---------------|--------------------|
 | Go backend | `golang-pro`, `postgres-pro`, `api-designer` |
 | Auth/OAuth/JWT | `golang-pro`, `typescript-pro` |
-| SSE / real-time | `websocket-engineer` |
+| SSE / real-time | `typescript-pro`, `golang-pro` |
 | React / TanStack Start | `tanstack-start`, `react-expert`, `web-frontend` |
 | TypeScript frontend | `typescript-pro`, `javascript-pro` |
 | E2E / browser testing | `playwright-expert`, `web-testing`, `test` |

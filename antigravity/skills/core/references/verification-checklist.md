@@ -1,4 +1,4 @@
-﻿---
+---
 name: verification-before-completion
 description: "Use when about to claim completion, express satisfaction with work, or state that a task is done. Triggers on phrases like 'done', 'complete', 'finished', 'ready', 'all set', 'looks good'."
 user-invocable: false
@@ -73,4 +73,4 @@ ALWAYS. Before ANY claim that work is complete, successful, passing, working, re
 Violating the letter of these rules IS violating the spirit. There are no clever workarounds that preserve the intent while skipping the steps.
 
 ### Related Skills
-- `auto-improvement` — Verification failures tracked for rework detection across sessions
+- Verification failures are tracked in session metrics for rework detection across sessions

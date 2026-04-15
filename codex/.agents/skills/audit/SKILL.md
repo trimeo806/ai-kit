@@ -46,7 +46,7 @@ Before executing any audit mode, activate `knowledge-retrieval` to load relevant
 
 ## Subagent Constraint
 
-**Subagents cannot spawn further subagents** — neither custom agent dispatch nor Task tool is available in subagent context. Therefore, this skill runs **inline in the main conversation** (no `context: fork`). The main conversation is the orchestrator — it dispatches specialist agents and merges their results.
+**Subagents cannot spawn further subagents** — neither Agent tool nor Task tool is available in subagent context. Therefore, this skill runs **inline in the main conversation** (no `context: fork`). The main conversation is the orchestrator — it dispatches specialist agents and merges their results.
 
 ## Step 0 — Flag Override + Mode Selection
 
@@ -62,11 +62,11 @@ If `$ARGUMENTS` starts with `--ui` and **no maturity tier flag** (`--poc`/`--bet
 > Reply with the flag or just `poc` / `beta` / `stable`."
 Wait for reply, then set the maturity tier and proceed.
 
-If `$ARGUMENTS` starts with `--ui`: **dispatch muji** via custom agent dispatch. Pass component name + platform flags + maturity tier (if present) + `references/ui-workflow.md` workflow.
-If `$ARGUMENTS` starts with `--a11y`: **dispatch a11y-specialist** via custom agent dispatch. Pass `references/a11y-workflow.md` + platform hint.
+If `$ARGUMENTS` starts with `--ui`: **dispatch muji** via Agent tool. Pass component name + platform flags + maturity tier (if present) + `references/ui-workflow.md` workflow.
+If `$ARGUMENTS` starts with `--a11y`: **dispatch a11y-specialist** via Agent tool. Pass `references/a11y-workflow.md` + platform hint.
 If `$ARGUMENTS` starts with `--close --ui`: load `references/ui-close.md` and execute inline.
 If `$ARGUMENTS` starts with `--close`: load `references/a11y-close.md` and execute inline.
-If `$ARGUMENTS` starts with `--code`: **dispatch code-reviewer** via custom agent dispatch.
+If `$ARGUMENTS` starts with `--code`: **dispatch code-reviewer** via Agent tool.
 If auto-detected as **hybrid** (see Hybrid Detection below): run Hybrid Orchestration.
 Otherwise: continue to Auto-Detection.
 
@@ -79,25 +79,25 @@ Trigger hybrid mode when ALL conditions met:
 
 ## Hybrid Orchestration (main context)
 
-**This runs in the main conversation, NOT in a subagent.** The main context has custom agent dispatch available.
+**This runs in the main conversation, NOT in a subagent.** The main context has Agent tool available.
 
 ```
 session_folder = reports/{YYMMDD-HHMM}-{slug}-audit/
 ```
 
 1. **Create session folder**: `Bash("mkdir -p {session_folder}")`
-2. **Dispatch muji** via custom agent dispatch with Template A+ from `references/delegation-templates.md`:
+2. **Dispatch muji** via Agent tool with Template A+ from `references/delegation-templates.md`:
    - Fill: Scope, Component(s), Mode: library, Platform, Output path: `{session_folder}/muji-ui-audit.md`
    - WAIT for muji to complete
 3. **Read muji report** at `{session_folder}/muji-ui-audit.md`. Extract:
    - `finding_locations`: Set of file:line flagged by muji
    - `verdict`: muji's overall verdict
    - `a11y_findings`: contents of `## A11Y Findings` section (if present)
-4. **If a11y findings exist AND maturity tier is NOT `poc`**: dispatch a11y-specialist via custom agent dispatch (Template B):
+4. **If a11y findings exist AND maturity tier is NOT `poc`**: dispatch a11y-specialist via Agent tool (Template B):
    - Output path: `{session_folder}/a11y-audit.md`
    - WAIT for completion
    - **POC exception**: If `--poc`, skip a11y dispatch — A11Y findings are already advisory-only in muji's report (no dedicated a11y pass needed until beta)
-5. **Dispatch code-reviewer** via custom agent dispatch:
+5. **Dispatch code-reviewer** via Agent tool:
    - Pass: file list, `{session_folder}/muji-ui-audit.md` path (for dedup), SEC/PERF/TS/ARCH/STATE/LOGIC scope
    - Output path: `{session_folder}/code-review-findings.md`
    - WAIT for completion
@@ -109,7 +109,7 @@ session_folder = reports/{YYMMDD-HHMM}-{slug}-audit/
    - Methodology section
 6.5. **Run build verification**:
    ```bash
-   node .codex/hooks/lib/build-gate.cjs
+   node .claude/hooks/lib/build-gate.cjs
    ```
    Append `## Build Verification` section to `{session_folder}/report.md`:
    - Exit 0: `Build verification: ✓ PASS ({platform}, {duration_ms}ms)`
@@ -127,9 +127,9 @@ For non-hybrid dispatches (`--ui`, `--code`, `--a11y`):
 1. Create session folder per `references/output-contract.md`
 2. Select template from `references/delegation-templates.md`
 3. Fill all `{placeholders}` — include `Output path: {session_folder}/{filename}`
-4. Dispatch via **custom agent dispatch** to the specialist agent
+4. Dispatch via **Agent tool** to the specialist agent
 5. **Wait** for specialist report
-6. Run build verification: `node .codex/hooks/lib/build-gate.cjs` — append `## Build Verification` to report (advisory)
+6. Run build verification: `node .claude/hooks/lib/build-gate.cjs` — append `## Build Verification` to report (advisory)
 7. Write `session.json` and update `reports/index.json`
 
 **Output contract**: `references/output-contract.md` is the single source of truth for paths and responsibilities.
@@ -141,7 +141,6 @@ For non-hybrid dispatches (`--ui`, `--code`, `--a11y`):
 | A++ — POC Organism Audit | muji | `--ui` + organism classification + `--poc`/`--beta` |
 | B — A11y Audit | a11y-specialist | `--a11y` flag or A11y findings from UI audit |
 | C — Code Escalation | code-reviewer | Critical findings needing deeper pass |
-| D — Docs Gap Detection | docs-manager | Post-audit, new feature, or refactor |
 | E — MCP/RAG Query | mcp-manager | Component catalog lookup, pattern search |
 
 ## Aspect Files

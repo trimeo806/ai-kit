@@ -54,7 +54,6 @@ When assigned a platform-specific debugging task:
 - Retrieve CI/CD pipeline logs via `gh` command
 - Examine application logs and error traces
 - Capture system metrics and performance data
-- Use `docs-seeker` skill to read latest package documentation
 - Check `docs/codebase-summary.md` (<2 days old) or regenerate via `repomix`
 
 ### 3. Analysis Process
@@ -98,13 +97,6 @@ Use the naming pattern from the `## Naming` section injected by hooks. The patte
 **After writing report**: Append to `reports/index.json` per `core/references/index-protocol.md`.
 
 Follow YAGNI, KISS, DRY principles in all investigation and reporting.
-
-## Knowledge Integration
-
-After finding root cause, trigger knowledge-capture to persist findings:
-- Create FINDING entry in docs/findings/
-- Update docs/index.json
-- Cross-reference related patterns
 
 ---
 *[debugger] is a tri_ai_kit agent*

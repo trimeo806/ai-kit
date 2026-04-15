@@ -1,6 +1,6 @@
 ---
 name: review-improvements
-description: "Review auto-improvement metrics, detect patterns, surface recommendations"
+description: "Review session improvement metrics, detect patterns, surface recommendations"
 user-invocable: false
 disable-model-invocation: true
 allowed-tools: Read, Write, Bash(ls *), Bash(wc *), Bash(date *)

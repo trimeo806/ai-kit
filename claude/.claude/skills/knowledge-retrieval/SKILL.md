@@ -59,7 +59,7 @@ Glob: **/docs/index.json
 Use the registry closest to the files being worked on as primary. See `references/search-strategy.md` for query patterns.
 
 **No registry found?** Prompt the user:
-> No `docs/index.json` found. Run `/docs` to initialize one. This enables consistent, session-persistent knowledge retrieval for all agents.
+> No `docs/index.json` found. Initialize one manually if you want session-persistent project knowledge.
 
 ## Search Protocol
 
@@ -85,18 +85,11 @@ Search sources in order, stop when sufficient context found. See `references/sea
 
 ## Integration with Existing Skills
 
-### docs-seeker
-Handles Context7 + WebSearch (Level 5):
-```
-docs-seeker → resolve-library-id → get-library-docs
-docs-seeker → WebSearch (if Context7 fails)
-```
-
 ### research
 Handles deep multi-source investigation:
 ```
 research → knowledge-retrieval (internal first)
-research → docs-seeker (external)
+research → Context7 / WebSearch (external)
 research → synthesize findings
 ```
 
@@ -115,7 +108,7 @@ docs/ (L1) and RAG (L2) complement each other. Bridge them:
 |-------------|--------------|
 | Result looks like a recurring pattern | Check `docs/patterns/` for documented version |
 | Multiple results share an approach | Check `docs/conventions/` for existing convention |
-| No docs/ entry for frequently-queried topic | Flag for `knowledge-capture` |
+| No docs/ entry for frequently-queried topic | Flag it for manual documentation follow-up |
 
 **Rule**: Always cross-reference. An ADR without code validation is stale. A code pattern without docs is undocumented risk.
 
@@ -169,8 +162,6 @@ When a query spans platforms, coordinate RAG queries:
 ## Related Skills
 
 - `knowledge-retrieval/references/knowledge-base.md` — Knowledge system structure
-- `knowledge-capture` — Persist new learnings
-- `docs-seeker` — External documentation retrieval
 - `research` — Deep multi-source investigation
 
 ## References
