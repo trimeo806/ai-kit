@@ -116,7 +116,7 @@ function main() {
 
     const result = {
       ok: false,
-      reason: `Session metrics detected significant learnings. Consider capturing:\n${triggerSummary}\n\nUse the knowledge-capture skill to persist these to docs/ if warranted.`
+      reason: `Session metrics detected significant learnings. Consider capturing:\n${triggerSummary}\n\nPersist them to project docs or reports if warranted.`
     };
 
     console.log(JSON.stringify(result));

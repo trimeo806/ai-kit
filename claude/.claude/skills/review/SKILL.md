@@ -27,7 +27,7 @@ Otherwise: continue to Auto-Detection.
 | `references/code.md` | Ultrathink edge cases, then parallel verify with reviewers |
 | `references/a11y.md` | Review accessibility compliance (WCAG 2.1 AA) |
 | `references/ui-mode.md` | Lightweight UI component review by focus area — delegates to muji |
-| `references/improvements.md` | Review auto-improvement metrics, detect patterns |
+| `references/improvements.md` | Review session improvement metrics and detect patterns |
 
 ## Auto-Detection
 

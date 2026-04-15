@@ -8,7 +8,7 @@ Defines how agents maintain the three project index files: `docs/index.json`, `p
 
 ## 1. `docs/index.json` — Knowledge Base Registry
 
-Maintained by: `docs-manager`, `developer`, `debugger`, `planner`
+Maintained by: `developer`, `debugger`, `planner`
 
 Schema defined in `knowledge-retrieval/references/knowledge-base.md`. Key fields:
 
@@ -111,9 +111,8 @@ Maintained by: `code-reviewer`, `muji`, `a11y-specialist`, `researcher`, `planne
 | `muji` | — | — | `index.json` |
 | `a11y-specialist` | — | — | `index.json` |
 | `tester` | — | — | `index.json` |
-| `developer` | `index.json` (knowledge capture) | — | — |
+| `developer` | `index.json` (when writing docs/ entries) | — | — |
 | `debugger` | `index.json` (findings) | — | `index.json` |
-| `docs-manager` | `index.json` | — | — |
 
 ---
 

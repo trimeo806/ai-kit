@@ -1,4 +1,4 @@
-﻿# Workflow: Project Initialization
+# Workflow: Project Initialization
 
 Bootstrap a new project or module with structure, docs, and initial commit.
 
@@ -12,8 +12,8 @@ Bootstrap a new project or module with structure, docs, and initial commit.
 - Create project structure (dirs, configs, initial files)
 - Set up build tooling, linting, testing framework
 
-### 2. Documentation
-**Agent**: docs-manager
+### 2. Project Notes
+**Agent**: developer
 
 - Create `docs/` KB structure:
   - `README.md` — project overview (<300 lines)

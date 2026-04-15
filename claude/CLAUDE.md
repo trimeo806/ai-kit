@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What This Is
 
-tri-ai-kit is a multi-agent development toolkit for Claude Code. It provides 22 specialized agents, 60+ skills, hooks, and a 15-phase production delivery workflow. The main conversation always acts as orchestrator — it routes to agents via the Agent tool and merges results. Agents never spawn other agents.
+tri-ai-kit is a multi-agent development toolkit for Claude Code. It provides 18 specialized agents, 46 focused skills, hooks, and a 15-phase production delivery workflow. The main conversation always acts as orchestrator — it routes to agents via the Agent tool and merges results. Agents never spawn other agents.
 
 This is the `claude/` subdirectory of the tri-ai-kit monorepo. The `.claude/` folder here is the **source of truth** for all agents and skills. Never edit `antigravity/`, `codex/`, or `opencode/` directly — they are auto-generated via sync scripts.
 
@@ -13,8 +13,8 @@ This is the `claude/` subdirectory of the tri-ai-kit monorepo. The `.claude/` fo
 ```
 claude/
 ├── .claude/
-│   ├── agents/          # 22 agent definitions (markdown + YAML frontmatter)
-│   ├── skills/          # 60+ passive skill modules (each has SKILL.md)
+│   ├── agents/          # 18 agent definitions (markdown + YAML frontmatter)
+│   ├── skills/          # 48 passive skill modules (each has SKILL.md)
 │   │   └── skill-index.json  # Auto-generated skill catalog
 │   ├── hooks/           # Session hooks (Node.js .cjs files)
 │   │   ├── lib/         # Shared hook utilities (colors, transcript parser, config counter)

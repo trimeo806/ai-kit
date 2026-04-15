@@ -35,7 +35,7 @@ metadata:
 This skill MUST run via the `planner` agent, not inline.
 
 **When `/plan` or planning intent is detected:**
-1. Use the **OpenCode subagent dispatch** to spawn `planner`
+1. Use the **Agent tool** to spawn `planner`
 2. Pass the full user request + active context (branch, plan dir, CWD)
 3. Do NOT execute planning steps inline in the main conversation
 
@@ -123,10 +123,14 @@ draft → active → completed → archived
 
 | Action | Command |
 |--------|---------|
+| Activate | `node .claude/scripts/set-active-plan.cjs plans/{slug}` |
+| Complete | `node .claude/scripts/complete-plan.cjs plans/{slug}` |
+| Archive | `node .claude/scripts/archive-plan.cjs plans/{slug}` |
 | Board | `plans/README.md` — updated by scripts automatically |
 
 **MANDATORY final step** — after writing all plan files, run:
 ```bash
+node .claude/scripts/set-active-plan.cjs plans/{slug}
 ```
 This stamps `status: active` in `plan.md` and registers the plan in session state so `/cook` picks it up automatically. Do NOT skip this step.
 
@@ -209,7 +213,7 @@ See `references/state-machine-guide.md` for notation, patterns, and validation c
 - Consider testing strategy
 - Estimate conservatively, track actuals
 - Mark file ownership for parallel execution safety (parallel mode)
-- Use `knowledge-retrieval` before planning, `knowledge-capture` after
+- Use `knowledge-retrieval` before planning
 
 ## Mode Reference
 
@@ -225,11 +229,11 @@ See `references/state-machine-guide.md` for notation, patterns, and validation c
 
 ## Agent & Skill Analysis — REQUIRED for Every Plan
 
-Before generating any phase file, analyze `.opencode/agents/` and `.agents/skills/skill-index.json` to assign the right executor to each phase.
+Before generating any phase file, analyze `.claude/agents/` and `.claude/skills/skill-index.json` to assign the right executor to each phase.
 
 ### Step A — Scan the Agent Catalog
 
-Read every `*.md` in `.opencode/agents/` and extract:
+Read every `*.md` in `.claude/agents/` and extract:
 - `name` — agent identifier
 - `description` — use-case summary
 - `skills` — skills the agent pre-loads
@@ -249,18 +253,17 @@ Agents available in this kit:
 | `frontend-architect` | routing hierarchy, component design |
 | `researcher` | best practices, library research |
 | `debugger` | root cause analysis, stack trace diagnosis |
-| `docs-manager` | docs write/update/migrate |
 | `muji` | UI design system, component audits |
 
 ### Step B — Scan the Skills Catalog
 
-Read `.agents/skills/skill-index.json`. For each phase, match skills by domain signal:
+Read `.claude/skills/skill-index.json`. For each phase, match skills by domain signal:
 
 | Domain Signal | Skills to Activate |
 |---------------|--------------------|
 | Go backend | `golang-pro`, `postgres-pro`, `api-designer` |
 | Auth/OAuth/JWT | `golang-pro`, `typescript-pro` |
-| SSE / real-time | `websocket-engineer` |
+| SSE / real-time | `typescript-pro`, `golang-pro` |
 | React / TanStack Start | `tanstack-start`, `react-expert`, `web-frontend` |
 | TypeScript frontend | `typescript-pro`, `javascript-pro` |
 | E2E / browser testing | `playwright-expert`, `web-testing`, `test` |

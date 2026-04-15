@@ -6,7 +6,7 @@ This file provides guidance to OpenCode when working with code in this repositor
 
 ## What This Is
 
-tri-ai-kit is a multi-agent development toolkit for OpenCode. It provides 22 specialized agents, 60+ skills, custom commands, and a 15-phase production delivery workflow. The main conversation always acts as orchestrator - it routes to the right specialist via OpenCode subagent dispatch and merges results. Coordinator agents may dispatch specialists when the workflow requires it.
+tri-ai-kit is a multi-agent development toolkit for OpenCode. It provides 18 specialized agents, 46 focused skills, custom commands, and a 15-phase production delivery workflow. The main conversation always acts as orchestrator - it routes to the right specialist via OpenCode subagent dispatch and merges results. Coordinator agents may dispatch specialists when the workflow requires it.
 
 This package is intended to be installed at the target repository root. Treat `AGENTS.md`, `opencode.json`, `.opencode/agents/`, `.opencode/commands/`, and `.agents/skills/` as the OpenCode runtime surface.
 
@@ -122,7 +122,6 @@ On every user prompt, sense context before acting:
 | Security | "security audit", "harden this", "OWASP", "check for vulnerabilities" | `security-auditor` via OpenCode subagent dispatch |
 | Infra / CI/CD / Observability | "set up CI/CD", "deploy this", "add monitoring", "Terraform", "Docker" | `devops-engineer` via OpenCode subagent dispatch |
 | Test | "add tests", "is this covered", "validate this works" | `tester` via OpenCode subagent dispatch |
-| Docs | "document this", "update the docs", "write a spec" | `docs-manager` via OpenCode subagent dispatch |
 | Git | "commit", "push", "create a PR", "ship it", "done" | `git-manager` via OpenCode subagent dispatch |
 | Onboard | "what is this project", "I'm new", "get started" | `/get-started` skill |
 
@@ -133,7 +132,7 @@ On every user prompt, sense context before acting:
 - Quality verbs (check, review, improve, clean up, refactor, simplify) → Review
 - Still ambiguous → infer from git context (staged files → Review, active plan → Build, error in prompt → Fix)
 
-**Less common intents**: scaffold → `/bootstrap`, convert → `/convert`, journal → `journal-writer`, MCP → `mcp-manager`, UI/UX design → `design-specialist`, brand/logo/CIP → `design-specialist`, banner/social assets → `design-specialist`, slides/pitch deck → `design-specialist`, UI component audit → `muji`, security hardening → `security-auditor`, CI/CD + infra → `devops-engineer`, brainstorm/ideate → `brainstormer`, Python/FastAPI backend → `backend-developer` + `fastapi-python` skill
+**Less common intents**: scaffold → `/bootstrap`, convert → `/convert`, MCP → `mcp-manager`, UI component audit → `muji`, security hardening → `security-auditor`, CI/CD + infra → `devops-engineer`, brainstorm/ideate → `brainstormer`, Python/FastAPI backend → `backend-developer` + `fastapi-python` skill
 
 ### Routing Rules
 
@@ -197,16 +196,12 @@ Do not guess. A wrong agent assignment causes the wrong skills to activate durin
 | Go / REST API / DB migrations | `backend-developer` | `golang-pro`, `postgres-pro`, `api-designer` |
 | React / TanStack Start / UI | `frontend-developer` | `tanstack-start`, `react-expert`, `typescript-pro` |
 | Auth / OAuth / JWT | `backend-developer` | `golang-pro`, `typescript-pro` |
-| SSE / WebSocket / real-time | `backend-developer` | `golang-pro`, `websocket-engineer` |
+| SSE / real-time | `backend-developer` | `golang-pro`, `typescript-pro` |
 | E2E / unit / integration tests | `tester` | `playwright-expert`, `web-testing`, `test` |
 | Docker / CI/CD / infra | `devops-engineer` | `infra-docker`, `terraform-engineer` |
 | Security hardening | `security-auditor` | `fullstack-guardian` |
 | API schema design | `backend-architect` | `api-designer`, `architecture-designer` |
 | Routing / component hierarchy | `frontend-architect` | `tanstack-start`, `architecture-designer` |
-| UI/UX design, color, typography | `design-specialist` | `ui-ux-pro-max`, `ui-styling`, `design-system` |
-| Brand identity, logo, CIP | `design-specialist` | `design`, `brand`, `ui-ux-pro-max` |
-| Banners, social media assets | `design-specialist` | `banner-design`, `design`, `ui-styling` |
-| Presentations, pitch decks | `design-specialist` | `slides`, `design-system` |
 | Python / FastAPI backend | `backend-developer` | `fastapi-python`, `postgres-pro`, `api-designer` |
 
 ---
@@ -230,7 +225,7 @@ Do not guess. A wrong agent assignment causes the wrong skills to activate durin
 **Hybrid audits** (klara-theme code): Orchestrated from main context via `/audit` skill. Dispatch muji (Template A+) first, then code-reviewer with muji's report. Never free-form prompt muji — use structured delegation templates from `audit/references/delegation-templates.md`.
 
 **Document-driven agent sequencing** — When executing a plan or any document that mentions multiple agents (in `## Agents & Skills` tables, `## Agent & Skills` blocks, handoff chains, or inline text like "then run `code-reviewer`"), the main conversation must **trigger every listed agent in the order they appear**, not just the first one. This applies to:
-- Post-implementation agents: `code-reviewer`, `security-auditor`, `tester`, `docs-manager`
+- Post-implementation agents: `code-reviewer`, `security-auditor`, `tester`
 - Handoffs declared in phase files under `## Agent & Skills → Handoffs`
 - Any agent named after a connector word: "then", "followed by", "after completion", "next", "finally"
 

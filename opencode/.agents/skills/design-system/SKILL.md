@@ -100,9 +100,9 @@ node scripts/validate-tokens.cjs --dir src/
 ## Integration
 
 **With brand:** Extract primitives from brand colors/typography
-**With ui-styling:** Component tokens → Tailwind config
+Component tokens can inform Tailwind or CSS variable configuration when the target project already uses those patterns.
 
-**Skill Dependencies:** brand, ui-styling
+**Skill Dependencies:** none
 **Primary Agents:** ui-ux-designer, frontend-developer
 
 ## Slide System

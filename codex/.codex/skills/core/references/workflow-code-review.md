@@ -1,4 +1,4 @@
-﻿# Workflow: Code Review
+# Workflow: Code Review
 
 Scout-first review pattern. Edge-case detection before quality audit.
 
@@ -70,5 +70,5 @@ When YOUR code is being reviewed:
 ### 7. Knowledge Capture
 
 After review, if new patterns or conventions identified:
-- Record as CONV entry in `docs/` via `knowledge-capture`
+- Record as a CONV entry in `docs/` when the convention is worth preserving
 - Update code standards if convention is project-wide

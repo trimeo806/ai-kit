@@ -1,4 +1,4 @@
-﻿---
+---
 name: code-review
 description: Use when reviewing code, checking quality before commit, or auditing changed files for issues
 tier: core
@@ -164,5 +164,4 @@ Key requirements:
 
 ### Related Skills
 - `knowledge-retrieval` — activated on Critical escalation
-- `knowledge-capture` — use after task to persist learnings
-- `auto-improvement` — session metrics and improvement trends
+- Session metrics and improvement trends are available from the runtime hooks

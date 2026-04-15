@@ -1,4 +1,4 @@
-﻿---
+---
 name: ckm:design-system
 description: Token architecture, component specifications, and slide generation. Three-layer tokens (primitive→semantic→component), CSS variables, spacing/typography scales, component specs, strategic slide creation. Use for design tokens, systematic design, brand-compliant presentations.
 argument-hint: "[component or token]"
@@ -100,9 +100,9 @@ node scripts/validate-tokens.cjs --dir src/
 ## Integration
 
 **With brand:** Extract primitives from brand colors/typography
-**With ui-styling:** Component tokens → Tailwind config
+Component tokens can inform Tailwind or CSS variable configuration when the target project already uses those patterns.
 
-**Skill Dependencies:** brand, ui-styling
+**Skill Dependencies:** none
 **Primary Agents:** ui-ux-designer, frontend-developer
 
 ## Slide System

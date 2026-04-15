@@ -147,33 +147,6 @@ Report back to: {calling_agent}
 
 ---
 
-## Template D: Documentation Audit Delegation (→ docs-manager)
-
-```
-## Delegated Docs Audit
-
-Scope: {component_name} — {file_list}
-Mode: {library | consumer}
-Trigger: {missing_docs | stale_docs | undocumented_api}
-Existing registry: {docs/index.json path if found, or "not found"}
-
-Expectations:
-- Check if component has a docs/index.json entry (FEAT-* or CONV-*)
-- If entry exists, verify it matches current API surface (props, variants, exports)
-- If entry missing, draft a new FEAT-* entry for the component
-- Flag stale docs with specific field-level mismatches
-
-Boundaries:
-- Do not modify source code
-- Do not create full documentation from scratch — flag gaps and draft entry stubs only
-- Report which docs paths you checked
-
-Report back to: {calling_agent}
-Output path: {reports_path}
-```
-
----
-
 ## Template E: MCP/RAG Knowledge Query (→ mcp-manager)
 
 ```

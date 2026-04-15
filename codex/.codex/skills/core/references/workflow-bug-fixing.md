@@ -1,4 +1,4 @@
-﻿# Workflow: Bug Fixing
+# Workflow: Bug Fixing
 
 Investigation-first workflow. Scout → Debug → Fix → Test → Review → Capture → Git.
 
@@ -46,12 +46,11 @@ Investigation-first workflow. Scout → Debug → Fix → Test → Review → Ca
 - Validate test coverage of the root cause
 
 ### 6. Capture
-**Agent**: journal-writer (auto-trigger on significant fix)
+**Agent**: debugger or developer (optional, only for reusable learnings)
 
-- Record root cause as FINDING in `docs/`
-- Document prevention strategy
+- Record the root cause in `docs/` when the fix uncovers a reusable pattern
+- Document the prevention strategy
 - Cross-reference related patterns
-- Update knowledge base via `knowledge-capture` skill
 
 ### 7. Git
 **Agent**: git-manager

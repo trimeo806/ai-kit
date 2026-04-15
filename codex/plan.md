@@ -188,9 +188,9 @@ Create a Codex-ready package under `tri-ai-kit/codex/` from the reusable Claude 
 
 | Phase | Agent | Skills Activated |
 |-------|-------|-----------------|
-| P1 - Source and target contract lock | `project-manager` | `tri-ai-kit`, `skill-discovery`, `research`, `doc-coauthoring`, `sequential-thinking` |
-| P2 - Codex package generator | `developer` | `core`, `code-documenter`, `tri-ai-kit`, `skill-discovery` |
-| P3 - Hooks, memory, and runtime parity | `developer` | `core`, `knowledge-capture`, `knowledge-retrieval`, `skill-discovery` |
+| P1 - Source and target contract lock | `project-manager` | `tri-ai-kit`, `skill-discovery`, `research`, `knowledge-retrieval`, `sequential-thinking` |
+| P2 - Codex package generator | `developer` | `core`, `tri-ai-kit`, `skill-discovery` |
+| P3 - Hooks, memory, and runtime parity | `developer` | `core`, `knowledge-retrieval`, `skill-discovery` |
 | P4 - Validation, docs, and release contract | `tester` | `test`, `core`, `skill-discovery`, `docs` |
 
 ## Phases

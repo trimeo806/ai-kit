@@ -1,4 +1,4 @@
-﻿---
+---
 name: plan-deep
 description: "Deep plan with sequential research and comprehensive analysis"
 user-invocable: false
@@ -42,7 +42,7 @@ Scan `.claude/agents/*.md`, extract `name`, `description`, `skills` fields. Then
 | Go / Node.js backend | `backend-developer` | `golang-pro`, `postgres-pro`, `api-designer` |
 | React / TanStack UI | `frontend-developer` | `tanstack-start`, `react-expert`, `typescript-pro`, `web-frontend` |
 | Auth / OAuth / JWT | `backend-developer` | `golang-pro`, `typescript-pro` |
-| SSE / real-time backend | `backend-developer` | `golang-pro`, `websocket-engineer`, `postgres-pro` |
+| SSE / real-time backend | `backend-developer` | `golang-pro`, `typescript-pro`, `postgres-pro` |
 | Test / E2E | `tester` | `playwright-expert`, `web-testing`, `test` |
 | CI/CD / Docker | `devops-engineer` | `infra-docker`, `terraform-engineer` |
 | Security audit | `security-auditor` | `fullstack-guardian` |
@@ -281,7 +281,7 @@ Max 200 lines per phase.
 
 ### 9. Set Active Plan
 ```bash
-# set-active-plan.cjs {plan_path}
+node .claude/scripts/set-active-plan.cjs {plan_path}
 ```
 If fails: warn with manual command.
 

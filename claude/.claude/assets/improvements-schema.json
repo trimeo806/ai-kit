@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "title": "Session Metrics Entry",
-  "description": "Schema for auto-improvement session metrics stored in .kit-data/improvements/sessions.jsonl",
+  "description": "Schema for session metrics stored in .kit-data/improvements/sessions.jsonl",
   "type": "object",
   "required": ["sessionId", "timestamp", "branch"],
   "properties": {

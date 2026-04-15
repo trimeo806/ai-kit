@@ -1,4 +1,4 @@
-﻿---
+---
 name: review
 description: Use when user says "review", "check my code", "is this good", "look at this before I commit", or "suggest improvements" — detects review type (code quality, a11y, or general improvements) and runs the appropriate review
 user-invocable: true
@@ -27,7 +27,7 @@ Otherwise: continue to Auto-Detection.
 | `references/code.md` | Ultrathink edge cases, then parallel verify with reviewers |
 | `references/a11y.md` | Review accessibility compliance (WCAG 2.1 AA) |
 | `references/ui-mode.md` | Lightweight UI component review by focus area — delegates to muji |
-| `references/improvements.md` | Review auto-improvement metrics, detect patterns |
+| `references/improvements.md` | Review session improvement metrics and detect patterns |
 
 ## Auto-Detection
 

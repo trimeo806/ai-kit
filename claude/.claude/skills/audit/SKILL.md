@@ -141,7 +141,6 @@ For non-hybrid dispatches (`--ui`, `--code`, `--a11y`):
 | A++ — POC Organism Audit | muji | `--ui` + organism classification + `--poc`/`--beta` |
 | B — A11y Audit | a11y-specialist | `--a11y` flag or A11y findings from UI audit |
 | C — Code Escalation | code-reviewer | Critical findings needing deeper pass |
-| D — Docs Gap Detection | docs-manager | Post-audit, new feature, or refactor |
 | E — MCP/RAG Query | mcp-manager | Component catalog lookup, pattern search |
 
 ## Aspect Files

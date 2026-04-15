@@ -1,4 +1,4 @@
-﻿---
+---
 name: research
 description: Use when user asks to research, compare options, find best practices, or investigate a technology
 user-invocable: false
@@ -29,10 +29,6 @@ metadata:
 ---
 
 # Research Skill
-
-## Delegation — REQUIRED
-
-This skill MUST run via the `researcher` agent, not inline.
 
 **When research intent is detected:**
 1. Use the **Agent tool** to spawn `researcher`
@@ -108,7 +104,7 @@ Use Claude's built-in `WebSearch` tool with precise queries:
 
 See `references/engines.md` for full invocation details, model options, and exit codes.
 
-**Deep content analysis**: For GitHub repos found, use `docs-seeker` to read them
+**Deep content analysis**: For GitHub repos found, inspect them directly
 - Focus on README, API references, changelogs, release notes
 - Review version-specific information
 
@@ -239,7 +235,7 @@ Before external research, check internal knowledge:
 
 Use `knowledge-retrieval` skill for the full priority chain.
 
-Use `knowledge-capture` skill to persist learnings after this task.
+Persist reusable findings to `docs/` only when the results are likely to matter beyond the current task.
 
 ---
 
@@ -251,11 +247,10 @@ When this skill is active and user intent matches a sub-skill, delegate:
 |--------|-----------------|------|
 | Explore codebase | `scout` | `/scout`, "explore", "find in codebase" |
 | Library/framework docs | `mcp__context7__resolve-library-id` + `mcp__context7__query-docs` | Package name known, API accuracy matters, fast-moving library |
-| Search docs | `docs-seeker` | External documentation search |
+| Search docs | `mcp__context7__resolve-library-id` + `mcp__context7__query-docs` or `WebSearch` | External documentation search |
 | Export context | `repomix` | `/repomix`, bundle code for external review |
 | Gemini search | `gemini` CLI via Bash | `$tri-ai-kit_RESEARCH_ENGINE = gemini` |
 | Web search | `WebSearch` tool | `$tri-ai-kit_RESEARCH_ENGINE = websearch` or fallback |
 
 ### Related Skills
 - `knowledge-retrieval` — Internal-first search protocol
-- `knowledge-capture` — Post-task capture workflow

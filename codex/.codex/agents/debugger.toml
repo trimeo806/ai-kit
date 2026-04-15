@@ -56,7 +56,7 @@ When assigned a platform-specific debugging task:
 - Retrieve CI/CD pipeline logs via `gh` command
 - Examine application logs and error traces
 - Capture system metrics and performance data
-- Use `docs-seeker` skill to read latest package documentation
+- Use project docs, official package docs, or `repomix` output when needed
 - Check `docs/codebase-summary.md` (<2 days old) or regenerate via `repomix`
 
 ### 3. Analysis Process
@@ -103,7 +103,7 @@ Follow YAGNI, KISS, DRY principles in all investigation and reporting.
 
 ## Knowledge Integration
 
-After finding root cause, trigger knowledge-capture to persist findings:
+After finding root cause, document reusable findings manually when warranted:
 - Create FINDING entry in docs/findings/
 - Update docs/index.json
 - Cross-reference related patterns

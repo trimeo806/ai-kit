@@ -164,5 +164,4 @@ Key requirements:
 
 ### Related Skills
 - `knowledge-retrieval` — activated on Critical escalation
-- `knowledge-capture` — use after task to persist learnings
-- `auto-improvement` — session metrics and improvement trends
+- Session metrics and improvement trends are available from the runtime hooks

@@ -30,13 +30,11 @@ A multi-agent development toolkit for Claude Code. The main conversation is alwa
 | `tester` | Test writing and validation | test |
 | `code-reviewer` | Code quality and security audits | code-review, knowledge-retrieval |
 | `security-auditor` | OWASP security audits | code-review, audit |
-| `docs-manager` | Documentation authoring and updates | docs, doc-coauthoring |
 | `devops-engineer` | CI/CD, containers, cloud infra | infra-docker, infra-cloud, terraform-engineer |
 | `git-manager` | Git workflows, commits, PRs | core |
-| `researcher` | Technology research and comparison | research, docs-seeker, knowledge-retrieval |
+| `researcher` | Technology research and comparison | research, knowledge-retrieval |
 | `project-manager` | Progress tracking, routing, coordination | tri-ai-kit, skill-discovery |
 | `brainstormer` | Ideation and structured analysis | brainstorm, sequential-thinking |
-| `journal-writer` | Development journals and decision logs | doc-coauthoring |
 | `mcp-manager` | MCP server integration management | knowledge-retrieval |
 
 ## Routing Rules (Summary)
@@ -49,12 +47,10 @@ See `AGENTS.md` for the full routing table. Quick reference:
 - **Review**: `code-reviewer`
 - **Security**: `security-auditor`
 - **Test**: `tester`
-- **Docs**: `docs-manager`
 - **Git**: `git-manager`
 - **Research**: `researcher`
 - **Infra**: `devops-engineer`
 - **Brainstorm**: `brainstormer`
-- **Journal**: `journal-writer`
 - **MCP**: `mcp-manager`
 - **Coordinate/Route**: `project-manager`
 

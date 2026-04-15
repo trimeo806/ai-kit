@@ -45,13 +45,13 @@ Get answers about your codebase.
 ## Process
 
 1. Parse the question from `$ARGUMENTS`
-2. Activate `docs-seeker` skill for documentation lookup
+2. Activate `knowledge-retrieval` for internal docs and prior decisions
 3. Search for relevant files:
    - Grep for keyword/symbol search
    - Glob for file patterns
    - Read documentation first (docs/, README.md)
 4. Analyze code and architecture
-5. Cross-reference with latest docs
+5. Cross-reference with project docs and authoritative references when needed
 6. Formulate comprehensive answer
 
 ## Answer Format

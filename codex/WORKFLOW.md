@@ -84,7 +84,6 @@ Split into two parallel tracks, synchronized by a shared API contract. Use `plan
 - Component hierarchy and design system alignment
 - Error boundary coverage
 - Loading/empty/error state handling
-- UI/UX design brief → hand off to `design-specialist` before implementation if visual design is needed
 
 **Exit criteria:** C4 diagram done, OpenAPI spec drafted, both backend and frontend plans written with file ownership map.
 
@@ -172,12 +171,11 @@ Defined before implementation starts so tests are written alongside code.
 
 ## Phase 8 — Implementation
 
-**Skill:** `/cook` or `/cook-auto-parallel` | **Agent:** `developer` (frontend + backend + design)
+**Skill:** `/cook` or `/cook-auto-parallel` | **Agent:** `developer` (frontend + backend)
 
 - Build from plan, phase by phase
 - Backend: API endpoints, business logic, data layer (`backend-developer` — Go, Node.js, or Python/FastAPI)
 - Frontend: components, pages, client state (`frontend-developer`)
-- Design: tokens, brand assets, UI specs, banners, slides (`design-specialist`) — run before frontend when visual design is needed
 - Parallel execution when phases have non-overlapping file ownership
 - Contract testing between frontend and backend (mocked API during parallel development)
 
@@ -376,13 +374,11 @@ Phase 15 SLO breach          → incident response → root cause → Phase 8
 | Implement features (generic) | `/cook` | `developer` |
 | Implement frontend (Phase 8) | `/cook` | `frontend-developer` |
 | Implement backend (Phase 8) | `/cook` | `backend-developer` |
-| Design UI/UX, brand, assets | `/design` | `design-specialist` |
 | Review code | `/review` | `code-reviewer` |
 | Audit (UI/a11y/code) | `/audit` | specialist agents |
 | Security hardening (Phase 11) | `/audit --security` | `security-auditor` |
 | CI/CD + Infra + Observability | `/infra-cloud` or `/infra-docker` | `devops-engineer` |
 | Write/run tests | `/test` | `tester` |
-| Write docs | `/docs` | `docs-manager` |
 | Commit & ship | `/git` | `git-manager` |
 | Debug issues | `/debug` | `debugger` |
 
@@ -399,7 +395,6 @@ Phase 15 SLO breach          → incident response → root cause → Phase 8
 | Phase 7 — CI/CD Pipeline Design | `devops-engineer` |
 | Phase 8 — Implementation (frontend) | `frontend-developer` |
 | Phase 8 — Implementation (backend) | `backend-developer` |
-| Phase 8 — Implementation (design) | `design-specialist` |
 | Phase 9 — Review Gates | `code-reviewer` |
 | Phase 10 — Performance & Load Testing | `tester` |
 | Phase 11 — Security Hardening | `security-auditor` |

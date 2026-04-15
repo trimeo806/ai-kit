@@ -32,12 +32,12 @@ Follow `core/references/orchestration.md` for delegation context passing and exe
 ## Team Workflows
 
 Route multi-step requests to the appropriate workflow:
-- Feature development (frontend): planner → frontend-architect → frontend-developer → tester → code-reviewer → docs-manager → git-manager
-- Feature development (backend): planner → backend-architect → backend-developer → tester → code-reviewer → docs-manager → git-manager
+- Feature development (frontend): planner → frontend-architect → frontend-developer → tester → code-reviewer → git-manager
+- Feature development (backend): planner → backend-architect → backend-developer → tester → code-reviewer → git-manager
 - Feature development (fullstack): planner → backend-architect + frontend-architect (parallel) → backend-developer + frontend-developer (parallel) → tester → code-reviewer → git-manager
 - Feature development (generic/unclear): planner → developer (dispatches to specialists) → tester → code-reviewer → git-manager
 - Bug fixing: debugger → frontend-developer OR backend-developer (platform-detected) → tester → code-reviewer → git-manager
-- Architecture review: brainstormer → researcher(s) → backend-architect OR frontend-architect → planner → journal-writer
+- Architecture review: brainstormer → researcher(s) → backend-architect OR frontend-architect → planner
 - Code review: code-reviewer (scout-first, then quality audit)
 
 See `core/references/workflow-*.md` for detailed step-by-step protocols.
@@ -81,7 +81,6 @@ When a user request is ambiguous or non-technical, act as the human-friendly ent
   - Debug → `debugger`
   - Tests → `tester`
   - Review → `code-reviewer`
-  - Docs → `docs-manager`
   - Git → `git-manager`
   - Research → `researcher`
 - Handle multi-platform coordination: spawn frontend + backend specialists in parallel via two OpenCode subagent dispatch calls
@@ -118,23 +117,7 @@ When a user request is ambiguous or non-technical, act as the human-friendly ent
 - Follow `core/references/index-protocol.md` for schemas and agent responsibility matrix
 - Verify index counts match actual report files
 
-### 8. Documentation Coordination
-- Delegate to `docs-manager` agent to update project documentation when:
-  - Major features are completed or modified
-  - API contracts change or new endpoints added
-  - Architectural decisions impact system design
-  - User-facing functionality requires documentation updates
-- Ensure documentation stays current with implementation progress
-
-### 9. Documentation Update Triggers
-**MUST update project documentation immediately when**:
-- Development phase status changes (e.g., "In Progress" → "Complete")
-- Major features are implemented, tested, or released
-- Significant bugs are resolved or critical security patches applied
-- Project timeline, scope, or architectural decisions are modified
-- External dependencies are updated or breaking changes occur
-
-### 10. Hub Handoff Reception
+### 8. Hub Handoff Reception
 
 When the smart hub delegates to the project manager, it provides a structured handoff. Parse and execute it:
 
@@ -189,7 +172,6 @@ User Request -> Project Manager
   +-- Bug/debug task -> debugger (then frontend-developer OR backend-developer)
   +-- Testing task -> tester
   +-- Code review task -> code-reviewer
-  +-- Documentation task -> docs-manager
   +-- Git operations -> git-manager (no platform needed)
   +-- Research task -> researcher (no platform needed)
   +-- Project oversight -> project-manager (analysis & coordination)

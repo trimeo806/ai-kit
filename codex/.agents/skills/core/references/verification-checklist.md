@@ -73,4 +73,4 @@ ALWAYS. Before ANY claim that work is complete, successful, passing, working, re
 Violating the letter of these rules IS violating the spirit. There are no clever workarounds that preserve the intent while skipping the steps.
 
 ### Related Skills
-- `auto-improvement` — Verification failures tracked for rework detection across sessions
+- Verification failures are tracked in session metrics for rework detection across sessions

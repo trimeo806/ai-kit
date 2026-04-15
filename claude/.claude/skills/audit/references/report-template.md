@@ -96,7 +96,6 @@ _(Omit if no delegation occurred)_
 | Agent | Scope | Template | Verdict | Findings |
 |-------|-------|----------|---------|----------|
 | a11y-specialist | `{path/}` | Template B | block_pr: true/false | {N} |
-| docs-manager | `{component}` | Template D | gap / up-to-date | {N} |
 ```
 
 ---

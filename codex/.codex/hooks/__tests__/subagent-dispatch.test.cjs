@@ -111,10 +111,10 @@ describe('subagent-dispatch.cjs', () => {
     });
 
     it('prints delegation directive for matched prompts', async () => {
-      const result = await runHook({ user_prompt: 'Write docs for this feature' });
+      const result = await runHook({ user_prompt: 'Review this change before merge' });
       assert.strictEqual(result.exitCode, 0);
       assert.ok(result.stdout.includes('Auto Subagent Delegation'));
-      assert.ok(result.stdout.includes('`docs-manager`'));
+      assert.ok(result.stdout.includes('`code-reviewer`'));
       assert.ok(result.stdout.includes('spawn_agent'));
     });
 

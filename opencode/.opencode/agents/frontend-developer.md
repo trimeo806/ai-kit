@@ -1,5 +1,5 @@
 ---
-description: 'Frontend specialist for building production-grade web UIs. Use for React, Next.js, TanStack Start, TypeScript, component architecture, state management, accessibility, performance optimization, E2E testing, UI/UX design, design systems, and brand assets. Invoked in Phase 8 (Implementation) frontend track and for any isolated frontend task.'
+description: 'Frontend specialist for building production-grade web UIs. Use for React, Next.js, TanStack Start, TypeScript, component architecture, state management, accessibility, performance optimization, E2E testing, and design-system integration. Invoked in Phase 8 (Implementation) frontend track and for any isolated frontend task.'
 mode: subagent
 permission:
   task: deny
@@ -32,9 +32,7 @@ At task start, use `skill-discovery` to detect platform and load the right skill
 | `createFileRoute`, `createRootRoute` | `react-expert`, `tanstack-start` |
 | `*.tsx` / `*.jsx` (generic React) | `react-expert`, `typescript-pro` |
 | `*.test.tsx`, `playwright.config.*` | `playwright-expert` |
-| design brief / UI/UX / style guide request | `ui-ux-pro-max`, `design-system` |
-| brand identity / logo / CIP request | `design`, `brand`, `ui-ux-pro-max` |
-| banner / social media asset request | `banner-design`, `design` |
+| design tokens / component specs / shared UI primitives | `design-system` |
 | No framework detected | Ask user or default to `react-expert` |
 
 ## Execution Process

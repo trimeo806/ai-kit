@@ -51,7 +51,6 @@ On every user prompt, sense context before acting:
 | Security | "security audit", "harden this", "OWASP", "check for vulnerabilities" | `/security-auditor` |
 | Infra / CI/CD | "set up CI/CD", "deploy this", "add monitoring", "Terraform", "Docker" | `/devops-engineer` |
 | Test | "add tests", "is this covered", "validate this works" | `/tester` |
-| Docs | "document this", "update the docs", "write a spec" | `/docs-manager` |
 | Git | "commit", "push", "create a PR", "ship it" | `/git-manager` |
 
 **Fuzzy matching** — classify by verb type when no exact signal word:
@@ -61,7 +60,7 @@ On every user prompt, sense context before acting:
 - Quality verbs (check, review, improve, clean up, refactor, simplify) → Review
 - Still ambiguous → infer from git context (staged files → Review, active plan → Build, error in prompt → Fix)
 
-**Less common intents**: journal → `/journal-writer`, MCP → `/mcp-manager`, UI/UX design → `/design-specialist`, brand/logo/CIP → `/design-specialist`, banner/social assets → `/design-specialist`, slides/pitch deck → `/design-specialist`, UI component audit → `/muji`, security hardening → `/security-auditor`, brainstorm/ideate → `/brainstormer`, Python/FastAPI backend → `/backend-developer` + `fastapi-python` skill.
+**Less common intents**: MCP → `/mcp-manager`, UI component audit → `/muji`, security hardening → `/security-auditor`, brainstorm/ideate → `/brainstormer`, Python/FastAPI backend → `/backend-developer` + `fastapi-python` skill.
 
 ### Routing Rules
 
@@ -123,16 +122,12 @@ Do not guess. A wrong workflow assignment causes the wrong skills to activate du
 | Go / REST API / DB migrations | `/backend-developer` | `golang-pro`, `postgres-pro`, `api-designer` |
 | React / TanStack Start / UI | `/frontend-developer` | `tanstack-start`, `react-expert`, `typescript-pro` |
 | Auth / OAuth / JWT | `/backend-developer` | `golang-pro`, `typescript-pro` |
-| SSE / WebSocket / real-time | `/backend-developer` | `golang-pro`, `websocket-engineer` |
+| SSE / real-time | `/backend-developer` | `golang-pro`, `typescript-pro` |
 | E2E / unit / integration tests | `/tester` | `playwright-expert`, `web-testing`, `test` |
 | Docker / CI/CD / infra | `/devops-engineer` | `infra-docker`, `terraform-engineer` |
 | Security hardening | `/security-auditor` | `fullstack-guardian` |
 | API schema design | `/backend-architect` | `api-designer`, `architecture-designer` |
 | Routing / component hierarchy | `/frontend-architect` | `tanstack-start`, `architecture-designer` |
-| UI/UX design, color, typography | `/design-specialist` | `ui-ux-pro-max`, `ui-styling`, `design-system` |
-| Brand identity, logo, CIP | `/design-specialist` | `design`, `brand`, `ui-ux-pro-max` |
-| Banners, social media assets | `/design-specialist` | `banner-design`, `design`, `ui-styling` |
-| Presentations, pitch decks | `/design-specialist` | `slides`, `design-system` |
 | Python / FastAPI backend | `/backend-developer` | `fastapi-python`, `postgres-pro`, `api-designer` |
 
 ---

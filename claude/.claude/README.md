@@ -16,7 +16,7 @@ This directory contains all configuration for the tri_ai_kit multi-agent system.
 ├── output-styles/   — Response verbosity levels (coding-level-0 through 5)
 ├── scripts/         — Utility scripts (not hooks)
 ├── settings.json    — Hook wiring, permissions, environment variables
-└── skills/          — Passive knowledge modules (52 skills)
+└── skills/          — Passive knowledge modules (48 skills)
     └── skill-index.json  — Machine-readable skill catalog for lazy loading
 ```
 
@@ -31,15 +31,15 @@ This directory contains all configuration for the tri_ai_kit multi-agent system.
 | **Quality** | code-reviewer, security-auditor, tester |
 | **UI/A11Y** | muji, a11y-specialist |
 | **Planning** | planner, project-manager |
-| **Knowledge** | researcher, docs-manager |
+| **Knowledge** | researcher |
 | **Operations** | devops-engineer, git-manager |
-| **Creative** | brainstormer, journal-writer |
+| **Creative** | brainstormer |
 | **Integration** | mcp-manager |
 | **Debug** | debugger |
 
 ## Skills
 
-52 skill directories in `.claude/skills/`. Skills are **passive knowledge** — they don't execute; agents read them.
+48 skill directories in `.claude/skills/`. Skills are **passive knowledge** — they don't execute; agents read them.
 
 **Loading mechanism**: `skill-discovery/SKILL.md` runs at the start of every task, reads `skill-index.json`, and selects up to 3 matching skills based on platform/task signals.
 

@@ -75,5 +75,4 @@ Fix: [Address root, not symptom]
 ### Related Skills
 - `debug` — Systematic debugging methodology
 - `error-recovery` — Error handling and recovery patterns
-- `knowledge-capture` — Persist root cause findings
 - `sequential-thinking` — Structured step-by-step reasoning

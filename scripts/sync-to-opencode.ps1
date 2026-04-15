@@ -634,7 +634,7 @@ function Apply-AgentsDocumentOverrides {
     $result = [regex]::Replace(
         $result,
         'tri-ai-kit is a multi-agent development toolkit for OpenCode\..*?Agents never spawn other agents\.',
-        'tri-ai-kit is a multi-agent development toolkit for OpenCode. It provides 22 specialized agents, 60+ skills, custom commands, and a 15-phase production delivery workflow. The main conversation always acts as orchestrator - it routes to the right specialist via OpenCode subagent dispatch and merges results. Coordinator agents may dispatch specialists when the workflow requires it.'
+        'tri-ai-kit is a multi-agent development toolkit for OpenCode. It provides 18 specialized agents, 46 focused skills, custom commands, and a 15-phase production delivery workflow. The main conversation always acts as orchestrator - it routes to the right specialist via OpenCode subagent dispatch and merges results. Coordinator agents may dispatch specialists when the workflow requires it.'
     )
     $result = [regex]::Replace(
         $result,

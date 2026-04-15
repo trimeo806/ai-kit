@@ -39,10 +39,9 @@ The custom agents defined below operate as conversational entities in Claude Cod
 | Agent | Role |
 |-------|------|
 | `developer` | Fullstack dispatcher — routes to frontend/backend specialist based on task scope |
-| `frontend-developer` | React, Next.js, TanStack Start, TypeScript UI, state management, E2E testing, UI/UX design, design systems |
+| `frontend-developer` | React, Next.js, TanStack Start, TypeScript UI, state management, E2E testing, design-system integration |
 | `backend-developer` | Go, Node.js, Python/FastAPI, REST/GraphQL APIs, PostgreSQL, microservices, authentication |
 | `devops-engineer` | Docker, Kubernetes, Terraform, GitHub Actions, cloud deployments, observability |
-| `design-specialist` | Brand identity, logo design, design systems, design tokens, UI/UX mockups, banners, social media assets, pitch decks |
 
 ### Quality & Review
 | Agent | Role |
@@ -57,9 +56,7 @@ The custom agents defined below operate as conversational entities in Claude Cod
 ### Knowledge & Workflow
 | Agent | Role |
 |-------|------|
-| `docs-manager` | Documentation writing, maintenance, and reorganization |
 | `git-manager` | Staged commits, PR creation, branch management |
-| `journal-writer` | Development journals and decision logs |
 | `mcp-manager` | MCP server integration and tool discovery |
 
 ---
@@ -104,7 +101,6 @@ Custom slash commands are specifically supported in Claude Code via `.claude/hoo
 ### Documentation & Knowledge
 | Command | What It Does |
 |---------|-------------|
-| `/docs` | Write, update, or reorganize documentation |
 | `/ask` | Answer questions about the codebase |
 | `/sequential-thinking` | Step-by-step breakdown for complex problems |
 
@@ -115,8 +111,8 @@ Custom slash commands are specifically supported in Claude Code via `.claude/hoo
 ```
 claude/
 ├── .claude/
-│   ├── agents/          # 21 specialized agents
-│   ├── skills/          # Passive skill modules (56)
+│   ├── agents/          # 18 specialized agents
+│   ├── skills/          # Passive skill modules (48)
 │   ├── hooks/           # Session hooks, build gates, notifications
 │   └── output-styles/   # Response style levels (ELI5 → Lead)
 ├── AGENTS.md            # Project-level agent instructions

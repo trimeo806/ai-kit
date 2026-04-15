@@ -21,15 +21,11 @@ const AGENTS = [
   'brainstormer',
   'code-reviewer',
   'debugger',
-  'design-specialist',
   'developer',
   'devops-engineer',
-  'docs-manager',
   'frontend-architect',
   'frontend-developer',
   'git-manager',
-  'journal-writer',
-  'knowledge-graph-guide',
   'mcp-manager',
   'muji',
   'planner',
@@ -120,19 +116,6 @@ const ROUTES = [
     ]
   },
   {
-    agent: 'docs-manager',
-    confidence: 'high',
-    reason: 'documentation prompt',
-    patterns: [
-      /\bdocs?\b/i,
-      /\bdocument(?:ation)?\b/i,
-      /\breadme\b/i,
-      /\bspec\b/i,
-      /\brfc\b/i,
-      /\bproposal\b/i
-    ]
-  },
-  {
     agent: 'git-manager',
     confidence: 'high',
     reason: 'git workflow prompt',
@@ -183,22 +166,6 @@ const ROUTES = [
       /\bwhat is\b/i,
       /\bfind out\b/i,
       /\binvestigate\b/i
-    ]
-  },
-  {
-    agent: 'design-specialist',
-    confidence: 'high',
-    reason: 'design / brand / visual asset prompt',
-    patterns: [
-      /\bui\/ux\b/i,
-      /\bdesign system\b/i,
-      /\bbrand\b/i,
-      /\blogo\b/i,
-      /\bbanner\b/i,
-      /\bslides?\b/i,
-      /\bpitch deck\b/i,
-      /\btypography\b/i,
-      /\bcolor palette\b/i
     ]
   },
   {

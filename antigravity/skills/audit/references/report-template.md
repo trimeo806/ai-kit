@@ -1,4 +1,4 @@
-﻿# UI Audit Report Template
+# UI Audit Report Template
 
 **One report per audit session.** All audit types (muji, a11y, code-reviewer) use this format. Multiple components or scopes → group by scope, not separate files.
 
@@ -96,7 +96,6 @@ _(Omit if no delegation occurred)_
 | Agent | Scope | Template | Verdict | Findings |
 |-------|-------|----------|---------|----------|
 | a11y-specialist | `{path/}` | Template B | block_pr: true/false | {N} |
-| docs-manager | `{component}` | Template D | gap / up-to-date | {N} |
 ```
 
 ---
