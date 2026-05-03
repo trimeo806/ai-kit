@@ -77,6 +77,12 @@ describe('subagent-dispatch.cjs', () => {
       assert.deepStrictEqual(route.agents, ['backend-developer']);
     });
 
+    it('routes requirements analysis to business-analyst', () => {
+      const route = classifyPrompt('Analyze requirements and business logic for this feature');
+      assert.deepStrictEqual(route.agents, ['business-analyst']);
+      assert.strictEqual(route.confidence, 'high');
+    });
+
     it('routes failing prompts to debugger before generic developer', () => {
       const route = classifyPrompt('Fix this failing test error');
       assert.deepStrictEqual(route.agents, ['debugger']);

@@ -36,6 +36,7 @@ A multi-agent development toolkit for Codex. The main conversation is always the
 | `researcher` | Technology research and comparison | research, docs-seeker, knowledge-retrieval |
 | `project-manager` | Progress tracking, routing, coordination | tri-ai-kit, skill-discovery |
 | `brainstormer` | Ideation and structured analysis | brainstorm, sequential-thinking |
+| `business-analyst` | Requirements, feature, and business logic analysis | prompt-refinement, brainstorm, doc-coauthoring |
 | `journal-writer` | Development journals and decision logs | doc-coauthoring |
 | `mcp-manager` | MCP server integration management | knowledge-retrieval |
 
@@ -54,6 +55,7 @@ See `AGENTS.md` for the full routing table. Quick reference:
 - **Research**: `researcher`
 - **Infra**: `devops-engineer`
 - **Brainstorm**: `brainstormer`
+- **Business Analysis**: `business-analyst`
 - **Journal**: `journal-writer`
 - **MCP**: `mcp-manager`
 - **Coordinate/Route**: `project-manager`

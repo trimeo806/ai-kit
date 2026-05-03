@@ -44,6 +44,7 @@ Route multi-step requests to the appropriate workflow:
 - Feature development (backend): planner → backend-architect → backend-developer → tester → code-reviewer → docs-manager → git-manager
 - Feature development (fullstack): planner → backend-architect + frontend-architect (parallel) → backend-developer + frontend-developer (parallel) → tester → code-reviewer → git-manager
 - Feature development (generic/unclear): planner → developer (dispatches to specialists) → tester → code-reviewer → git-manager
+- Requirements/business analysis: business-analyst → planner (when implementation plan is needed)
 - Bug fixing: debugger → frontend-developer OR backend-developer (platform-detected) → tester → code-reviewer → git-manager
 - Architecture review: brainstormer → researcher(s) → backend-architect OR frontend-architect → planner → journal-writer
 - Code review: code-reviewer (scout-first, then quality audit)
@@ -85,6 +86,7 @@ When a user request is ambiguous or non-technical, act as the human-friendly ent
   - Frontend build/fix → `frontend-developer` (or `frontend-architect` for design)
   - Backend build/fix → `backend-developer` (or `backend-architect` for design)
   - Fullstack/unclear → `developer` (dispatches to specialists)
+  - Requirements, PRD, user stories, acceptance criteria, business logic, prompt refinement → `business-analyst`
   - Planning → `planner`
   - Debug → `debugger`
   - Tests → `tester`
@@ -189,6 +191,7 @@ When the smart hub delegates to the project manager, it provides a structured ha
 User Request -> Project Manager
   |
   +-- Planning task -> planner
+  +-- Requirements / PRD / business logic / prompt refinement -> business-analyst
   +-- Frontend build/fix (.tsx/.jsx/React/UI) -> frontend-developer
   +--   └─ Architecture needed first -> frontend-architect → frontend-developer
   +-- Backend build/fix (.go/API/DB/auth) -> backend-developer

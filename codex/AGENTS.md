@@ -6,7 +6,7 @@ This file provides guidance to Codex when working with code in this repository.
 
 ## What This Is
 
-tri-ai-kit is a multi-agent development toolkit for Codex. It provides 22 specialized agents, 60+ skills, hooks, and a 15-phase production delivery workflow. The main conversation always acts as orchestrator — it routes to agents via custom agent dispatch and merges results. Agents never spawn other agents.
+tri-ai-kit is a multi-agent development toolkit for Codex. It provides 23 specialized agents, 60+ skills, hooks, and a 15-phase production delivery workflow. The main conversation always acts as orchestrator — it routes to agents via custom agent dispatch and merges results. Agents never spawn other agents.
 
 This package is intended to be installed at the target repository root. Treat `AGENTS.md`, `.agents/skills/`, `.codex/agents/`, `.codex/hooks.json`, and `.codex/config.toml` as the Codex runtime surface.
 
@@ -128,6 +128,7 @@ On every user prompt, sense context before acting:
 | Build / Create (backend) | "add an endpoint", "implement this API", "write a migration", "server function" | `backend-developer` via custom agent dispatch |
 | Build / Create (generic/fullstack) | "continue the plan", "implement X" (unclear layer) | `developer` via custom agent dispatch |
 | Fix / Debug | "something is broken", "this crashes", "why does X happen", "it's not working" | `debugger` via custom agent dispatch |
+| Business Analysis | "analyze requirements", "clarify this feature", "business logic", "acceptance criteria", "refine this prompt" | `business-analyst` via custom agent dispatch |
 | Plan / Design | "how should we build X", "let's plan", "what's the approach for" | `planner` via custom agent dispatch |
 | Architecture (backend) | "design the API", "data model", "schema design", "auth strategy" | `backend-architect` via custom agent dispatch |
 | Architecture (frontend) | "routing structure", "component hierarchy", "state management strategy" | `frontend-architect` via custom agent dispatch |
@@ -147,7 +148,7 @@ On every user prompt, sense context before acting:
 - Quality verbs (check, review, improve, clean up, refactor, simplify) → Review
 - Still ambiguous → infer from git context (staged files → Review, active plan → Build, error in prompt → Fix)
 
-**Less common intents**: scaffold → `/bootstrap`, convert → `/convert`, journal → `journal-writer`, MCP → `mcp-manager`, UI/UX design → `design-specialist`, brand/logo/CIP → `design-specialist`, banner/social assets → `design-specialist`, slides/pitch deck → `design-specialist`, UI component audit → `muji`, security hardening → `security-auditor`, CI/CD + infra → `devops-engineer`, brainstorm/ideate → `brainstormer`, Python/FastAPI backend → `backend-developer` + `fastapi-python` skill
+**Less common intents**: scaffold → `/bootstrap`, convert → `/convert`, journal → `journal-writer`, MCP → `mcp-manager`, UI/UX design → `design-specialist`, brand/logo/CIP → `design-specialist`, banner/social assets → `design-specialist`, slides/pitch deck → `design-specialist`, UI component audit → `muji`, security hardening → `security-auditor`, CI/CD + infra → `devops-engineer`, brainstorm/ideate → `brainstormer`, requirements/business logic/prompt refinement → `business-analyst`, Python/FastAPI backend → `backend-developer` + `fastapi-python` skill
 
 ### Routing Rules
 
@@ -209,6 +210,7 @@ Do not guess. A wrong agent assignment causes the wrong skills to activate durin
 | Domain signal | Agent | Core skills |
 |---------------|-------|-------------|
 | Go / REST API / DB migrations | `backend-developer` | `golang-pro`, `postgres-pro`, `api-designer` |
+| Requirements / PRD / user stories / business rules | `business-analyst` | `prompt-refinement`, `brainstorm`, `doc-coauthoring` |
 | React / TanStack Start / UI | `frontend-developer` | `tanstack-start`, `react-expert`, `typescript-pro` |
 | Auth / OAuth / JWT | `backend-developer` | `golang-pro`, `typescript-pro` |
 | SSE / WebSocket / real-time | `backend-developer` | `golang-pro`, `websocket-engineer` |

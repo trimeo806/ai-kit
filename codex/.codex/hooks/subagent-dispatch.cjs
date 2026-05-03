@@ -19,6 +19,7 @@ const AGENTS = [
   'backend-architect',
   'backend-developer',
   'brainstormer',
+  'business-analyst',
   'code-reviewer',
   'debugger',
   'design-specialist',
@@ -99,6 +100,28 @@ const ROUTES = [
       /\bunit test\b/i,
       /\bintegration test\b/i,
       /\bplaywright\b/i
+    ]
+  },
+  {
+    agent: 'business-analyst',
+    confidence: 'high',
+    reason: 'requirements / business logic prompt',
+    patterns: [
+      /\brequirements?\b/i,
+      /\bacceptance criteria\b/i,
+      /\buser stor(?:y|ies)\b/i,
+      /\buse cases?\b/i,
+      /\bprd\b/i,
+      /\bbusiness logic\b/i,
+      /\bbusiness rules?\b/i,
+      /\bdomain rules?\b/i,
+      /\bstakeholders?\b/i,
+      /\bfeature analysis\b/i,
+      /\banaly[sz]e (?:this )?feature\b/i,
+      /\bclarify (?:this )?feature\b/i,
+      /\bprompt refinement\b/i,
+      /\brefine (?:this )?prompt\b/i,
+      /\bimprove (?:this )?prompt\b/i
     ]
   },
   {

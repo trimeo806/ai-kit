@@ -1,11 +1,11 @@
 {
   "generated": "2026-03-18T06:45:04.645Z",
   "version": "2.0.0",
-  "count": 60,
+  "count": 61,
   "categories": {
     "uncategorized": 32,
     "development-tools": 11,
-    "analysis-reasoning": 12,
+    "analysis-reasoning": 13,
     "infrastructure": 2,
     "frontend-web": 3
   },
@@ -1103,6 +1103,51 @@
         "conflicts": []
       },
       "path": "postgres-pro/SKILL.md"
+    },
+    {
+      "name": "prompt-refinement",
+      "description": "Use when a user wants to refine, improve, clarify, rewrite, or make a prompt/spec/task request more effective before Codex, an agent, or another AI works on it. Also use when requirements are vague, business logic is underspecified, acceptance criteria are missing, or an implementation/research/design prompt needs clearer scope, constraints, context, output format, or validation steps.",
+      "category": "analysis-reasoning",
+      "tier": "discoverable",
+      "keywords": [
+        "prompt",
+        "refinement",
+        "clarify",
+        "rewrite",
+        "requirements",
+        "acceptance-criteria",
+        "scope",
+        "constraints",
+        "business-logic",
+        "specification"
+      ],
+      "platforms": [
+        "all"
+      ],
+      "triggers": [
+        "/prompt-refinement",
+        "prompt refinement",
+        "refine prompt",
+        "improve prompt",
+        "rewrite prompt",
+        "clarify requirements",
+        "make this prompt better"
+      ],
+      "agent-affinity": [
+        "business-analyst",
+        "planner",
+        "project-manager",
+        "developer",
+        "researcher",
+        "docs-manager"
+      ],
+      "connections": {
+        "extends": [],
+        "requires": [],
+        "enhances": [],
+        "conflicts": []
+      },
+      "path": "prompt-refinement/SKILL.md"
     },
     {
       "name": "problem-solving",
