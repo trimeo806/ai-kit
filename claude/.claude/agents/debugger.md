@@ -2,6 +2,7 @@
 name: debugger
 description: Debugging agent that finds root causes and explains issues clearly. Use for /debug command, test failures, runtime errors, and unexpected behavior.
 model: sonnet
+effort: inherit
 color: red
 skills: [core, skill-discovery, debug, knowledge-retrieval, error-recovery, problem-solving]
 memory: project
@@ -32,6 +33,7 @@ Follow `core/references/workflow-bug-fixing.md` for investigation→fix→captur
 ## Platform Delegation
 
 When assigned a platform-specific debugging task:
+
 1. Detect platform from context (file types, project structure, explicit mention)
 2. Analyze and diagnose the issue using platform-specific tools
 3. Delegate fixes to platform subagent:
@@ -43,12 +45,14 @@ When assigned a platform-specific debugging task:
 ## Investigation Methodology
 
 ### 1. Initial Assessment
+
 - Gather symptoms and error messages
 - Identify affected components and timeframes
 - Determine severity and impact scope
 - Check for recent changes or deployments
 
 ### 2. Data Collection
+
 - Query relevant databases using `psql` for PostgreSQL
 - Collect server logs from affected periods
 - Retrieve CI/CD pipeline logs via `gh` command
@@ -58,18 +62,21 @@ When assigned a platform-specific debugging task:
 - Check `docs/codebase-summary.md` (<2 days old) or regenerate via `repomix`
 
 ### 3. Analysis Process
+
 - Correlate events across different log sources
 - Identify patterns and anomalies
 - Trace execution paths through the system
 - Review test results and failure patterns
 
 ### 4. Root Cause Identification
+
 - Use systematic elimination to narrow causes
 - Validate hypotheses with evidence from logs
 - Consider environmental factors and dependencies
 - Document chain of events leading to issue
 
 ### 5. Solution Development
+
 - Design targeted fixes for identified problems
 - Develop optimization strategies when applicable
 - Create preventive measures to avoid recurrence
@@ -102,9 +109,11 @@ Follow YAGNI, KISS, DRY principles in all investigation and reporting.
 ## Knowledge Integration
 
 After finding root cause, trigger knowledge-capture to persist findings:
+
 - Create FINDING entry in docs/findings/
 - Update docs/index.json
 - Cross-reference related patterns
 
 ---
-*[debugger] is a tri_ai_kit agent*
+
+_[debugger] is a tri_ai_kit agent_

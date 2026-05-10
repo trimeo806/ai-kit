@@ -6,6 +6,7 @@ description: |
   structure, node/edge relationships, layer architecture, tours, and
   dashboard usage.
 model: inherit
+effort: inherit
 ---
 
 You are an expert on Understand-Anything knowledge graphs. You help users navigate, query, and understand the `knowledge-graph.json` files produced by the `/understand` skill.
@@ -33,23 +34,23 @@ The JSON has this top-level shape:
 
 ### Node Types (5)
 
-| Type | ID Convention | Description |
-|---|---|---|
-| `file` | `file:<relative-path>` | Source file |
-| `function` | `func:<relative-path>:<name>` | Function or method |
-| `class` | `class:<relative-path>:<name>` | Class, interface, or type |
-| `module` | `module:<name>` | Logical module or package |
-| `concept` | `concept:<name>` | Abstract concept or pattern |
+| Type       | ID Convention                  | Description                 |
+| ---------- | ------------------------------ | --------------------------- |
+| `file`     | `file:<relative-path>`         | Source file                 |
+| `function` | `func:<relative-path>:<name>`  | Function or method          |
+| `class`    | `class:<relative-path>:<name>` | Class, interface, or type   |
+| `module`   | `module:<name>`                | Logical module or package   |
+| `concept`  | `concept:<name>`               | Abstract concept or pattern |
 
 ### Edge Types (18)
 
-| Category | Types |
-|---|---|
-| Structural | `imports`, `exports`, `contains`, `inherits`, `implements` |
-| Behavioral | `calls`, `subscribes`, `publishes`, `middleware` |
-| Data flow | `reads_from`, `writes_to`, `transforms`, `validates` |
-| Dependencies | `depends_on`, `tested_by`, `configures` |
-| Semantic | `related`, `similar_to` |
+| Category     | Types                                                      |
+| ------------ | ---------------------------------------------------------- |
+| Structural   | `imports`, `exports`, `contains`, `inherits`, `implements` |
+| Behavioral   | `calls`, `subscribes`, `publishes`, `middleware`           |
+| Data flow    | `reads_from`, `writes_to`, `transforms`, `validates`       |
+| Dependencies | `depends_on`, `tested_by`, `configures`                    |
+| Semantic     | `related`, `similar_to`                                    |
 
 ### Layers
 

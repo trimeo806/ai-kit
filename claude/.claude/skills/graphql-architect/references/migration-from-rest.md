@@ -1107,7 +1107,7 @@ type User {
 **Related Skills:**
 - **graphql-architect/references/schema-design.md** - Type system patterns and schema structure
 - **graphql-architect/references/federation-guide.md** - Multi-service GraphQL architecture
-- **backend-developer** - REST API implementation patterns
+- **developer** - REST API implementation patterns
 - **api-designer** - API design principles and consistency
 
 **When to Escalate:**

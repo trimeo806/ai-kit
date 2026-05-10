@@ -1,0 +1,36 @@
+{
+  "version": "1.0.0",
+  "updated": "2026-05-03",
+  "documents": [
+    {
+      "key": "easygds-index",
+      "path": "docs/easygds/00-index.md",
+      "category": "ARCH",
+      "title": "easyGDS CMS Admin Portal Documents"
+    },
+    {
+      "key": "easygds-brainstorm",
+      "path": "docs/easygds/01-brainstorm-questions.md",
+      "category": "ARCH",
+      "title": "easyGDS Brainstorming and Requirement Questions"
+    },
+    {
+      "key": "easygds-kickoff",
+      "path": "docs/easygds/02-kickoff-prep.md",
+      "category": "CONV",
+      "title": "easyGDS Kickoff Preparation"
+    },
+    {
+      "key": "easygds-technical-decision-inputs",
+      "path": "docs/easygds/03-technical-decision-inputs.md",
+      "category": "ADR",
+      "title": "easyGDS Technical Decision Inputs"
+    },
+    {
+      "key": "easygds-build-approach",
+      "path": "docs/easygds/04-build-approach.md",
+      "category": "ARCH",
+      "title": "easyGDS High-Level Build Approach"
+    }
+  ]
+}

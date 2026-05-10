@@ -34,7 +34,7 @@ When a plan is found via step 3 (frontmatter scan), run `node .claude/scripts/se
    - Fall back to platform detection (Step 3 below)
 
 4. **If agent or skills are missing from both sources** — do NOT fall back silently. Instead:
-   > Ask the user: "Phase [N] — [phase name] has no agent or skill assignment in the plan. Which agent should handle it? (e.g. `backend-developer`, `frontend-developer`, `tester`) And which skills should be activated?"
+   > Ask the user: "Phase [N] — [phase name] has no agent or skill assignment in the plan. Which agent should handle it? (e.g. `developer`, `tester`) And which skills should be activated?"
    >
    > Alternatively: "Should I use the default workflow for this phase type (backend / frontend / test)?"
    >

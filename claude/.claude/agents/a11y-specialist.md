@@ -8,7 +8,7 @@ memory: project
 permissionMode: default
 handoffs:
   - label: Fix a11y issues
-    agent: frontend-developer
+    agent: developer
     prompt: Fix the accessibility findings identified in the a11y audit report
   - label: Fix iOS a11y issues
     agent: developer

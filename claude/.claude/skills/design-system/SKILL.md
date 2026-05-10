@@ -103,7 +103,7 @@ node scripts/validate-tokens.cjs --dir src/
 **With ui-styling:** Component tokens → Tailwind config
 
 **Skill Dependencies:** brand, ui-styling
-**Primary Agents:** ui-ux-designer, frontend-developer
+**Primary Agents:** ui-ux-designer, developer
 
 ## Slide System
 

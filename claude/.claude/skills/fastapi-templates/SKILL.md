@@ -5,7 +5,7 @@ disable-model-invocation: true
 metadata:
   keywords: [fastapi, templates, boilerplate, BFF, pydantic, schemas, caching, retry, flight, booking]
   platforms: [backend]
-  agent-affinity: [backend-developer]
+  agent-affinity: [developer]
   connections:
     enhances: [fastapi-python]
 ---

@@ -2,6 +2,7 @@
 name: brainstormer
 description: Creative ideation and problem-solving for multi-platform
 model: sonnet
+effort: inherit
 color: purple
 skills: [core, skill-discovery, sequential-thinking]
 memory: project
@@ -44,6 +45,7 @@ Every solution honors **YAGNI**, **KISS**, and **DRY**. Validate feasibility bef
 Use the naming pattern from `## Naming` section injected by hooks.
 
 When brainstorming concludes with agreement, create a markdown summary including:
+
 - Problem statement and requirements
 - Evaluated approaches with pros/cons
 - Final recommended solution with rationale

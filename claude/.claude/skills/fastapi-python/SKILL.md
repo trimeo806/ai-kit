@@ -5,7 +5,7 @@ license: MIT
 metadata:
   keywords: [fastapi, python, pydantic, uvicorn, httpx, async, BFF, REST, backend, middleware]
   platforms: [backend]
-  agent-affinity: [backend-developer, backend-architect]
+  agent-affinity: [developer, backend-architect]
   connections:
     enhances: [api-designer, error-recovery]
     requires: []

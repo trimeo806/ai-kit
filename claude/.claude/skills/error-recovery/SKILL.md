@@ -4,7 +4,7 @@ description: Retry strategies, circuit breakers, fallbacks, and graceful degrada
 user-invocable: false
 
 metadata:
-  agent-affinity: [debugger, developer, backend-developer]
+  agent-affinity: [debugger, developer]
   keywords: [retry, timeout, circuit-breaker, fallback, resilience, error-handling, backoff, graceful-degradation]
   platforms: [all]
   triggers: ["retry logic", "timeout handling", "circuit breaker", "fallback strategy", "transient error", "error recovery"]

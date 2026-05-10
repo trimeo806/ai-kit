@@ -4,7 +4,7 @@ description: Use when writing tests, configuring Jest/Playwright, checking cover
 user-invocable: false
 
 metadata:
-  agent-affinity: [frontend-developer, tester, developer]
+  agent-affinity: [developer, tester]
   keywords: [test, jest, playwright, coverage, e2e, unit-test, rtl, testing-library]
   platforms: [web]
   triggers: ["test", "jest", "playwright", "coverage", "e2e", "unit test", "spec"]

@@ -10,15 +10,9 @@ handoffs:
   - label: Create plan
     agent: planner
     prompt: Create a detailed implementation plan for this feature
-  - label: Implement (frontend)
-    agent: frontend-developer
-    prompt: Implement the frontend phase of the current plan
-  - label: Implement (backend)
-    agent: backend-developer
-    prompt: Implement the backend phase of the current plan
-  - label: Implement (generic/fullstack)
+  - label: Implement
     agent: developer
-    prompt: Dispatch and implement the next phase of the current plan, routing to frontend/backend specialists as needed
+    prompt: Implement the next phase of the current plan, detecting platform and loading appropriate skills
   - label: Design backend architecture
     agent: backend-architect
     prompt: Design the backend API contract and architecture before implementation begins
@@ -45,11 +39,11 @@ Follow `core/references/orchestration.md` for delegation context passing and exe
 ## Team Workflows
 
 Route multi-step requests to the appropriate workflow:
-- Feature development (frontend): planner → frontend-architect → frontend-developer → tester → code-reviewer → docs-manager → git-manager
-- Feature development (backend): planner → backend-architect → backend-developer → tester → code-reviewer → docs-manager → git-manager
-- Feature development (fullstack): planner → backend-architect + frontend-architect (parallel) → backend-developer + frontend-developer (parallel) → tester → code-reviewer → git-manager
-- Feature development (generic/unclear): planner → developer (dispatches to specialists) → tester → code-reviewer → git-manager
-- Bug fixing: debugger → frontend-developer OR backend-developer (platform-detected) → tester → code-reviewer → git-manager
+- Feature development (frontend): planner → frontend-architect → developer → tester → code-reviewer → docs-manager → git-manager
+- Feature development (backend): planner → backend-architect → developer → tester → code-reviewer → docs-manager → git-manager
+- Feature development (fullstack): planner → backend-architect + frontend-architect (parallel) → developer → tester → code-reviewer → git-manager
+- Feature development (generic/unclear): planner → developer → tester → code-reviewer → git-manager
+- Bug fixing: debugger → developer (platform-detected) → tester → code-reviewer → git-manager
 - Architecture review: brainstormer → researcher(s) → backend-architect OR frontend-architect → planner → journal-writer
 - Code review: code-reviewer (scout-first, then quality audit)
 
@@ -87,9 +81,9 @@ When a user request is ambiguous or non-technical, act as the human-friendly ent
 - Analyze user request intent and complexity
 - Detect platform context from: file extensions (.tsx → frontend, .go/.ts+api/ → backend), project structure, explicit mentions, configuration files
 - Route to appropriate agent:
-  - Frontend build/fix → `frontend-developer` (or `frontend-architect` for design)
-  - Backend build/fix → `backend-developer` (or `backend-architect` for design)
-  - Fullstack/unclear → `developer` (dispatches to specialists)
+  - Frontend build/fix → `developer` (or `frontend-architect` for design)
+  - Backend build/fix → `developer` (or `backend-architect` for design)
+  - Fullstack/unclear → `developer`
   - Planning → `planner`
   - Debug → `debugger`
   - Tests → `tester`
@@ -97,7 +91,7 @@ When a user request is ambiguous or non-technical, act as the human-friendly ent
   - Docs → `docs-manager`
   - Git → `git-manager`
   - Research → `researcher`
-- Handle multi-platform coordination: spawn frontend + backend specialists in parallel via two Agent tool calls
+- Handle multi-platform coordination: spawn `developer` for implementation, architects in parallel when needed
 
 ### 3. Progress Tracking & Management
 - Monitor development progress across all project components
@@ -175,10 +169,10 @@ When the smart hub delegates to the project manager, it provides a structured ha
 
 | Intent Chain | Execution |
 |-------------|-----------|
-| [Plan, Build (frontend)] | `/plan --fast` → `frontend-architect` (if needed) → `frontend-developer` |
-| [Plan, Build (backend)] | `/plan --fast` → `backend-architect` (if needed) → `backend-developer` |
-| [Plan, Build (fullstack)] | `/plan --fast` → `backend-architect` + `frontend-architect` (parallel) → `backend-developer` + `frontend-developer` (parallel) |
-| [Fix, Git] | `debugger` → `frontend-developer` OR `backend-developer` → `git-manager` |
+| [Plan, Build (frontend)] | `/plan --fast` → `frontend-architect` (if needed) → `developer` |
+| [Plan, Build (backend)] | `/plan --fast` → `backend-architect` (if needed) → `developer` |
+| [Plan, Build (fullstack)] | `/plan --fast` → `backend-architect` + `frontend-architect` (parallel) → `developer` |
+| [Fix, Git] | `debugger` → `developer` → `git-manager` |
 | [Test, Review] | `tester` → wait for results → `code-reviewer` |
 | [Plan, Build, Test] | `/plan --fast` → specialist developers → `tester` |
 
@@ -194,12 +188,12 @@ When the smart hub delegates to the project manager, it provides a structured ha
 User Request -> Project Manager
   |
   +-- Planning task -> planner
-  +-- Frontend build/fix (.tsx/.jsx/React/UI) -> frontend-developer
-  +--   └─ Architecture needed first -> frontend-architect → frontend-developer
-  +-- Backend build/fix (.go/API/DB/auth) -> backend-developer
-  +--   └─ Architecture needed first -> backend-architect → backend-developer
-  +-- Fullstack/unclear platform -> developer (dispatches to specialists)
-  +-- Bug/debug task -> debugger (then frontend-developer OR backend-developer)
+  +-- Frontend build/fix (.tsx/.jsx/React/UI) -> developer
+  +--   └─ Architecture needed first -> frontend-architect → developer
+  +-- Backend build/fix (.go/API/DB/auth) -> developer
+  +--   └─ Architecture needed first -> backend-architect → developer
+  +-- Fullstack/unclear platform -> developer
+  +-- Bug/debug task -> debugger (then developer)
   +-- Testing task -> tester
   +-- Code review task -> code-reviewer
   +-- Documentation task -> docs-manager
@@ -214,13 +208,13 @@ When unified verb skills auto-detect a single platform, they bypass the project 
 
 | Skill | Detection | Target Agent |
 |-------|-----------|--------------|
-| `/cook`, `/fix`, `/debug` with `.tsx`/`.ts` UI files | frontend | `frontend-developer` |
-| `/cook`, `/fix`, `/debug` with `.go`/`.ts` + `api/` | backend | `backend-developer` |
+| `/cook`, `/fix`, `/debug` with `.tsx`/`.ts` UI files | frontend | `developer` |
+| `/cook`, `/fix`, `/debug` with `.go`/`.ts` + `api/` | backend | `developer` |
 | `/cook`, `/fix`, `/debug` with `.swift` files | ios | `developer` + `ios-development` |
 | `/cook`, `/fix`, `/debug` with `.kt`/`.kts` files | android | `developer` + `android-development` |
 | `/plan` for new feature | fullstack | `backend-architect` + `frontend-architect` (parallel) |
 
-**Single-platform detection**: When an incoming task clearly targets one platform, delegate immediately to the specialist agent — do NOT route through `developer` unless platform is genuinely unclear.
+**Single-platform detection**: When an incoming task clearly targets one platform, delegate to `developer` which loads platform-specific skills automatically.
 
 ## Operational Guidelines
 

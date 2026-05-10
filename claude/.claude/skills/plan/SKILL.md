@@ -61,6 +61,7 @@ If `$ARGUMENTS` starts with `--fast`: skip auto-detection, load `references/fast
 If `$ARGUMENTS` starts with `--deep`: skip auto-detection, load `references/deep-mode.md` and execute.
 If `$ARGUMENTS` starts with `--parallel`: skip auto-detection, load `references/parallel-mode.md` and execute.
 If `$ARGUMENTS` starts with `--validate`: skip auto-detection, load `references/validate-mode.md` and execute.
+If `$ARGUMENTS` starts with `--feature`: skip auto-detection, load `references/feature-analysis-mode.md` and execute.
 Otherwise: continue to Complexity Auto-Detection.
 
 ## Aspect Files
@@ -71,6 +72,7 @@ Otherwise: continue to Complexity Auto-Detection.
 | `references/deep-mode.md` | Deep plan with sequential research and comprehensive analysis |
 | `references/parallel-mode.md` | Dependency-aware plan with file ownership matrix for parallel execution |
 | `references/validate-mode.md` | Validate plan with critical questions interview |
+| `references/feature-analysis-mode.md` | Gate-based feature planning: business reqs → UI/UX → solutions → architecture → implementation with design patterns |
 | `references/state-machine-guide.md` | State machine notation, patterns, and validation checklist |
 | `references/planning-flow.dot` | Planning flow diagram |
 
@@ -150,6 +152,7 @@ Detect platform per `skill-discovery` protocol. Pass detected platform as contex
 - Request mentions "research" or "investigate" → `:deep`
 - Request mentions multiple platforms or modules → `:parallel`
 - Request mentions "dependencies" or "phases" → `:parallel`
+- Request describes a new feature with business/user value → `:feature`
 - If unsure → default to `:fast`, escalate if needed
 
 ## Planning Expertise
@@ -197,6 +200,92 @@ Use when: auth flows, checkout/payment, form wizards, real-time sync, connection
 Skip for: simple CRUD, stateless utilities, pure transforms.
 See `references/state-machine-guide.md` for notation, patterns, and validation checklist.
 
+## Feature Analysis Framework (for `--feature` mode)
+
+Full reference: `references/feature-analysis-mode.md`
+
+When planning a new feature, the plan MUST follow a **gate-based flow** — each gate produces a deliverable for user review before proceeding:
+
+```
+Gate 1: Business Requirements → Gate 2: UI/UX Exploration → Gate 3: Solutions & Approaches → Gate 4: Architecture Design → Implementation Phases
+```
+
+### Gate 1 — Business Requirements (`analysis/business-requirements.md`)
+- Problem statement and user pain point
+- User stories with acceptance criteria (Given/When/Then)
+- Success metrics (measurable targets)
+- Constraints (business, technical, timeline)
+- Edge cases and failure scenarios
+- Scope boundaries (in-scope / out-of-scope / future)
+
+### Gate 2 — UI/UX Exploration (`analysis/ui-ux-exploration.md`) — frontend only
+- User flow diagrams (ASCII or Mermaid)
+- Screen inventory with data needs per screen
+- Component hierarchy (tree structure)
+- Interaction patterns (taps, gestures, animations)
+- Responsive behavior (mobile/tablet/desktop)
+- Accessibility considerations (WCAG 2.1 AA)
+- Existing design system alignment (reuse tokens vs create new)
+- Loading, empty, error, and offline state treatments
+
+### Gate 3 — Solutions & Approaches (`analysis/solutions-approaches.md`)
+- 2-3 implementation approaches with detailed pros/cons
+- Trade-off matrix (time, maintainability, performance, scalability, DX)
+- Recommended approach with justification tied to business requirements
+- Technical risks per approach with probability and mitigation
+- Dependency analysis (external packages, internal modules, blockers)
+
+### Gate 4 — Architecture Design (`analysis/architecture-design.md`)
+- **Agent routing based on feature side**:
+
+| Feature Side | Agent(s) | Focus |
+|-------------|----------|-------|
+| Frontend only | `frontend-architect` | Routing, components, state, API consumption |
+| Backend only | `backend-architect` | API contract, data model, auth, caching, DB schema |
+| Fullstack | `backend-architect` → `frontend-architect` | Both, with API contract as shared boundary |
+
+- Architecture Decision Records (ADRs) for significant decisions
+- Frontend: routing table, component tree, state management, API consumption pattern
+- Backend: API contract (methods/endpoints/schemas), ER diagram, service boundaries, auth strategy, caching, DB migrations
+- Fullstack: explicit API contract as shared boundary between layers
+
+### Implementation Phases (Phase 1, 2, 3, ...) — after gates approved
+Each phase MUST be small enough to review in one sitting (max 3-4 files, max 200 LOC).
+
+**Required per phase:**
+
+| Section | Requirement |
+|---------|------------|
+| Design Pattern | Name the pattern + justify WHY it fits this phase's requirements |
+| Implementation Steps | File-by-file, step-by-step with specific actions |
+| Pattern Application | How the design pattern manifests in each step |
+| Files Changed | Table with file, action, estimated LOC |
+| Agent & Skills | Assigned agent + activated skills + handoff targets |
+| Validation Criteria | Testable criteria per step |
+
+**Design pattern catalog** — choose from:
+
+| Layer | Patterns | When to Use |
+|-------|----------|-------------|
+| Frontend | Container/Presentational, Custom Hook, Compound Component, Provider, Optimistic Update | Logic+display separation, reusable state, flexible APIs, shared behavior, fast perceived perf |
+| Backend | Repository, Service Layer, CQRS, Strategy, Middleware Chain, Unit of Work | Data abstraction, business logic, read-heavy, multiple algorithms, request pipeline, transactions |
+| Fullstack | BFF, Event-Driven | Different API shapes, decoupled async |
+
+## Plan Review Integration
+
+When a plan exists (active plan set via `set-active-plan.cjs`), agents performing code review MUST:
+
+1. **Read the active plan** before reviewing code
+2. **Cross-reference** each changed file against plan phases
+3. **Verify** implementation matches plan's architecture decisions and design patterns
+4. **Flag deviations** as review findings (severity: Medium)
+5. **Check phase completion** — mark plan TODOs as done/failed in phase file
+
+Agents that must follow plan review:
+- `code-reviewer` — verify code matches plan architecture
+- `developer` — verify dispatched work aligns with plan phases
+- `frontend-architect` / `backend-architect` — verify implementation matches their architecture output
+
 ## Mental Models
 
 | Model | Application |
@@ -223,6 +312,7 @@ See `references/state-machine-guide.md` for notation, patterns, and validation c
 | `--deep` | `references/deep-mode.md` | Thorough multi-phase with research |
 | `--parallel` | `references/parallel-mode.md` | Parallelizable phases with ownership matrix |
 | `--validate` | `references/validate-mode.md` | Validate existing plan |
+| `--feature` | `references/feature-analysis-mode.md` | Gate-based: business reqs → UI/UX → solutions → architecture → phased implementation with design patterns |
 
 <request>$ARGUMENTS</request>
 <platform>{{detected_platform or "none"}}</platform>
@@ -241,8 +331,7 @@ Read every `*.md` in `.claude/agents/` and extract:
 Agents available in this kit:
 | Agent | Best For |
 |-------|----------|
-| `backend-developer` | Go/Node APIs, PostgreSQL, auth, REST, migrations |
-| `frontend-developer` | React, TanStack Start, TypeScript UI, E2E |
+| `developer` | Go/Node APIs, PostgreSQL, auth, REST, migrations, React, TanStack Start, TypeScript UI, E2E |
 | `tester` | unit/integration/E2E test suites, coverage |
 | `devops-engineer` | Docker, CI/CD, infra, cloud deployments |
 | `security-auditor` | OWASP audit, secrets scan, auth hardening |
@@ -281,7 +370,7 @@ For every generated `phase-{N}-*.md`, add an **Agent & Skills** section:
 ```markdown
 ## Agent & Skills
 
-- **Agent**: `backend-developer`
+- **Agent**: `developer`
 - **Skills**: `golang-pro`, `postgres-pro`, `api-designer`
 - **Handoffs**:
   - After completion → `code-reviewer` (quality gate)

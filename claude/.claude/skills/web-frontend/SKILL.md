@@ -4,7 +4,7 @@ description: Use when working with .tsx/.jsx files, React components, hooks, sta
 user-invocable: false
 
 metadata:
-  agent-affinity: [frontend-developer, developer, tester, debugger, code-reviewer]
+  agent-affinity: [developer, tester, debugger, code-reviewer]
   keywords: [react, frontend, ui, hooks, components, state, typescript, redux]
   platforms: [web]
   triggers: [".tsx", ".jsx", "react", "frontend", "ui component", "redux", "hook"]

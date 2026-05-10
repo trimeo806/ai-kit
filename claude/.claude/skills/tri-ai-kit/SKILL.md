@@ -21,9 +21,7 @@ A multi-agent development toolkit for Claude Code. The main conversation is alwa
 | Agent | Role | Key Skills |
 |-------|------|-----------|
 | `planner` | Creates implementation plans | plan, research, knowledge-retrieval |
-| `developer` | Generic fullstack implementation | cook, core, skill-discovery |
-| `frontend-developer` | Web/UI implementation | react-expert, typescript-pro, nextjs-developer |
-| `backend-developer` | API/server implementation | api-designer, postgres-pro |
+| `developer` | Fullstack implementation (frontend + backend) | cook, plan, react-expert, golang-pro, postgres-pro, api-designer |
 | `frontend-architect` | Frontend architecture decisions | architecture-designer |
 | `backend-architect` | Backend/API architecture | api-designer, microservices-architect |
 | `debugger` | Root cause analysis, bug fixes | debug, error-recovery, problem-solving |
@@ -43,7 +41,7 @@ A multi-agent development toolkit for Claude Code. The main conversation is alwa
 
 See `AGENTS.md` for the full routing table. Quick reference:
 
-- **Build**: `developer` (generic), `frontend-developer` (UI), `backend-developer` (API)
+- **Build**: `developer` (all platforms — loads frontend/backend skills via skill-discovery)
 - **Fix**: `debugger`
 - **Plan**: `planner`
 - **Review**: `code-reviewer`
