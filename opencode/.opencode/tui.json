@@ -1,0 +1,5 @@
+{
+  "plugin": [
+    "@slkiser/opencode-quota"
+  ]
+}

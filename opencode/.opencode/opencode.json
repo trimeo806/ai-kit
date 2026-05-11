@@ -1,0 +1,28 @@
+{
+	"$schema": "https://opencode.ai/config.json",
+	"default_agent": "build",
+	"instructions": ["WORKFLOW.md"],
+	"agent": {
+		"build": {
+			"permission": {
+				"skill": {
+					"*": "allow"
+				},
+				"task": {
+					"*": "allow"
+				}
+			}
+		},
+		"plan": {
+			"permission": {
+				"skill": {
+					"*": "allow"
+				},
+				"task": {
+					"*": "allow"
+				}
+			}
+		}
+	},
+	"plugin": ["@slkiser/opencode-quota"]
+}
