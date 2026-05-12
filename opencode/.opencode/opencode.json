@@ -22,6 +22,221 @@
 					"*": "allow"
 				}
 			}
+		},
+		"a11y-specialist": {
+			"mode": "subagent",
+			"permission": {
+				"task": "deny",
+				"edit": "deny",
+				"skill": {
+					"*": "allow"
+				}
+			}
+		},
+		"backend-architect": {
+			"mode": "subagent",
+			"permission": {
+				"task": "deny",
+				"edit": "deny",
+				"skill": {
+					"*": "allow"
+				}
+			}
+		},
+		"backend-developer": {
+			"mode": "subagent",
+			"permission": {
+				"task": "deny",
+				"skill": {
+					"*": "allow"
+				}
+			}
+		},
+		"brainstormer": {
+			"mode": "subagent",
+			"permission": {
+				"task": "deny",
+				"edit": "deny",
+				"skill": {
+					"*": "allow"
+				}
+			}
+		},
+		"code-reviewer": {
+			"mode": "subagent",
+			"permission": {
+				"task": "deny",
+				"edit": "deny",
+				"skill": {
+					"*": "allow"
+				}
+			}
+		},
+		"debugger": {
+			"mode": "subagent",
+			"permission": {
+				"task": "deny",
+				"skill": {
+					"*": "allow"
+				}
+			}
+		},
+		"design-specialist": {
+			"mode": "subagent",
+			"permission": {
+				"task": "deny",
+				"skill": {
+					"*": "allow"
+				}
+			}
+		},
+		"developer": {
+			"mode": "subagent",
+			"permission": {
+				"task": {
+					"*": "allow"
+				},
+				"skill": {
+					"*": "allow"
+				}
+			}
+		},
+		"devops-engineer": {
+			"mode": "subagent",
+			"permission": {
+				"task": "deny",
+				"skill": {
+					"*": "allow"
+				}
+			}
+		},
+		"docs-manager": {
+			"mode": "subagent",
+			"permission": {
+				"task": "deny",
+				"skill": {
+					"*": "allow"
+				}
+			}
+		},
+		"frontend-architect": {
+			"mode": "subagent",
+			"permission": {
+				"task": "deny",
+				"edit": "deny",
+				"skill": {
+					"*": "allow"
+				}
+			}
+		},
+		"frontend-developer": {
+			"mode": "subagent",
+			"permission": {
+				"task": "deny",
+				"skill": {
+					"*": "allow"
+				}
+			}
+		},
+		"git-manager": {
+			"mode": "subagent",
+			"permission": {
+				"task": "deny",
+				"skill": {
+					"*": "allow"
+				}
+			}
+		},
+		"journal-writer": {
+			"mode": "subagent",
+			"permission": {
+				"task": "deny",
+				"skill": {
+					"*": "allow"
+				}
+			}
+		},
+		"knowledge-graph-guide": {
+			"mode": "subagent",
+			"permission": {
+				"task": "deny",
+				"edit": "deny",
+				"skill": {
+					"*": "allow"
+				}
+			}
+		},
+		"mcp-manager": {
+			"mode": "subagent",
+			"permission": {
+				"task": "deny",
+				"skill": {
+					"*": "allow"
+				}
+			}
+		},
+		"muji": {
+			"mode": "subagent",
+			"permission": {
+				"task": "deny",
+				"edit": "deny",
+				"skill": {
+					"*": "allow"
+				}
+			}
+		},
+		"planner": {
+			"mode": "subagent",
+			"permission": {
+				"task": {
+					"*": "allow"
+				},
+				"edit": "deny",
+				"skill": {
+					"*": "allow"
+				}
+			}
+		},
+		"project-manager": {
+			"mode": "subagent",
+			"permission": {
+				"task": {
+					"*": "allow"
+				},
+				"edit": "deny",
+				"skill": {
+					"*": "allow"
+				}
+			}
+		},
+		"researcher": {
+			"mode": "subagent",
+			"permission": {
+				"task": "deny",
+				"edit": "deny",
+				"skill": {
+					"*": "allow"
+				}
+			}
+		},
+		"security-auditor": {
+			"mode": "subagent",
+			"permission": {
+				"task": "deny",
+				"edit": "deny",
+				"skill": {
+					"*": "allow"
+				}
+			}
+		},
+		"tester": {
+			"mode": "subagent",
+			"permission": {
+				"task": "deny",
+				"skill": {
+					"*": "allow"
+				}
+			}
 		}
 	},
 	"plugin": ["@slkiser/opencode-quota"]

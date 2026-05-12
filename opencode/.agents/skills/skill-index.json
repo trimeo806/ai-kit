@@ -1,11 +1,11 @@
 {
     "generated":  "2026-03-18T06:45:04.645Z",
     "version":  "2.0.0",
-    "count":  60,
+    "count":  62,
     "categories":  {
                        "uncategorized":  32,
-                       "development-tools":  11,
-                       "analysis-reasoning":  12,
+                       "development-tools":  12,
+                       "analysis-reasoning":  13,
                        "infrastructure":  2,
                        "frontend-web":  3
                    },
@@ -2284,7 +2284,115 @@
 
                                                          ]
                                        },
-                       "path":  "websocket-engineer/SKILL.md"
-                   }
-               ]
+                        "path":  "websocket-engineer/SKILL.md"
+                    },
+                    {
+                        "name":  "production-readiness",
+                        "description":  "Run the per-release production-readiness sweep — asset/payload minimization, structured logging + OpenAPI sync, error handling standardization (ERRORID/TRACEID/toast), UI/Lighthouse audit, and flow diagram refresh. Trigger when cutting a release, hardening for production, or when the user says 'production readiness', 'release prep', 'pre-release sweep', 'UI audit', 'lighthouse pass', or invokes /production-readiness.",
+                        "category":  "development-tools",
+                        "tier":  "discoverable",
+                        "keywords":  [
+                                         "production",
+                                         "readiness",
+                                         "release",
+                                         "assets",
+                                         "payload",
+                                         "observability",
+                                         "error-handling",
+                                         "lighthouse",
+                                         "ui-audit",
+                                         "pre-release"
+                                     ],
+                        "platforms":  [
+                                          "all"
+                                      ],
+                        "triggers":  [
+                                         "/production-readiness",
+                                         "production readiness",
+                                         "release prep",
+                                         "pre-release sweep",
+                                         "UI audit",
+                                         "lighthouse pass",
+                                         "harden for prod",
+                                         "asset audit",
+                                         "payload check"
+                                     ],
+                        "agent-affinity":  [
+                                               "developer",
+                                               "frontend-developer",
+                                               "backend-developer",
+                                               "devops-engineer",
+                                               "tester"
+                                           ],
+                        "connections":  {
+                                            "extends":  [
+
+                                                        ],
+                                            "requires":  [
+
+                                                         ],
+                                            "enhances":  [
+                                                             "review",
+                                                             "test"
+                                                         ],
+                                            "conflicts":  [
+
+                                                          ]
+                                        },
+                        "path":  "production-readiness/SKILL.md"
+                    },
+                    {
+                        "name":  "prompt-refinement",
+                        "description":  "Use when a user wants to refine, improve, clarify, rewrite, or make a prompt/spec/task request more effective before an agent works on it. Also use when requirements are vague, business logic is underspecified, acceptance criteria are missing, or an implementation/research/design prompt needs clearer scope, constraints, context, output format, or validation steps.",
+                        "category":  "analysis-reasoning",
+                        "tier":  "discoverable",
+                        "keywords":  [
+                                         "prompt",
+                                         "refinement",
+                                         "clarify",
+                                         "rewrite",
+                                         "requirements",
+                                         "acceptance-criteria",
+                                         "scope",
+                                         "constraints",
+                                         "business-logic",
+                                         "specification"
+                                     ],
+                        "platforms":  [
+                                          "all"
+                                      ],
+                        "triggers":  [
+                                         "/prompt-refinement",
+                                         "prompt refinement",
+                                         "refine prompt",
+                                         "improve prompt",
+                                         "rewrite prompt",
+                                         "clarify requirements",
+                                         "make this prompt better"
+                                     ],
+                        "agent-affinity":  [
+                                               "planner",
+                                               "project-manager",
+                                               "developer",
+                                               "researcher",
+                                               "docs-manager"
+                                           ],
+                        "connections":  {
+                                            "extends":  [
+
+                                                        ],
+                                            "requires":  [
+
+                                                         ],
+                                            "enhances":  [
+                                                             "plan",
+                                                             "doc-coauthoring"
+                                                         ],
+                                            "conflicts":  [
+
+                                                          ]
+                                        },
+                        "path":  "prompt-refinement/SKILL.md"
+                    }
+                ]
 }

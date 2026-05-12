@@ -1,13 +1,36 @@
 ---
 name: prompt-refinement
 description: Use when a user wants to refine, improve, clarify, rewrite, or make a prompt/spec/task request more effective before an agent works on it. Also use when requirements are vague, business logic is underspecified, acceptance criteria are missing, or an implementation/research/design prompt needs clearer scope, constraints, context, output format, or validation steps.
-license: MIT
-compatibility: opencode
+user-invocable: true
 metadata:
   argument-hint: "[rough prompt, feature idea, or requirements draft]"
-  triggers: "/prompt-refinement, refine prompt, improve prompt, rewrite prompt, clarify requirements, make this prompt better"
-  agents: "planner, project-manager, developer, researcher, docs-manager"
-  platforms: "all"
+  agent-affinity:
+    - planner
+    - project-manager
+    - developer
+    - researcher
+    - docs-manager
+  keywords:
+    - prompt
+    - refinement
+    - clarify
+    - rewrite
+    - requirements
+    - acceptance-criteria
+    - scope
+    - constraints
+    - business-logic
+    - specification
+  platforms:
+    - all
+  triggers:
+    - /prompt-refinement
+    - prompt refinement
+    - refine prompt
+    - improve prompt
+    - rewrite prompt
+    - clarify requirements
+    - make this prompt better
 ---
 
 # Prompt Refinement
@@ -162,3 +185,10 @@ If useful, include:
 - **Quick version** — compact prompt for immediate use
 - **Full version** — detailed prompt with context, criteria, and validation
 - **Questions only** — when rewriting would require decisions the user has not made
+
+## Related Documents
+
+- `.agents/skills/brainstorm/SKILL.md` — trade-off analysis
+- `.agents/skills/doc-coauthoring/SKILL.md` — collaborative PRD/spec drafting
+- `.agents/skills/plan/SKILL.md` — implementation planning
+- `.agents/skills/core/SKILL.md` — operational boundaries
