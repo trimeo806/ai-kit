@@ -35,13 +35,13 @@ Machine-readable metadata for an audit session. Written by the orchestrating age
     "target": "SmartLetterComposer",
     "platform": "web",
     "mode": "library",
-    "files": ["libs/klara-theme/src/lib/smart-letter-composer/"],
+    "files": ["libs/ui-components/..."],
     "fileCount": 93
   },
   "agents": [
     {
-      "name": "muji",
-      "report": "muji-ui-audit.md",
+      "name": "ui-audit",
+      "report": "ui-audit.md",
       "verdict": "FIX-AND-REAUDIT",
       "findings": { "critical": 6, "high": 11, "medium": 10, "low": 6 }
     },
@@ -83,7 +83,7 @@ Machine-readable metadata for an audit session. Written by the orchestrating age
 | `scope.files` | `string[]` | Yes | File paths or directories audited |
 | `scope.fileCount` | `integer` | No | Total files scanned |
 | `agents[]` | `array` | Yes | One entry per participating agent |
-| `agents[].name` | `string` | Yes | Agent identifier (e.g. `muji`) |
+| `agents[].name` | `string` | Yes | Agent identifier (e.g. `ui-audit`) |
 | `agents[].report` | `string` | Yes | Filename of agent's report within session folder |
 | `agents[].verdict` | `string \| null` | Yes | Agent's verdict; null if agent did not participate |
 | `agents[].findings` | `object` | Yes | Finding counts by severity |
@@ -103,6 +103,6 @@ Machine-readable metadata for an audit session. Written by the orchestrating age
 | Audit type | Written by |
 |------------|-----------|
 | `hybrid-audit` | `code-reviewer` (after merging all sub-agent reports) |
-| `ui-audit` | `muji` (standalone, no code-reviewer) |
+| `ui-audit` | inline |
 | `a11y-audit` | `a11y-specialist` (standalone) |
 | `code-review` | `code-reviewer` (inline, no sub-agents) |

@@ -1,10 +1,10 @@
-﻿---
+---
 name: audit
 description: Use when user says "audit", "run an audit", "check quality", "review before merge", "a11y audit", or "code audit" — detects audit type (UI component, a11y, or code) and dispatches the right specialist
 user-invocable: true
 metadata:
   argument-hint: "[--ui <ComponentName> [--platform web|ios|android|all] [--poc|--beta|--stable] | --a11y [platform] | --code]"
-  keywords: [audit, review, component, a11y, accessibility, code, quality, ui-lib, muji, tokens]
+  keywords: [audit, review, component, a11y, accessibility, code, quality, ui-lib, tokens]
   triggers:
     - "audit"
     - "audit component"
@@ -14,7 +14,7 @@ metadata:
     - "code audit"
     - "component audit"
   platforms: [all]
-  agent-affinity: [muji, code-reviewer, a11y-specialist]
+  agent-affinity: [code-reviewer, a11y-specialist]
   connections:
     enhances: [code-review, ui-lib-dev]
     requires: [knowledge-retrieval]
@@ -62,63 +62,12 @@ If `$ARGUMENTS` starts with `--ui` and **no maturity tier flag** (`--poc`/`--bet
 > Reply with the flag or just `poc` / `beta` / `stable`."
 Wait for reply, then set the maturity tier and proceed.
 
-If `$ARGUMENTS` starts with `--ui`: **dispatch muji** via Agent tool. Pass component name + platform flags + maturity tier (if present) + `references/ui-workflow.md` workflow.
+If `$ARGUMENTS` starts with `--ui`: load `references/ui-workflow.md` and execute inline. Pass component name + platform flags + maturity tier.
 If `$ARGUMENTS` starts with `--a11y`: **dispatch a11y-specialist** via Agent tool. Pass `references/a11y-workflow.md` + platform hint.
 If `$ARGUMENTS` starts with `--close --ui`: load `references/ui-close.md` and execute inline.
 If `$ARGUMENTS` starts with `--close`: load `references/a11y-close.md` and execute inline.
 If `$ARGUMENTS` starts with `--code`: **dispatch code-reviewer** via Agent tool.
-If auto-detected as **hybrid** (see Hybrid Detection below): run Hybrid Orchestration.
 Otherwise: continue to Auto-Detection.
-
-## Hybrid Detection
-
-Trigger hybrid mode when ALL conditions met:
-- Target contains klara-theme files (path contains `libs/klara-theme/` or `libs/common/`)
-- File count >= 20 OR multiple subdirectories in scope
-- No explicit `--ui` or `--code` flag (those force single-agent mode)
-
-## Hybrid Orchestration (main context)
-
-**This runs in the main conversation, NOT in a subagent.** The main context has Agent tool available.
-
-```
-session_folder = reports/{YYMMDD-HHMM}-{slug}-audit/
-```
-
-1. **Create session folder**: `Bash("mkdir -p {session_folder}")`
-2. **Dispatch muji** via Agent tool with Template A+ from `references/delegation-templates.md`:
-   - Fill: Scope, Component(s), Mode: library, Platform, Output path: `{session_folder}/muji-ui-audit.md`
-   - WAIT for muji to complete
-3. **Read muji report** at `{session_folder}/muji-ui-audit.md`. Extract:
-   - `finding_locations`: Set of file:line flagged by muji
-   - `verdict`: muji's overall verdict
-   - `a11y_findings`: contents of `## A11Y Findings` section (if present)
-4. **If a11y findings exist AND maturity tier is NOT `poc`**: dispatch a11y-specialist via Agent tool (Template B):
-   - Output path: `{session_folder}/a11y-audit.md`
-   - WAIT for completion
-   - **POC exception**: If `--poc`, skip a11y dispatch — A11Y findings are already advisory-only in muji's report (no dedicated a11y pass needed until beta)
-5. **Dispatch code-reviewer** via Agent tool:
-   - Pass: file list, `{session_folder}/muji-ui-audit.md` path (for dedup), SEC/PERF/TS/ARCH/STATE/LOGIC scope
-   - Output path: `{session_folder}/code-review-findings.md`
-   - WAIT for completion
-6. **Merge reports** into `{session_folder}/report.md`:
-   - Executive Summary with overall verdict
-   - `## UI Audit` — muji verdict, finding count, link to `muji-ui-audit.md`
-   - `## A11Y Audit` (if ran) — link to `a11y-audit.md`
-   - `## Code Review` — code-reviewer findings inline
-   - Methodology section
-6.5. **Run build verification**:
-   ```bash
-   node .claude/hooks/lib/build-gate.cjs
-   ```
-   Append `## Build Verification` section to `{session_folder}/report.md`:
-   - Exit 0: `Build verification: ✓ PASS ({platform}, {duration_ms}ms)`
-   - Exit 1: `Build verification: ✗ FAIL — {error excerpt}` (advisory — does not block report)
-   - Exit 0 (no command): `Build verification: skipped (no build command detected)`
-7. **Write session.json** per `references/session-json-schema.md`
-8. **Update reports/index.json** per `core/references/index-protocol.md`
-
-Verdict = `max(muji, a11y, code-reviewer)` where REDESIGN > FIX-AND-REAUDIT > APPROVE.
 
 ## Single-Agent Delegation Protocol
 
@@ -136,9 +85,6 @@ For non-hybrid dispatches (`--ui`, `--code`, `--a11y`):
 
 | Template | Specialist | When |
 |----------|-----------|------|
-| A — UI Component Audit | muji | `--ui` flag or UI component signals |
-| A+ — Feature Module UI Standards | muji | Hybrid mode, multi-file library audit |
-| A++ — POC Organism Audit | muji | `--ui` + organism classification + `--poc`/`--beta` |
 | B — A11y Audit | a11y-specialist | `--a11y` flag or A11y findings from UI audit |
 | C — Code Escalation | code-reviewer | Critical findings needing deeper pass |
 | D — Docs Gap Detection | docs-manager | Post-audit, new feature, or refactor |
@@ -149,7 +95,7 @@ For non-hybrid dispatches (`--ui`, `--code`, `--a11y`):
 | File | Purpose |
 |------|---------|
 | `references/output-contract.md` | **Single source of truth** — all output paths, session folders, file names, agent responsibilities |
-| `references/ui-workflow.md` | Audit UI component (Senior Muji Reviewer) |
+| `references/ui-workflow.md` | Audit UI component |
 | `references/a11y-workflow.md` | Audit staged changes for WCAG 2.1 AA violations |
 | `references/a11y-close.md` | Mark an accessibility finding as resolved |
 | `references/ui-close.md` | Close/resolve a UI finding in known-findings DB |
@@ -163,7 +109,7 @@ Analyze `$ARGUMENTS` keywords and context:
 
 | Signal | Dispatch |
 |--------|----------|
-| Component name (`tri-ai-kit*`, UI keyword), "component", "ui-lib", "design system", "token", "klara", "muji" | `--ui` → `references/ui-workflow.md` via **muji** |
+| Component name, "component", "ui-lib", "design system", "token" | `--ui` → `references/ui-workflow.md` (inline) |
 | "a11y", "accessibility", "wcag", "voiceover", "talkback" | `--a11y` → `references/a11y-workflow.md` |
 | "close" + "ui" signals | `--close --ui` → `references/ui-close.md` |
 | "close", "resolve", "finding" | `--close` → `references/a11y-close.md` |
@@ -172,7 +118,7 @@ Analyze `$ARGUMENTS` keywords and context:
 
 ## Platform Detection (--ui mode)
 
-When delegating to muji, detect target platforms:
+Detect target platforms for --ui mode:
 - Explicit `--platform web|ios|android|all` in args → pass through
 - `.swift` context → `--platform ios`
 - `.kt`/`.kts` context → `--platform android`
@@ -183,19 +129,19 @@ When delegating to muji, detect target platforms:
 
 | Flag | Agent | Reference | Scope |
 |------|-------|-----------|-------|
-| `--ui` | muji | `references/ui-workflow.md` | Design system components (web/iOS/Android) |
+| `--ui` | inline | `references/ui-workflow.md` | Design system components (web/iOS/Android) |
 | `--a11y` | a11y-specialist | `references/a11y-workflow.md` | WCAG 2.1 AA violations |
 | `--close` | a11y-specialist | `references/a11y-close.md` | Mark a11y finding as resolved |
-| `--close --ui <id>` | muji | `references/ui-close.md` | Mark UI finding resolved |
+| `--close --ui <id>` | inline | `references/ui-close.md` | Mark UI finding resolved |
 | `--code` | code-reviewer | `code-review` | General code quality, security, performance |
 
 ## Examples
 
-- `/audit --ui tri-ai-kitButton` → muji audits tri-ai-kitButton across all platforms
-- `/audit --ui tri-ai-kitCard --platform web` → muji audits web-only
+- `/audit --ui Button` → audits Button across all platforms (inline)
+- `/audit --ui Card --platform web` → audits web-only
 - `/audit --ui SmartLetterComposer --poc` → organism audit with poc maturity tier, phased roadmap verdict
 - `/audit --ui SmartLetterComposer --platform web --beta` → organism audit with beta maturity tier
 - `/audit --a11y` → a11y specialist audits staged changes
 - `/audit --code` → reviewer audits staged code changes
 - `/audit --close --ui 3` → mark UI finding ID 3 as resolved
-- `/audit tri-ai-kitInput` → auto-detected as UI audit → delegates to muji
+- `/audit Input` → auto-detected as UI audit → executes inline via references/ui-workflow.md

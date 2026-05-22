@@ -1,4 +1,4 @@
-﻿# Audit Output Contract
+# Audit Output Contract
 
 Single source of truth for ALL audit output paths, file names, and agent responsibilities. Every agent and workflow file references this — do NOT define output paths elsewhere.
 
@@ -8,8 +8,8 @@ Every audit — hybrid, standalone, or inline — writes to a session folder. **
 
 | Audit Type | Folder Pattern | Orchestrator |
 |------------|----------------|-------------|
-| Hybrid (code-reviewer + muji) | `reports/{YYMMDD-HHMM}-{slug}-audit/` | code-reviewer |
-| Standalone UI audit | `reports/{YYMMDD-HHMM}-{slug}-ui-audit/` | muji |
+| Hybrid (code-reviewer + ui-audit) | `reports/{YYMMDD-HHMM}-{slug}-audit/` | code-reviewer |
+| Standalone UI audit | `reports/{YYMMDD-HHMM}-{slug}-ui-audit/`  inline |
 | Standalone a11y audit | `reports/{YYMMDD-HHMM}-{slug}-a11y-audit/` | a11y-specialist |
 | Inline code review | `reports/{YYMMDD-HHMM}-{slug}-code-review/` | code-reviewer |
 
@@ -32,7 +32,7 @@ Sub-agents do NOT create folders. They write to `output_path` provided by the ca
 | File | Written By | Required | Content |
 |------|-----------|----------|---------|
 | `report.md` | Orchestrator | Always | Main deliverable — merged findings, methodology, verdict |
-| `muji-ui-audit.md` | muji | Hybrid only | Muji's UI audit pass |
+| `ui-audit.md` | inline | Hybrid only | UI audit pass |
 | `a11y-audit.md` | a11y-specialist | When delegated | A11Y audit pass |
 | `session.json` | Orchestrator | Always | Machine-readable metadata (schema below) |
 
@@ -42,12 +42,12 @@ Sub-agents do NOT create folders. They write to `output_path` provided by the ca
 
 **Orchestrator**: Main conversation (via `audit/SKILL.md`), NOT code-reviewer. Subagents cannot spawn further subagents.
 
-| Responsibility | Main context | code-reviewer (sub-agent) | muji (sub-agent) | a11y (sub-agent) |
+| Responsibility | Main context | code-reviewer (sub-agent) | (inline) | a11y (sub-agent) |
 |---------------|:---:|:---:|:---:|:---:|
 | Create session folder (`mkdir -p`) | **YES** | no | no | no |
 | Dispatch sub-agents | **YES** | no | no | no |
 | Write merged `report.md` | **YES** | no | no | no |
-| Write own sub-report | — | `code-review-findings.md` | `muji-ui-audit.md` | `a11y-audit.md` |
+| Write own sub-report | — | `code-review-findings.md` | `ui-audit.md` | `a11y-audit.md` |
 | Write `session.json` | **YES** | no | no | no |
 | Persist findings to `reports/known-findings/` | — | `code.json` | `ui-components.json` | `a11y.json` |
 | Update `reports/index.json` | **YES** | no | no | no |
@@ -78,11 +78,11 @@ Written by the orchestrator as the LAST step (after all reports are merged).
     "target": "SmartLetterComposer",
     "platform": "web",
     "mode": "library",
-    "files": ["libs/klara-theme/src/lib/smart-letter-composer/"],
+    "files": ["libs/ui-components/..."],
     "fileCount": 93
   },
   "agents": [
-    { "name": "muji", "report": "muji-ui-audit.md", "verdict": "FIX-AND-REAUDIT", "findings": { "critical": 6, "high": 11, "medium": 10, "low": 6 } },
+     },
     { "name": "code-reviewer", "report": "report.md", "verdict": "FIX-AND-REAUDIT", "findings": { "critical": 1, "high": 4, "medium": 5, "low": 2 } }
   ],
   "summary": { "total": 45, "critical": 7, "high": 15, "medium": 15, "low": 8, "verdict": "FIX-AND-REAUDIT" }
@@ -113,7 +113,7 @@ One entry per session (not per sub-agent):
 
 ## A11Y Findings Escalation Format
 
-When muji collects A11Y findings for code-reviewer to escalate, use this EXACT format in the report:
+When the UI audit collects A11Y findings for code-reviewer to escalate, use this EXACT format in the report:
 
 ```markdown
 ## A11Y Findings (for escalation)
@@ -138,13 +138,12 @@ Each agent persists findings to its own topic file inside `reports/known-finding
 ```
 reports/known-findings/
   a11y.json           ← a11y-specialist
-  ui-components.json  ← muji
+  ui-components.json  ← ui-audit
   code.json           ← code-reviewer
 ```
 
 | Agent | DB Path | Schema |
 |-------|---------|--------|
-| muji | `reports/known-findings/ui-components.json` | `audit/references/ui-findings-schema.md` |
 | code-reviewer | `reports/known-findings/code.json` | `code-review/references/code-known-findings-schema.md` |
 | a11y-specialist | `reports/known-findings/a11y.json` | `a11y/assets/known-findings-schema.json` |
 
@@ -158,8 +157,8 @@ See `core/references/report-standard.md` for general report anatomy and folder p
 
 | Standards File | Used By | Scope |
 |---------------|---------|-------|
-| `ui-lib-dev/references/audit-standards.md` | muji | UI library + consumer code (STRUCT, PROPS, TOKEN, BIZ, A11Y, TEST, EMBED, LDRY, INT, PLACE, REUSE, TW, DRY, REACT, POC) |
+| `ui-lib-dev/references/audit-standards.md` | ui-audit | UI library + consumer code (STRUCT, PROPS, TOKEN, BIZ, A11Y, TEST, EMBED, LDRY, INT, PLACE, REUSE, TW, DRY, REACT, POC) |
 | `code-review/references/code-review-standards.md` | code-reviewer | General code (SEC, PERF, TS, LOGIC, DEAD, ARCH, STATE) |
 | WCAG 2.1 AA (external) | a11y-specialist | Accessibility |
 
-In hybrid audit, both standards files apply — muji uses audit-standards.md, code-reviewer uses code-review-standards.md, with deduplication on overlapping file:line locations.
+In hybrid audit, both standards files apply — ui-audit uses audit-standards.md, code-reviewer uses code-review-standards.md, with deduplication on overlapping file:line locations.

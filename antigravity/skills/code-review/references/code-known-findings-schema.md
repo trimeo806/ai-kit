@@ -87,7 +87,7 @@ Rule IDs from `code-review-standards.md`: SEC-001..008, PERF-001..006, TS-001..0
 - `"low"` — style inconsistency, minor optimization opportunity
 
 ### source
-- `"hybrid-audit"` — detected during hybrid code pass (after muji UI pass)
+- `"hybrid-audit"` — detected during hybrid code pass (after UI audit pass)
 - `"code-review"` — detected by standalone code review
 - `"manual"` — manually added by developer
 

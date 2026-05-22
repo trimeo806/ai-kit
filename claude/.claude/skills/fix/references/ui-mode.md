@@ -10,19 +10,19 @@ metadata:
 
 Invoked when: `fix --ui <ComponentName> [--finding-id <id>] [--top <n>]`
 
-Executes inline in main context — the main context dispatches muji via Agent tool.
+Executes inline in main context.
 
 ## Steps
 
 1. Parse `$ARGUMENTS`:
-   - If no component name provided: ask "Which component? (e.g. `tri-ai-kitButton`)" and wait for reply
+   - If no component name provided: ask "Which component? (e.g. `Button`)" and wait for reply
 2. Load `reports/known-findings/ui-components.json`
    - If file not found: report "no UI findings DB — run `/audit --ui <ComponentName>` first" and stop
 3. Select finding(s):
    - `--finding-id <id>`: load that specific finding
    - `--top <n>`: load top N unresolved by severity (critical → high → medium → low)
    - No flag: load all unresolved findings for named component
-4. Delegate to muji via Agent tool with:
+4. Execute inline with finding context:
    - Finding objects from DB
    - Component name + `file_pattern`
    - Mode: **plan** (produce fix plan + diff preview — do NOT write files yet)
@@ -42,7 +42,7 @@ Executes inline in main context — the main context dispatches muji via Agent t
    - `yes` → proceed to step 7
    - `skip #id` → exclude that finding, apply the rest
    - `cancel` → stop, nothing written
-7. Dispatch muji via Agent tool with confirmed findings:
+7. Apply confirmed findings:
    - Mode: **apply** (write changes to source files)
 8. Update `reports/known-findings/ui-components.json`: set `fix_applied: true`, `fix_applied_date: today` for each applied finding
 9. Output: files changed, lines changed per finding

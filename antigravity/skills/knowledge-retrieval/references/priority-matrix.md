@@ -108,14 +108,14 @@ Decision table for selecting knowledge sources across 5 levels.
 |------|-------|--------|-----------|
 | 1 | L2 | RAG (scope filter) | Indexed component library |
 | 2 | L4 | Codebase | Glob component files |
-| 3 | L3 | Skills (muji/*) | Design system reference |
+| 3 | L3 | Skills (design-system/*) | Design system reference |
 | 4 | L1 | `docs/patterns/` | Component patterns |
 | - | — | Skip External | Our components, not external |
 
 **Scope-aware queries**:
 ```typescript
 // Design system components
-query({ query: "button", filters: { scope: "klara-theme", file_type: "tsx" } })
+query({ query: "button", filters: { scope: "design-system", file_type: "tsx" } })
 
 // Shared components
 query({ query: "modal", filters: { scope: "luz-components", file_type: "tsx" } })
@@ -156,7 +156,7 @@ query({ query: "form input", filters: { scope: "libs", file_type: "tsx" } })
 
 | Rank | Level | Source | Rationale |
 |------|-------|--------|-----------|
-| 1 | L2 | RAG (scope: klara-theme) | Auto-indexed token files |
+| 1 | L2 | RAG (scope: design-system) | Auto-indexed token files |
 | 2 | L4 | Codebase (Grep) | Search SCSS/CSS files directly |
 | - | — | Skip `docs/` | Token values are volatile, not decisions |
 | - | — | Skip Skills | Skill pointers direct to RAG, not values |
@@ -164,8 +164,8 @@ query({ query: "form input", filters: { scope: "libs", file_type: "tsx" } })
 
 **Scope-aware queries**:
 ```typescript
-query({ query: "color tokens", filters: { scope: "klara-theme", topic: "design-system" } })
-query({ query: "spacing scale", filters: { scope: "klara-theme", file_type: "scss" } })
+query({ query: "color tokens", filters: { scope: "design-system", topic: "design-system" } })
+query({ query: "spacing scale", filters: { scope: "design-system", file_type: "scss" } })
 ```
 
 ---

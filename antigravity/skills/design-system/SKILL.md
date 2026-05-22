@@ -1,10 +1,9 @@
 ﻿---
-name: ckm:design-system
+name: design-system
 description: Token architecture, component specifications, and slide generation. Three-layer tokens (primitive→semantic→component), CSS variables, spacing/typography scales, component specs, strategic slide creation. Use for design tokens, systematic design, brand-compliant presentations.
 argument-hint: "[component or token]"
 license: MIT
 metadata:
-  author: claudekit
   version: "1.0.0"
 ---
 
@@ -225,13 +224,13 @@ font-family: 'Space Grotesk';
 
 Working example with all features:
 ```
-assets/designs/slides/claudekit-pitch-251223.html
+assets/designs/slides/example-pitch.html
 ```
 
 ### Command
 
 ```bash
-/slides:create "10-slide investor pitch for ClaudeKit Marketing"
+/slides:create "10-slide investor pitch for your product"
 ```
 
 ## Best Practices

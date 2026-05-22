@@ -1,6 +1,6 @@
 ---
 name: arch/cloud/gcp-patterns
-description: "GCP service patterns for tri-ai-kit infrastructure"
+description: "GCP service patterns"
 ---
 
 # GCP Infrastructure Patterns
@@ -42,7 +42,7 @@ steps:
 
 ## Naming Conventions
 
-- Projects: `tri-ai-kit-<env>-<service>`
+- Projects: `<project>-<env>-<service>`
 - Resources: `<service>-<env>-<resource>`
 - Images: `<region>-docker.pkg.dev/<project>/<repo>/<image>`
 

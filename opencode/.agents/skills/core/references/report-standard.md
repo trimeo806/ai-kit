@@ -1,6 +1,6 @@
 # Report Standard
 
-Common output format for all tri-ai-kit agent reports.
+Common output format for all agent reports.
 
 ---
 
@@ -104,7 +104,6 @@ For audit reports that include JSON: the `summary` object provides machine-reada
 | planner | `READY` `NEEDS-RESEARCH` `BLOCKED` |
 | researcher | `ACTIONABLE` `INCONCLUSIVE` `NEEDS-MORE` |
 | code-reviewer | `APPROVE` `FIX-AND-RESUBMIT` `REDESIGN` |
-| muji | `APPROVE` `FIX-AND-RESUBMIT` `BLOCKED` |
 | a11y-specialist | `PASS` `FAIL` `FIX-AND-RESUBMIT` |
 | tester | `PASS` `FAIL` `PARTIAL` |
 
@@ -117,7 +116,6 @@ For audit reports that include JSON: the `summary` object provides machine-reada
 | planner | `plan/references/report-template.md` | — |
 | researcher | `research/references/report-template.md` | — |
 | code-reviewer | `code-review/references/report-template.md` | inline JSON findings |
-| muji | `audit/references/finding-schema.md` (human section) | `audit/references/finding-schema.md` |
 | a11y-specialist | a11y platform mode schema (human section) | a11y platform mode schema |
 | tester | `test/references/report-template.md` | — |
 

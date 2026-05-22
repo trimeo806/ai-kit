@@ -19,8 +19,8 @@ Scout-first review pattern. Edge-case detection before quality audit.
 
 **Klara-theme feature module (20+ files or multi-subdir)**:
 - Use hybrid sequential audit (not parallel)
-- Dispatch muji FIRST via Template A+, wait for completion
-- Read muji report, then run SEC/PERF/TS with dedup
+- Run UI audit inline via `references/ui-workflow.md`, wait for completion
+- Read ui-audit results, then run SEC/PERF/TS with dedup
 - See `code-review/SKILL.md` Dispatch Protocol for full 7-step sequence
 
 Review changed code for:
@@ -46,7 +46,7 @@ Report structure follows `code-review/references/report-template.md`: Executive 
 After writing `report.md`:
 
 1. **Code findings** (SEC/PERF/TS/LOGIC/DEAD) → `.kit-data/code/known-findings.json` per `code-review/references/code-known-findings-schema.md`
-2. **UI findings** — persisted by muji to `.kit-data/ui/known-findings.json` (do not duplicate)
+2. **UI findings** — persisted by ui-audit to `.kit-data/ui/known-findings.json` (do not duplicate)
 3. **A11Y findings** — persisted by a11y-specialist to `.kit-data/a11y/known-findings.json` (do not duplicate)
 
 Pre-scan for regressions before appending: same `rule_id` + `file_pattern` resolved → flag `regression: true` in report.

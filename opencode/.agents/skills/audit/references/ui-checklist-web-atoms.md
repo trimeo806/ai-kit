@@ -1,6 +1,6 @@
 # Web Component Audit Checklist
 
-Platform: web (klara-theme / React / TypeScript / Tailwind)
+Platform: web (React / TypeScript / Tailwind)
 
 > Full rule definitions: `ui-lib-dev/references/audit-standards.md`
 

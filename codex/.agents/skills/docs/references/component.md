@@ -1,6 +1,6 @@
 ---
 name: docs-component
-description: "Document a klara-theme component (Figma data + prop mapping)"
+description: "Document a design-system component (Figma data + prop mapping)"
 user-invocable: false
 disable-model-invocation: true
 metadata:
@@ -11,7 +11,7 @@ metadata:
 
 # /docs-component
 
-Document a klara-theme component by extracting Figma data and creating prop mappings.
+Document a design-system component by extracting Figma data and creating prop mappings.
 
 ## Usage
 
@@ -43,7 +43,7 @@ Document a klara-theme component by extracting Figma data and creating prop mapp
 ## Process
 
 1. **Route**: Command routes to `docs-manager`
-2. **Detect**: Documenter detects klara-theme context
+2. **Detect**: Documenter detects design-system context
 3. **Delegate**: Delegates to `developer` with:
    - `componentKey`: The component to document
    - `workflow`: `document-component`
@@ -57,13 +57,13 @@ Document a klara-theme component by extracting Figma data and creating prop mapp
 
 ## Output
 
-- `libs/klara-theme/figma-data/components/<componentKey>.figma.json` — Figma component data
-- `libs/klara-theme/figma-data/mappings/<componentKey>.mapping.json` — Prop mappings
-- `libs/klara-theme/figma-data/manifest.json` — Updated status
+- `libs/{design-system}/figma-data/components/<componentKey>.figma.json` — Figma component data
+- `libs/{design-system}/figma-data/mappings/<componentKey>.mapping.json` — Prop mappings
+- `libs/{design-system}/figma-data/manifest.json` — Updated status
 
 ## Related
 
 - Skill: `.agents/skills/ui-lib-dev/references/document-component.md`
 - Extraction: `.agents/skills/figma/references/extraction-procedure.md`
-- Manifest: `libs/klara-theme/figma-data/manifest.json`
-- Schemas: `libs/klara-theme/figma-data/schema/`
+- Manifest: `libs/{design-system}/figma-data/manifest.json`
+- Schemas: `libs/{design-system}/figma-data/schema/`

@@ -1,4 +1,4 @@
-﻿# Audit Report Schema v2.0
+# Audit Report Schema v2.0
 
 **This is a field reference** — it defines the structure of findings and methodology within `report.md`. You do NOT produce a separate JSON file. Findings are written inline as Markdown tables. Machine-readable tracking lives in `known-findings.json` (per-domain) and `session.json` (per-session summary).
 
@@ -18,7 +18,7 @@ For output paths and file naming: see `output-contract.md`.
   "actual": "style={{ color: '#FF0000' }}",
   "fix": "Replace with className='text-signal-error' in button-styles.ts",
   "mentoring": "Semantic tokens auto-adapt to brand and dark mode. Hardcoded colors break theming.",
-  "reuseOpportunity": "klara Button component covers this use case"
+  "reuseOpportunity": "design-system component covers this use case"
 }
 ```
 
@@ -33,7 +33,7 @@ For output paths and file naming: see `output-contract.md`.
 {
   "component": "ComponentName",
   "platform": "web",
-  "auditor": "muji",
+  "auditor": "ui-audit",
   "date": "YYYY-MM-DD",
   "version": "2.0",
   "auditMode": "consumer",
@@ -56,7 +56,7 @@ For output paths and file naming: see `output-contract.md`.
     },
     "REUSE": {
       "score": 6.0,
-      "insight": "Two raw <input> elements found where klara Input would apply. Button adoption is correct."
+      "insight": "Consider using design-system components for consistency"
     },
     "TW": {
       "score": 9.0,
@@ -73,11 +73,11 @@ For output paths and file naming: see `output-contract.md`.
   },
   "pocIndicators": [
     "console.log at feature/dashboard/Chart.tsx:34",
-    "Hardcoded URL 'https://api.staging.tri-ai-kit.app' at feature/dashboard/api.ts:12"
+    "Hardcoded URL 'https://api.staging.example.com' at feature/dashboard/api.ts:12"
   ],
   "reuseOpportunities": [
-    "Raw <input type='text'> at form/SearchBar.tsx:18 — use klara Input",
-    "Custom spinner div at feature/loading/Spinner.tsx — use klara Spinner"
+    "Raw <input type='text'> at form/SearchBar.tsx:18 — use design-system Input",
+    "Custom spinner div at feature/loading/Spinner.tsx — use Spinner"
   ],
   "patternObservations": [
     "Custom button style used in 3 files — treated as feature convention, REUSE flag suppressed"
@@ -107,9 +107,9 @@ For output paths and file naming: see `output-contract.md`.
 | `integrityViolations` | `Finding[]` | CRITICAL findings from INT-1/INT-2 checks |
 | `sectionRatings` | `Record<string, { score: number, insight: string }>` | Per-section score (0–10) with narrative |
 | `pocIndicators` | `string[]` | List of POC signals found with locations |
-| `reuseOpportunities` | `string[]` | Components that could use klara equivalents |
+| `reuseOpportunities` | `string[]` | Components that could use design-system equivalents |
 | `patternObservations` | `string[]` | DRY patterns detected and recognized as conventions |
-| `findings[].reuseOpportunity` | `string?` | Optional: klara component that covers this case |
+| `findings[].reuseOpportunity` | `string?` | Optional: design-system component that covers this case |
 | `findings[].insight` | `string?` | Optional: mentoring note for this specific finding |
 | `methodology.filesScanned` | `string[]` | All files actually read during audit |
 | `methodology.knowledgeTiersUsed` | `string[]` | Which retrieval levels were activated (L1–L5) and their availability |
@@ -121,7 +121,7 @@ For output paths and file naming: see `output-contract.md`.
 | Severity | Meaning | Examples |
 |----------|---------|---------|
 | critical | Breaks library contract, theming, or isolation | Domain types in component, raw colors, missing styles file, hardcoded API URL, unguarded async |
-| high | Convention violation affecting consistency | Wrong prop naming, missing tests, no `use client`, missing klara component adoption |
+| high | Convention violation affecting consistency | Wrong prop naming, missing tests, no `use client`, missing design-system component adoption |
 | medium | Quality gap, maintainability concern | Missing JSDoc, no displayName, TODO comments, large components |
 | low | Style preference, minor improvement | Boolean typing, Map vs object for simple cases |
 | warning | Non-blocking concern | Non-composable style override (INT-3) |

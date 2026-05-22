@@ -1,6 +1,6 @@
-﻿# UI Audit Report Template
+# UI Audit Report Template
 
-**One report per audit session.** All audit types (muji, a11y, code-reviewer) use this format. Multiple components or scopes → group by scope, not separate files.
+**One report per audit session.** All audit types (ui-audit, a11y, code-reviewer) use this format. Multiple components or scopes → group by scope, not separate files.
 
 ## Session Folder Structure
 
@@ -8,10 +8,10 @@
 reports/{YYMMDD-HHMM}-{slug}-audit/        # hybrid
   session.json
   report.md         # merged: code-reviewer owns
-  muji-ui-audit.md  # muji pass
+  ui-audit.md  # ui audit pass
   a11y-audit.md     # a11y pass
 
-reports/{YYMMDD-HHMM}-{slug}-ui-audit/     # standalone muji
+reports/{YYMMDD-HHMM}-{slug}-ui-audit/     # standalone ui-audit
   session.json
   report.md
 

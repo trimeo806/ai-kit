@@ -54,7 +54,7 @@ Otherwise: continue to Auto-Detection.
 |------|---------|
 | `references/init.md` | Scan codebase and generate or migrate KB documentation |
 | `references/update.md` | Update, scan, verify, or reorganize existing documentation |
-| `references/component.md` | Document a klara-theme component (Figma data + prop mapping) |
+| `references/component.md` | Document a design-system component (Figma data + prop mapping) |
 | `references/problem.md` | Write a problem-analysis doc (RCA, incident report, post-mortem, ADR) |
 
 ## Auto-Detection

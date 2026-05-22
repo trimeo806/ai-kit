@@ -22,7 +22,7 @@ Otherwise: continue to Error Type Auto-Detection.
 
 | Flag | Execution | Specialist |
 |------|-----------|-----------|
-| `--ui` | Inline in main context | Main context dispatches muji via OpenCode subagent dispatch |
+| `--ui` | Inline in main context | Executes references/ui-mode.md inline |
 | `--a11y` | Inline in main context | Main context dispatches a11y-specialist via OpenCode subagent dispatch |
 | `--deep` | Dispatch to debugger via OpenCode subagent dispatch | debugger runs deep investigation |
 | `--ci` | Dispatch to debugger via OpenCode subagent dispatch | debugger handles CI log analysis |
@@ -34,7 +34,7 @@ Otherwise: continue to Error Type Auto-Detection.
 |------|---------|
 | `references/deep-mode.md` | Systematic deep fix with full investigation |
 | `references/ci-mode.md` | Fix CI pipeline failures |
-| `references/ui-mode.md` | Fix UI component findings from known-findings DB | Loads fix/references/ui-mode.md | muji |
+| `references/ui-mode.md` | Fix UI component findings from known-findings DB |
 | `references/a11y-mode.md` | Fix accessibility findings from known-findings.json |
 
 ## Error Type Auto-Detection
@@ -72,7 +72,7 @@ Same as `/cook` — detect from changed files or `$ARGUMENTS` platform hint.
 For cases where auto-detection isn't enough, use flags:
 - `/fix --deep` — full systematic investigation with documentation
 - `/fix --ci` — CI pipeline debugging (reads CI logs, reproduces locally)
-- `/fix --ui` — UI component findings from `.kit-data/ui/known-findings.json` (delegates to muji)
+- `/fix --ui` — UI component findings from `.kit-data/ui/known-findings.json` (executes inline)
 - `/fix --a11y` — accessibility findings from `.kit-data/a11y/known-findings.json`
 
 <issue>$ARGUMENTS</issue>

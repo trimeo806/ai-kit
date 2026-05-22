@@ -35,7 +35,7 @@ Hooks inject most of this automatically. Agents must verify context is present b
 
 ### Host Prompt Compatibility
 
-For tri-ai-kit to auto-route correctly, the outer Codex prompt should include guidance equivalent to:
+For this kit to auto-route correctly, the outer Codex prompt should include guidance equivalent to:
 
 ```text
 Use spawn_agent automatically when the prompt clearly matches a known agent workflow.

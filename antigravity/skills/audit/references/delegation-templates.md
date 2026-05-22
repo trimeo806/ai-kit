@@ -1,4 +1,4 @@
-﻿# Audit Delegation Templates
+# Audit Delegation Templates
 
 Structured handoff templates for dispatching audit work to specialist agents.
 
@@ -10,7 +10,7 @@ Select the matching template, fill all `{placeholders}`, dispatch via **Agent to
 
 ---
 
-## Template A: UI Component Audit (→ muji)
+## Template A: UI Component Audit
 
 ```
 ## Delegated UI Audit
@@ -30,12 +30,12 @@ Boundaries:
 - If A11y findings emerge, collect them and note for a11y-specialist delegation
 
 Report back to: {calling_agent}
-Output path: {session_folder}/muji-ui-audit.md
+Output path: {session_folder}/ui-audit.md
 ```
 
 ---
 
-## Template A+: Feature Module UI Standards Delegation (→ muji)
+## Template A+: Feature Module UI Standards Delegation
 
 ```
 ## Delegated UI Standards Audit
@@ -50,7 +50,7 @@ Expectations:
 - Run Library mode steps per audit/references/ui-workflow.md
 - Apply audit-standards.md rules for Library mode only
 - Write report per `audit/references/report-template.md`
-- Include `## Component Catalog` section: list of all discovered klara components
+- Include `## Component Catalog` section: list of all discovered design-system components
 - Include `## Docs Gaps` section: any missing/stale docs/index.json entries found
 
 Boundaries:
@@ -59,12 +59,12 @@ Boundaries:
 - If A11Y findings emerge, collect and note for a11y-specialist delegation
 
 Report back to: {calling_agent}
-Output path: {session_folder}/muji-ui-audit.md
+Output path: {session_folder}/ui-audit.md
 ```
 
 ---
 
-## Template A++: POC Organism Audit (→ muji)
+## Template A++: POC Organism Audit
 
 ```
 ## Delegated POC Organism Audit
@@ -94,7 +94,7 @@ Boundaries:
 - If A11Y findings emerge: collect as advisory notes only (no escalation — POC tier skips a11y-specialist dispatch)
 
 Report back to: {calling_agent}
-Output path: {session_folder}/muji-ui-audit.md
+Output path: {session_folder}/ui-audit.md
 ```
 
 ---

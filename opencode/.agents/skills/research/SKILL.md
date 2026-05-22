@@ -65,7 +65,7 @@ Clearly define scope before searching:
 **Check active engine** (set by session-init, default: `websearch`):
 
 ```bash
-echo $tri-ai-kit_RESEARCH_ENGINE   # gemini | websearch
+echo $RESEARCH_ENGINE   # gemini | websearch
 ```
 
 **Engine invocation (max 5 parallel queries — think carefully before each):**
@@ -85,7 +85,7 @@ See `references/engines.md` for full invocation details.
 #### Engine: gemini
 
 ```bash
-echo "<research query>" | gemini -y -m "$tri-ai-kit_GEMINI_MODEL"
+echo "<research query>" | gemini -y -m "$GEMINI_MODEL"
 ```
 
 Availability check: `which gemini` — if not found, log coverage gap and fall back to WebSearch.
@@ -249,8 +249,8 @@ When this skill is active and user intent matches a sub-skill, delegate:
 | Library/framework docs | `mcp__context7__resolve-library-id` + `mcp__context7__query-docs` | Package name known, API accuracy matters, fast-moving library |
 | Search docs | `docs-seeker` | External documentation search |
 | Export context | `repomix` | `/repomix`, bundle code for external review |
-| Gemini search | `gemini` CLI via Bash | `$tri-ai-kit_RESEARCH_ENGINE = gemini` |
-| Web search | `WebSearch` tool | `$tri-ai-kit_RESEARCH_ENGINE = websearch` or fallback |
+| Gemini search | `gemini` CLI via Bash | `$RESEARCH_ENGINE = gemini` |
+| Web search | `WebSearch` tool | `$RESEARCH_ENGINE = websearch` or fallback |
 
 ### Related Skills
 - `knowledge-retrieval` — Internal-first search protocol

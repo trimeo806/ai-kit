@@ -456,9 +456,9 @@ If you're in Cowork, the main things to know are:
 
 ---
 
-## tri-ai-kit Environment
+## Kit Environment
 
-If you're working inside the **tri-ai-kit** repository, a few additional steps and conventions apply on top of the standard flow above.
+If you're working inside a **multi-agent kit** repository, a few additional steps and conventions apply on top of the standard flow above.
 
 ### Rebuild the skill index after every change
 
@@ -470,9 +470,9 @@ node .claude/scripts/generate-skill-index.cjs
 
 This rebuilds `skill-index.json`, which is how session-init discovers and routes to skills. Without it, your new or updated skill won't be visible to agents.
 
-### tri-ai-kit frontmatter extensions
+### Kit Frontmatter Extensions
 
-Beyond the standard `name` and `description`, tri-ai-kit recognizes these additional frontmatter fields:
+Beyond the standard `name` and `description`, this kit recognizes these additional frontmatter fields:
 
 ```yaml
 ---

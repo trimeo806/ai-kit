@@ -1,6 +1,6 @@
 # Skills README
 
-This directory contains the passive skill modules for `tri-ai-kit`.
+This directory contains the passive skill modules for this multi-agent kit.
 
 ## Purpose
 

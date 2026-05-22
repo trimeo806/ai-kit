@@ -229,6 +229,8 @@ if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
 }
 ```
 
+> **Note:** Examples use shadcn/ui; any Radix/Headless UI-based component library works with the same patterns.
+
 ## shadcn/ui Alignment
 
 This configuration aligns with shadcn/ui conventions:

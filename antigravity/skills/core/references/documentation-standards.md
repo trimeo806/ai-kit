@@ -81,11 +81,8 @@ skill-name/
 | Scripts (.sh/.py/.js) | `scripts/` subdirectory | `scripts/validate.sh` ✓, `validate.sh` ✗ |
 
 **Directory vs Name:**
-- Directory path: `skills/muji/klara-theme/` (nested OK)
-- Name field: `muji-klara-theme` (flattened required)
 
 **Migration Context:**
-- Feb 2026: Migrated 18 of 36 tri-ai-kit skills to this structure
 - Script: `scripts/migrate-skills.mjs` for batch compliance
 - All new skills MUST start compliant (no migration needed)
 

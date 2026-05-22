@@ -71,7 +71,7 @@ Maintained by: `planner`, `project-manager`
 
 ## 3. `reports/index.json` — Reports Registry
 
-Maintained by: `code-reviewer`, `muji`, `a11y-specialist`, `researcher`, `planner`, `tester`
+Maintained by: `code-reviewer`, `a11y-specialist`, `researcher`, `planner`, `tester`
 
 ```json
 {
@@ -108,7 +108,6 @@ Maintained by: `code-reviewer`, `muji`, `a11y-specialist`, `researcher`, `planne
 | `planner` | — | `index.json` | `index.json` (plan report) |
 | `researcher` | — | — | `index.json` |
 | `code-reviewer` | — | — | `index.json` |
-| `muji` | — | — | `index.json` |
 | `a11y-specialist` | — | — | `index.json` |
 | `tester` | — | — | `index.json` |
 | `developer` | `index.json` (knowledge capture) | — | — |

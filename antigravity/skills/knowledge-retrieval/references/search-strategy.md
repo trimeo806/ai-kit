@@ -100,7 +100,7 @@ Limit results to a specific library:
 
 | Scope | Content |
 |-------|---------|
-| `klara-theme` | Design system components, tokens, styles |
+| `design-system` | Design system components, tokens, styles |
 | `luz-components` | Shared UI components |
 | `luz-services` | Backend service layer |
 | `luz-utils` | Utilities, Redux, state management |
@@ -109,8 +109,8 @@ Limit results to a specific library:
 
 **Usage**:
 ```typescript
-// Search only in klara-theme
-query({ query: "Button variants", filters: { scope: "klara-theme" } })
+// Search only in design-system
+query({ query: "Button variants", filters: { scope: "design-system" } })
 
 // Search all shared libraries
 query({ query: "shared hooks", filters: { scope: "libs" } })
@@ -133,7 +133,7 @@ query({
 ```typescript
 query({
   query: "Login button implementation",
-  filters: { component: "LoginButton", file_type: "tsx", scope: "klara-theme" }
+  filters: { component: "LoginButton", file_type: "tsx", scope: "design-system" }
 })
 ```
 
@@ -315,7 +315,7 @@ RAG servers auto-expand queries before embedding. Know what each side handles:
 |---------------|-------------|------|
 | Synonym expansion | RAG server (auto) | Every query — "btn"->"button", "a11y"->"accessibility" |
 | Component recognition | RAG server (auto) | When alias in query — "TextField" injects "text-field" |
-| Multi-word phrases | Web RAG server (auto) | "design token" -> klara-theme, scss variable, etc. |
+| Multi-word phrases | Web RAG server (auto) | "design token" -> design-system, scss variable, etc. |
 | Punctuation stripping | Web RAG server (auto) | "(color, typography)" -> both words expanded |
 | HyDE passage | Agent (manual) | Conceptual queries — server can't generate code |
 | Structural variants | Agent (manual) | When < 3 results — different angle, not synonyms |

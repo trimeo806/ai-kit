@@ -4,7 +4,7 @@ description: Use when auditing or reviewing a UI library component implementatio
 user-invocable: false
 metadata:
   argument-hint: "<ComponentName> [--platform web|ios|android|all]"
-  keywords: [audit, review, ui-lib, component, muji, tokens, quality, cross-platform, patterns, security]
+  keywords: [audit, review, ui-lib, component, tokens, quality, cross-platform, patterns, security]
   platforms: [web, ios, android]
   triggers:
     - "audit component"
@@ -13,8 +13,8 @@ metadata:
     - "code audit"
     - "review this component"
     - "check component quality"
-    - "muji review"
-  agent-affinity: [muji, code-reviewer]
+    - "ui-audit review"
+  agent-affinity: [code-reviewer]
   connections:
     requires: [code-review]
     enhances: [ui-lib-dev, ios-ui-lib, android-ui-lib]
@@ -38,8 +38,8 @@ Default platform: **all** (audit all three, then cross-platform consistency).
 | Platform | Token Access | Component Pattern | Lint | Test |
 |----------|-------------|-------------------|------|------|
 | web | CSS vars / SCSS tokens (3-layer: primitives → themes → components) | forwardRef + displayName, TypeScript strict | ESLint + Stylelint | Jest + RTL |
-| ios | `@Environment(\.tri-ai-kitTheme)` var theme | SwiftUI View struct + ViewModifier | SwiftLint | XCTest / previews |
-| android | `tri-ai-kitTheme.colors / typography / spacing` via CompositionLocal | @Composable stateless + state hoisting | Detekt | Compose UI Test |
+| ios | `@Environment(\.designSystemTheme)` var theme | SwiftUI View struct + ViewModifier | SwiftLint | XCTest / previews |
+| android | `DesignTheme.colors / typography / spacing` via CompositionLocal | @Composable stateless + state hoisting | Detekt | Compose UI Test |
 
 ## Audit Workflow
 
@@ -70,7 +70,7 @@ Classify the target component by scanning its file tree before applying any rule
 | molecule | 2–5 | 0–1 | Minor composition, ≤1 subdir |
 | organism | 6+ | 2+ | Complex internal state, multiple subdirs |
 | application | any | 3+ | Full view-routing, multi-modal, mini-app inside libs/ |
-| consumer | any | any | Imports from klara, lives in apps/ (existing consumer mode) |
+| consumer | any | any | Imports from design-system, lives in apps/ (existing consumer mode) |
 
 Set `componentClass` in report envelope.
 
@@ -137,7 +137,7 @@ Before mode detection or any other check:
 1. Resolve audit scope first:
    - If files were explicitly named in the audit request → use those files directly as scope; **skip git diff**
    - Otherwise → scan modified files via git diff or staged files
-2. If any modified file path contains `klara-theme/` or `common/` AND the author is consumer code (not a library team commit):
+2. If any modified file path contains `ui-components/` or `common/` AND the author is consumer code (not a library team commit):
    - Output finding: `{ ruleId: "INT-1", severity: "critical", issue: "Direct edit to library source detected" }`
    - Set `block: true` in the report envelope
    - **Stop audit** — do not proceed to mode detection or rule checks
@@ -149,9 +149,9 @@ Determine audit mode from the file being audited:
 
 | Signal | Mode |
 |--------|------|
-| File path contains `libs/klara-theme/` or `libs/common/` | **Library mode** |
-| File imports from `klara-theme` or `common` but lives in `app/`, `features/`, `pages/`, or `src/` outside libs | **Consumer mode** |
-| Ambiguous — no imports from klara | **Consumer mode** (default) |
+| File path contains `libs/ui-components/` or `libs/common/` | **Library mode** |
+| File imports from `ui-components` or `common` but lives in `app/`, `features/`, `pages/`, or `src/` outside libs | **Consumer mode** |
+| Ambiguous — no imports from design-system | **Consumer mode** (default) |
 
 Set `auditMode` in the report envelope. Route to the correct step sequence below.
 
@@ -163,15 +163,15 @@ Both modes run **Step 1** (Discover + Load Component Catalog) first. Then:
 
 ### Step 1: Discover + Load Component Catalog (Mandatory)
 
-Before reading any component file, build the platform component catalog. This powers REUSE checks — you cannot identify what klara equivalents exist without it.
+Before reading any component file, build the platform component catalog. This powers REUSE checks — you cannot identify what design-system equivalents exist without it.
 
 **Web:**
-1. Load `web-ui-lib` skill → read `libs/klara-theme/docs/index.json` (NOT project root `docs/` — klara-theme has its own KB); load FEAT-0001 catalog + task-relevant CONVs per the skill's step 2 table
+1. Load `web-ui-lib` skill → read `libs/ui-components/docs/index.json` (NOT project root `docs/` — design-system-theme has its own KB); load FEAT-0001 catalog + task-relevant CONVs per the skill's step 2 table
 2. ToolSearch("web-rag") → discover `mcp__web-rag-system__*` tools
 3. Call `status` → confirm RAG available and module indexed
 4. Call `catalog` with module filter → component list
 5. Call `query` with component name → related components, prior patterns
-6. If RAG unavailable: fallback to `Glob libs/klara-theme/src/lib/**/*.tsx`
+6. If RAG unavailable: fallback to `Glob libs/ui-components/src/lib/**/*.tsx`
 7. Append "L2-RAG" or "L2-RAG-unavailable" to `knowledgeTiersUsed`
 
 **iOS:**
@@ -182,7 +182,7 @@ Before reading any component file, build the platform component catalog. This po
 1. Load `android-ui-lib` skill → Android theme component catalog
 2. Grep for `@Composable` exports in the Android theme library
 
-Store result as `componentCatalog: Set<string>` — used in Step 1d (REUSE) to determine what klara equivalents exist.
+Store result as `componentCatalog: Set<string>` — used in Step 1d (REUSE) to determine what design-system equivalents exist.
 
 Then identify the component files to audit and read their source code, props/API surface, and any existing tests.
 
@@ -234,20 +234,20 @@ Parse `tailwind.config.ts` (hard parse — read the file, extract `theme.extend`
 #### Step 1c: DRY Baseline Scan
 
 Before running REUSE, scan the **whole feature directory** for existing patterns:
-- Collect all klara component usages across sibling files
+- Collect all design-system component usages across sibling files
 - Collect repeated style class combinations (3+ identical multi-class strings)
 - Collect repeated hook bodies
 - Build a `conventions` set: patterns appearing in 2+ files are accepted conventions
 
 #### Step 1d: REUSE Audit (with DRY Gating)
 
-Check klara-theme component adoption against REUSE rules (RU-1 through RU-8):
-- Use `componentCatalog` from Step 1 to determine which klara equivalents exist before flagging
-- Scan for raw HTML elements that have klara equivalents (button divs, raw inputs, overlays, etc.)
+Check design-system-theme component adoption against REUSE rules (RU-1 through RU-8):
+- Use `componentCatalog` from Step 1 to determine which design-system equivalents exist before flagging
+- Scan for raw HTML elements that have design-system equivalents (button divs, raw inputs, overlays, etc.)
 - For each potential violation, check if the pattern is in the `conventions` set from Step 1c
   - If yes: suppress the violation, add to `patternObservations` with note "convention in feature"
   - If no: raise a REUSE finding (severity per audit-standards.md)
-- Track `klara_components_used` and `total_reusable_ui_elements` for reuseRate score
+- Track `design_system_components_used` and `total_reusable_ui_elements` for reuseRate score
 
 #### Step 1e: TW Compliance Audit
 
@@ -320,15 +320,15 @@ Run each check against the loaded checklist. For each violation:
 | **BIZ** | BIZ-001–005 | No domain types, no data fetching, no global state |
 | **A11Y** | A11Y-001–005 | Labels, keyboard, Radix UI, focus ring, disabled tokens |
 | **TEST** | TEST-001–004 | Tests exist, stories exist, Figma artifacts present |
-| **EMBED** | EMBED-001–003 | Child/embedded components are from klara-theme or accepted; no overrides on embedded slots |
+| **EMBED** | EMBED-001–003 | Child/embedded components are from design-system-theme or accepted; no overrides on embedded slots |
 
 **TOKEN — RAG verification for ambiguous values**: When a token class name is neither clearly arbitrary (e.g. `[10px]`) nor clearly invalid (e.g. raw hex), verify via RAG:
 1. `ToolSearch("web-rag")` → query `token:{value}` (e.g. `token:h-800`, `token:bg-alternate-100`)
-2. If RAG unavailable: Glob `libs/klara-theme/src/tokens/**` or `tailwind.config.ts` and grep for the value
+2. If RAG unavailable: Glob `libs/ui-components/src/tokens/**` or `tailwind.config.ts` and grep for the value
 3. Report: `"L2-RAG-token"` or `"L4-grep-token"` in `knowledgeTiersUsed`
 
 **EMBED — RAG lookup for embedded components**: For each child/embedded component not in `componentCatalog`:
-1. `ToolSearch("web-rag")` → query `component:{name}` to check if it's a known klara-theme component
+1. `ToolSearch("web-rag")` → query `component:{name}` to check if it's a known design-system-theme component
 2. If found: verify no prop overrides on library-controlled slots; flag overrides as EMBED-002
 3. If not found: flag as EMBED-001 (unrecognized embedded component — may be custom or external)
 
@@ -380,7 +380,7 @@ Run LDRY-001 through LDRY-003 from audit-standards.md.
 ### Step 4: Cross-Platform Consistency (--platform all)
 
 Only run when `--platform all` is specified. Check:
-- Same component name (`tri-ai-kit*` prefix on all platforms)
+- Same component name (`<Component>` prefix on all platforms)
 - Same prop/parameter names for equivalent concepts
 - Semantic token coverage parity across platforms
 - Same variants (primary, secondary, ghost, etc.)
@@ -396,13 +396,13 @@ All output paths per **`audit/references/output-contract.md`**:
 2. Write report to `{dir}/report.md`
 
 **Sub-agent** (delegated via custom agent dispatch):
-- Write to `output_path` from delegation block (e.g. `{session_folder}/muji-ui-audit.md`)
+- Write to `output_path` from delegation block (e.g. `{session_folder}/ui-audit-ui-audit.md`)
 - Caller created the folder — do NOT create it again
 
 ### Step 5a: Write session.json (standalone only)
 
 After writing `report.md`, write `session.json` to the same folder per `audit/references/session-json-schema.md`.
-In hybrid mode, the orchestrator (code-reviewer) writes session.json — muji does NOT.
+In hybrid mode, the orchestrator (code-reviewer) writes session.json — ui-audit does NOT.
 
 ### Step 5b: Persist Findings (always)
 
@@ -413,7 +413,7 @@ After writing the Markdown report, persist findings to `.kit-data/ui/known-findi
 2. For each finding in this audit with severity critical, high, or medium:
    - Generate next available `id` (max existing id + 1, starting at 1 for empty DB)
    - Map finding fields to schema: `rule_id`, `component`, `file_pattern`, `severity`, `mode`, `platform`, `title`, `code_pattern`, `fix_template`
-   - Set `source: "audit"`, `source_agent: "muji"`, `source_report: "{report_path}"`, `first_detected_at: "{YYYY-MM-DDTHH:MM}"`, `resolved: false`, `fix_applied: false`
+   - Set `source: "audit"`, `source_agent: "ui-audit"`, `source_report: "{report_path}"`, `first_detected_at: "{YYYY-MM-DDTHH:MM}"`, `resolved: false`, `fix_applied: false`
    - Deduplication check: skip if entry with same `rule_id` AND `file_pattern` already exists with `resolved: false`
    - Append to `findings` array
 3. Save updated JSON
@@ -424,7 +424,7 @@ After writing the Markdown report, persist findings to `.kit-data/ui/known-findi
 If A11Y-category findings exist:
 - List them in report under `## A11Y Findings (for escalation)`
 - Include: `finding_id`, `rule_id`, `file:line`, `issue summary` for each
-- Do NOT delegate to a11y-specialist — muji is typically a subagent and cannot spawn further agents
+- Do NOT delegate to a11y-specialist — ui-audit is typically a subagent and cannot spawn further agents
 - The calling agent (code-reviewer) reads this section and handles the a11y delegation
 
 ### Step 6: Executive Summary

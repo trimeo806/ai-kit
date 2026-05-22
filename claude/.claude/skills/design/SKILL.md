@@ -1,10 +1,9 @@
 ---
-name: ckm:design
+name: design
 description: "Comprehensive design skill: brand identity, design tokens, UI styling, logo generation (55 styles, Gemini AI), corporate identity program (50 deliverables, CIP mockups), HTML presentations (Chart.js), banner design (22 styles, social/ads/web/print), icon design (15 styles, SVG, Gemini 3.1 Pro), social photos (HTML→screenshot, multi-platform). Actions: design logo, create CIP, generate mockups, build slides, design banner, generate icon, create social photos, social media images, brand identity, design system. Platforms: Facebook, Twitter, LinkedIn, YouTube, Instagram, Pinterest, TikTok, Threads, Google Ads."
 argument-hint: "[design-type] [context]"
 license: MIT
 metadata:
-  author: claudekit
   version: "2.1.0"
 ---
 
@@ -225,7 +224,7 @@ Load `references/social-photos-design.md` for sizes, templates, best practices.
 1. **Orchestrate** — `project-management` skill for TODO tasks; parallel subagents for independent work
 2. **Analyze** — Parse prompt: subject, platforms, style, brand context, content elements
 3. **Ideate** — 3-5 concepts, present via `AskUserQuestion`
-4. **Design** — `/ckm:brand` → `/ckm:design-system` → randomly invoke `/ck:ui-ux-pro-max` OR `/ck:frontend-design`; HTML per idea × size
+4. **Design** — `/brand` → `/design-system` → randomly invoke `/ui-ux-pro-max` OR `/frontend-design`; HTML per idea × size
 5. **Export** — `chrome-devtools` or Playwright screenshot at exact px (2x deviceScaleFactor)
 6. **Verify** — Use Chrome MCP or `chrome-devtools` skill to visually inspect exported designs; fix layout/styling issues and re-export
 7. **Report** — Summary to `plans/reports/` with design decisions

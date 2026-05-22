@@ -66,7 +66,6 @@ Ask user if they want to commit — if yes, trigger `git` skill.
 
 ## Agent Mapping
 
-| ePost Agent | tri-ai-kit Agent |
 |-------------|-----------------|
 | epost-researcher | researcher |
 | epost-implementer | developer |

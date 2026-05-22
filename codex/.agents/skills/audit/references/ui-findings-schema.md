@@ -24,12 +24,12 @@ Schema for `.kit-data/ui/known-findings.json` — the persistence layer for `/fi
 ```json
 {
   "id": 1,
-  "component": "tri-ai-kitButton",
+  "component": "Button",
   "mode": "library",
   "platform": "web",
   "rule_id": "TOKEN-001",
   "title": "Hardcoded color value — use semantic token",
-  "file_pattern": "libs/klara-theme/src/lib/button/button.tsx",
+  "file_pattern": "libs/ui-components/<component>/<component>.tsx",
   "code_pattern": "color: #FF0000",
   "fix_template": "Replace with `var(--color-{semantic-name})`",
   "priority": 2,
@@ -39,8 +39,8 @@ Schema for `.kit-data/ui/known-findings.json` — the persistence layer for `/fi
   "fix_applied": false,
   "fix_applied_date": null,
   "source": "audit",
-  "source_agent": "muji",
-  "source_report": "reports/260308-2249-smart-letter-composer-audit/muji-ui-audit.md",
+  "source_agent": "ui-audit",
+  "source_report": "reports/260308-2249-example-audit/ui-audit.md",
   "first_detected_at": "2026-03-08T22:49"
 }
 ```
@@ -50,7 +50,7 @@ Schema for `.kit-data/ui/known-findings.json` — the persistence layer for `/fi
 | Field | Type | Description |
 |-------|------|-------------|
 | `id` | `integer` | Auto-incrementing unique identifier — never reuse |
-| `component` | `string` | Component name (e.g. `tri-ai-kitButton`) |
+| `component` | `string` | Component name (e.g. `Button`) |
 | `mode` | `"library" \| "consumer"` | Audit mode that detected the finding |
 | `platform` | `"web" \| "ios" \| "android"` | Target platform |
 | `rule_id` | `string` | Rule identifier from audit-standards.md (e.g. `TOKEN-001`, `STRUCT-003`) |
@@ -65,15 +65,15 @@ Schema for `.kit-data/ui/known-findings.json` — the persistence layer for `/fi
 | `fix_applied` | `boolean` | True when a fix has been applied (but not yet verified/resolved) |
 | `fix_applied_date` | `string \| null` | ISO date when fix was applied; null if not yet fixed |
 | `source` | `string` | See Source Enum below |
-| `source_agent` | `string` | Agent that detected this finding (e.g. `muji`, `code-reviewer`) |
+| `source_agent` | `string` | Agent that detected this finding (e.g. `ui-audit`, `code-reviewer`) |
 | `source_report` | `string \| null` | Relative path to the report file that recorded this finding |
 | `first_detected_at` | `string` | ISO 8601 datetime when finding was first recorded (`YYYY-MM-DDTHH:MM`) |
 
 ## Enum Values
 
 ### mode
-- `"library"` — finding in klara-theme library code
-- `"consumer"` — finding in consumer/feature code that uses klara-theme
+- `"library"` — finding in design-system library code
+- `"consumer"` — finding in consumer/feature code that uses the design system
 
 ### platform
 - `"web"` — web (React/Next.js)

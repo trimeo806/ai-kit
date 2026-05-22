@@ -58,9 +58,7 @@ After initial review, the reviewer decides based on findings:
 | Finding | Action |
 |---------|--------|
 | Critical severity found | Escalate to `/audit --code` — activate `knowledge-retrieval` for deeper context before reporting |
-| Task is UI code review/audit (components, tokens, design system) | Delegate to **muji** — runs `/audit --ui` with klara-theme standards + INTEGRITY gate |
 | Task is about a11y (accessibility, WCAG, VoiceOver, TalkBack, keyboard nav, screen reader) | Delegate to **a11y-specialist** — runs `/audit --a11y` with full WCAG 2.1 AA rules |
-| High severity, UI component finding | Escalate to `/audit --ui` → **muji** for full component audit |
 | High severity, a11y issue | Escalate to `/audit --a11y` — a11y specialist audits with WCAG rules |
 | Medium/Low only | Complete inline, no escalation needed |
 
@@ -84,18 +82,7 @@ After initial review, the reviewer decides based on findings:
 ### Subagent Constraint
 
 Code-reviewer runs as a **subagent** (spawned via OpenCode subagent dispatch). Subagents **cannot spawn further subagents**. Therefore:
-- Code-reviewer does NOT dispatch muji, a11y-specialist, or any other agent
-- Hybrid orchestration (muji + code-reviewer) is handled by the **main context** via `audit/SKILL.md`
 - Code-reviewer is a pure reviewer: reads files, applies rules, writes report
-
-### When Invoked with Muji Report
-
-If the caller provides a muji report path (hybrid audit):
-1. Read muji report at the provided path
-2. Extract `finding_locations`: Set of file:line already flagged by muji
-3. Run SEC/PERF/TS/ARCH/STATE/LOGIC/DEAD rules on the same files
-4. **Dedup**: skip any file:line already in muji's finding set
-5. Write report to the provided `output_path`
 
 ### Critical Escalation (self-dispatch, no OpenCode subagent dispatch needed)
 
@@ -131,7 +118,7 @@ Write `{session_folder}/session.json` per `audit/references/session-json-schema.
 
 ## Persist Findings (always — after writing report)
 
-Ownership per `audit/references/output-contract.md`: code-reviewer → `.kit-data/code/`, muji → `.kit-data/ui/`, a11y → `.kit-data/a11y/`.
+Ownership per `audit/references/output-contract.md`: code-reviewer → `.kit-data/code/`, a11y → `.kit-data/a11y/`.
 
 Persist SEC/PERF/TS/LOGIC/DEAD/ARCH/STATE findings (critical, high, medium) to `.kit-data/code/known-findings.json`:
 

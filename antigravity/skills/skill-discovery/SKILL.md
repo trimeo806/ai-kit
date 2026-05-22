@@ -36,8 +36,7 @@ Check request keywords → git diff extensions → CWD path:
 | `.tsx/.ts/.jsx/.scss`, "React", "Next.js", "web" | web | `react-expert`, `typescript-pro`, `nextjs-developer` |
 | `.tsx/.ts` + TanStack/router | web | `tanstack-start`, `typescript-pro` |
 | `.java` + `pom.xml`, "Java EE", "WildFly", "backend" | backend | *(platform pack not installed — use `api-designer`, `microservices-architect`)* |
-| `tri-ai-kit-cli/` path, `src/domains/`, "CLI", "kit cli" | cli | *(kit-cli skill not installed — use `tri-ai-kit/SKILL.md` for kit conventions)* |
-| `.css/.scss` + design tokens, "Figma", "klara" | design | *(figma/web-ui-lib skills not installed — describe conventions from context)* |
+| `.css/.scss` + design tokens, "Figma" | design | *(figma/web-ui-lib skills not installed — describe conventions from context)* |
 
 > **Note**: Platform packs (ios-development, android-development, backend-javaee, etc.) are planned for future installation. Until installed, fall back to generic reasoning skills and external research via `docs-seeker`.
 
@@ -137,7 +136,7 @@ Integrate loaded skill knowledge into your current task:
 
 ## Agent Discovery Hints
 
-Some agents have distinct operational flows (e.g., muji's Library Development vs Consumer Guidance). When an agent's system prompt defines flows with explicit skill lists:
+Some agents have distinct operational flows. When an agent's system prompt defines flows with explicit skill lists:
 
 1. Read agent's system prompt for flow definitions and their triggers
 2. Detect which flow matches the current task context

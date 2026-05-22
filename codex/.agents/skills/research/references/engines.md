@@ -30,11 +30,11 @@ echo ".gemini/settings.json" >> .gitignore
 
 ```bash
 # ✅ CORRECT — initializes MCP servers
-echo "<research query>" | gemini -y -m "$tri-ai-kit_GEMINI_MODEL"
+echo "<research query>" | gemini -y -m "$GEMINI_MODEL"
 
 # ❌ WRONG — deprecated, skips MCP init, tools unavailable
 gemini -y -p "<research query>"
-gemini -y --model "$tri-ai-kit_GEMINI_MODEL" -p "<research query>"
+gemini -y --model "$GEMINI_MODEL" -p "<research query>"
 ```
 
 The `-p` flag runs in "quick mode" — it bypasses MCP server connection initialization.
@@ -43,7 +43,7 @@ Always use stdin piping to ensure MCP tools are available.
 ### Invocation
 
 ```bash
-echo "$RESEARCH_PROMPT" | gemini -y -m "$tri-ai-kit_GEMINI_MODEL"
+echo "$RESEARCH_PROMPT" | gemini -y -m "$GEMINI_MODEL"
 ```
 
 - Requires: `gemini` CLI installed and authenticated

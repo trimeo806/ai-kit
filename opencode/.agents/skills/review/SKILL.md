@@ -16,7 +16,7 @@ Auto-detect and execute the appropriate review workflow.
 
 If `$ARGUMENTS` starts with `--code`: load `references/code.md` and execute.
 If `$ARGUMENTS` starts with `--a11y`: load `references/a11y.md` and execute.
-If `$ARGUMENTS` starts with `--ui`: load `references/ui-mode.md` and execute. Delegate to muji.
+If `$ARGUMENTS` starts with `--ui`: load `references/ui-mode.md` and execute inline.
 If `$ARGUMENTS` starts with `--improvements`: run improvements inline (see below).
 Otherwise: continue to Auto-Detection.
 
@@ -26,7 +26,7 @@ Otherwise: continue to Auto-Detection.
 |------|---------|
 | `references/code.md` | Ultrathink edge cases, then parallel verify with reviewers |
 | `references/a11y.md` | Review accessibility compliance (WCAG 2.1 AA) |
-| `references/ui-mode.md` | Lightweight UI component review by focus area — delegates to muji |
+| `references/ui-mode.md` | Lightweight UI component review by focus area |
 | `references/improvements.md` | Review auto-improvement metrics, detect patterns |
 
 ## Auto-Detection
@@ -36,7 +36,7 @@ Analyze `$ARGUMENTS` keywords:
 | Keyword match | Load Reference |
 |--------------|----------------|
 | "a11y", "accessibility", "wcag" | `references/a11y.md` |
-| "ui", "component", "token", "klara", "muji" | `references/ui-mode.md` → muji |
+| "ui", "component", "token" | `references/ui-mode.md` |
 | "improvements", "metrics", "patterns" | Run improvements inline (see below) |
 | Default (no keyword match) | `references/code.md` |
 

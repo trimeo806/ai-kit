@@ -41,7 +41,6 @@
 
 | Agent | Scope | Template | Verdict | Findings |
 |-------|-------|----------|---------|----------|
-| muji | `{path/}` | Template A / A+ | pass / fix-and-reaudit / redesign | {N} |
 | a11y-specialist | `{path/}` | Template B | block_pr: true/false | {N} |
 
 _(Omit section if no delegation occurred)_

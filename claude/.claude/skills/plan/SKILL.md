@@ -343,7 +343,6 @@ Agents available in this kit:
 | `researcher` | best practices, library research |
 | `debugger` | root cause analysis, stack trace diagnosis |
 | `docs-manager` | docs write/update/migrate |
-| `muji` | UI design system, component audits |
 
 ### Step B — Scan the Skills Catalog
 
