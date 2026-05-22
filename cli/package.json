@@ -1,0 +1,55 @@
+{
+  "name": "@trimeo806/agentkit-cli",
+  "version": "0.2.0",
+  "publishConfig": {
+    "access": "public"
+  },
+  "description": "agentkit-cli — installable CLI for the multi-agent ai-kit (Claude, Codex, OpenCode, Antigravity).",
+  "license": "MIT",
+  "type": "commonjs",
+  "bin": {
+    "agentkit-cli": "dist/index.js",
+    "agentkit": "dist/index.js"
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "prepublishOnly": "npm run build"
+  },
+  "dependencies": {
+    "commander": "^12.1.0",
+    "kleur": "^4.1.5",
+    "prompts": "^2.4.2",
+    "tar": "^7.4.3"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.0",
+    "@types/prompts": "^2.4.9",
+    "@types/tar": "^6.1.13",
+    "typescript": "^5.5.4",
+    "vitest": "^2.0.5"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/trimeo806/ai-kit.git",
+    "directory": "cli"
+  },
+  "keywords": [
+    "claude",
+    "codex",
+    "opencode",
+    "antigravity",
+    "ai",
+    "agents",
+    "skills"
+  ]
+}

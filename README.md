@@ -17,6 +17,61 @@ The repository has been restructured to cleanly separate platform-specific workf
 
 ---
 
+## 🚀 Install via CLI (cross-platform)
+
+Drop the kit into any project with a single command. Default target is `claude`; pass additional targets positionally.
+
+```bash
+# claude only (default)
+npx agentkit-cli install
+
+# multi-target
+npx agentkit-cli install codex opencode
+
+# everything
+npx agentkit-cli install all
+```
+
+Other commands: `update`, `uninstall`, `list`. Source for the CLI lives in [`cli/`](./cli/README.md).
+
+### Install the CLI globally (no npm publish required)
+
+**A. From local checkout** — install once, reuse anywhere:
+```bash
+git clone https://github.com/trimeo806/ai-kit.git
+cd ai-kit/cli
+npm install
+npm run build
+npm install -g .
+
+# now usable in any directory:
+agentkit-cli install
+```
+
+**B. From a tarball** — share with teammates without publishing:
+```bash
+# producer
+cd ai-kit/cli
+npm install && npm run build
+npm pack
+# → agentkit-cli-0.1.0.tgz
+
+# consumer (any machine with Node ≥18)
+npm install -g ./agentkit-cli-0.1.0.tgz
+agentkit-cli install
+```
+
+**C. From npm registry** — once published:
+```bash
+npm install -g agentkit-cli
+# or zero-install:
+npx agentkit-cli install
+```
+
+> Windows users who prefer the existing scripts can keep using the PowerShell installers below.
+
+---
+
 ## ⚡ Kit Maintenance (How to Sync & Update)
 
 > **Read this if you are a contributor updating agents, adding skills, or migrating to a new AI tool.**

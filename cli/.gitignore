@@ -1,0 +1,16 @@
+node_modules
+dist
+*.tgz
+.vitest-cache
+
+# Stray kit installs (when developers run `agentkit-cli install` inside the CLI dir
+# for testing) — these belong to a consumer project, not the CLI source tree.
+.ai-kit.lock
+AGENTS.md
+CLAUDE.md
+WORKFLOW.md
+.claude/
+.codex/
+.opencode/
+.agents/
+.kit-data/
