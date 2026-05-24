@@ -271,6 +271,48 @@ See `core/references/orchestration.md` for full protocol.
 - Prefer existing patterns over introducing new conventions
 - Conservative defaults: safety over speed, clarity over cleverness
 
+### Code Standards
+
+**File Placement** — Every new file goes in its semantically correct folder.
+- Constants → `constants/`
+- Shared utilities → `shared/` or `utils/`
+- Shared components → `shared/components/` or `components/`
+- Test files → co-located `*.test.ts(x)` or the project's `tests/` / `__tests__/` folder
+
+**Clean Code (DRY + SOLID)**
+- DRY: extract repeated logic after 3 occurrences
+- SRP: one function/component/module → one responsibility
+- Self-explanatory naming; comments only for non-obvious WHY
+- Functions ≤ 30 lines; components ≤ 200 lines
+
+**No Magic Values**
+- No raw string comparisons — use `enum` or `const` objects
+- No magic numbers — name every numeric constant
+- No hardcoded Tailwind design-token values — use CSS variables or configured Tailwind theme tokens
+
+**Anti-Patterns to Avoid**
+- No god components (>300 lines or >10 props)
+- No prop drilling beyond 2 levels — use Context, composition, or state lifting
+- No boolean-flag props controlling entirely different behaviors — use explicit variants or separate components
+- No inline anonymous functions/objects passed as props to memoized children
+
+**Security**
+- Sanitize all user input before rendering; never use `dangerouslySetInnerHTML` without sanitization
+- Never interpolate user input into SQL — use parameterized queries / ORMs
+- Validate inputs at every system boundary (API routes, form handlers, server actions)
+- Never expose secrets or API keys in client-side code
+- Guard against XSS, SQL injection, and other OWASP Top 10 risks
+
+**Component Patterns**
+- New shared/reusable components use Compound + Composition pattern
+- Expose sub-components as named exports on the parent (e.g., `Card.Header`, `Card.Body`)
+- Prefer `children`/slots over deep prop interfaces for layout composition
+
+**Performance & Quality**
+- Memoize only after profiling — no premature `useMemo`/`useCallback`
+- Lazy-load heavy components and routes
+- Avoid unstable prop references that cause unnecessary re-renders
+
 ### Core Rules
 See `.agents/skills/core/SKILL.md` for operational boundaries.
 
