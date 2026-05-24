@@ -152,7 +152,7 @@ Define success criteria. Loop until verified.
 
 ### 5. Code Standards
 
-**File Placement** — Every new file goes in its semantically correct folder.
+**File Placement** — Every new file goes in its semantically correct folder. For example:
 - Constants → `constants/`
 - Shared utilities → `shared/` or `utils/`
 - Shared components → `shared/components/` or `components/`
