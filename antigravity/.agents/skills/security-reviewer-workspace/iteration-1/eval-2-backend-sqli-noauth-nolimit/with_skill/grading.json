@@ -1,0 +1,39 @@
+{
+  "eval_id": 2,
+  "run": "with_skill",
+  "expectations": [
+    {
+      "text": "flags_sql_injection",
+      "passed": true,
+      "evidence": "Three separate 🔴 Critical findings: 'SQL Injection — Login Endpoint', 'SQL Injection — Profile Endpoint', 'SQL Injection — Update Endpoint', each with Evidence code blocks and file:line locations"
+    },
+    {
+      "text": "flags_hardcoded_jwt_secret",
+      "passed": true,
+      "evidence": "Finding: 'Hardcoded JWT Secret · 🟡 Medium · A02 Cryptographic Failures' — flags 'mysecret123' at routes/users.js:10"
+    },
+    {
+      "text": "flags_no_auth_on_routes",
+      "passed": true,
+      "evidence": "Finding: 'No Authentication on Profile and Update Endpoints · 🟠 High · A01 Broken Access Control' — flags both routes/users.js:15 and :20"
+    },
+    {
+      "text": "flags_plaintext_password",
+      "passed": true,
+      "evidence": "Finding: 'Plaintext Password Storage/Comparison · 🟠 High · A02 Cryptographic Failures' — identifies login query compares raw password as Critical-level data exposure"
+    },
+    {
+      "text": "provides_parameterized_query_fix",
+      "passed": true,
+      "evidence": "Each SQL injection finding includes a code fix block using $1/$2/$3 parameterized queries. e.g. db.query('SELECT * FROM users WHERE id = $1', [req.params.id])"
+    },
+    {
+      "text": "provides_owasp_mapping",
+      "passed": true,
+      "evidence": "All findings include OWASP categories: A03 Injection, A01 Broken Access Control, A02 Cryptographic Failures, A07 Authentication Failures, A04 Insecure Design"
+    }
+  ],
+  "pass_count": 6,
+  "total_count": 6,
+  "pass_rate": 1.0
+}

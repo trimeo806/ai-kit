@@ -1,0 +1,117 @@
+{
+  "skill_name": "security-reviewer",
+  "evals": [
+    {
+      "id": 1,
+      "name": "frontend-xss-localstorage",
+      "prompt": "hey can you check if this React component is secure? my lead said something about 'xss' but i'm not sure what to look for\n\n```tsx\n// src/components/CommentDisplay.tsx\nimport React from 'react';\n\ninterface Props {\n  username: string;\n  commentHtml: string;\n}\n\nexport function CommentDisplay({ username, commentHtml }: Props) {\n  return (\n    <div className=\"comment\">\n      <strong>{username}</strong>\n      <div dangerouslySetInnerHTML={{ __html: commentHtml }} />\n    </div>\n  );\n}\n\n// src/hooks/useAuth.ts\nexport function useAuth() {\n  const login = async (email: string, password: string) => {\n    const res = await fetch('/api/login', {\n      method: 'POST',\n      body: JSON.stringify({ email, password }),\n    });\n    const { token } = await res.json();\n    localStorage.setItem('auth_token', token);\n    localStorage.setItem('user_email', email);\n    return token;\n  };\n\n  const getToken = () => localStorage.getItem('auth_token');\n  const logout = () => localStorage.removeItem('auth_token');\n\n  return { login, getToken, logout };\n}\n```",
+      "expected_output": "Should identify: (1) dangerouslySetInnerHTML with user-controlled commentHtml is an XSS vulnerability (Critical/High), (2) storing JWT in localStorage is insecure - vulnerable to XSS theft (Medium/High), (3) should recommend httpOnly cookies or in-memory storage for tokens, (4) should show fix with DOMPurify or plain text rendering, (5) should map to OWASP A03 and A07",
+      "assertions": [
+        {
+          "name": "flags_dangerouslySetInnerHTML_xss",
+          "description": "Identifies dangerouslySetInnerHTML with user data as XSS vulnerability",
+          "criteria": "Output mentions dangerouslySetInnerHTML and XSS as a finding with Critical or High severity"
+        },
+        {
+          "name": "flags_localStorage_token",
+          "description": "Flags JWT/auth token stored in localStorage as insecure",
+          "criteria": "Output mentions localStorage and auth_token storage as a security issue"
+        },
+        {
+          "name": "provides_fix_for_xss",
+          "description": "Provides a concrete fix for the XSS issue",
+          "criteria": "Output includes a code fix showing DOMPurify, textContent, or plain text rendering as alternative"
+        },
+        {
+          "name": "references_owasp",
+          "description": "Maps findings to OWASP categories",
+          "criteria": "Output references OWASP A03 or mentions Injection/XSS category"
+        },
+        {
+          "name": "uses_structured_report",
+          "description": "Output is a structured security report, not a generic answer",
+          "criteria": "Output has severity labels (Critical/High/Medium/Low), finding titles, and evidence sections"
+        }
+      ],
+      "files": []
+    },
+    {
+      "id": 2,
+      "name": "backend-sqli-noauth-nolimit",
+      "prompt": "security audit on this express api please - we're about to go live next week and want to make sure it's ok\n\n```js\n// routes/users.js\nconst express = require('express');\nconst router = express.Router();\nconst db = require('../db');\nconst jwt = require('jsonwebtoken');\n\n// Login\nrouter.post('/login', async (req, res) => {\n  const { email, password } = req.body;\n  const user = await db.query(\n    `SELECT * FROM users WHERE email = '${email}' AND password = '${password}'`\n  );\n  if (user.rows.length > 0) {\n    const token = jwt.sign({ userId: user.rows[0].id }, 'mysecret123', { expiresIn: '30d' });\n    res.json({ token });\n  } else {\n    res.status(401).json({ error: 'Invalid email or password' });\n  }\n});\n\n// Get user profile\nrouter.get('/profile/:id', async (req, res) => {\n  const user = await db.query(`SELECT * FROM users WHERE id = ${req.params.id}`);\n  res.json(user.rows[0]);\n});\n\n// Update user\nrouter.put('/update/:id', async (req, res) => {\n  const { name, bio } = req.body;\n  await db.query(`UPDATE users SET name='${name}', bio='${bio}' WHERE id=${req.params.id}`);\n  res.json({ success: true });\n});\n\nmodule.exports = router;\n```",
+      "expected_output": "Should identify: (1) SQL injection in all 3 queries (Critical - string concatenation in SQL), (2) weak/hardcoded JWT secret 'mysecret123' (Critical), (3) 30-day JWT TTL too long (Medium), (4) no authentication on /profile/:id and /update/:id (High - IDOR possible), (5) password stored/compared in plaintext (Critical), (6) no rate limiting on login endpoint (High), (7) provide fixes with parameterized queries for each",
+      "assertions": [
+        {
+          "name": "flags_sql_injection",
+          "description": "Identifies SQL injection vulnerabilities in all queries",
+          "criteria": "Output mentions SQL injection as Critical finding with evidence of string concatenation in queries"
+        },
+        {
+          "name": "flags_hardcoded_jwt_secret",
+          "description": "Flags hardcoded JWT secret 'mysecret123'",
+          "criteria": "Output identifies hardcoded JWT secret as a Critical or High security finding"
+        },
+        {
+          "name": "flags_no_auth_on_routes",
+          "description": "Identifies missing authentication on profile and update routes",
+          "criteria": "Output flags /profile/:id or /update/:id as unprotected/unauthenticated endpoints"
+        },
+        {
+          "name": "flags_plaintext_password",
+          "description": "Identifies password comparison without hashing",
+          "criteria": "Output identifies plaintext password comparison in SQL query as Critical vulnerability"
+        },
+        {
+          "name": "provides_parameterized_query_fix",
+          "description": "Provides fix using parameterized queries",
+          "criteria": "Output shows corrected query using $1/$2 parameters or prepared statements"
+        },
+        {
+          "name": "provides_owasp_mapping",
+          "description": "Maps findings to OWASP categories",
+          "criteria": "Output references OWASP A03 (Injection) or A07 (Auth Failures)"
+        }
+      ],
+      "files": []
+    },
+    {
+      "id": 3,
+      "name": "fullstack-jwt-cors-headers",
+      "prompt": "can you do a full security review of our next.js app? specifically worried about the auth and api setup\n\n```ts\n// app/api/auth/route.ts\nimport { NextRequest, NextResponse } from 'next/server';\nimport jwt from 'jsonwebtoken';\n\nexport async function POST(req: NextRequest) {\n  const { username, password } = await req.json();\n  \n  // TODO: replace with real DB check\n  if (username === 'admin' && password === 'admin123') {\n    const token = jwt.sign(\n      { username, role: 'admin', password },  // include password for convenience\n      process.env.JWT_SECRET!,\n      { expiresIn: '7d' }\n    );\n    return NextResponse.json({ token });\n  }\n  return NextResponse.json({ error: 'Wrong username or password' }, { status: 401 });\n}\n\n// next.config.js\nmodule.exports = {\n  async headers() {\n    return [\n      {\n        source: '/api/(.*)',\n        headers: [\n          { key: 'Access-Control-Allow-Origin', value: '*' },\n          { key: 'Access-Control-Allow-Credentials', value: 'true' },\n        ],\n      },\n    ];\n  },\n};\n\n// middleware.ts\nimport { NextResponse } from 'next/server';\nimport type { NextRequest } from 'next/server';\nimport jwt from 'jsonwebtoken';\n\nexport function middleware(request: NextRequest) {\n  const token = request.headers.get('authorization')?.split(' ')[1];\n  if (!token) return NextResponse.redirect(new URL('/login', request.url));\n  \n  try {\n    const decoded = jwt.verify(token, process.env.JWT_SECRET!);\n    return NextResponse.next();\n  } catch {\n    return NextResponse.redirect(new URL('/login', request.url));\n  }\n}\n\nexport const config = {\n  matcher: ['/dashboard/:path*'],\n};\n```",
+      "expected_output": "Should identify: (1) password stored in JWT payload (Critical - sensitive data exposure), (2) wildcard CORS with credentials:true is invalid and dangerous (High), (3) 7-day JWT TTL is long (Medium), (4) hardcoded admin/admin123 credentials (Critical), (5) no explicit JWT algorithm enforcement in verify() (Medium), (6) missing security headers (X-Frame-Options, CSP, X-Content-Type-Options) (Medium), (7) JWT algorithm confusion attack vector, (8) OWASP mapping",
+      "assertions": [
+        {
+          "name": "flags_password_in_jwt_payload",
+          "description": "Identifies password included in JWT payload as critical finding",
+          "criteria": "Output flags password field in jwt.sign() payload as Critical security issue"
+        },
+        {
+          "name": "flags_cors_wildcard_with_credentials",
+          "description": "Identifies wildcard CORS with credentials:true as invalid/dangerous",
+          "criteria": "Output mentions the CORS misconfiguration with wildcard origin + credentials as High or Critical finding"
+        },
+        {
+          "name": "flags_hardcoded_credentials",
+          "description": "Identifies hardcoded admin credentials in auth route",
+          "criteria": "Output flags hardcoded username/password comparison as a Critical or High finding"
+        },
+        {
+          "name": "flags_missing_algorithm_enforcement",
+          "description": "Identifies missing algorithms option in jwt.verify()",
+          "criteria": "Output identifies missing { algorithms: ['HS256'] } in jwt.verify as a security finding"
+        },
+        {
+          "name": "flags_missing_security_headers",
+          "description": "Notes missing security headers (CSP, X-Frame-Options, etc.)",
+          "criteria": "Output mentions missing CSP or X-Frame-Options or X-Content-Type-Options as a finding"
+        },
+        {
+          "name": "covers_both_frontend_and_backend",
+          "description": "Covers both API/backend and frontend/config security issues",
+          "criteria": "Output addresses both API route security issues AND configuration-level issues (CORS/headers)"
+        }
+      ],
+      "files": []
+    }
+  ]
+}
