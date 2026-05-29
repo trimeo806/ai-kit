@@ -1,7 +1,7 @@
 {
   "generated": "2026-03-18T06:45:04.645Z",
   "version": "2.0.0",
-  "count": 43,
+  "count": 44,
   "categories": {
     "uncategorized": 32,
     "development-tools": 11,
@@ -1135,6 +1135,17 @@
         "conflicts": []
       },
       "path": "websocket-engineer\\SKILL.md"
+    },
+    {
+      "name": "knowledge-retrieval",
+      "description": "Internal-first knowledge search across docs/, skills, and RAG to locate prior art and past decisions",
+      "category": "development-tools",
+      "tier": "discoverable",
+      "keywords": [],
+      "platforms": [
+        "all"
+      ],
+      "path": "knowledge-retrieval/SKILL.md"
     }
   ]
 }

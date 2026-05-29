@@ -1,11 +1,11 @@
 {
   "generated": "2026-03-18T06:45:04.645Z",
   "version": "2.0.0",
-  "count": 61,
+  "count": 44,
   "categories": {
     "uncategorized": 32,
     "development-tools": 11,
-    "analysis-reasoning": 13,
+    "analysis-reasoning": 12,
     "infrastructure": 2,
     "frontend-web": 3
   },
@@ -28,11 +28,11 @@
         "enhances": [],
         "conflicts": []
       },
-      "path": "api-designer/SKILL.md"
+      "path": "api-designer\\SKILL.md"
     },
     {
       "name": "architecture-designer",
-      "description": "Use when designing new high-level system architecture, reviewing existing designs, or making architectural decisions. Invoke to create architecture diagrams, write Architecture Decision Records (ADRs), evaluate technology trade-offs, design component interactions, and plan for scalability. Use for system design, architecture review, microservices structuring, ADR authoring, scalability planning, and infrastructure pattern selection — distinct from code-level design patterns or database-only design tasks.",
+      "description": "Use when designing new high-level system architecture, reviewing existing designs, or making architectural decisions. Invoke to create architecture diagrams, write Architecture Decision Records (ADRs), evaluate technology trade-offs, design component interactions, and plan for scalability. Use for system design, architecture review, microservices structuring, ADR authoring, scalability planning, and infrastructure pattern selection \u2014 distinct from code-level design patterns or database-only design tasks.",
       "category": "uncategorized",
       "tier": "discoverable",
       "keywords": [],
@@ -47,11 +47,11 @@
         "enhances": [],
         "conflicts": []
       },
-      "path": "architecture-designer/SKILL.md"
+      "path": "architecture-designer\\SKILL.md"
     },
     {
       "name": "ask",
-      "description": "Use when user asks questions about the codebase — how does X work, where is Y used, what's the architecture of Z, why is this implemented this way",
+      "description": "Use when user asks questions about the codebase \u2014 how does X work, where is Y used, what's the architecture of Z, why is this implemented this way",
       "category": "uncategorized",
       "tier": "discoverable",
       "keywords": [
@@ -87,11 +87,11 @@
         "enhances": [],
         "conflicts": []
       },
-      "path": "ask/SKILL.md"
+      "path": "ask\\SKILL.md"
     },
     {
       "name": "audit",
-      "description": "Use when user says \"audit\", \"run an audit\", \"check quality\", \"review before merge\", \"a11y audit\", or \"code audit\" — detects audit type (UI component, a11y, or code) and dispatches the right specialist",
+      "description": "Use when user says \"audit\", \"run an audit\", \"check quality\", \"review before merge\", \"a11y audit\", or \"code audit\" \u2014 detects audit type (UI component, a11y, or code) and dispatches the right specialist",
       "category": "development-tools",
       "tier": "discoverable",
       "keywords": [
@@ -129,181 +129,7 @@
         ],
         "conflicts": []
       },
-      "path": "audit/SKILL.md"
-    },
-    {
-      "name": "auto-improvement",
-      "description": "Use when reviewing session performance, analyzing improvement trends, or understanding the metrics-capture-detection pipeline",
-      "category": "development-tools",
-      "tier": "discoverable",
-      "keywords": [
-        "metrics",
-        "improvement",
-        "lessons",
-        "trends",
-        "detection",
-        "rework",
-        "session"
-      ],
-      "platforms": [
-        "all"
-      ],
-      "triggers": [
-        "improvement report",
-        "session metrics",
-        "detect patterns",
-        "rework analysis"
-      ],
-      "agent-affinity": [
-        "project-manager",
-        "code-reviewer",
-        "debugger"
-      ],
-      "connections": {
-        "extends": [],
-        "requires": [],
-        "enhances": [
-          "skill-discovery"
-        ],
-        "conflicts": []
-      },
-      "path": "auto-improvement/SKILL.md"
-    },
-    {
-      "name": "brainstorm",
-      "description": "Use when the user presents a problem, idea, decision, or challenge they want to think through — produces a structured analysis covering pros/cons, risks, trade-offs vs alternatives, and recommended directions. Always invoke this skill when someone says \"brainstorm\", \"help me think through\", \"I'm considering\", \"what should I do about\", \"analyze this\", \"think with me\", or describes a problem they haven't yet decided how to solve. Don't wait for the word \"brainstorm\" — any problem-framing or decision-under-uncertainty prompt should trigger this skill.",
-      "category": "uncategorized",
-      "tier": "discoverable",
-      "keywords": [
-        "brainstorm",
-        "analysis",
-        "pros",
-        "cons",
-        "risks",
-        "trade-offs",
-        "alternatives",
-        "decision",
-        "problem",
-        "approach",
-        "strategy"
-      ],
-      "platforms": [
-        "all"
-      ],
-      "triggers": [
-        "/brainstorm",
-        "brainstorm",
-        "think through",
-        "help me decide",
-        "analyze this problem"
-      ],
-      "agent-affinity": [
-        "brainstormer",
-        "planner",
-        "researcher"
-      ],
-      "connections": {
-        "extends": [],
-        "requires": [],
-        "enhances": [],
-        "conflicts": []
-      },
-      "path": "brainstorm/SKILL.md"
-    },
-    {
-      "name": "banner-design",
-      "description": "Design banners for social media, ads, website heroes, creative assets, and print. Multiple art direction options with AI-generated visuals. Actions: design, create, generate banner. Platforms: Facebook, Twitter/X, LinkedIn, YouTube, Instagram, Google Display, website hero, print. Styles: minimalist, gradient, bold typography, photo-based, illustrated, geometric, retro, glassmorphism, 3D, neon, duotone, editorial, collage. Uses ui-ux-pro-max, frontend-design, ai-artist, ai-multimodal skills.",
-      "category": "uncategorized",
-      "tier": "discoverable",
-      "keywords": [],
-      "platforms": [
-        "all"
-      ],
-      "triggers": [],
-      "agent-affinity": [],
-      "connections": {
-        "extends": [],
-        "requires": [],
-        "enhances": [],
-        "conflicts": []
-      },
-      "path": "banner-design/SKILL.md"
-    },
-    {
-      "name": "brand",
-      "description": "Brand voice, visual identity, messaging frameworks, asset management, brand consistency. Activate for branded content, tone of voice, marketing assets, brand compliance, style guides.",
-      "category": "uncategorized",
-      "tier": "discoverable",
-      "keywords": [],
-      "platforms": [
-        "all"
-      ],
-      "triggers": [],
-      "agent-affinity": [],
-      "connections": {
-        "extends": [],
-        "requires": [],
-        "enhances": [],
-        "conflicts": []
-      },
-      "path": "brand/SKILL.md"
-    },
-    {
-      "name": "design",
-      "description": "Comprehensive design skill: brand identity, design tokens, UI styling, logo generation (55 styles, Gemini AI), corporate identity program (50 deliverables, CIP mockups), HTML presentations (Chart.js), banner design (22 styles, social/ads/web/print), icon design (15 styles, SVG, Gemini 3.1 Pro), social photos (HTML→screenshot, multi-platform). Actions: design logo, create CIP, generate mockups, build slides, design banner, generate icon, create social photos, social media images, brand identity, design system. Platforms: Facebook, Twitter, LinkedIn, YouTube, Instagram, Pinterest, TikTok, Threads, Google Ads.",
-      "category": "uncategorized",
-      "tier": "discoverable",
-      "keywords": [],
-      "platforms": [
-        "all"
-      ],
-      "triggers": [],
-      "agent-affinity": [],
-      "connections": {
-        "extends": [],
-        "requires": [],
-        "enhances": [],
-        "conflicts": []
-      },
-      "path": "design/SKILL.md"
-    },
-    {
-      "name": "design-system",
-      "description": "Token architecture, component specifications, and slide generation. Three-layer tokens (primitive→semantic→component), CSS variables, spacing/typography scales, component specs, strategic slide creation. Use for design tokens, systematic design, brand-compliant presentations.",
-      "category": "uncategorized",
-      "tier": "discoverable",
-      "keywords": [],
-      "platforms": [
-        "all"
-      ],
-      "triggers": [],
-      "agent-affinity": [],
-      "connections": {
-        "extends": [],
-        "requires": [],
-        "enhances": [],
-        "conflicts": []
-      },
-      "path": "design-system/SKILL.md"
-    },
-    {
-      "name": "slides",
-      "description": "Create strategic HTML presentations with Chart.js, design tokens, responsive layouts, copywriting formulas, and contextual slide strategies.",
-      "category": "uncategorized",
-      "tier": "discoverable",
-      "keywords": [],
-      "platforms": [
-        "all"
-      ],
-      "triggers": [],
-      "agent-affinity": [],
-      "connections": {
-        "extends": [],
-        "requires": [],
-        "enhances": [],
-        "conflicts": []
-      },
-      "path": "slides/SKILL.md"
+      "path": "audit\\SKILL.md"
     },
     {
       "name": "ui-styling",
@@ -322,7 +148,7 @@
         "enhances": [],
         "conflicts": []
       },
-      "path": "ui-styling/SKILL.md"
+      "path": "ui-styling\\SKILL.md"
     },
     {
       "name": "cloud-architect",
@@ -341,26 +167,7 @@
         "enhances": [],
         "conflicts": []
       },
-      "path": "cloud-architect/SKILL.md"
-    },
-    {
-      "name": "code-documenter",
-      "description": "Generates, formats, and validates technical documentation — including docstrings, OpenAPI/Swagger specs, JSDoc annotations, doc portals, and user guides. Use when adding docstrings to functions or classes, creating API documentation, building documentation sites, or writing tutorials and user guides. Invoke for OpenAPI/Swagger specs, JSDoc, doc portals, getting started guides.",
-      "category": "uncategorized",
-      "tier": "discoverable",
-      "keywords": [],
-      "platforms": [
-        "all"
-      ],
-      "triggers": "documentation, docstrings, OpenAPI, Swagger, JSDoc, comments, API docs, tutorials, user guides, doc site",
-      "agent-affinity": [],
-      "connections": {
-        "extends": [],
-        "requires": [],
-        "enhances": [],
-        "conflicts": []
-      },
-      "path": "code-documenter/SKILL.md"
+      "path": "cloud-architect\\SKILL.md"
     },
     {
       "name": "code-review",
@@ -393,7 +200,7 @@
         "enhances": [],
         "conflicts": []
       },
-      "path": "code-review/SKILL.md"
+      "path": "code-review\\SKILL.md"
     },
     {
       "name": "code-reviewer",
@@ -412,11 +219,11 @@
         "enhances": [],
         "conflicts": []
       },
-      "path": "code-reviewer/SKILL.md"
+      "path": "code-reviewer\\SKILL.md"
     },
     {
       "name": "cook",
-      "description": "Use when user says \"implement\", \"build\", \"add a feature\", \"cook\", \"make this work\", or \"continue the plan\" — dispatches platform-aware feature implementation for web, iOS, Android, or backend",
+      "description": "Use when user says \"implement\", \"build\", \"add a feature\", \"cook\", \"make this work\", or \"continue the plan\" \u2014 dispatches platform-aware feature implementation for web, iOS, Android, or backend",
       "category": "development-tools",
       "tier": "discoverable",
       "keywords": [],
@@ -433,7 +240,7 @@
         ],
         "conflicts": []
       },
-      "path": "cook/SKILL.md"
+      "path": "cook\\SKILL.md"
     },
     {
       "name": "core",
@@ -452,11 +259,11 @@
         "enhances": [],
         "conflicts": []
       },
-      "path": "core/SKILL.md"
+      "path": "core\\SKILL.md"
     },
     {
       "name": "debug",
-      "description": "Use when user says \"debug\", \"trace this\", \"diagnose\", \"it crashes\", \"why is this failing\", or provides a stack trace — investigates root cause using platform-specific debugging tools",
+      "description": "Use when user says \"debug\", \"trace this\", \"diagnose\", \"it crashes\", \"why is this failing\", or provides a stack trace \u2014 investigates root cause using platform-specific debugging tools",
       "category": "development-tools",
       "tier": "core",
       "keywords": [
@@ -493,7 +300,7 @@
         ],
         "conflicts": []
       },
-      "path": "debug/SKILL.md"
+      "path": "debug\\SKILL.md"
     },
     {
       "name": "doc-coauthoring",
@@ -531,11 +338,11 @@
         ],
         "conflicts": []
       },
-      "path": "doc-coauthoring/SKILL.md"
+      "path": "doc-coauthoring\\SKILL.md"
     },
     {
       "name": "docs",
-      "description": "Use when user says \"write docs\", \"update docs\", \"document this\", \"init docs\", \"reorganize documentation\", or \"add component docs\" — detects docs intent (init, update, migrate, component) and runs the right workflow",
+      "description": "Use when user says \"write docs\", \"update docs\", \"document this\", \"init docs\", \"reorganize documentation\", or \"add component docs\" \u2014 detects docs intent (init, update, migrate, component) and runs the right workflow",
       "category": "development-tools",
       "tier": "discoverable",
       "keywords": [],
@@ -550,91 +357,11 @@
         "enhances": [],
         "conflicts": []
       },
-      "path": "docs/SKILL.md"
-    },
-    {
-      "name": "docs-seeker",
-      "description": "Use when you need API docs, library references, or framework documentation for an unfamiliar package",
-      "category": "analysis-reasoning",
-      "tier": "discoverable",
-      "keywords": [
-        "docs",
-        "documentation",
-        "search",
-        "context7",
-        "api-reference",
-        "library",
-        "research",
-        "best-practices"
-      ],
-      "platforms": [
-        "all"
-      ],
-      "triggers": [
-        "documentation",
-        "docs",
-        "api reference",
-        "how to use"
-      ],
-      "agent-affinity": [
-        "researcher",
-        "developer",
-        "mcp-manager"
-      ],
-      "connections": {
-        "extends": [],
-        "requires": [],
-        "enhances": [
-          "research"
-        ],
-        "conflicts": []
-      },
-      "path": "docs-seeker/SKILL.md"
-    },
-    {
-      "name": "error-recovery",
-      "description": "Retry strategies, circuit breakers, fallbacks, and graceful degradation patterns for handling transient and persistent failures",
-      "category": "analysis-reasoning",
-      "tier": "discoverable",
-      "keywords": [
-        "retry",
-        "timeout",
-        "circuit-breaker",
-        "fallback",
-        "resilience",
-        "error-handling",
-        "backoff",
-        "graceful-degradation"
-      ],
-      "platforms": [
-        "all"
-      ],
-      "triggers": [
-        "retry logic",
-        "timeout handling",
-        "circuit breaker",
-        "fallback strategy",
-        "transient error",
-        "error recovery"
-      ],
-      "agent-affinity": [
-        "debugger",
-        "developer",
-        "backend-developer"
-      ],
-      "connections": {
-        "extends": [],
-        "requires": [],
-        "enhances": [
-          "debug"
-        ],
-        "conflicts": []
-      },
-      "path": "error-recovery/SKILL.md"
+      "path": "docs\\SKILL.md"
     },
     {
       "name": "fastapi-python",
-      "description": "Use when building Python backend APIs with FastAPI. Invoke for FastAPI route handlers, Pydantic v2 schemas, async HTTP clients with httpx, dependency injection, middleware, OpenAPI documentation, or BFF (Backend-for-Frontend) wrapper layers. Load this skill whenever the task involves FastAPI, Python REST APIs, uvicorn, Pydantic, or Python async backend services — even if the user just says \"implement the API\" in a Python project.",
+      "description": "Use when building Python backend APIs with FastAPI. Invoke for FastAPI route handlers, Pydantic v2 schemas, async HTTP clients with httpx, dependency injection, middleware, OpenAPI documentation, or BFF (Backend-for-Frontend) wrapper layers. Load this skill whenever the task involves FastAPI, Python REST APIs, uvicorn, Pydantic, or Python async backend services \u2014 even if the user just says \"implement the API\" in a Python project.",
       "category": "uncategorized",
       "tier": "discoverable",
       "keywords": [
@@ -663,43 +390,11 @@
         "enhances": [],
         "conflicts": []
       },
-      "path": "fastapi-python/SKILL.md"
-    },
-    {
-      "name": "fastapi-templates",
-      "description": "Use when you need production-ready FastAPI boilerplate, copy-paste code templates, or starter patterns. Load when implementing FastAPI services and you need ready-to-use code for BFF wrappers, upstream HTTP clients, Pydantic v2 schemas for flight/booking domains, unified error middleware, async cache decorators, or pagination helpers. Always load alongside fastapi-python when building a new FastAPI project from scratch.",
-      "category": "uncategorized",
-      "tier": "discoverable",
-      "keywords": [
-        "fastapi",
-        "templates",
-        "boilerplate",
-        "BFF",
-        "pydantic",
-        "schemas",
-        "caching",
-        "retry",
-        "flight",
-        "booking"
-      ],
-      "platforms": [
-        "backend"
-      ],
-      "triggers": [],
-      "agent-affinity": [
-        "backend-developer"
-      ],
-      "connections": {
-        "extends": [],
-        "requires": [],
-        "enhances": [],
-        "conflicts": []
-      },
-      "path": "fastapi-templates/SKILL.md"
+      "path": "fastapi-python\\SKILL.md"
     },
     {
       "name": "fix",
-      "description": "Use when user says \"fix\", \"broken\", \"error\", \"failing\", \"this doesn't work\", or pastes an error message — identifies error type and applies platform-appropriate fix",
+      "description": "Use when user says \"fix\", \"broken\", \"error\", \"failing\", \"this doesn't work\", or pastes an error message \u2014 identifies error type and applies platform-appropriate fix",
       "category": "development-tools",
       "tier": "discoverable",
       "keywords": [],
@@ -714,11 +409,11 @@
         "enhances": [],
         "conflicts": []
       },
-      "path": "fix/SKILL.md"
+      "path": "fix\\SKILL.md"
     },
     {
       "name": "fullstack-guardian",
-      "description": "Builds security-focused full-stack web applications by implementing integrated frontend and backend components with layered security at every level. Covers the complete stack from database to UI, enforcing auth, input validation, output encoding, and parameterized queries across all layers. Use when implementing features across frontend and backend, building REST APIs with corresponding UI, connecting frontend components to backend endpoints, creating end-to-end data flows from database to UI, or implementing CRUD operations with UI forms. Distinct from frontend-only, backend-only, or API-only skills in that it simultaneously addresses all three perspectives—Frontend, Backend, and Security—within a single implementation workflow. Invoke for full-stack feature work, web app development, authenticated API routes with views, microservices, real-time features, monorepo architecture, or technology selection decisions.",
+      "description": "Builds security-focused full-stack web applications by implementing integrated frontend and backend components with layered security at every level. Covers the complete stack from database to UI, enforcing auth, input validation, output encoding, and parameterized queries across all layers. Use when implementing features across frontend and backend, building REST APIs with corresponding UI, connecting frontend components to backend endpoints, creating end-to-end data flows from database to UI, or implementing CRUD operations with UI forms. Distinct from frontend-only, backend-only, or API-only skills in that it simultaneously addresses all three perspectives\u2014Frontend, Backend, and Security\u2014within a single implementation workflow. Invoke for full-stack feature work, web app development, authenticated API routes with views, microservices, real-time features, monorepo architecture, or technology selection decisions.",
       "category": "uncategorized",
       "tier": "discoverable",
       "keywords": [],
@@ -733,7 +428,7 @@
         "enhances": [],
         "conflicts": []
       },
-      "path": "fullstack-guardian/SKILL.md"
+      "path": "fullstack-guardian\\SKILL.md"
     },
     {
       "name": "golang-pro",
@@ -752,7 +447,7 @@
         "enhances": [],
         "conflicts": []
       },
-      "path": "golang-pro/SKILL.md"
+      "path": "golang-pro\\SKILL.md"
     },
     {
       "name": "graphql-architect",
@@ -771,11 +466,11 @@
         "enhances": [],
         "conflicts": []
       },
-      "path": "graphql-architect/SKILL.md"
+      "path": "graphql-architect\\SKILL.md"
     },
     {
       "name": "infra-cloud",
-      "description": "Use when working with GCP infrastructure — Terraform, Cloud Build, Cloud Run, GKE, deployment pipelines. Scope: GCP-specific operational patterns. For multi-cloud architecture strategy and design, use cloud-architect instead.",
+      "description": "Use when working with GCP infrastructure \u2014 Terraform, Cloud Build, Cloud Run, GKE, deployment pipelines. Scope: GCP-specific operational patterns. For multi-cloud architecture strategy and design, use cloud-architect instead.",
       "category": "infrastructure",
       "tier": "discoverable",
       "keywords": [
@@ -801,7 +496,7 @@
         "enhances": [],
         "conflicts": []
       },
-      "path": "infra-cloud/SKILL.md"
+      "path": "infra-cloud\\SKILL.md"
     },
     {
       "name": "infra-docker",
@@ -835,7 +530,7 @@
         "enhances": [],
         "conflicts": []
       },
-      "path": "infra-docker/SKILL.md"
+      "path": "infra-docker\\SKILL.md"
     },
     {
       "name": "javascript-pro",
@@ -854,88 +549,7 @@
         "enhances": [],
         "conflicts": []
       },
-      "path": "javascript-pro/SKILL.md"
-    },
-    {
-      "name": "knowledge-capture",
-      "description": "Use after completing a task — capture learnings, save patterns, record post-mortems to docs/",
-      "category": "analysis-reasoning",
-      "tier": "discoverable",
-      "keywords": [
-        "capture",
-        "learn",
-        "persist",
-        "record",
-        "post-mortem",
-        "retrospective"
-      ],
-      "platforms": [
-        "all"
-      ],
-      "triggers": [
-        "capture learnings",
-        "save pattern",
-        "record finding",
-        "what did we learn"
-      ],
-      "agent-affinity": [
-        "debugger",
-        "developer",
-        "researcher",
-        "code-reviewer",
-        "planner",
-        "journal-writer"
-      ],
-      "connections": {
-        "extends": [],
-        "requires": [
-          "knowledge-retrieval"
-        ],
-        "enhances": [],
-        "conflicts": []
-      },
-      "path": "knowledge-capture/SKILL.md"
-    },
-    {
-      "name": "knowledge-retrieval",
-      "description": "Use when you need prior art, past decisions, or existing patterns — checks docs/, skills, and RAG before external sources",
-      "category": "analysis-reasoning",
-      "tier": "discoverable",
-      "keywords": [
-        "retrieve",
-        "search",
-        "knowledge",
-        "context",
-        "rag",
-        "lookup",
-        "prior-art"
-      ],
-      "platforms": [
-        "all"
-      ],
-      "triggers": [
-        "what do we know about",
-        "check knowledge",
-        "prior art",
-        "previous decision"
-      ],
-      "agent-affinity": [
-        "planner",
-        "developer",
-        "debugger",
-        "researcher",
-        "code-reviewer"
-      ],
-      "connections": {
-        "extends": [],
-        "requires": [],
-        "enhances": [
-          "research",
-          "plan"
-        ],
-        "conflicts": []
-      },
-      "path": "knowledge-retrieval/SKILL.md"
+      "path": "javascript-pro\\SKILL.md"
     },
     {
       "name": "kubernetes-specialist",
@@ -954,11 +568,11 @@
         "enhances": [],
         "conflicts": []
       },
-      "path": "kubernetes-specialist/SKILL.md"
+      "path": "kubernetes-specialist\\SKILL.md"
     },
     {
       "name": "microservices-architect",
-      "description": "Designs distributed system architectures, decomposes monoliths into bounded-context services, recommends communication patterns, and produces service boundary diagrams and resilience strategies. Use when designing distributed systems, decomposing monoliths, or implementing microservices patterns — including service boundaries, DDD, saga patterns, event sourcing, CQRS, service mesh, or distributed tracing.",
+      "description": "Designs distributed system architectures, decomposes monoliths into bounded-context services, recommends communication patterns, and produces service boundary diagrams and resilience strategies. Use when designing distributed systems, decomposing monoliths, or implementing microservices patterns \u2014 including service boundaries, DDD, saga patterns, event sourcing, CQRS, service mesh, or distributed tracing.",
       "category": "uncategorized",
       "tier": "discoverable",
       "keywords": [],
@@ -973,7 +587,7 @@
         "enhances": [],
         "conflicts": []
       },
-      "path": "microservices-architect/SKILL.md"
+      "path": "microservices-architect\\SKILL.md"
     },
     {
       "name": "nextjs-developer",
@@ -992,11 +606,11 @@
         "enhances": [],
         "conflicts": []
       },
-      "path": "nextjs-developer/SKILL.md"
+      "path": "nextjs-developer\\SKILL.md"
     },
     {
       "name": "plan",
-      "description": "Use when user says \"plan\", \"design this\", \"architect\", \"spec out\", \"how should we build\", or \"create a roadmap\" — produces a phased implementation plan scaled to task complexity",
+      "description": "Use when user says \"plan\", \"design this\", \"architect\", \"spec out\", \"how should we build\", or \"create a roadmap\" \u2014 produces a phased implementation plan scaled to task complexity",
       "category": "development-tools",
       "tier": "discoverable",
       "keywords": [
@@ -1029,11 +643,11 @@
         "enhances": [],
         "conflicts": []
       },
-      "path": "plan/SKILL.md"
+      "path": "plan\\SKILL.md"
     },
     {
       "name": "plan-hard",
-      "description": "Deep plan with sequential research and comprehensive analysis — use for moderate to complex features requiring investigation",
+      "description": "Deep plan with sequential research and comprehensive analysis \u2014 use for moderate to complex features requiring investigation",
       "category": "development-tools",
       "tier": "discoverable",
       "keywords": [
@@ -1062,7 +676,7 @@
         "enhances": [],
         "conflicts": []
       },
-      "path": "plan-hard/SKILL.md"
+      "path": "plan-hard\\SKILL.md"
     },
     {
       "name": "playwright-expert",
@@ -1081,7 +695,7 @@
         "enhances": [],
         "conflicts": []
       },
-      "path": "playwright-expert/SKILL.md"
+      "path": "playwright-expert\\SKILL.md"
     },
     {
       "name": "postgres-pro",
@@ -1100,56 +714,11 @@
         "enhances": [],
         "conflicts": []
       },
-      "path": "postgres-pro/SKILL.md"
-    },
-    {
-      "name": "prompt-refinement",
-      "description": "Use when a user wants to refine, improve, clarify, rewrite, or make a prompt/spec/task request more effective before Codex, an agent, or another AI works on it. Also use when requirements are vague, business logic is underspecified, acceptance criteria are missing, or an implementation/research/design prompt needs clearer scope, constraints, context, output format, or validation steps.",
-      "category": "analysis-reasoning",
-      "tier": "discoverable",
-      "keywords": [
-        "prompt",
-        "refinement",
-        "clarify",
-        "rewrite",
-        "requirements",
-        "acceptance-criteria",
-        "scope",
-        "constraints",
-        "business-logic",
-        "specification"
-      ],
-      "platforms": [
-        "all"
-      ],
-      "triggers": [
-        "/prompt-refinement",
-        "prompt refinement",
-        "refine prompt",
-        "improve prompt",
-        "rewrite prompt",
-        "clarify requirements",
-        "make this prompt better"
-      ],
-      "agent-affinity": [
-        "business-analyst",
-        "planner",
-        "project-manager",
-        "developer",
-        "researcher",
-        "docs-manager"
-      ],
-      "connections": {
-        "extends": [],
-        "requires": [],
-        "enhances": [],
-        "conflicts": []
-      },
-      "path": "prompt-refinement/SKILL.md"
+      "path": "postgres-pro\\SKILL.md"
     },
     {
       "name": "problem-solving",
-      "description": "Use when stuck, facing a complex bug, or need root cause analysis — 5 whys, bisection, inversion techniques",
+      "description": "Use when stuck, facing a complex bug, or need root cause analysis \u2014 5 whys, bisection, inversion techniques",
       "category": "analysis-reasoning",
       "tier": "discoverable",
       "keywords": [
@@ -1186,7 +755,7 @@
         ],
         "conflicts": []
       },
-      "path": "problem-solving/SKILL.md"
+      "path": "problem-solving\\SKILL.md"
     },
     {
       "name": "react-expert",
@@ -1205,7 +774,7 @@
         "enhances": [],
         "conflicts": []
       },
-      "path": "react-expert/SKILL.md"
+      "path": "react-expert\\SKILL.md"
     },
     {
       "name": "research",
@@ -1244,11 +813,11 @@
         "enhances": [],
         "conflicts": []
       },
-      "path": "research/SKILL.md"
+      "path": "research\\SKILL.md"
     },
     {
       "name": "review",
-      "description": "Use when user says \"review\", \"check my code\", \"is this good\", \"look at this before I commit\", or \"suggest improvements\" — detects review type (code quality, a11y, or general improvements) and runs the appropriate review",
+      "description": "Use when user says \"review\", \"check my code\", \"is this good\", \"look at this before I commit\", or \"suggest improvements\" \u2014 detects review type (code quality, a11y, or general improvements) and runs the appropriate review",
       "category": "development-tools",
       "tier": "discoverable",
       "keywords": [],
@@ -1263,11 +832,11 @@
         "enhances": [],
         "conflicts": []
       },
-      "path": "review/SKILL.md"
+      "path": "review\\SKILL.md"
     },
     {
       "name": "security-reviewer",
-      "description": "Use when doing a security review or audit of web application code — frontend (React, Vue, Next.js, HTML/JS), backend (Node.js, Go, Python, Java), or both. Always invoke when user says 'security review', 'check for vulnerabilities', 'OWASP audit', 'is this secure', 'security audit', 'find security issues', 'check auth', 'pen test', or pastes code they want security-vetted. Also invoke when the user asks about XSS, CSRF, injection attacks, JWT security, authentication flaws, insecure headers, secrets leakage, or dependency vulnerabilities in their code. Do NOT wait for an explicit 'security' keyword — any time code is shared and the concern is about whether it can be exploited, use this skill.",
+      "description": "Use when doing a security review or audit of web application code \u2014 frontend (React, Vue, Next.js, HTML/JS), backend (Node.js, Go, Python, Java), or both. Always invoke when user says 'security review', 'check for vulnerabilities', 'OWASP audit', 'is this secure', 'security audit', 'find security issues', 'check auth', 'pen test', or pastes code they want security-vetted. Also invoke when the user asks about XSS, CSRF, injection attacks, JWT security, authentication flaws, insecure headers, secrets leakage, or dependency vulnerabilities in their code. Do NOT wait for an explicit 'security' keyword \u2014 any time code is shared and the concern is about whether it can be exploited, use this skill.",
       "category": "uncategorized",
       "tier": "discoverable",
       "keywords": [
@@ -1303,47 +872,7 @@
         "enhances": [],
         "conflicts": []
       },
-      "path": "security-reviewer/SKILL.md"
-    },
-    {
-      "name": "sequential-thinking",
-      "description": "Use when facing a complex problem that needs step-by-step breakdown, branching analysis, or iterative reasoning",
-      "category": "analysis-reasoning",
-      "tier": "discoverable",
-      "keywords": [
-        "sequential",
-        "thinking",
-        "analysis",
-        "step-by-step",
-        "reasoning",
-        "logic",
-        "stuck",
-        "complex",
-        "bug"
-      ],
-      "platforms": [
-        "all"
-      ],
-      "triggers": [
-        "complex problem",
-        "step by step",
-        "analyze"
-      ],
-      "agent-affinity": [
-        "debugger",
-        "planner",
-        "developer",
-        "brainstormer"
-      ],
-      "connections": {
-        "extends": [],
-        "requires": [],
-        "enhances": [
-          "debug"
-        ],
-        "conflicts": []
-      },
-      "path": "sequential-thinking/SKILL.md"
+      "path": "security-reviewer\\SKILL.md"
     },
     {
       "name": "skill-creator",
@@ -1362,7 +891,7 @@
         "enhances": [],
         "conflicts": []
       },
-      "path": "skill-creator/SKILL.md"
+      "path": "skill-creator\\SKILL.md"
     },
     {
       "name": "skill-discovery",
@@ -1395,11 +924,11 @@
         "enhances": [],
         "conflicts": []
       },
-      "path": "skill-discovery/SKILL.md"
+      "path": "skill-discovery\\SKILL.md"
     },
     {
       "name": "subagent-driven-development",
-      "description": "Use when a plan has 3+ independent tasks, phases have non-overlapping file ownership, or user says \"parallel implementation\", \"execute all phases\" — provides per-task subagent dispatch with two-stage review",
+      "description": "Use when a plan has 3+ independent tasks, phases have non-overlapping file ownership, or user says \"parallel implementation\", \"execute all phases\" \u2014 provides per-task subagent dispatch with two-stage review",
       "category": "analysis-reasoning",
       "tier": "discoverable",
       "keywords": [
@@ -1426,26 +955,7 @@
         ],
         "conflicts": []
       },
-      "path": "subagent-driven-development/SKILL.md"
-    },
-    {
-      "name": "tanstack-start",
-      "description": "Use when building full-stack React applications with TanStack Start — file-based routing, server functions, SSR, or type-safe client-server integration. Invoke whenever the user mentions TanStack Start, TanStack Router, createServerFn, createFileRoute, createRootRoute, or wants to scaffold a new TanStack Start project from scratch. Also trigger for questions about data loading with loaders, beforeLoad hooks, streaming SSR, or deploying TanStack Start to Netlify, Cloudflare, or Vercel.",
-      "category": "uncategorized",
-      "tier": "discoverable",
-      "keywords": [],
-      "platforms": [
-        "web"
-      ],
-      "triggers": "TanStack Start, TanStack Router, createFileRoute, createRootRoute, createServerFn, file-based routing, tanstack, fullstack react, vite ssr, useQuery, useMutation, @tanstack/react-query, TanStack Query",
-      "agent-affinity": [],
-      "connections": {
-        "extends": [],
-        "requires": [],
-        "enhances": [],
-        "conflicts": []
-      },
-      "path": "tanstack-start/SKILL.md"
+      "path": "subagent-driven-development\\SKILL.md"
     },
     {
       "name": "terraform-engineer",
@@ -1464,11 +974,11 @@
         "enhances": [],
         "conflicts": []
       },
-      "path": "terraform-engineer/SKILL.md"
+      "path": "terraform-engineer\\SKILL.md"
     },
     {
       "name": "test",
-      "description": "Use when user says \"run tests\", \"add tests\", \"check coverage\", \"write unit tests\", or \"validate this works\" — detects platform and runs the appropriate test suite (Jest, XCTest, JUnit, Espresso)",
+      "description": "Use when user says \"run tests\", \"add tests\", \"check coverage\", \"write unit tests\", or \"validate this works\" \u2014 detects platform and runs the appropriate test suite (Jest, XCTest, JUnit, Espresso)",
       "category": "development-tools",
       "tier": "discoverable",
       "keywords": [],
@@ -1485,7 +995,7 @@
         ],
         "conflicts": []
       },
-      "path": "test/SKILL.md"
+      "path": "test\\SKILL.md"
     },
     {
       "name": "typescript-pro",
@@ -1504,7 +1014,7 @@
         "enhances": [],
         "conflicts": []
       },
-      "path": "typescript-pro/SKILL.md"
+      "path": "typescript-pro\\SKILL.md"
     },
     {
       "name": "ui-ux-pro-max",
@@ -1523,7 +1033,7 @@
         "enhances": [],
         "conflicts": []
       },
-      "path": "ui-ux-pro-max/SKILL.md"
+      "path": "ui-ux-pro-max\\SKILL.md"
     },
     {
       "name": "web-frontend",
@@ -1565,43 +1075,7 @@
         "enhances": [],
         "conflicts": []
       },
-      "path": "web-frontend/SKILL.md"
-    },
-    {
-      "name": "web-i18n",
-      "description": "Use when working with translations, locale routing, next-intl configuration, or internationalization patterns",
-      "category": "frontend-web",
-      "tier": "discoverable",
-      "keywords": [
-        "i18n",
-        "translation",
-        "locale",
-        "next-intl",
-        "internationalization",
-        "language"
-      ],
-      "platforms": [
-        "web"
-      ],
-      "triggers": [
-        "translation",
-        "locale",
-        "i18n",
-        "useTranslations",
-        "getTranslations",
-        "next-intl"
-      ],
-      "agent-affinity": [
-        "frontend-developer",
-        "developer"
-      ],
-      "connections": {
-        "extends": [],
-        "requires": [],
-        "enhances": [],
-        "conflicts": []
-      },
-      "path": "web-i18n/SKILL.md"
+      "path": "web-frontend\\SKILL.md"
     },
     {
       "name": "web-testing",
@@ -1641,7 +1115,7 @@
         "enhances": [],
         "conflicts": []
       },
-      "path": "web-testing/SKILL.md"
+      "path": "web-testing\\SKILL.md"
     },
     {
       "name": "websocket-engineer",
@@ -1660,7 +1134,18 @@
         "enhances": [],
         "conflicts": []
       },
-      "path": "websocket-engineer/SKILL.md"
+      "path": "websocket-engineer\\SKILL.md"
+    },
+    {
+      "name": "knowledge-retrieval",
+      "description": "Internal-first knowledge search across docs/, skills, and RAG to locate prior art and past decisions",
+      "category": "development-tools",
+      "tier": "discoverable",
+      "keywords": [],
+      "platforms": [
+        "all"
+      ],
+      "path": "knowledge-retrieval/SKILL.md"
     }
   ]
 }
