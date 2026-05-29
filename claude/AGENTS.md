@@ -17,7 +17,7 @@ This file provides guidance to Claude Code when working with code in this reposi
 ## Claude Code Agent System
 
 ### Configuration
-- **Agents**: `.claude/agents/` — 21 agents
+- **Agents**: `.claude/agents/` — 18 agents
 - **Commands**: `.claude/commands/` — Slash commands
 - **Skills**: `.claude/skills/` — Passive knowledge
 
@@ -51,8 +51,8 @@ On every user prompt, sense context before acting:
 
 | Intent | Natural prompts (examples) | Routes To |
 |--------|---------------------------|-----------|
-| Build / Create (frontend) | "add a button", "build a form", "implement this UI", "React component" | `frontend-developer` via Agent tool |
-| Build / Create (backend) | "add an endpoint", "implement this API", "write a migration", "server function" | `backend-developer` via Agent tool |
+| Build / Create (frontend) | "add a button", "build a form", "implement this UI", "React component" | `developer` via Agent tool |
+| Build / Create (backend) | "add an endpoint", "implement this API", "write a migration", "server function" | `developer` via Agent tool |
 | Build / Create (generic/fullstack) | "continue the plan", "implement X" (unclear layer) | `developer` via Agent tool |
 | Fix / Debug | "something is broken", "this crashes", "why does X happen", "it's not working" | `debugger` via Agent tool |
 | Plan / Design | "how should we build X", "let's plan", "what's the approach for" | `planner` via Agent tool |
@@ -65,7 +65,7 @@ On every user prompt, sense context before acting:
 | Test | "add tests", "is this covered", "validate this works" | `tester` via Agent tool |
 | Docs | "document this", "update the docs", "write a spec" | `docs-manager` via Agent tool |
 | Git | "commit", "push", "create a PR", "ship it", "done" | `git-manager` via Agent tool |
-| Onboard | "what is this project", "I'm new", "get started" | `/get-started` skill |
+| Onboard | "what is this project", "I'm new", "get started" | `researcher` via Agent tool |
 
 **Fuzzy matching** — classify by verb type when no exact signal word:
 - Creation verbs (add, make, create, build, set up) → Build
@@ -74,7 +74,7 @@ On every user prompt, sense context before acting:
 - Quality verbs (check, review, improve, clean up, refactor, simplify) → Review
 - Still ambiguous → infer from git context (staged files → Review, active plan → Build, error in prompt → Fix)
 
-**Less common intents**: scaffold → `/bootstrap`, convert → `/convert`, journal → `journal-writer`, MCP → `mcp-manager`, UI/UX design → `design-specialist`, brand/logo/CIP → `design-specialist`, banner/social assets → `design-specialist`, slides/pitch deck → `design-specialist`, UI component audit → `muji`, security hardening → `security-auditor`, CI/CD + infra → `devops-engineer`, brainstorm/ideate → `brainstormer`, Python/FastAPI backend → `backend-developer` + `fastapi-python` skill
+**Less common intents**: journal → `journal-writer`, MCP → `mcp-manager`, security hardening → `security-auditor`, CI/CD + infra → `devops-engineer`, brainstorm/ideate → `brainstormer`, Python/FastAPI backend → `developer` + `fastapi-python` skill
 
 ### Routing Rules
 
@@ -107,8 +107,8 @@ Add an `## Agents & Skills` section to every `plan.md`:
 
 | Phase | Agent | Skills Activated |
 |-------|-------|-----------------|
-| P1 — {name} | `backend-developer` | `golang-pro`, `postgres-pro` |
-| P2 — {name} | `frontend-developer` | `tanstack-start`, `react-expert` |
+| P1 — {name} | `developer` | `golang-pro`, `postgres-pro` |
+| P2 — {name} | `developer` | `react-expert`, `typescript-pro` |
 ...
 ```
 
@@ -116,7 +116,7 @@ Add an `## Agents & Skills` section to every `plan.md`:
 Add an `## Agent & Skills` block to every `phase-{N}-*.md` (after the Overview section):
 ```markdown
 ## Agent & Skills
-- **Agent**: `backend-developer`
+- **Agent**: `developer`
 - **Skills**: `golang-pro`, `postgres-pro`, `api-designer`
 - **Handoffs**:
   - After completion → `code-reviewer`
@@ -135,20 +135,17 @@ Do not guess. A wrong agent assignment causes the wrong skills to activate durin
 
 | Domain signal | Agent | Core skills |
 |---------------|-------|-------------|
-| Go / REST API / DB migrations | `backend-developer` | `golang-pro`, `postgres-pro`, `api-designer` |
-| React / TanStack Start / UI | `frontend-developer` | `tanstack-start`, `react-expert`, `typescript-pro` |
-| Auth / OAuth / JWT | `backend-developer` | `golang-pro`, `typescript-pro` |
-| SSE / WebSocket / real-time | `backend-developer` | `golang-pro`, `websocket-engineer` |
+| Go / REST API / DB migrations | `developer` | `golang-pro`, `postgres-pro`, `api-designer` |
+| React / UI / TypeScript frontend | `developer` | `react-expert`, `typescript-pro`, `web-frontend` |
+| Auth / OAuth / JWT | `developer` | `golang-pro`, `typescript-pro` |
+| SSE / WebSocket / real-time | `developer` | `golang-pro`, `websocket-engineer` |
 | E2E / unit / integration tests | `tester` | `playwright-expert`, `web-testing`, `test` |
 | Docker / CI/CD / infra | `devops-engineer` | `infra-docker`, `terraform-engineer` |
 | Security hardening | `security-auditor` | `fullstack-guardian` |
 | API schema design | `backend-architect` | `api-designer`, `architecture-designer` |
-| Routing / component hierarchy | `frontend-architect` | `tanstack-start`, `architecture-designer` |
-| UI/UX design, color, typography | `design-specialist` | `ui-ux-pro-max`, `ui-styling`, `design-system` |
-| Brand identity, logo, CIP | `design-specialist` | `design`, `brand`, `ui-ux-pro-max` |
-| Banners, social media assets | `design-specialist` | `banner-design`, `design`, `ui-styling` |
-| Presentations, pitch decks | `design-specialist` | `slides`, `design-system` |
-| Python / FastAPI backend | `backend-developer` | `fastapi-python`, `postgres-pro`, `api-designer` |
+| Routing / component hierarchy | `frontend-architect` | `react-expert`, `architecture-designer` |
+| UI/UX design, color, typography | `developer` | `ui-ux-pro-max`, `ui-styling` |
+| Python / FastAPI backend | `developer` | `fastapi-python`, `postgres-pro`, `api-designer` |
 
 ---
 
@@ -168,7 +165,7 @@ Do not guess. A wrong agent assignment causes the wrong skills to activate durin
 **Skill-to-agent dispatch**: After the main agent loads the related skills and determines that specialist execution is required, it must dispatch every related subagent needed to complete the workflow. Do not stop at skill loading or intent classification when downstream agents are implied by the prompt or plan.
 **Subagent constraint**: Subagents cannot spawn further subagents. Multi-agent workflows must be orchestrated from the main conversation. Skills that need multi-agent dispatch must NOT use `context: fork`.
 
-**Hybrid audits** (klara-theme code): Orchestrated from main context via `/audit` skill. Dispatch muji (Template A+) first, then code-reviewer with muji's report. Never free-form prompt muji — use structured delegation templates from `audit/references/delegation-templates.md`.
+**Hybrid audits**: Orchestrated from main context via `/audit` skill. Dispatch `code-reviewer` then `security-auditor` in sequence.
 
 **Document-driven agent sequencing** — When executing a plan or any document that mentions multiple agents (in `## Agents & Skills` tables, `## Agent & Skills` blocks, handoff chains, or inline text like "then run `code-reviewer`"), the main conversation must **trigger every listed agent in the order they appear**, not just the first one. This applies to:
 - Post-implementation agents: `code-reviewer`, `security-auditor`, `tester`, `docs-manager`
@@ -188,7 +185,7 @@ Do not guess. A wrong agent assignment causes the wrong skills to activate durin
 
 Example chain for a frontend plan with handoff:
 ```
-[Step 1/3] Running `frontend-developer`… (implements the feature)
+[Step 1/3] Running `developer`…         (implements the feature)
 [Step 2/3] Running `code-reviewer`…     (reviews the implementation)
 [Step 3/3] Running `security-auditor`… (checks for vulnerabilities)
 ✓ All 3 agents completed.

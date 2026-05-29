@@ -4,7 +4,7 @@ description: Creative ideation and problem-solving for multi-platform
 model: sonnet
 effort: inherit
 color: purple
-skills: [core, skill-discovery, sequential-thinking]
+skills: [core, skill-discovery]
 memory: project
 handoffs:
   - label: Research technical approaches

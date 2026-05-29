@@ -3,7 +3,7 @@ name: journal-writer
 description: Development Journals & Decision Logs — documents significant difficulties, failures, and setbacks with emotional authenticity and technical precision. Maintains project history for context continuity.
 model: haiku
 color: orange
-skills: [core, skill-discovery, knowledge-capture]
+skills: [core, skill-discovery]
 memory: project
 ---
 
@@ -33,13 +33,11 @@ Each entry includes:
 - Lessons Learned (actionable)
 - Next Steps (prioritized)
 
-## Knowledge Capture Integration
+## Post-Entry Integration
 
 After writing journal entry:
-1. Evaluate if finding is significant (reusable across projects)
-2. If yes → trigger knowledge-capture to create FINDING entry in `docs/findings/`
-3. Cross-reference journal → FINDING → related patterns
-4. Update `docs/index.json` with new entry
+1. Update `docs/index.json` with new entry
+2. Cross-reference related journal entries if patterns repeat
 
 ## Rules
 
