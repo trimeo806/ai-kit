@@ -138,9 +138,27 @@ This stamps `status: active` in `plan.md` and registers the plan in session stat
 
 ## Complexity Auto-Detection
 
-1. **Simple** (1 module, clear scope, < 5 files) → load `references/fast-mode.md`
-2. **Moderate** (multiple files, some research needed) → load `references/deep-mode.md`
-3. **Complex** (multi-module, cross-platform, needs dependency mapping) → load `references/parallel-mode.md`
+Use signal scoring, not sentence length. Scan the request for escalation signals before choosing a mode.
+
+### Signal Table
+
+| Signal | Keywords / Patterns | Mode |
+|--------|---------------------|------|
+| New user-facing feature | "new feature", "user story", "add feature", "end-to-end", "onboarding", "checkout", "auth flow", "payment", "design system component" | `:feature` |
+| Cross-module / cross-platform | "multiple platforms", "web and mobile", "frontend and backend", "service boundary", "microservice", "API + UI" | `:parallel` |
+| Explicit dependency structure | "dependencies", "phases", "parallel", "ownership matrix", "5+ files" implied | `:parallel` |
+| Research or investigation needed | "research", "investigate", "compare", "best approach", "what's the right way", "library selection", "migration", "security concern", "ADR" | `:deep` |
+| Simple bounded scope | single bug fix, single function, rename, config change, clear 1-2 file scope, no cross-module signals | `:fast` |
+
+### Scoring Rules
+
+1. **`:feature` check first** — any user-facing feature with business value → always `:feature`, skip other checks
+2. **`:parallel` check** — cross-module or multi-platform signals → `:parallel`
+3. **`:deep` check** — research or investigation needed → `:deep`
+4. **`:fast` default** — only when scope is clearly bounded AND no escalation signals present
+5. **Ambiguous → ask** — if signals conflict (e.g. "single sentence but mentions auth flow and mobile"), ask user: "This looks like a feature — should I use `--feature` mode for gate-based planning?"
+
+**Sentence length is NOT a signal.** A one-sentence request can be complex. Check the content, not the length.
 
 ## Platform Detection
 
@@ -148,12 +166,12 @@ Detect platform per `skill-discovery` protocol. Pass detected platform as contex
 
 ## Heuristics
 
-- Single sentence request → `:fast`
-- Request mentions "research" or "investigate" → `:deep`
-- Request mentions multiple platforms or modules → `:parallel`
+- Request is new user-facing feature → `:feature`
+- Request mentions research, investigation, or library comparison → `:deep`
+- Request mentions multiple platforms, modules, or explicit parallelism → `:parallel`
 - Request mentions "dependencies" or "phases" → `:parallel`
-- Request describes a new feature with business/user value → `:feature`
-- If unsure → default to `:fast`, escalate if needed
+- Clear single-file or single-function scope, no escalation signals → `:fast`
+- If unsure → ask rather than defaulting silently
 
 ## Planning Expertise
 

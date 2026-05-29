@@ -80,6 +80,7 @@ For non-hybrid dispatches (`--ui`, `--code`, `--a11y`):
 5. **Wait** for specialist report
 6. Run build verification: `node .claude/hooks/lib/build-gate.cjs` — append `## Build Verification` to report (advisory)
 7. Write `session.json` and update `reports/index.json`
+8. **(`--code` only)** Run plan phase update — see **Plan Phase Update** section below
 
 **Output contract**: `references/output-contract.md` is the single source of truth for paths and responsibilities.
 
@@ -102,6 +103,46 @@ For non-hybrid dispatches (`--ui`, `--code`, `--a11y`):
 | `references/ui-findings-schema.md` | Schema for `reports/known-findings/ui-components.json` |
 | `references/session-json-schema.md` | Schema for `session.json` — per-session metadata written to every session folder |
 | `references/delegation-templates.md` | Structured handoff templates for specialist delegation |
+
+## Plan Phase Update
+
+**Triggered automatically after `--code` audit completes.** Closes the plan → cook → audit loop by writing findings back to the active phase file.
+
+### Steps
+
+1. Run: `node .claude/scripts/get-active-plan.cjs`
+2. **If result = `none`**: skip this section entirely. No plan to update.
+3. **If plan found**: read `plan.md` → identify the active phase row (`status: in_progress` or most recently `done`)
+4. Read the phase file (e.g. `phase-2-api-layer.md`)
+5. Find the **Validation Criteria** block in the phase file
+6. For each criterion, check audit findings:
+   - No critical/high finding touching that criterion → mark `✅ passed`
+   - Critical or high finding against that criterion → mark `❌ failed — see audit report`
+   - Not covered by audit → mark `⚪ not verified`
+7. Append or update a `## Audit Verification` block at the bottom of the phase file:
+
+```markdown
+## Audit Verification
+
+Audit: `reports/sessions/{session_id}/code-audit.md`
+Date: YYYY-MM-DD
+
+| Criterion | Result | Finding |
+|-----------|--------|---------|
+| No SQL injection in query layer | ✅ passed | — |
+| Auth middleware applied to all routes | ❌ failed | Critical: route /api/admin missing auth guard |
+| Error responses do not leak stack traces | ✅ passed | — |
+```
+
+8. If any criteria failed: update phase frontmatter `status: needs-rework`. If all passed: leave status as-is (phase owner decides when to mark `done`).
+9. Report the update to the user: "Phase N validation updated — X passed, Y failed, Z not verified."
+
+### Rules
+
+- Never mark a criterion as `passed` if a critical or high finding touches the same file or function
+- Medium/low findings do not cause a fail — note them in the Finding column with severity prefix
+- If the phase file has no Validation Criteria block, skip steps 6-8 and note "No validation criteria found in phase file"
+- Do NOT rewrite the full phase file — only append/update the `## Audit Verification` block
 
 ## Auto-Detection
 
