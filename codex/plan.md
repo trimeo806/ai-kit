@@ -12,7 +12,7 @@ breaking: false
 # Claude to Codex Migration
 
 ## Purpose
-Create a Codex-ready package under `tri-ai-kit/codex/` from the reusable Claude package in `tri-ai-kit/claude/`.
+Create a Codex-ready package under `ai-kit/codex/` from the reusable Claude package in `ai-kit/claude/`.
 
 ## Table of Contents
 - [Source Contract](#source-contract)
@@ -30,7 +30,7 @@ Create a Codex-ready package under `tri-ai-kit/codex/` from the reusable Claude 
 - [Related Documents](#related-documents)
 
 ## Source Contract
-- Canonical reusable package source: `tri-ai-kit/claude/`
+- Canonical reusable package source: `ai-kit/claude/`
 - Canonical instruction sources:
   - `claude/CLAUDE.md` - package overview, architecture, workflow, operating rules
   - `claude/AGENTS.md` - routing, intent map, orchestration, planning protocol
@@ -41,8 +41,8 @@ Create a Codex-ready package under `tri-ai-kit/codex/` from the reusable Claude 
   - `claude/.claude/agent-memory/`
   - `claude/.claude/output-styles/`
   - `claude/.claude/settings.json`
-  - `claude/.claude/.tri-ai-kit.json`
-  - `claude/.claude/.tri-ignore`
+  - `claude/.claude/.aikit.json`
+  - `claude/.claude/.aikit-ignore`
 - Canonical workflow docs:
   - `claude/WORKFLOW.md`
   - `claude/claude-setup-instructions.md`
@@ -64,17 +64,17 @@ Create a Codex-ready package under `tri-ai-kit/codex/` from the reusable Claude 
   - `codex/.codex/runtime/`
   - `codex/.codex/agent-memory/`
   - `codex/.codex/output-styles/`
-  - `codex/.codex/.tri-ai-kit.json`
-  - `codex/.codex/.tri-ignore`
+  - `codex/.codex/.aikit.json`
+  - `codex/.codex/.aikit-ignore`
 - Generated Codex runtime data contract:
   - `codex/.kit-data/improvements/current-session.json`
   - `codex/.kit-data/improvements/sessions.jsonl`
-- Generated tri-ai-kit internal metadata:
+- Generated ai-kit internal metadata:
   - `codex/.agents/skills/skill-index.json`
 - Legacy `.github/copilot-instructions.md` output is not part of the primary Codex package contract.
 
 ## Project Installation Pattern
-- `tri-ai-kit/codex/` is a generated distribution package, not the live install location used by Codex in another repository.
+- `ai-kit/codex/` is a generated distribution package, not the live install location used by Codex in another repository.
 - To use the package in another project, install its contents into the target repository root with the same relative layout:
   - `codex/AGENTS.md` -> `<target>/AGENTS.md`
   - `codex/WORKFLOW.md` -> `<target>/WORKFLOW.md`
@@ -98,7 +98,7 @@ Create a Codex-ready package under `tri-ai-kit/codex/` from the reusable Claude 
   - existing root `AGENTS.md` must be merged into a single root instruction file because Codex loads at most one root project instruction file per directory
   - existing `.codex/config.toml` must be merged, not blindly overwritten
   - existing `.codex/hooks.json` must be merged, not blindly overwritten
-  - existing `.agents/skills/` and `.codex/agents/` content must be preserved alongside the installed tri-ai-kit content
+  - existing `.agents/skills/` and `.codex/agents/` content must be preserved alongside the installed ai-kit content
 - `codex/codex-setup-instructions.md` is the canonical install and refresh procedure for target repos.
 
 ## Instruction Merge Rule
@@ -113,7 +113,7 @@ Create a Codex-ready package under `tri-ai-kit/codex/` from the reusable Claude 
 - Required transforms:
   - Claude-specific phrasing -> Codex-appropriate phrasing
   - source paths under `claude/.claude/` -> generated paths under `codex/.codex/` and `codex/.agents/`
-  - references to Claude-only tools/events -> Codex-native equivalent or tri-ai-kit compatibility runtime wording
+  - references to Claude-only tools/events -> Codex-native equivalent or ai-kit compatibility runtime wording
   - remove packaging claims that point at repo-root `.github/` as the main install target
 - Size guard:
   - keep the generated `codex/AGENTS.md` within Codex project-doc limits
@@ -136,7 +136,7 @@ Create a Codex-ready package under `tri-ai-kit/codex/` from the reusable Claude 
   - `default` -> inherit package/session defaults unless an explicit override is configured
   - unmapped permission values fail the generator
 - Claude `memory:` does not become a native Codex agent field:
-  - preserve memory behavior through the tri-ai-kit memory adapter under `codex/.codex/agent-memory/`
+  - preserve memory behavior through the ai-kit memory adapter under `codex/.codex/agent-memory/`
   - inject any required usage guidance into `developer_instructions`
 - Claude `tools:` does not become a native custom-agent contract unless Codex adds a matching field:
   - preserve tool expectations as text in `developer_instructions`
@@ -151,9 +151,9 @@ Create a Codex-ready package under `tri-ai-kit/codex/` from the reusable Claude 
 - Hook implementation layers:
   - native Codex hook registration in `codex/.codex/hooks.json`
   - Codex feature and environment settings in `codex/.codex/config.toml`
-  - tri-ai-kit compatibility runtime in `codex/.codex/runtime/` for behaviors Codex does not expose directly
+  - ai-kit compatibility runtime in `codex/.codex/runtime/` for behaviors Codex does not expose directly
 - Native Codex hooks are used where available.
-- tri-ai-kit compatibility runtime is required for:
+- ai-kit compatibility runtime is required for:
   - `SubagentStart` / `SubagentStop`
   - non-Bash `PreToolUse` and `PostToolUse` behaviors
   - status-line and notification parity where native Codex events/config are insufficient
@@ -165,7 +165,7 @@ Create a Codex-ready package under `tri-ai-kit/codex/` from the reusable Claude 
     - Windows via WSL2 or an equivalent supported POSIX execution layer until native Windows hook support returns
 - Phase 3 and phase 4 cannot close until every Claude hook is mapped to either:
   - a native Codex hook
-  - a tri-ai-kit compatibility runtime trigger
+  - a ai-kit compatibility runtime trigger
 
 ## Migration Matrix
 
@@ -175,21 +175,21 @@ Create a Codex-ready package under `tri-ai-kit/codex/` from the reusable Claude 
 | Workflow | `claude/WORKFLOW.md` | `codex/WORKFLOW.md` | Copy with path and platform wording updates |
 | Agents | `claude/.claude/agents/*.md` | `codex/.codex/agents/*.toml` | Generate `name`, `description`, `developer_instructions`, explicit `skills.config`, and mapped model/permission fields |
 | Skills | `claude/.claude/skills/<skill>/` | `codex/.agents/skills/<skill>/` | Include `SKILL.md`, `references/**`, and any auxiliary files Codex skills can use |
-| Skill index | `claude/.claude/skills/skill-index.json` | `codex/.agents/skills/skill-index.json` | tri-ai-kit internal discovery artifact only; Codex must not depend on it |
+| Skill index | `claude/.claude/skills/skill-index.json` | `codex/.agents/skills/skill-index.json` | ai-kit internal discovery artifact only; Codex must not depend on it |
 | Native hook config | `claude/.claude/settings.json` hook declarations | `codex/.codex/hooks.json` | Translate Claude hook registration into Codex hook config |
 | Hook scripts | `claude/.claude/hooks/**` | `codex/.codex/hooks/**` | Port or wrap each hook explicitly |
 | Hook parity runtime | Claude-only lifecycle semantics | `codex/.codex/runtime/**` | Compatibility layer for missing Codex hook surfaces and Windows execution path |
 | Agent memory | `claude/.claude/agent-memory/**` | `codex/.codex/agent-memory/**` | Preserve file layout and indexing rules |
 | Improvement store | runtime contract from Claude hooks | `codex/.kit-data/improvements/**` | Covers metrics and lesson-capture flow |
-| Runtime config | `claude/.claude/settings.json`, `.tri-ai-kit.json`, `.tri-ignore`, `output-styles/**` | `codex/.codex/config.toml` plus package-local support files | `config.toml` carries feature/config defaults only, not hook definitions |
+| Runtime config | `claude/.claude/settings.json`, `.aikit.json`, `.aikit-ignore`, `output-styles/**` | `codex/.codex/config.toml` plus package-local support files | `config.toml` carries feature/config defaults only, not hook definitions |
 | Setup docs | `claude/claude-setup-instructions.md` + Codex package rules | `codex/codex-setup-instructions.md` | Must describe `codex/` package install and Windows WSL/runtime requirements |
 
 ## Agents & Skills
 
 | Phase | Agent | Skills Activated |
 |-------|-------|-----------------|
-| P1 - Source and target contract lock | `project-manager` | `tri-ai-kit`, `skill-discovery`, `research`, `doc-coauthoring`, `sequential-thinking` |
-| P2 - Codex package generator | `developer` | `core`, `code-documenter`, `tri-ai-kit`, `skill-discovery` |
+| P1 - Source and target contract lock | `project-manager` | `ai-kit`, `skill-discovery`, `research`, `doc-coauthoring`, `sequential-thinking` |
+| P2 - Codex package generator | `developer` | `core`, `code-documenter`, `ai-kit`, `skill-discovery` |
 | P3 - Hooks, memory, and runtime parity | `developer` | `core`, `knowledge-capture`, `knowledge-retrieval`, `skill-discovery` |
 | P4 - Validation, docs, and release contract | `tester` | `test`, `core`, `skill-discovery`, `docs` |
 
@@ -200,11 +200,11 @@ Create a Codex-ready package under `tri-ai-kit/codex/` from the reusable Claude 
 - P4 - Validation, docs, and release contract
 
 ## Success Criteria
-- `codex/` is generated only from `tri-ai-kit/claude/`.
+- `codex/` is generated only from `ai-kit/claude/`.
 - `codex/AGENTS.md` is the Codex instruction file and follows the defined merge rule.
 - Every generated custom agent file contains the required Codex fields and explicit skill bindings.
 - Agent and skill exports include full skill directories, not just `SKILL.md`.
-- `skill-index.json` is retained only as tri-ai-kit internal metadata and is not treated as a Codex-native dependency.
+- `skill-index.json` is retained only as ai-kit internal metadata and is not treated as a Codex-native dependency.
 - Hook registration is emitted to `codex/.codex/hooks.json`, while `codex/.codex/config.toml` contains only feature/config settings.
 - Hook and memory coverage includes `agent-memory`, `.kit-data/improvements`, and the compatibility runtime needed for full parity.
 - Windows execution requirements are explicit and validated through the standardized runtime path.
@@ -219,7 +219,7 @@ Create a Codex-ready package under `tri-ai-kit/codex/` from the reusable Claude 
 - A dry-run and a generated-package verification pass confirm count parity, path parity, stale-reference cleanup, and hook parity coverage.
 
 ## Risks
-- Full parity depends on a tri-ai-kit compatibility runtime because native Codex hooks do not cover every Claude lifecycle event.
+- Full parity depends on a ai-kit compatibility runtime because native Codex hooks do not cover every Claude lifecycle event.
 - As of 2026-04-09, Windows users need a supported POSIX execution layer for Codex hook parity until native Windows hooks return.
 - Claude model labels and permission modes do not map 1:1 to Codex and require maintained translation tables.
 - Generated files can drift unless the sync script is treated as the only write path.

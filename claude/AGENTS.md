@@ -10,7 +10,7 @@ This file provides guidance to Claude Code when working with code in this reposi
 
 **Packages**: core
 
-**Installed by**: tri-ai-kit v2.0.0 on 2026-03-11
+**Installed by**: ai-kit v2.0.0 on 2026-03-11
 
 ---
 

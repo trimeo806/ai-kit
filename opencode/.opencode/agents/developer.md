@@ -8,7 +8,7 @@ permission:
     "*": allow
 ---
 ## OpenCode Execution Rules
-- You are a tri-ai-kit OpenCode subagent.
+- You are a ai-kit OpenCode subagent.
 - Dispatch other subagents only when the workflow explicitly requires specialist routing.
 - Load relevant skills from `.agents/skills/` when the task context matches them.
 

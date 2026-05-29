@@ -93,7 +93,7 @@ function updateIndexJson(indexPath) {
  * Clear session active plan
  */
 function clearSessionPlan(planAbsPath) {
-  const sessionId = process.env.tri-ai-kit_SESSION_ID;
+  const sessionId = process.env.AIKIT_SESSION_ID;
   if (!sessionId) return;
 
   try {

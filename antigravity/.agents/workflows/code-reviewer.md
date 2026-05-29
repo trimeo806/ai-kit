@@ -96,4 +96,4 @@ ALWAYS: mkdir -p {session_folder} BEFORE any sub-agent dispatch or file write
 ```
 
 ---
-*code-reviewer is a tri-ai-kit workflow for comprehensive code quality and security assessment*
+*code-reviewer is a ai-kit workflow for comprehensive code quality and security assessment*

@@ -1,6 +1,6 @@
-# tri-ai-kit Codex Runtime
+# ai-kit Codex Runtime
 
-This directory contains the compatibility runtime required to preserve tri-ai-kit behavior that Codex does not expose natively.
+This directory contains the compatibility runtime required to preserve ai-kit behavior that Codex does not expose natively.
 
 ## Native Codex coverage
 - `.codex/hooks.json` contains native hook registrations for `SessionStart`, `UserPromptSubmit`, `Stop`, and the Bash-supported subset of `PreToolUse`.
@@ -9,7 +9,7 @@ This directory contains the compatibility runtime required to preserve tri-ai-ki
 ## Compatibility runtime coverage
 - `SubagentStart` and `SubagentStop` parity is tracked here because Codex does not currently expose those lifecycle events natively.
 - Non-Bash `PreToolUse` and `PostToolUse` parity is tracked here because the current Codex runtime only emits `Bash` for those events.
-- `statusline-command.sh` is preserved here for tri-ai-kit runtime parity work; Codex does not currently expose Claude's status-line hook surface.
+- `statusline-command.sh` is preserved here for ai-kit runtime parity work; Codex does not currently expose Claude's status-line hook surface.
 
 ## Windows
 - Native Codex hook support on Windows is currently unavailable.
@@ -17,4 +17,4 @@ This directory contains the compatibility runtime required to preserve tri-ai-ki
 
 ## Files
 - `parity-manifest.json` records the native-vs-runtime mapping for every Claude hook entry.
-- `assets/` contains shared tri-ai-kit runtime assets used by improvement and runtime workflows.
+- `assets/` contains shared ai-kit runtime assets used by improvement and runtime workflows.

@@ -1,11 +1,11 @@
 # Codex Kit Setup Instructions
 
 ## Purpose
-Install the generated `tri-ai-kit/codex/` package into another repository so Codex can use the kit as that project's repo-scoped configuration.
+Install the generated `ai-kit/codex/` package into another repository so Codex can use the kit as that project's repo-scoped configuration.
 
 ## What This Package Is
-- `tri-ai-kit/codex/` is a generated distribution package.
-- Codex does not run from `tri-ai-kit/codex/` when you are inside some other repository.
+- `ai-kit/codex/` is a generated distribution package.
+- Codex does not run from `ai-kit/codex/` when you are inside some other repository.
 - To use the kit in another project, copy or sync the package contents into that target repository's root.
 
 Official Codex behavior this setup follows:
@@ -24,17 +24,17 @@ References:
 ## Before You Start
 
 ### 1. Generate the Codex package
-Run the generator from the `tri-ai-kit` repository:
+Run the generator from the `ai-kit` repository:
 
 ```powershell
-cd C:\private\tri-ai-kit
+cd C:\private\ai-kit
 .\scripts\sync-to-codex.ps1
 ```
 
 Expected output package:
 
 ```text
-tri-ai-kit/codex/
+ai-kit/codex/
   AGENTS.md
   WORKFLOW.md
   .agents/skills/
@@ -52,7 +52,7 @@ tri-ai-kit/codex/
 - `copy/sync`:
   Recommended for normal use. The target repo gets its own copy of the generated package.
 - `symlink`:
-  Useful while developing the kit itself. Changes in `tri-ai-kit/codex/` are reflected immediately in the target repo.
+  Useful while developing the kit itself. Changes in `ai-kit/codex/` are reflected immediately in the target repo.
 
 ### 2.1 Recommended installer
 Use the installer script instead of manual copy when possible.
@@ -60,28 +60,28 @@ Use the installer script instead of manual copy when possible.
 Clean or merge install (copy mode):
 
 ```powershell
-cd C:\private\tri-ai-kit
+cd C:\private\ai-kit
 .\scripts\install-codex-kit.ps1 -TargetRepo "C:\path\to\your-project"
 ```
 
 Preview only:
 
 ```powershell
-cd C:\private\tri-ai-kit
+cd C:\private\ai-kit
 .\scripts\install-codex-kit.ps1 -TargetRepo "C:\path\to\your-project" -DryRun
 ```
 
 Symlink install (clean target only):
 
 ```powershell
-cd C:\private\tri-ai-kit
+cd C:\private\ai-kit
 .\scripts\install-codex-kit.ps1 -TargetRepo "C:\path\to\your-project" -Mode symlink
 ```
 
 ### 3. Know the Windows limitation
 As of April 9, 2026, the official Codex hooks docs say hooks are experimental and temporarily disabled on native Windows.
 
-For full tri-ai-kit hook parity:
+For full ai-kit hook parity:
 - use Linux or macOS, or
 - use Windows through WSL2 or another supported POSIX execution layer
 
@@ -118,16 +118,16 @@ Target repo example:
 ```
 
 ### Copy mode
-From the `tri-ai-kit` repo:
+From the `ai-kit` repo:
 
 ```powershell
 $Target = "C:\path\to\your-project"
 
-Copy-Item C:\private\tri-ai-kit\codex\AGENTS.md $Target -Force
-Copy-Item C:\private\tri-ai-kit\codex\WORKFLOW.md $Target -Force
-Copy-Item C:\private\tri-ai-kit\codex\.agents $Target -Recurse -Force
-Copy-Item C:\private\tri-ai-kit\codex\.codex $Target -Recurse -Force
-Copy-Item C:\private\tri-ai-kit\codex\.kit-data $Target -Recurse -Force
+Copy-Item C:\private\ai-kit\codex\AGENTS.md $Target -Force
+Copy-Item C:\private\ai-kit\codex\WORKFLOW.md $Target -Force
+Copy-Item C:\private\ai-kit\codex\.agents $Target -Recurse -Force
+Copy-Item C:\private\ai-kit\codex\.codex $Target -Recurse -Force
+Copy-Item C:\private\ai-kit\codex\.kit-data $Target -Recurse -Force
 ```
 
 ### Symlink mode
@@ -135,11 +135,11 @@ Copy-Item C:\private\tri-ai-kit\codex\.kit-data $Target -Recurse -Force
 ```powershell
 $Target = "C:\path\to\your-project"
 
-New-Item -ItemType SymbolicLink -Path (Join-Path $Target "AGENTS.md") -Target "C:\private\tri-ai-kit\codex\AGENTS.md"
-New-Item -ItemType SymbolicLink -Path (Join-Path $Target "WORKFLOW.md") -Target "C:\private\tri-ai-kit\codex\WORKFLOW.md"
-New-Item -ItemType SymbolicLink -Path (Join-Path $Target ".agents") -Target "C:\private\tri-ai-kit\codex\.agents"
-New-Item -ItemType SymbolicLink -Path (Join-Path $Target ".codex") -Target "C:\private\tri-ai-kit\codex\.codex"
-New-Item -ItemType SymbolicLink -Path (Join-Path $Target ".kit-data") -Target "C:\private\tri-ai-kit\codex\.kit-data"
+New-Item -ItemType SymbolicLink -Path (Join-Path $Target "AGENTS.md") -Target "C:\private\ai-kit\codex\AGENTS.md"
+New-Item -ItemType SymbolicLink -Path (Join-Path $Target "WORKFLOW.md") -Target "C:\private\ai-kit\codex\WORKFLOW.md"
+New-Item -ItemType SymbolicLink -Path (Join-Path $Target ".agents") -Target "C:\private\ai-kit\codex\.agents"
+New-Item -ItemType SymbolicLink -Path (Join-Path $Target ".codex") -Target "C:\private\ai-kit\codex\.codex"
+New-Item -ItemType SymbolicLink -Path (Join-Path $Target ".kit-data") -Target "C:\private\ai-kit\codex\.kit-data"
 ```
 
 ## Install Into a Repository That Already Uses Codex
@@ -157,7 +157,7 @@ Codex reads at most one project instruction file per directory. That means the t
 
 Merge rule:
 - keep the target repo's project-specific rules
-- add the tri-ai-kit base orchestration rules into the same file
+- add the ai-kit base orchestration rules into the same file
 - if both files define the same policy, the merged file must choose one final rule explicitly
 
 Recommended structure:
@@ -168,8 +168,8 @@ Recommended structure:
 ## Project-specific rules
 - Local repo rules here
 
-## tri-ai-kit base
-- Installed from tri-ai-kit/codex/AGENTS.md
+## ai-kit base
+- Installed from ai-kit/codex/AGENTS.md
 ```
 
 ### `.codex/config.toml`
@@ -181,8 +181,8 @@ Keep:
 - target repo's project-specific sandbox or approval settings
 
 Add:
-- tri-ai-kit required feature flags such as hooks enablement
-- tri-ai-kit agent/runtime defaults needed by the package
+- ai-kit required feature flags such as hooks enablement
+- ai-kit agent/runtime defaults needed by the package
 
 ### `.codex/hooks.json`
 Merge, do not replace.
@@ -191,22 +191,22 @@ Keep:
 - target repo's existing hook registrations
 
 Add:
-- tri-ai-kit hook registrations
+- ai-kit hook registrations
 
 If both files register hooks for the same event:
 - keep both unless they conflict
 - if they conflict, define a single final command chain explicitly
 
 ### `.agents/skills/`
-Copy tri-ai-kit skills into `.agents/skills/` without removing the repo's existing skills.
+Copy ai-kit skills into `.agents/skills/` without removing the repo's existing skills.
 
 Rules:
 - preserve project-local skills
-- avoid renaming tri-ai-kit skills unless there is a real name collision
+- avoid renaming ai-kit skills unless there is a real name collision
 - if two skills share the same skill `name`, resolve the collision before relying on implicit invocation
 
 ### `.codex/agents/`
-Copy tri-ai-kit custom agents into `.codex/agents/` without removing project-local agents.
+Copy ai-kit custom agents into `.codex/agents/` without removing project-local agents.
 
 Rules:
 - preserve project-local agents
@@ -234,7 +234,7 @@ In Codex CLI or IDE:
 ```
 
 Expected result:
-- tri-ai-kit skills appear in the skill list
+- ai-kit skills appear in the skill list
 
 ### 3. Verify custom agents are available
 Check that target repo contains:
@@ -244,7 +244,7 @@ Check that target repo contains:
 ```
 
 Expected result:
-- tri-ai-kit custom agents exist as TOML files
+- ai-kit custom agents exist as TOML files
 
 ### 4. Verify hook configuration
 Check that target repo contains:
@@ -266,13 +266,13 @@ For full parity:
 ## Refresh the Kit in a Target Project
 When the source of truth changes:
 
-1. Edit only `tri-ai-kit/claude/`
-2. Regenerate `tri-ai-kit/codex/`
+1. Edit only `ai-kit/claude/`
+2. Regenerate `ai-kit/codex/`
 3. Re-copy or re-sync the package into the target repo
 4. Re-merge any target-specific `AGENTS.md`, `.codex/config.toml`, and `.codex/hooks.json` customizations if they are not generator-owned
 
 ## Notes About `skill-index.json`
-- `codex/.agents/skills/skill-index.json` is kept for tri-ai-kit internal discovery logic.
+- `codex/.agents/skills/skill-index.json` is kept for ai-kit internal discovery logic.
 - It is not part of the Codex-native contract.
 - Do not treat it as the source of truth for Codex skill discovery.
 
@@ -280,7 +280,7 @@ When the source of truth changes:
 `scripts/install-codex-kit.ps1` now handles:
 - clean install into a repo with no Codex files
 - merge install into a repo with existing Codex files
-- root `AGENTS.md` merge using tri-ai-kit managed markers
+- root `AGENTS.md` merge using ai-kit managed markers
 - `.codex/config.toml` merge while ensuring `codex_hooks = true`
 - `.codex/hooks.json` merge while preserving existing hook entries
 - preservation of project-local `.agents/skills/` and `.codex/agents/`

@@ -84,9 +84,9 @@ function findActivePlanByFrontmatter(plansDir) {
  */
 function main() {
   // Get session ID from environment
-  const sessionId = process.env.tri-ai-kit_SESSION_ID;
+  const sessionId = process.env.AIKIT_SESSION_ID;
   if (!sessionId) {
-    console.error('Warning: tri-ai-kit_SESSION_ID not set');
+    console.error('Warning: AIKIT_SESSION_ID not set');
     console.log('none');
     process.exit(0);
   }

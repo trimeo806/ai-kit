@@ -59,7 +59,7 @@
       {
         "_comment": "Claude agent footer reference",
         "from": "is an tri_ai_kit agent",
-        "to": "is a tri-ai-kit workflow"
+        "to": "is a ai-kit workflow"
       },
       {
         "_comment": "from '.claude/skills/' skill loader lines",
@@ -120,7 +120,7 @@
     }
   },
   "codex": {
-    "_comment": "Official Codex package layout under tri-ai-kit/codex.",
+    "_comment": "Official Codex package layout under ai-kit/codex.",
     "packageRoot": "codex",
     "generatedPaths": [
       "codex/AGENTS.md",
@@ -133,8 +133,8 @@
       "codex/.codex/runtime",
       "codex/.codex/agent-memory",
       "codex/.codex/output-styles",
-      "codex/.codex/.tri-ai-kit.json",
-      "codex/.codex/.tri-ignore",
+      "codex/.codex/.aikit.json",
+      "codex/.codex/.aikit-ignore",
       "codex/.kit-data/improvements"
     ],
     "documents": {
@@ -189,12 +189,12 @@
         "target": "codex/.codex/runtime/statusline-command.sh"
       },
       {
-        "source": "claude/.claude/.tri-ai-kit.json",
-        "target": "codex/.codex/.tri-ai-kit.json"
+        "source": "claude/.claude/.aikit.json",
+        "target": "codex/.codex/.aikit.json"
       },
       {
-        "source": "claude/.claude/.tri-ignore",
-        "target": "codex/.codex/.tri-ignore"
+        "source": "claude/.claude/.aikit-ignore",
+        "target": "codex/.codex/.aikit-ignore"
       }
     ],
     "improvementStore": {
@@ -263,13 +263,13 @@
           "isRegex": true
         },
         {
-          "from": "\\.claude/\\.tri-ai-kit\\.json",
-          "to": ".codex/.tri-ai-kit.json",
+          "from": "\\.claude/\\.ai-kit\\.json",
+          "to": ".codex/.aikit.json",
           "isRegex": true
         },
         {
-          "from": "\\.claude/\\.tri-ignore",
-          "to": ".codex/.tri-ignore",
+          "from": "\\.claude/\\.aikit-ignore",
+          "to": ".codex/.aikit-ignore",
           "isRegex": true
         },
         {
@@ -344,11 +344,11 @@
         },
         {
           "from": "is an tri_ai_kit agent",
-          "to": "is a tri-ai-kit Codex agent"
+          "to": "is a ai-kit Codex agent"
         },
         {
-          "from": "is a tri-ai-kit workflow",
-          "to": "is a tri-ai-kit Codex agent"
+          "from": "is a ai-kit workflow",
+          "to": "is a ai-kit Codex agent"
         }
       ]
     },
@@ -378,7 +378,7 @@
     }
   },
   "opencode": {
-    "_comment": "Official OpenCode package layout under tri-ai-kit/opencode.",
+    "_comment": "Official OpenCode package layout under ai-kit/opencode.",
     "packageRoot": "opencode",
     "generatedPaths": [
       "opencode/AGENTS.md",
@@ -642,11 +642,11 @@
         },
         {
           "from": "is an tri_ai_kit agent",
-          "to": "is a tri-ai-kit OpenCode subagent"
+          "to": "is a ai-kit OpenCode subagent"
         },
         {
-          "from": "is a tri-ai-kit workflow",
-          "to": "is a tri-ai-kit OpenCode subagent"
+          "from": "is a ai-kit workflow",
+          "to": "is a ai-kit OpenCode subagent"
         }
       ]
     }

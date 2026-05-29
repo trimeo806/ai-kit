@@ -2,7 +2,7 @@
 /**
  * pattern-matcher.cjs - Gitignore-spec compliant pattern matching
  *
- * Uses 'ignore' package for .tri-ignore parsing and path matching.
+ * Uses 'ignore' package for .aikit-ignore parsing and path matching.
  * Supports negation patterns (!) for allowlisting.
  */
 
@@ -10,7 +10,7 @@ const Ignore = require('./vendor/ignore.cjs');
 const fs = require('fs');
 const path = require('path');
 
-// Default patterns if .tri-ignore doesn't exist or is empty
+// Default patterns if .aikit-ignore doesn't exist or is empty
 // Only includes directories with HEAVY file counts (1000+ files typical)
 const DEFAULT_PATTERNS = [
   // JavaScript/TypeScript - package dependencies & build outputs
@@ -34,10 +34,10 @@ const DEFAULT_PATTERNS = [
 ];
 
 /**
- * Load patterns from .tri-ignore file
+ * Load patterns from .aikit-ignore file
  * Falls back to DEFAULT_PATTERNS if file doesn't exist or is empty
  *
- * @param {string} ignoreFilePath - Path to .tri-ignore file
+ * @param {string} ignoreFilePath - Path to .aikit-ignore file
  * @returns {string[]} Array of patterns
  */
 function loadPatterns(ignoreFilePath) {
@@ -54,7 +54,7 @@ function loadPatterns(ignoreFilePath) {
 
     return patterns.length > 0 ? patterns : DEFAULT_PATTERNS;
   } catch (error) {
-    console.error('WARN: Failed to read .tri-ignore:', error.message);
+    console.error('WARN: Failed to read .aikit-ignore:', error.message);
     return DEFAULT_PATTERNS;
   }
 }
@@ -63,7 +63,7 @@ function loadPatterns(ignoreFilePath) {
  * Create a matcher from patterns
  * Normalizes patterns to match anywhere in the path tree
  *
- * @param {string[]} patterns - Array of patterns from .tri-ignore
+ * @param {string[]} patterns - Array of patterns from .aikit-ignore
  * @returns {Object} Matcher object with ig instance and pattern info
  */
 function createMatcher(patterns) {
@@ -157,7 +157,7 @@ function matchPath(matcher, testPath) {
 /**
  * Find which original pattern matched (for error messages)
  *
- * @param {string[]} originalPatterns - Original patterns from .tri-ignore
+ * @param {string[]} originalPatterns - Original patterns from .aikit-ignore
  * @param {string} path - The path that was blocked
  * @returns {string} The pattern that matched
  */

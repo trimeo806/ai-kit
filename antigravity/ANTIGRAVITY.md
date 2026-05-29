@@ -223,7 +223,7 @@ To use this kit with Antigravity, you need to use the workflows and skills synce
 Copy the core files into your project root:
 
 ```bash
-# From the tri-ai-kit directory, copy into your target project
+# From the ai-kit directory, copy into your target project
 cp -r _agents /path/to/your-project/
 cp -r skills /path/to/your-project/
 cp antigravity/WORKFLOW.md /path/to/your-project/WORKFLOW.md
@@ -282,7 +282,7 @@ Antigravity workflows and skills are directly auto-generated from the `.claude/`
 | **Remove lines** | Deletes any lines containing `node .claude/scripts/` and specific CLI script calls |
 | **Tool rewrite** | `AskUserQuestion tool` → `ask the user` |
 | **Agent ref rewrite** | `via Agent tool` → `via the workflow` |
-| **Footer rewrite** | `is an tri_ai_kit agent` → `is a tri-ai-kit workflow` |
+| **Footer rewrite** | `is an tri_ai_kit agent` → `is a ai-kit workflow` |
 
 **Skills (`.claude/skills/` → `skills/`)**
 | Transform | Detail |
@@ -342,7 +342,7 @@ jobs:
 
 ### Troubleshooting
 
-- **Script reports "path not found" error:** Make sure you run from the repo root: `cd C:\private\tri-ai-kit && .\scripts\sync-to-antigravity.ps1`
+- **Script reports "path not found" error:** Make sure you run from the repo root: `cd C:\private\ai-kit && .\scripts\sync-to-antigravity.ps1`
 - **Agent output has remaining Claude-specific content:** Run with `-Verbose` to inspect the transform log, then add the missing pattern to `sync-config.json → agents.bodyTransforms`
 - **skill-index.json is missing some skills:** Verify that the `SKILL.md` in `.claude/skills/{skill}/` has YAML frontmatter including `name` and `description`
 - **I want to revert to the state before the sync:** Simply discard the generated changes: `git checkout -- _agents/ skills/` — the `.claude/` source remains unaffected

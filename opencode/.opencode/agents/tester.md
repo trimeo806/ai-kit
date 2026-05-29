@@ -7,7 +7,7 @@ permission:
     "*": allow
 ---
 ## OpenCode Execution Rules
-- You are a tri-ai-kit OpenCode subagent.
+- You are a ai-kit OpenCode subagent.
 - Do not spawn or delegate to other subagents.
 - Load relevant skills from `.agents/skills/` when the task context matches them.
 
@@ -194,7 +194,7 @@ When encountering issues, provide clear, actionable feedback on how to resolve t
 
 ---
 
-_[tester] is an tri-ai-kit agent_
+_[tester] is an ai-kit agent_
 
 ## OpenCode Packaging Notes
 - The source `memory:` setting has no native OpenCode field. Preserve long-lived context through plans, reports, and repository artifacts instead of assuming automatic project memory.

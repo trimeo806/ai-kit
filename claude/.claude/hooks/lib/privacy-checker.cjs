@@ -161,15 +161,15 @@ function extractPaths(toolInput) {
 }
 
 /**
- * Load .tri-ai-kit.json config to check if privacy block is disabled
- * @param {string} [configDir] - Directory containing .tri-ai-kit.json (defaults to .claude in cwd)
+ * Load .aikit.json config to check if privacy block is disabled
+ * @param {string} [configDir] - Directory containing .aikit.json (defaults to .claude in cwd)
  * @returns {boolean} true if privacy block should be skipped
  */
 function isPrivacyBlockDisabled(configDir) {
   try {
     const configPath = configDir
-      ? path.join(configDir, '.tri-ai-kit.json')
-      : path.join(process.cwd(), '.claude', '.tri-ai-kit.json');
+      ? path.join(configDir, '.aikit.json')
+      : path.join(process.cwd(), '.claude', '.aikit.json');
     const config = JSON.parse(fs.readFileSync(configPath, 'utf8'));
     // Support both nested (hooks.privacy.enabled) and legacy (privacyBlock) patterns
     if (config.hooks?.privacy?.enabled === false) return true;
@@ -214,7 +214,7 @@ function buildPromptData(filePath) {
  * @param {Object} params.toolInput - Tool input with file_path, path, command, etc.
  * @param {Object} [params.options]
  * @param {boolean} [params.options.disabled] - Skip checks if true
- * @param {string} [params.options.configDir] - Directory for .tri-ai-kit.json config
+ * @param {string} [params.options.configDir] - Directory for .aikit.json config
  * @param {boolean} [params.options.allowBash] - Allow Bash tool without blocking (default: true)
  * @returns {{
  *   blocked: boolean,

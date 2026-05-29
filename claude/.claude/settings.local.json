@@ -67,9 +67,9 @@
       "WebFetch(domain:www.buildwithmatija.com)",
       "Bash(node -e \"require\\(''server-only''\\)\")",
       "Bash(npx tsc:*)",
-      "Bash(mkdir -p \"C:/muji/tri-ai-kit/tri-ai-kit/easyGDS/assessments/frontend/src/app/[locale]/results\")",
-      "Bash(mkdir -p \"C:/muji/tri-ai-kit/tri-ai-kit/easyGDS/assessments/frontend/src/app/[locale]/passengers\")",
-      "Bash(mkdir -p \"C:/muji/tri-ai-kit/tri-ai-kit/easyGDS/assessments/frontend/src/app/[locale]/confirmation/[orderId]\")",
+      "Bash(mkdir -p \"C:/muji/ai-kit/ai-kit/easyGDS/assessments/frontend/src/app/[locale]/results\")",
+      "Bash(mkdir -p \"C:/muji/ai-kit/ai-kit/easyGDS/assessments/frontend/src/app/[locale]/passengers\")",
+      "Bash(mkdir -p \"C:/muji/ai-kit/ai-kit/easyGDS/assessments/frontend/src/app/[locale]/confirmation/[orderId]\")",
       "WebFetch(domain:docx.js.org)",
       "WebFetch(domain:generalistprogrammer.com)"
     ],

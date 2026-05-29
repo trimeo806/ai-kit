@@ -70,7 +70,7 @@ const CATEGORY_MAP = {
   'docs': 'development-tools',
   'convert': 'development-tools',
   'simulator': 'development-tools',
-  'tri-ai-kit': 'development-tools',
+  'ai-kit': 'development-tools',
   'auto-improvement': 'development-tools',
   'get-started': 'development-tools',
 

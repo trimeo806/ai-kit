@@ -1,4 +1,4 @@
-# tri-ai-kit for Claude Code
+# ai-kit for Claude Code
 
 Multi-agent development toolkit providing custom agents, skills, and hooks for Claude Code. Specialized agents handle each phase of the software lifecycle — from problem definition to post-launch monitoring.
 
@@ -12,7 +12,7 @@ See [WORKFLOW.md](./WORKFLOW.md) for the full 15-phase production delivery workf
 
 ## What It Is
 
-tri-ai-kit installs a set of agents, skills, and hooks into your Claude Code workspace. The main conversation acts as the orchestrator — it reads context, routes to the right agent, and merges results. Agents do not spawn other agents.
+ai-kit installs a set of agents, skills, and hooks into your Claude Code workspace. The main conversation acts as the orchestrator — it reads context, routes to the right agent, and merges results. Agents do not spawn other agents.
 
 **Core loop:**
 ```

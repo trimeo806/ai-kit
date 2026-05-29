@@ -7,12 +7,12 @@
  * - stripSentinelBlock: inverse of mergeAgentsDocument for uninstall
  */
 
-const SENTINEL_BEGIN = "<!-- tri-ai-kit:begin -->";
-const SENTINEL_END = "<!-- tri-ai-kit:end -->";
+const SENTINEL_BEGIN = "<!-- ai-kit:begin -->";
+const SENTINEL_END = "<!-- ai-kit:end -->";
 
 export function mergeAgentsDocument(existing: string | null, source: string): string {
   const sourceBody = source.replace(/^#\s+AGENTS\.md\s*$/m, "").trim();
-  const section = ["## tri-ai-kit base", SENTINEL_BEGIN, sourceBody, SENTINEL_END].join("\n");
+  const section = ["## ai-kit base", SENTINEL_BEGIN, sourceBody, SENTINEL_END].join("\n");
   if (existing == null) {
     return `${section}\n`;
   }
@@ -43,7 +43,7 @@ export function stripSentinelBlock(existing: string): string {
 }
 
 function findHeadingStart(text: string, sentinelIdx: number): number {
-  const heading = "## tri-ai-kit base";
+  const heading = "## ai-kit base";
   const candidate = text.lastIndexOf(heading, sentinelIdx);
   if (candidate === -1) return sentinelIdx;
   return candidate;

@@ -31,9 +31,9 @@ console.log('Testing error-formatter module...\n');
 
 // formatConfigPath tests
 console.log('--- formatConfigPath Tests ---');
-test('formatConfigPath with config dir', formatConfigPath('/home/user/.codex') === '/home/user/.codex/.tri-ignore');
-test('formatConfigPath without config dir', formatConfigPath(null) === '.codex/.tri-ignore');
-test('formatConfigPath empty string', formatConfigPath('') === '.codex/.tri-ignore');
+test('formatConfigPath with config dir', formatConfigPath('/home/user/.codex') === '/home/user/.codex/.aikit-ignore');
+test('formatConfigPath without config dir', formatConfigPath(null) === '.codex/.aikit-ignore');
+test('formatConfigPath empty string', formatConfigPath('') === '.codex/.aikit-ignore');
 
 // formatBlockedError tests
 console.log('\n--- formatBlockedError Tests ---');

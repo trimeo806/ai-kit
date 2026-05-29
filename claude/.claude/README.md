@@ -68,14 +68,14 @@ Hooks in `.claude/hooks/` execute in response to Claude Code lifecycle events:
 
 ## Output Styles
 
-`.claude/output-styles/` contains 6 response verbosity levels (`coding-level-0-eli5` through `coding-level-5-god`). The active style is controlled by the `TRI_AGENT_STYLE` environment variable in `settings.json`. The hook `hooks/lib/project-detector.cjs` reads the matching `.md` file and injects its guidelines into the agent context via the context-reminder hook.
+`.claude/output-styles/` contains 6 response verbosity levels (`coding-level-0-eli5` through `coding-level-5-god`). The active style is controlled by the `AIKIT_AGENT_STYLE` environment variable in `settings.json`. The hook `hooks/lib/project-detector.cjs` reads the matching `.md` file and injects its guidelines into the agent context via the context-reminder hook.
 
 ## Key Files
 
 - `settings.json` — Hook wiring, permissions, environment variables, status line config
 - `skills/skill-index.json` — Auto-generated skill catalog (run `scripts/generate-skill-index.cjs` to update)
 - `skills/core/SKILL.md` — Operational boundaries that all agents follow
-- `skills/tri-ai-kit/SKILL.md` — Agent catalog and kit conventions reference
+- `skills/ai-kit/SKILL.md` — Agent catalog and kit conventions reference
 
 ## Related
 

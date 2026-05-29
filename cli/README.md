@@ -76,7 +76,7 @@ In non-TTY environments (CI), use `--yes` to overwrite or the command aborts.
 
 Some files are merged rather than overwritten:
 
-- `AGENTS.md` — sentinel block (`<!-- tri-ai-kit:begin --> … <!-- tri-ai-kit:end -->`) replaced in place
+- `AGENTS.md` — sentinel block (`<!-- ai-kit:begin --> … <!-- ai-kit:end -->`) replaced in place
 - `.codex/config.toml` — `[features].codex_hooks = true` enforced; everything else preserved
 - `.codex/hooks.json` — array entries deduped by `matcher | command1;command2` signature
 - `opencode.json` — deep object merge (existing scalars win; missing keys from each side added)

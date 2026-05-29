@@ -1,4 +1,4 @@
-# tri-ai-kit
+# ai-kit
 
 Multi-agent development toolkit providing skills, agents, and workflows for Claude Code, Antigravity, Codex, and OpenCode.
 

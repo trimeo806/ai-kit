@@ -15,8 +15,8 @@ breaking: false
 Build a practical learning path for a frontend developer moving toward DevOps/cloud engineering with strong CI/CD depth across AWS and GCP.
 
 ## Inputs
-- [deep-research-report.md](/mnt/c/private/tri-ai-kit/codex/deep-research-report.md)
-- [deep-research-report (1).md](/mnt/c/private/tri-ai-kit/codex/deep-research-report%20(1).md)
+- [deep-research-report.md](/mnt/c/private/ai-kit/codex/deep-research-report.md)
+- [deep-research-report (1).md](/mnt/c/private/ai-kit/codex/deep-research-report%20(1).md)
 
 ## Assumptions
 - Pace: `8-10h/week`

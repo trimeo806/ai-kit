@@ -49,9 +49,9 @@ function main() {
   }
 
   // Get session ID from environment
-  const sessionId = process.env.tri-ai-kit_SESSION_ID;
+  const sessionId = process.env.AIKIT_SESSION_ID;
   if (!sessionId) {
-    console.error('Warning: tri-ai-kit_SESSION_ID not set. Session state may not persist.');
+    console.error('Warning: AIKIT_SESSION_ID not set. Session state may not persist.');
     console.error('Active plan set locally but may not be available to subagents.');
     process.exit(1);
   }

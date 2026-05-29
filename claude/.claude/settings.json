@@ -1,6 +1,6 @@
 {
   "env": {
-    "TRI_AGENT_STYLE": "full"
+    "AIKIT_AGENT_STYLE": "full"
   },
   "includeCoAuthoredBy": false,
   "permissions": {
@@ -43,17 +43,6 @@
         ]
       }
     ],
-    "PostToolUse": [
-      {
-        "matcher": "Edit|Write|MultiEdit",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "node .claude/hooks/post-index-reminder.cjs"
-          }
-        ]
-      }
-    ],
     "PreToolUse": [
       {
         "matcher": "Bash|Glob|Grep|Read|Edit|Write",
@@ -74,17 +63,6 @@
           {
             "type": "command",
             "command": "node .claude/hooks/build-gate-hook.cjs"
-          }
-        ]
-      }
-    ],
-    "SubagentStop": [
-      {
-        "matcher": "*",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "node .claude/hooks/subagent-stop-reminder.cjs"
           }
         ]
       }

@@ -50,16 +50,16 @@ function colorize(text, color) {
 }
 
 /**
- * Get .tri-ignore config path
+ * Get .aikit-ignore config path
  *
  * @param {string} claudeDir - Path to .claude directory
  * @returns {string}
  */
 function formatConfigPath(claudeDir) {
   if (claudeDir) {
-    return path.join(claudeDir, '.tri-ignore');
+    return path.join(claudeDir, '.aikit-ignore');
   }
-  return '.codex/.tri-ignore';
+  return '.codex/.aikit-ignore';
 }
 
 /**

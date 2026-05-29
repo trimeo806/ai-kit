@@ -25,8 +25,8 @@ Thư mục hooks được chia làm 2 phần tĩnh cơ bản:
 Nhóm này bơm dữ liệu ngữ cảnh vào Session, giúp AI lấy được dữ liệu cấu hình dự án mà không tốn Tokens đi quét bằng lệnh Bash.
 
 - **`session-init.cjs`** (Sự kiện: `SessionStart`)
-  - **Tác dụng:** Chạy một lần duy nhất khi mở Terminal/Chat. Nó gọi module `lib/project-detector.cjs` để scan xem project đang dùng React, Go hay Node.js; branch git hiện tại là gì. Sinh ra các biến môi trường (`TRI_AI_KIT_ACTIVE_PLAN`, `TRI_AI_KIT_PROJECT_TYPE`, v.v) lưu xuống bộ nhớ tạm.
-  - **Cách chỉnh sửa:** Sửa logic nhận diện project stack trong `lib/project-detector.cjs`. Chỉnh sửa các ENV cần bơm lưu ý add prefix `tri-ai-kit_` để chuẩn form.
+  - **Tác dụng:** Chạy một lần duy nhất khi mở Terminal/Chat. Nó gọi module `lib/project-detector.cjs` để scan xem project đang dùng React, Go hay Node.js; branch git hiện tại là gì. Sinh ra các biến môi trường (`AIKIT_ACTIVE_PLAN`, `AIKIT_PROJECT_TYPE`, v.v) lưu xuống bộ nhớ tạm.
+  - **Cách chỉnh sửa:** Sửa logic nhận diện project stack trong `lib/project-detector.cjs`. Chỉnh sửa các ENV cần bơm lưu ý add prefix `AIKIT_` để chuẩn form.
 
 - **`context-reminder.cjs`** (Sự kiện: `UserPromptSubmit`)
   - **Tác dụng:** Dựa trên các ENV mà `session-init.cjs` tạo ra, script này tiêm (inject) Plan hiện tại và Rules ngắn gọn vào cuối mỗi câu prompt của người dùng.
@@ -47,8 +47,8 @@ Kĩ thuật `subagent-driven-development` của `ai-kit` chia việc cho các AI
 Nhóm này can thiệp và bẻ gãy hành vi (Execution) của LLM nếu phát hiện rủi ro.
 
 - **`scout-block.cjs`**
-  - **Tác dụng:** Quét nội dung LLM gõ vào `Bash` hoặc `Grep`. Nếu thấy có chĩa vào các thư mục rác kỵ binh như `node_modules`, `dist`, `.git` (danh sách lấy từ file `.codex/.tri-ignore`), nó sẽ trả về mã `Exit Code 2 (Blocekd)` để huỷ lệnh *trước khi lệnh thực sự chạy trên máy tính*. Vẫn ngoại lệ cho phép chạy các lệnh Build (npm run build).
-  - **Cách chỉnh sửa:** Không nên sửa file hook này. Thay vào đó, thêm rules block vào file `.codex/.tri-ignore`.
+  - **Tác dụng:** Quét nội dung LLM gõ vào `Bash` hoặc `Grep`. Nếu thấy có chĩa vào các thư mục rác kỵ binh như `node_modules`, `dist`, `.git` (danh sách lấy từ file `.codex/.aikit-ignore`), nó sẽ trả về mã `Exit Code 2 (Blocekd)` để huỷ lệnh *trước khi lệnh thực sự chạy trên máy tính*. Vẫn ngoại lệ cho phép chạy các lệnh Build (npm run build).
+  - **Cách chỉnh sửa:** Không nên sửa file hook này. Thay vào đó, thêm rules block vào file `.codex/.aikit-ignore`.
 
 - **`privacy-block.cjs`**
   - **Tác dụng:** Tránh lộ lọt mã token nhạy cảm (secrets/keys). Nếu LLM dùng tool định đọc các file `.env` hoặc các file chứa cấu hình auth, hook khóa lại. Yêu cầu LLM phải dùng `ask the user` hỏi ý kiến người dùng. Nếu người dùng **Approve**, sẽ nhả pass.

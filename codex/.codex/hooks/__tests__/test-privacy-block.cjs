@@ -8,7 +8,7 @@ const path = require('path');
 const fs = require('fs');
 
 const HOOK_PATH = path.join(__dirname, '..', 'privacy-block.cjs');
-const CK_CONFIG_PATH = path.join(__dirname, '..', '.tri-ai-kit.json');
+const CK_CONFIG_PATH = path.join(__dirname, '..', '.aikit.json');
 
 async function runHook(hookData, cwd = undefined) {
   return new Promise((resolve) => {
@@ -258,7 +258,7 @@ async function main() {
     }
   }
 
-  // Config toggle tests - requires temp directory with .codex/.tri-ai-kit.json
+  // Config toggle tests - requires temp directory with .codex/.aikit.json
   console.log('\n\x1b[1m--- Config Toggle (privacyBlock setting) ---\x1b[0m');
   const os = require('os');
   const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), 'privacy-test-'));
@@ -268,7 +268,7 @@ async function main() {
   for (const test of configToggleTests) {
     // Write test config
     fs.writeFileSync(
-      path.join(tmpClaudeDir, '.tri-ai-kit.json'),
+      path.join(tmpClaudeDir, '.aikit.json'),
       JSON.stringify(test.config)
     );
 

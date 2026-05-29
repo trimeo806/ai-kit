@@ -11,9 +11,9 @@
  *
  * Bypass:
  *   - `--skip-build` in the git commit command
- *   - `TRI_SKIP_BUILD=1` environment variable
- *   - `hooks['build-gate'].enabled = false` in .tri-ai-kit.json
- *   - `TRI_BUILD_GATE_RAN=1` env (dedup — skill already ran gate)
+ *   - `AIKIT_SKIP_BUILD=1` environment variable
+ *   - `hooks['build-gate'].enabled = false` in .aikit.json
+ *   - `AIKIT_BUILD_GATE_RAN=1` env (dedup — skill already ran gate)
  */
 
 'use strict';
@@ -30,7 +30,7 @@ try {
   }
 
   // ─── Dedup: skill-level gate already ran this session ───
-  if (process.env['TRI_BUILD_GATE_RAN'] === '1') {
+  if (process.env['AIKIT_BUILD_GATE_RAN'] === '1') {
     process.stderr.write('build-gate-hook: skipping (already ran via skill)\n');
     process.exit(0);
   }
@@ -80,9 +80,9 @@ try {
     process.exit(0);
   }
 
-  // TRI_SKIP_BUILD env var
-  if (process.env['TRI_SKIP_BUILD'] === '1') {
-    process.stderr.write('build-gate-hook: skipping (TRI_SKIP_BUILD=1)\n');
+  // AIKIT_SKIP_BUILD env var
+  if (process.env['AIKIT_SKIP_BUILD'] === '1') {
+    process.stderr.write('build-gate-hook: skipping (AIKIT_SKIP_BUILD=1)\n');
     process.exit(0);
   }
 
@@ -137,7 +137,7 @@ try {
     `\nbuild-gate-hook: BUILD FAILED — commit blocked\n` +
     `Platform: ${result.platform || 'unknown'}${errorExcerpt}\n\n` +
     `Fix the build errors above, then retry your commit.\n` +
-    `To bypass (WIP/draft): add --skip-build or set TRI_SKIP_BUILD=1\n`
+    `To bypass (WIP/draft): add --skip-build or set AIKIT_SKIP_BUILD=1\n`
   );
   process.exit(2);
 

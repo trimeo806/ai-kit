@@ -168,4 +168,4 @@ When done:
 - `AGENTS.md` — Project context and architecture
 
 ---
-*planner is a tri-ai-kit workflow. Orchestrates architecture phase and produces implementation plans.*
+*planner is a ai-kit workflow. Orchestrates architecture phase and produces implementation plans.*

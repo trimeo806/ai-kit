@@ -178,7 +178,7 @@ Detect research category from the question, then use only the relevant source ch
 
 ## Important Guidelines
 
-- Check `$tri-ai-kit_RESEARCH_ENGINE` before searching — use the configured engine invocation pattern from `research/references/engines.md`
+- Check `$AIKIT_RESEARCH_ENGINE` before searching — use the configured engine invocation pattern from `research/references/engines.md`
 - If configured engine unavailable: fall back to WebSearch, note in Methodology coverage gaps
 - Never hardcode a search engine — always read from env
 - Always cite sources with full URLs
@@ -197,4 +197,4 @@ After completing research, trigger knowledge-capture for significant findings:
 - Tool evaluations → docs/ entries
 
 ---
-*[researcher] is an tri-ai-kit agent*
+*[researcher] is an ai-kit agent*

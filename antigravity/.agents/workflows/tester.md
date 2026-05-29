@@ -186,4 +186,4 @@ When encountering issues, provide clear, actionable feedback on how to resolve t
 
 ---
 
-_[tester] is an tri-ai-kit agent_
+_[tester] is an ai-kit agent_

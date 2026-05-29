@@ -150,7 +150,7 @@ notifications/
 
 Cross-platform hook blocking heavy directories to improve Claude performance.
 
-**Blocked Patterns** (configured in `.codex/.tri-ignore`):
+**Blocked Patterns** (configured in `.codex/.aikit-ignore`):
 - `node_modules`, `__pycache__`, `.git`, `dist`, `build`
 
 **Testing:**

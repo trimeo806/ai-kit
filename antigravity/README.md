@@ -1,4 +1,4 @@
-# tri-ai-kit for Antigravity
+# ai-kit for Antigravity
 
 Multi-agent development toolkit providing skills, and workflows tailored for **Antigravity**. Specialized workflows handle each phase of the software lifecycle — from problem definition to post-launch monitoring.
 
@@ -12,7 +12,7 @@ See [`WORKFLOW.md`](./WORKFLOW.md) for the full 15-phase production delivery wor
 
 ## What It Is
 
-tri-ai-kit installs a set of workflows and skills into your Antigravity workspace. The main conversation acts as the orchestrator — it reads context, routes to the right workflow, and merges results. 
+ai-kit installs a set of workflows and skills into your Antigravity workspace. The main conversation acts as the orchestrator — it reads context, routes to the right workflow, and merges results. 
 
 **Core loop:**
 ```
@@ -103,7 +103,7 @@ Skills load platform-specific expertise on demand. They are not slash commands �
 `problem-solving` · `sequential-thinking` · `knowledge-retrieval` · `knowledge-capture` · `skill-discovery` · `subagent-driven-development`
 
 **Kit Meta:**
-`tri-ai-kit` · `skill-creator` · `auto-improvement` · `core`
+`ai-kit` · `skill-creator` · `auto-improvement` · `core`
 
 ---
 

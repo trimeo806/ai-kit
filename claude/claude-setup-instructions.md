@@ -3,7 +3,7 @@
 To use this kit with an existing project in Claude Code, copy the core files into your project root:
 
 ```bash
-# From the tri-ai-kit directory, copy into your target project
+# From the ai-kit directory, copy into your target project
 cp -r .claude /path/to/your-project/
 cp AGENTS.md /path/to/your-project/
 cp claude/WORKFLOW.md /path/to/your-project/WORKFLOW.md

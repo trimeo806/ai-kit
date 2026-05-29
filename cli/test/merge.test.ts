@@ -11,22 +11,22 @@ describe("mergeAgentsDocument", () => {
   it("wraps source in sentinels when target missing", () => {
     const out = mergeAgentsDocument(null, "# AGENTS.md\nhello\n");
     expect(out).toContain("hello");
-    expect(out).toContain("<!-- tri-ai-kit:begin -->");
-    expect(out).toContain("<!-- tri-ai-kit:end -->");
+    expect(out).toContain("<!-- ai-kit:begin -->");
+    expect(out).toContain("<!-- ai-kit:end -->");
   });
 
   it("appends sentinel block to existing doc without one", () => {
     const existing = "# my project\n\nKeep me.\n";
     const out = mergeAgentsDocument(existing, "# AGENTS.md\nkit body\n");
     expect(out).toContain("Keep me.");
-    expect(out).toContain("<!-- tri-ai-kit:begin -->");
+    expect(out).toContain("<!-- ai-kit:begin -->");
     expect(out).toContain("kit body");
-    expect(out).toContain("<!-- tri-ai-kit:end -->");
+    expect(out).toContain("<!-- ai-kit:end -->");
   });
 
   it("replaces existing sentinel block, preserving content outside", () => {
     const existing =
-      "# my project\n\n## tri-ai-kit base\n<!-- tri-ai-kit:begin -->\nOLD\n<!-- tri-ai-kit:end -->\n\nAfter section.\n";
+      "# my project\n\n## ai-kit base\n<!-- ai-kit:begin -->\nOLD\n<!-- ai-kit:end -->\n\nAfter section.\n";
     const out = mergeAgentsDocument(existing, "# AGENTS.md\nNEW BODY\n");
     expect(out).not.toContain("OLD");
     expect(out).toContain("NEW BODY");
@@ -35,12 +35,12 @@ describe("mergeAgentsDocument", () => {
 });
 
 describe("stripSentinelBlock", () => {
-  it("removes tri-ai-kit block but keeps surrounding text", () => {
+  it("removes ai-kit block but keeps surrounding text", () => {
     const cur =
-      "# my project\n\n## tri-ai-kit base\n<!-- tri-ai-kit:begin -->\nBODY\n<!-- tri-ai-kit:end -->\n\nKeep me.\n";
+      "# my project\n\n## ai-kit base\n<!-- ai-kit:begin -->\nBODY\n<!-- ai-kit:end -->\n\nKeep me.\n";
     const out = stripSentinelBlock(cur);
     expect(out).not.toContain("BODY");
-    expect(out).not.toContain("tri-ai-kit");
+    expect(out).not.toContain("ai-kit");
     expect(out).toContain("Keep me.");
     expect(out).toContain("# my project");
   });

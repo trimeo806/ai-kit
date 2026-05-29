@@ -32,7 +32,7 @@ function runHook(inputData, options = {}) {
       env: {
         ...process.env,
         CLAUDE_ENV_FILE: '',
-        'tri-ai-kit_DEBUG': options.debug ? '1' : '',
+        'AIKIT_DEBUG': options.debug ? '1' : '',
         ...options.env
       }
     });

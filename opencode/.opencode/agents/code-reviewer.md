@@ -8,7 +8,7 @@ permission:
   edit: deny
 ---
 ## OpenCode Execution Rules
-- You are a tri-ai-kit OpenCode subagent.
+- You are a ai-kit OpenCode subagent.
 - Do not spawn or delegate to other subagents.
 - Load relevant skills from `.agents/skills/` when the task context matches them.
 - Stay read-only: analyze, review, or plan without editing files.
@@ -106,7 +106,7 @@ ALWAYS: mkdir -p {session_folder} BEFORE any sub-agent dispatch or file write
 ```
 
 ---
-*code-reviewer is a tri-ai-kit OpenCode subagent for comprehensive code quality and security assessment*
+*code-reviewer is a ai-kit OpenCode subagent for comprehensive code quality and security assessment*
 
 ## OpenCode Packaging Notes
 - The source `memory:` setting has no native OpenCode field. Preserve long-lived context through plans, reports, and repository artifacts instead of assuming automatic project memory.

@@ -2,12 +2,12 @@
 
 ## Purpose
 
-Install the generated `tri-ai-kit/opencode/` package into another repository so OpenCode can use the kit as that project's repo-scoped configuration.
+Install the generated `ai-kit/opencode/` package into another repository so OpenCode can use the kit as that project's repo-scoped configuration.
 
 ## What This Package Is
 
-- `tri-ai-kit/opencode/` is a generated distribution package.
-- OpenCode does not run from `tri-ai-kit/opencode/` when you are inside another repository.
+- `ai-kit/opencode/` is a generated distribution package.
+- OpenCode does not run from `ai-kit/opencode/` when you are inside another repository.
 - To use the kit in another project, copy or sync the package contents into that target repository's root.
 
 OpenCode behavior this setup follows:
@@ -30,17 +30,17 @@ References:
 
 ### 1. Generate the OpenCode package
 
-Run the generator from the `tri-ai-kit` repository:
+Run the generator from the `ai-kit` repository:
 
 ```powershell
-cd C:\private\tri-ai-kit
+cd C:\private\ai-kit
 .\scripts\sync-to-opencode.ps1
 ```
 
 Expected output package:
 
 ```text
-tri-ai-kit/opencode/
+ai-kit/opencode/
   AGENTS.md
   WORKFLOW.md
   opencode.json
@@ -54,7 +54,7 @@ tri-ai-kit/opencode/
 - `copy/sync`:
   Recommended for normal use. The target repo gets its own copy of the generated package.
 - `symlink`:
-  Useful while developing the kit itself. Changes in `tri-ai-kit/opencode/` are reflected immediately in the target repo.
+  Useful while developing the kit itself. Changes in `ai-kit/opencode/` are reflected immediately in the target repo.
 
 ### 2.1 Recommended installer
 
@@ -63,21 +63,21 @@ Use the installer script instead of manual copy when possible.
 Clean or merge install (copy mode):
 
 ```powershell
-cd C:\private\tri-ai-kit
+cd C:\private\ai-kit
 .\scripts\install-opencode-kit.ps1 -TargetRepo "C:\path\to\your-project"
 ```
 
 Preview only:
 
 ```powershell
-cd C:\private\tri-ai-kit
+cd C:\private\ai-kit
 .\scripts\install-opencode-kit.ps1 -TargetRepo "C:\path\to\your-project" -DryRun
 ```
 
 Symlink install (clean target only):
 
 ```powershell
-cd C:\private\tri-ai-kit
+cd C:\private\ai-kit
 .\scripts\install-opencode-kit.ps1 -TargetRepo "C:\path\to\your-project" -Mode symlink
 ```
 
@@ -105,16 +105,16 @@ Target repo example:
 
 ### Copy mode
 
-From the `tri-ai-kit` repo:
+From the `ai-kit` repo:
 
 ```powershell
 $Target = "C:\path\to\your-project"
 
-Copy-Item C:\private\tri-ai-kit\opencode\AGENTS.md $Target -Force
-Copy-Item C:\private\tri-ai-kit\opencode\WORKFLOW.md $Target -Force
-Copy-Item C:\private\tri-ai-kit\opencode\opencode.json $Target -Force
-Copy-Item C:\private\tri-ai-kit\opencode\.agents $Target -Recurse -Force
-Copy-Item C:\private\tri-ai-kit\opencode\.opencode $Target -Recurse -Force
+Copy-Item C:\private\ai-kit\opencode\AGENTS.md $Target -Force
+Copy-Item C:\private\ai-kit\opencode\WORKFLOW.md $Target -Force
+Copy-Item C:\private\ai-kit\opencode\opencode.json $Target -Force
+Copy-Item C:\private\ai-kit\opencode\.agents $Target -Recurse -Force
+Copy-Item C:\private\ai-kit\opencode\.opencode $Target -Recurse -Force
 ```
 
 ### Symlink mode
@@ -122,11 +122,11 @@ Copy-Item C:\private\tri-ai-kit\opencode\.opencode $Target -Recurse -Force
 ```powershell
 $Target = "C:\path\to\your-project"
 
-New-Item -ItemType SymbolicLink -Path (Join-Path $Target "AGENTS.md") -Target "C:\private\tri-ai-kit\opencode\AGENTS.md"
-New-Item -ItemType SymbolicLink -Path (Join-Path $Target "WORKFLOW.md") -Target "C:\private\tri-ai-kit\opencode\WORKFLOW.md"
-New-Item -ItemType SymbolicLink -Path (Join-Path $Target "opencode.json") -Target "C:\private\tri-ai-kit\opencode\opencode.json"
-New-Item -ItemType SymbolicLink -Path (Join-Path $Target ".agents") -Target "C:\private\tri-ai-kit\opencode\.agents"
-New-Item -ItemType SymbolicLink -Path (Join-Path $Target ".opencode") -Target "C:\private\tri-ai-kit\opencode\.opencode"
+New-Item -ItemType SymbolicLink -Path (Join-Path $Target "AGENTS.md") -Target "C:\private\ai-kit\opencode\AGENTS.md"
+New-Item -ItemType SymbolicLink -Path (Join-Path $Target "WORKFLOW.md") -Target "C:\private\ai-kit\opencode\WORKFLOW.md"
+New-Item -ItemType SymbolicLink -Path (Join-Path $Target "opencode.json") -Target "C:\private\ai-kit\opencode\opencode.json"
+New-Item -ItemType SymbolicLink -Path (Join-Path $Target ".agents") -Target "C:\private\ai-kit\opencode\.agents"
+New-Item -ItemType SymbolicLink -Path (Join-Path $Target ".opencode") -Target "C:\private\ai-kit\opencode\.opencode"
 ```
 
 ## Install Into a Repository That Already Uses OpenCode
@@ -148,10 +148,10 @@ OpenCode reads root `AGENTS.md` automatically, so the target repo can only have 
 Merge rule:
 
 - keep the target repo's project-specific rules
-- add the tri-ai-kit orchestration rules into the same file
+- add the ai-kit orchestration rules into the same file
 - if both files define the same policy, choose one final rule explicitly
 
-The installer manages the tri-ai-kit section with `<!-- tri-ai-kit:begin -->` markers.
+The installer manages the ai-kit section with `<!-- ai-kit:begin -->` markers.
 
 ### `opencode.json`
 
@@ -164,14 +164,14 @@ Keep:
 
 Add:
 
-- tri-ai-kit `instructions` entries such as `WORKFLOW.md`
-- tri-ai-kit build/plan permission defaults that allow skills and subagents
+- ai-kit `instructions` entries such as `WORKFLOW.md`
+- ai-kit build/plan permission defaults that allow skills and subagents
 
-The installer performs a recursive JSON merge. Existing target settings win on conflicts, while missing tri-ai-kit keys are added.
+The installer performs a recursive JSON merge. Existing target settings win on conflicts, while missing ai-kit keys are added.
 
 ### `.opencode/agents/`
 
-Copy tri-ai-kit custom agents into `.opencode/agents/` without removing project-local agents.
+Copy ai-kit custom agents into `.opencode/agents/` without removing project-local agents.
 
 Rules:
 
@@ -181,7 +181,7 @@ Rules:
 
 ### `.opencode/commands/`
 
-Copy tri-ai-kit custom commands into `.opencode/commands/` without removing project-local commands.
+Copy ai-kit custom commands into `.opencode/commands/` without removing project-local commands.
 
 Rules:
 
@@ -191,12 +191,12 @@ Rules:
 
 ### `.agents/skills/`
 
-Copy tri-ai-kit skills into `.agents/skills/` without removing the repo's existing skills.
+Copy ai-kit skills into `.agents/skills/` without removing the repo's existing skills.
 
 Rules:
 
 - preserve project-local skills
-- avoid renaming tri-ai-kit skills unless there is a real collision
+- avoid renaming ai-kit skills unless there is a real collision
 - if two skills share the same skill `name`, resolve the collision before relying on implicit skill loading
 
 ## Verify the Installation
@@ -224,7 +224,7 @@ opencode agent list
 
 Expected result:
 
-- tri-ai-kit subagents appear alongside built-in agents
+- ai-kit subagents appear alongside built-in agents
 
 ### 3. Verify a generated agent resolves
 
@@ -248,7 +248,7 @@ opencode debug skill
 
 Expected result:
 
-- tri-ai-kit skills appear from `.agents/skills/`
+- ai-kit skills appear from `.agents/skills/`
 
 ### 5. Verify commands are present
 
@@ -260,7 +260,7 @@ Check that the target repo contains:
 
 Expected result:
 
-- tri-ai-kit commands such as `plan.md`, `cook.md`, and `review.md` exist
+- ai-kit commands such as `plan.md`, `cook.md`, and `review.md` exist
 - when you open the OpenCode TUI, they appear in the `/` command menu
 
 ## Notes on Claude Compatibility

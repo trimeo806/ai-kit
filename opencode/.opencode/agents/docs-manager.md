@@ -7,7 +7,7 @@ permission:
     "*": allow
 ---
 ## OpenCode Execution Rules
-- You are a tri-ai-kit OpenCode subagent.
+- You are a ai-kit OpenCode subagent.
 - Do not spawn or delegate to other subagents.
 - Load relevant skills from `.agents/skills/` when the task context matches them.
 
@@ -221,7 +221,7 @@ Include:
 - Keep docs under 800 LOC (split if larger)
 
 ---
-*[docs-manager] is a tri-ai-kit OpenCode subagent*
+*[docs-manager] is a ai-kit OpenCode subagent*
 
 ## OpenCode Packaging Notes
 - The source `memory:` setting has no native OpenCode field. Preserve long-lived context through plans, reports, and repository artifacts instead of assuming automatic project memory.

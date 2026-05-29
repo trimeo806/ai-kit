@@ -186,7 +186,7 @@ console.log('Testing scout-block.cjs hook...\n');
 
 // Test Node.js dispatcher directly
 const scriptPath = path.join(__dirname, '..', 'scout-block.cjs');
-const ignoreFilePath = path.join(__dirname, '..', '..', '.tri-ignore');
+const ignoreFilePath = path.join(__dirname, '..', '..', '.aikit-ignore');
 let passed = 0;
 let failed = 0;
 

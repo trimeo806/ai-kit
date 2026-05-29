@@ -6,7 +6,7 @@ This file provides guidance to OpenCode when working with code in this repositor
 
 ## What This Is
 
-tri-ai-kit is a multi-agent development toolkit for OpenCode. It provides 22 specialized agents, 60+ skills, custom commands, and a 15-phase production delivery workflow. The main conversation always acts as orchestrator - it routes to the right specialist via OpenCode subagent dispatch and merges results. Coordinator agents may dispatch specialists when the workflow requires it.
+ai-kit is a multi-agent development toolkit for OpenCode. It provides 22 specialized agents, 60+ skills, custom commands, and a 15-phase production delivery workflow. The main conversation always acts as orchestrator - it routes to the right specialist via OpenCode subagent dispatch and merges results. Coordinator agents may dispatch specialists when the workflow requires it.
 
 This package is intended to be installed at the target repository root. Treat `AGENTS.md`, `opencode.json`, `.opencode/agents/`, `.opencode/commands/`, and `.agents/skills/` as the OpenCode runtime surface.
 
@@ -15,7 +15,7 @@ This package is intended to be installed at the target repository root. Treat `A
 ```text
 .
 |-- AGENTS.md            # Repo-wide OpenCode instructions
-|-- WORKFLOW.md          # tri-ai-kit delivery workflow
+|-- WORKFLOW.md          # ai-kit delivery workflow
 |-- opencode.json        # Project-level OpenCode config
 |-- .agents/
 |   `-- skills/          # Repo-scoped OpenCode skills
@@ -62,7 +62,7 @@ opencode debug config
 
 ## Package Maintenance
 
-- When maintaining tri-ai-kit itself, edit the Claude source package under `claude/` and rerun `scripts/sync-to-opencode.ps1`.
+- When maintaining ai-kit itself, edit the Claude source package under `claude/` and rerun `scripts/sync-to-opencode.ps1`.
 - When using the exported OpenCode kit in another repository, edit `AGENTS.md`, `opencode.json`, `.opencode/agents/`, `.opencode/commands/`, and `.agents/skills/` directly in that target repository.
 
 ## Decision Authority

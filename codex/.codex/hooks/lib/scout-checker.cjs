@@ -74,7 +74,7 @@ function isAllowedCommand(command) {
  * @param {string} params.toolName - Name of tool (Bash, Glob, Read, etc.)
  * @param {Object} params.toolInput - Tool input with file_path, path, pattern, command
  * @param {Object} [params.options]
- * @param {string} [params.options.tri-ignorePath] - Path to .tri-ignore file
+ * @param {string} [params.options.aikit-ignorePath] - Path to .aikit-ignore file
  * @param {string} [params.options.claudeDir] - Path to .claude or .opencode directory
  * @param {boolean} [params.options.checkBroadPatterns] - Check for overly broad glob patterns (default: true)
  * @returns {{
@@ -113,8 +113,8 @@ function checkScoutBlock({ toolName, toolInput, options = {} }) {
     }
   }
 
-  // Resolve .tri-ignore path
-  const resolvedCkignorePath = ignoreFilePath || path.join(claudeDir, '.tri-ignore');
+  // Resolve .aikit-ignore path
+  const resolvedCkignorePath = ignoreFilePath || path.join(claudeDir, '.aikit-ignore');
 
   // Load patterns and create matcher
   const patterns = loadPatterns(resolvedCkignorePath);

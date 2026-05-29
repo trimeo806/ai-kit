@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 
 /**
- * Test script for .tri-ignore functionality
- * Tests that scout-block.sh respects .tri-ignore patterns
+ * Test script for .aikit-ignore functionality
+ * Tests that scout-block.sh respects .aikit-ignore patterns
  */
 
 const fs = require('fs');
@@ -13,7 +13,7 @@ const { checkScoutBlock } = require('../lib/scout-checker.cjs');
 const hookPath = path.join(__dirname, '..', 'scout-block.cjs');
 const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'tri-ignore-test-'));
 const ignoreDir = path.join(tempDir, '.codex');
-const ignoreFilePath = path.join(ignoreDir, '.tri-ignore');
+const ignoreFilePath = path.join(ignoreDir, '.aikit-ignore');
 fs.mkdirSync(ignoreDir, { recursive: true });
 writeCkignore(['node_modules', '.git', 'dist', 'build', '__pycache__']);
 
@@ -40,13 +40,13 @@ function restoreCkignore() {
   fs.rmSync(tempDir, { recursive: true, force: true });
 }
 
-console.log('Testing .tri-ignore functionality...\n');
+console.log('Testing .aikit-ignore functionality...\n');
 
 let passed = 0;
 let failed = 0;
 
-// Test 1: Default patterns work (with existing .tri-ignore)
-console.log('--- Test 1: Default patterns from .tri-ignore ---');
+// Test 1: Default patterns work (with existing .aikit-ignore)
+console.log('--- Test 1: Default patterns from .aikit-ignore ---');
 let result = runTest(
   'node_modules blocked (default)',
   { tool_name: 'Read', tool_input: { file_path: 'node_modules/pkg.json' } },
@@ -61,7 +61,7 @@ if (result.success) {
 }
 
 // Test 2: Custom pattern - only block 'vendor' directory
-console.log('\n--- Test 2: Custom .tri-ignore with only "vendor" ---');
+console.log('\n--- Test 2: Custom .aikit-ignore with only "vendor" ---');
 writeCkignore(['# Custom ignore', 'vendor']);
 
 result = runTest(
@@ -78,7 +78,7 @@ if (result.success) {
 }
 
 result = runTest(
-  'node_modules ALLOWED when not in .tri-ignore',
+  'node_modules ALLOWED when not in .aikit-ignore',
   { tool_name: 'Read', tool_input: { file_path: 'node_modules/pkg.json' } },
   'ALLOWED'
 );
@@ -176,7 +176,7 @@ if (result.success) {
   failed++;
 }
 
-// Restore original .tri-ignore
+// Restore original .aikit-ignore
 restoreCkignore();
 
 console.log(`\nResults: ${passed} passed, ${failed} failed`);

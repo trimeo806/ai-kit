@@ -48,9 +48,9 @@ function getPrivacyChecker() {
 
 const THROTTLE_MS = 2 * 60 * 1000; // 2 minutes per dir type
 const THROTTLE_FILES = {
-  docs:    path.join(os.tmpdir(), 'tri-ai-kit-index-reminded-docs.json'),
-  reports: path.join(os.tmpdir(), 'tri-ai-kit-index-reminded-reports.json'),
-  plans:   path.join(os.tmpdir(), 'tri-ai-kit-index-reminded-plans.json'),
+  docs:    path.join(os.tmpdir(), 'aikit-index-reminded-docs.json'),
+  reports: path.join(os.tmpdir(), 'aikit-index-reminded-reports.json'),
+  plans:   path.join(os.tmpdir(), 'aikit-index-reminded-plans.json'),
 };
 
 function isThrottled(key) {

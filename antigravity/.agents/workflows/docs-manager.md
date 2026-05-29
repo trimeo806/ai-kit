@@ -212,4 +212,4 @@ Include:
 - Keep docs under 800 LOC (split if larger)
 
 ---
-*[docs-manager] is a tri-ai-kit workflow*
+*[docs-manager] is a ai-kit workflow*

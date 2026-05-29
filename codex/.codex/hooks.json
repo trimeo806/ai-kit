@@ -7,7 +7,7 @@
           {
             "type": "command",
             "command": "d=\"$PWD\"; while [ \"$d\" != \"/\" ] && [ ! -d \"$d/.codex/hooks\" ]; do d=\"$(dirname \"$d\")\"; done; node \"$d/.codex/hooks/session-init.cjs\"",
-            "statusMessage": "Initializing tri-ai-kit runtime"
+            "statusMessage": "Initializing ai-kit runtime"
           }
         ]
       }

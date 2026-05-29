@@ -2,7 +2,7 @@
 /**
  * scout-block.cjs - Cross-platform hook for blocking directory access
  *
- * Blocks access to directories listed in .codex/.tri-ignore
+ * Blocks access to directories listed in .codex/.aikit-ignore
  * Uses gitignore-spec compliant pattern matching via 'ignore' package
  *
  * Blocking Rules:
@@ -12,7 +12,7 @@
  *   - Allowed: npm build, go build, cargo build, make, mvn, gradle, docker build, kubectl, terraform
  *
  * Configuration:
- * - Edit .codex/.tri-ignore to customize blocked patterns (one per line, # for comments)
+ * - Edit .codex/.aikit-ignore to customize blocked patterns (one per line, # for comments)
  * - Supports negation patterns (!) to allow specific paths
  *
  * Exit Codes:
@@ -33,7 +33,7 @@ const {
   isAllowedCommand
 } = require('./lib/scout-checker.cjs');
 
-// Import config utils to respect .tri-ai-kit.json settings
+// Import config utils to respect .aikit.json settings
 const { loadConfig } = require('./lib/kit-config-utils.cjs');
 
 // Import formatters (kept local as they're Claude-specific output)
@@ -41,7 +41,7 @@ const { formatBlockedError } = require('./scout-block/error-formatter.cjs');
 const { formatBroadPatternError } = require('./scout-block/broad-pattern-detector.cjs');
 
 try {
-  // Load config — respects .tri-ai-kit.json hooks.scout settings
+  // Load config — respects .aikit.json hooks.scout settings
   const config = loadConfig({ includeProject: false, includeAssertions: false, includeLocale: false });
   const scoutConfig = config.hooks?.scout ?? {};
 
@@ -81,7 +81,7 @@ try {
   const claudeDir = path.dirname(__dirname); // Go up from hooks/ to .claude/
 
   // Resolve ignore file path from config (supports absolute or relative to cwd)
-  const ignoreFileRaw = scoutConfig.ignoreFile || '.codex/.tri-ignore';
+  const ignoreFileRaw = scoutConfig.ignoreFile || '.codex/.aikit-ignore';
   const ignoreFilePath = path.isAbsolute(ignoreFileRaw)
     ? ignoreFileRaw
     : path.join(process.cwd(), ignoreFileRaw);

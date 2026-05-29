@@ -6,7 +6,7 @@ This file provides guidance to Codex when working with code in this repository.
 
 ## What This Is
 
-tri-ai-kit is a multi-agent development toolkit for Codex. It provides 23 specialized agents, 60+ skills, hooks, and a 15-phase production delivery workflow. The main conversation always acts as orchestrator — it routes to agents via custom agent dispatch and merges results. Agents never spawn other agents.
+ai-kit is a multi-agent development toolkit for Codex. It provides 23 specialized agents, 60+ skills, hooks, and a 15-phase production delivery workflow. The main conversation always acts as orchestrator — it routes to agents via custom agent dispatch and merges results. Agents never spawn other agents.
 
 This package is intended to be installed at the target repository root. Treat `AGENTS.md`, `.agents/skills/`, `.codex/agents/`, `.codex/hooks.json`, and `.codex/config.toml` as the Codex runtime surface.
 
@@ -15,7 +15,7 @@ This package is intended to be installed at the target repository root. Treat `A
 ```text
 .
 |-- AGENTS.md            # Repo-wide Codex instructions
-|-- WORKFLOW.md          # tri-ai-kit delivery workflow
+|-- WORKFLOW.md          # ai-kit delivery workflow
 |-- .agents/
 |   `-- skills/          # Repo-scoped Codex skills
 `-- .codex/
@@ -23,7 +23,7 @@ This package is intended to be installed at the target repository root. Treat `A
     |-- hooks.json       # Hook registrations
     |-- config.toml      # Codex feature/config defaults
     |-- hooks/           # Hook scripts and tests
-    |-- runtime/         # tri-ai-kit compatibility runtime
+    |-- runtime/         # ai-kit compatibility runtime
     `-- agent-memory/    # Package-managed memory files
 ```
 
@@ -76,7 +76,7 @@ node .codex/hooks/lib/__tests__/statusline-integration.test.cjs
 
 ## Package Maintenance
 
-- When maintaining tri-ai-kit itself, edit the Claude source package under `claude/` and rerun `scripts/sync-to-codex.ps1`.
+- When maintaining ai-kit itself, edit the Claude source package under `claude/` and rerun `scripts/sync-to-codex.ps1`.
 - When using the exported Codex kit in another repository, edit `AGENTS.md`, `.agents/skills/`, and `.codex/agents/` directly in that target repository.
 
 ## Decision Authority

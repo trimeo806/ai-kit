@@ -37,7 +37,7 @@
   "hooks": {
     "scout": {
       "enabled": true,
-      "ignoreFile": ".codex/.tri-ignore"
+      "ignoreFile": ".codex/.aikit-ignore"
     },
     "privacy": {
       "enabled": true

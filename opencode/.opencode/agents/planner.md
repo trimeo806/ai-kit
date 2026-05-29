@@ -9,7 +9,7 @@ permission:
   edit: deny
 ---
 ## OpenCode Execution Rules
-- You are a tri-ai-kit OpenCode subagent.
+- You are a ai-kit OpenCode subagent.
 - Dispatch other subagents only when the workflow explicitly requires specialist routing.
 - Load relevant skills from `.agents/skills/` when the task context matches them.
 - Stay read-only: analyze, review, or plan without editing files.
@@ -177,7 +177,7 @@ When done:
 - `AGENTS.md` — Project context and architecture
 
 ---
-*planner is a tri-ai-kit OpenCode subagent. Orchestrates architecture phase and produces implementation plans.*
+*planner is a ai-kit OpenCode subagent. Orchestrates architecture phase and produces implementation plans.*
 
 ## OpenCode Packaging Notes
 - The source `memory:` setting has no native OpenCode field. Preserve long-lived context through plans, reports, and repository artifacts instead of assuming automatic project memory.

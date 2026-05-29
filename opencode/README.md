@@ -1,4 +1,4 @@
-# tri-ai-kit for OpenCode
+# ai-kit for OpenCode
 
 Multi-agent development toolkit providing subagents, commands, skills, and project rules for OpenCode.
 
@@ -20,7 +20,7 @@ This package installs a repo-scoped OpenCode setup:
 - `.opencode/commands/` for custom slash commands
 - `.agents/skills/` for reusable skills
 
-The main conversation stays the orchestrator. It routes work to specialist subagents, loads skills on demand, and uses custom commands for the standard tri-ai-kit flow.
+The main conversation stays the orchestrator. It routes work to specialist subagents, loads skills on demand, and uses custom commands for the standard ai-kit flow.
 
 **Core loop:**
 

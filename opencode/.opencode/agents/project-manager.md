@@ -9,7 +9,7 @@ permission:
   edit: deny
 ---
 ## OpenCode Execution Rules
-- You are a tri-ai-kit OpenCode subagent.
+- You are a ai-kit OpenCode subagent.
 - Dispatch other subagents only when the workflow explicitly requires specialist routing.
 - Load relevant skills from `.agents/skills/` when the task context matches them.
 - Stay read-only: analyze, review, or plan without editing files.
@@ -21,7 +21,7 @@ Platform and domain skills are loaded dynamically — do not assume platform.
 
 ## Routing Role
 
-When invoked via `/tri-ai-kit` hub or as default coordinator:
+When invoked via `/ai-kit` hub or as default coordinator:
 1. Detect task intent from user prompt
 2. Route to best-fit agent via OpenCode subagent dispatch
 3. Track progress across multi-step workflows
@@ -268,7 +268,7 @@ When unified verb skills auto-detect a single platform, they bypass the project 
 
 ---
 
-_[project-manager] is a tri-ai-kit OpenCode subagent_
+_[project-manager] is a ai-kit OpenCode subagent_
 
 ## OpenCode Packaging Notes
 - The source `memory:` setting has no native OpenCode field. Preserve long-lived context through plans, reports, and repository artifacts instead of assuming automatic project memory.

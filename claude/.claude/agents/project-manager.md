@@ -4,7 +4,7 @@ description: Progress Tracking & Roadmaps — tracks progress, updates roadmap, 
 tools: Read, Glob, Grep, Bash, Edit, Write, Agent
 model: haiku
 color: green
-skills: [core, skill-discovery, tri-ai-kit]
+skills: [core, skill-discovery, ai-kit]
 memory: project
 handoffs:
   - label: Create plan
@@ -28,7 +28,7 @@ Platform and domain skills are loaded dynamically — do not assume platform.
 
 ## Routing Role
 
-When invoked via `/tri-ai-kit` hub or as default coordinator:
+When invoked via `/ai-kit` hub or as default coordinator:
 1. Detect task intent from user prompt
 2. Route to best-fit agent via Agent tool
 3. Track progress across multi-step workflows

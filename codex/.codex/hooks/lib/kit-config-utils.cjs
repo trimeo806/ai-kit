@@ -1,5 +1,5 @@
 /**
- * Shared utilities for tri-ai-kit hooks
+ * Shared utilities for ai-kit hooks
  *
  * Contains config loading, path sanitization, and common constants
  * used by session-init.cjs and context-reminder.cjs
@@ -9,8 +9,8 @@ const fs = require('fs');
 const path = require('path');
 const os = require('os');
 
-const LOCAL_CONFIG_PATH = '.codex/.tri-ai-kit.json';
-const GLOBAL_CONFIG_PATH = path.join(os.homedir(), '.codex', '.tri-ai-kit.json');
+const LOCAL_CONFIG_PATH = '.codex/.aikit.json';
+const GLOBAL_CONFIG_PATH = path.join(os.homedir(), '.codex', '.aikit.json');
 
 // Legacy export for backward compatibility
 const CONFIG_PATH = LOCAL_CONFIG_PATH;
@@ -27,7 +27,7 @@ const DEFAULT_CONFIG = {
   hooks: {
     scout: {
       enabled: true,
-      ignoreFile: '.codex/.tri-ignore'  // relative to cwd
+      ignoreFile: '.codex/.aikit-ignore'  // relative to cwd
     },
     privacy: {
       enabled: true
@@ -42,7 +42,6 @@ const DEFAULT_CONFIG = {
     'subagent-dispatch': true,
     'subagent-init': true,
     'context-reminder': true,
-    'subagent-stop-reminder': true,
     'lesson-capture': true,
     'session-metrics': true
   },
@@ -140,7 +139,7 @@ function loadConfigFromPath(configPath) {
  * @returns {string} Path to session temp file
  */
 function getSessionTempPath(sessionId) {
-  return path.join(os.tmpdir(), `tri-ai-kit-session-${sessionId}.json`);
+  return path.join(os.tmpdir(), `aikit-session-${sessionId}.json`);
 }
 
 /**
@@ -303,7 +302,7 @@ function execSafe(cmd, options = {}) {
  * - 'mostRecent': REMOVED - was causing stale plan pollution
  *
  * @param {string} sessionId - Session identifier (optional)
- * @param {Object} config - tri-ai-kit config
+ * @param {Object} config - ai-kit config
  * @returns {{ path: string|null, resolvedBy: 'session'|'branch'|null }} Resolution result with tracking
  */
 function resolvePlanPath(sessionId, config) {
@@ -472,8 +471,8 @@ function sanitizeConfig(config, projectRoot) {
  *
  * Resolution order (each layer overrides the previous):
  *   1. DEFAULT_CONFIG (hardcoded defaults)
- *   2. Global config (~/.codex/.tri-ai-kit.json) - user preferences
- *   3. Local config (./.codex/.tri-ai-kit.json) - project-specific overrides
+ *   2. Global config (~/.codex/.aikit.json) - user preferences
+ *   3. Local config (./.codex/.aikit.json) - project-specific overrides
  *
  * @param {Object} options - Options for config loading
  * @param {boolean} options.includeProject - Include project section (default: true)
@@ -745,8 +744,8 @@ function resolveNamingPattern(planConfig, gitBranch) {
   const validation = validateNamingPattern(pattern);
   if (!validation.valid) {
     // Log warning but return pattern anyway (fail-safe)
-    if (process.env.TRI_AI_KIT_DEBUG) {
-      console.error(`[tri-ai-kit-config] Warning: ${validation.error}`);
+    if (process.env.AIKIT_DEBUG) {
+      console.error(`[aikit-config] Warning: ${validation.error}`);
     }
   }
 
@@ -778,7 +777,7 @@ function isHookEnabled(hookName) {
 /**
  * Get research engine configuration with validation and defaults
  *
- * @param {Object} config - Loaded tri-ai-kit config
+ * @param {Object} config - Loaded ai-kit config
  * @returns {{ engine: string, geminiModel: string }}
  */
 function getResearchConfig(config) {

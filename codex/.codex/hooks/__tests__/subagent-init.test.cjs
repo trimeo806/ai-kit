@@ -33,7 +33,7 @@ function runHook(inputData, options = {}) {
       env: {
         ...process.env,
         CLAUDE_ENV_FILE: '',
-        TRI_AI_KIT_DEBUG: options.debug ? '1' : '',
+        AIKIT_DEBUG: options.debug ? '1' : '',
         ...options.env
       }
     });
@@ -257,7 +257,7 @@ describe('subagent-init.cjs', {
       );
     });
 
-    it('outputs TRI_AI_KIT_DEBUG info when enabled', async () => {
+    it('outputs AIKIT_DEBUG info when enabled', async () => {
       const result = await runHook({
         agent_type: 'test-agent',
         agent_id: 'debug-test',
@@ -265,7 +265,7 @@ describe('subagent-init.cjs', {
       }, { debug: true });
 
       // Debug output goes to stderr
-      if (process.env.TRI_AI_KIT_DEBUG || result.stderr.includes('effectiveCwd')) {
+      if (process.env.AIKIT_DEBUG || result.stderr.includes('effectiveCwd')) {
         assert.ok(
           result.stderr.includes('effectiveCwd') ||
           result.stderr.includes('gitRoot') ||

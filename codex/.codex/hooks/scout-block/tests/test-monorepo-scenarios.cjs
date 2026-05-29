@@ -11,7 +11,7 @@ const path = require('path');
 const { checkScoutBlock } = require('../../lib/scout-checker.cjs');
 
 const hookPath = path.join(__dirname, '..', '..', 'scout-block.cjs');
-const ignoreFilePath = path.join(__dirname, '..', '..', '..', '.tri-ignore');
+const ignoreFilePath = path.join(__dirname, '..', '..', '..', '.aikit-ignore');
 
 const scenarios = [
   // === THE BUG CASES - These MUST be BLOCKED ===

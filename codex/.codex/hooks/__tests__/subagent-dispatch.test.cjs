@@ -127,7 +127,7 @@ describe('subagent-dispatch.cjs', () => {
     it('uses default enabled config when no project config exists', async () => {
       const result = await runHook(
         { user_prompt: 'Run tests' },
-        { env: { HOME: '/tmp/tri-ai-kit-subagent-dispatch-test-home' } }
+        { env: { HOME: '/tmp/aikit-subagent-dispatch-test-home' } }
       );
       assert.strictEqual(result.exitCode, 0);
       assert.ok(result.stdout.includes('`tester`'));
