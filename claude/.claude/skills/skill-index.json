@@ -1,5 +1,5 @@
 {
-  "generated": "2026-03-18T06:45:04.645Z",
+  "generated": "2026-05-26T22:30:00.000Z",
   "version": "2.0.0",
   "count": 44,
   "categories": {
@@ -591,14 +591,14 @@
     },
     {
       "name": "nextjs-developer",
-      "description": "Use when building Next.js 14+ applications with App Router, server components, or server actions. Invoke to configure route handlers, implement middleware, set up API routes, add streaming SSR, write generateMetadata for SEO, scaffold loading.tsx/error.tsx boundaries, or deploy to Vercel. Triggers on: Next.js, Next.js 14, App Router, RSC, use server, Server Components, Server Actions, React Server Components, generateMetadata, loading.tsx, Next.js deployment, Vercel, Next.js performance.",
+      "description": "Use when building Next.js 16+ applications with App Router, Cache Components, Turbopack, and React 19.2 integration. Includes comprehensive hydration error prevention patterns. Invoke to configure route handlers, implement middleware, set up API routes, configure Cache Components with Partial Pre-Rendering (PPR), write generateMetadata for SEO, scaffold loading.tsx/error.tsx boundaries, prevent hydration mismatches, or deploy to Vercel.",
       "category": "uncategorized",
       "tier": "discoverable",
       "keywords": [],
       "platforms": [
         "all"
       ],
-      "triggers": "Next.js, Next.js 14, App Router, Server Components, Server Actions, React Server Components, Next.js deployment, Vercel, Next.js performance",
+      "triggers": "Next.js, Next.js 16, App Router, Server Components, Server Actions, React Server Components, Cache Components, Turbopack, React 19.2, Partial Pre-Rendering, PPR, Next.js deployment, Vercel, Next.js performance, React Compiler, hydration error, SSR, streaming, hydration mismatch",
       "agent-affinity": [],
       "connections": {
         "extends": [],
@@ -623,7 +623,10 @@
         "design",
         "spec",
         "architecture",
-        "blueprint"
+        "blueprint",
+        "adr",
+        "tdd",
+        "sdd"
       ],
       "platforms": [
         "all"
@@ -759,14 +762,14 @@
     },
     {
       "name": "react-expert",
-      "description": "Use when building React 18+ applications in .jsx or .tsx files, Next.js App Router projects, or create-react-app setups. Creates components, implements custom hooks, debugs rendering issues, migrates class components to functional, and implements state management. Invoke for Server Components, Suspense boundaries, useActionState forms, performance optimization, or React 19 features.",
+      "description": "Use when building React 19+ applications in .jsx or .tsx files, Next.js App Router projects, or create-react-app setups. Creates components, implements custom hooks, debugs rendering issues, and optimizes with React Compiler. Invoke for Server Components, Suspense boundaries, useActionState forms, Form Actions, use() hook, React Compiler optimization, React 19.2+ features, or performance optimization.",
       "category": "uncategorized",
       "tier": "discoverable",
       "keywords": [],
       "platforms": [
         "all"
       ],
-      "triggers": "React, JSX, hooks, useState, useEffect, useContext, Server Components, React 19, Suspense, TanStack Query, Redux, Zustand, component, frontend",
+      "triggers": "React, React 19, React 19.2, JSX, hooks, useState, useEffect, useContext, useActionState, Server Components, React Compiler, Form Actions, Suspense, TanStack Query, Redux, Zustand, component, frontend",
       "agent-affinity": [],
       "connections": {
         "extends": [],

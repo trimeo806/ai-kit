@@ -1,4 +1,4 @@
-﻿# Spec Reviewer Subagent Prompt Template
+# Spec Reviewer Subagent Prompt Template
 
 Use this template when dispatching a spec compliance reviewer for a completed task.
 

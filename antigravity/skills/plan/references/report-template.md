@@ -1,4 +1,4 @@
-﻿# Plan Report Template
+# Plan Report Template
 
 Use this template when writing a plan summary report.
 

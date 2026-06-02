@@ -1,30 +1,30 @@
 ---
 name: nextjs-developer
-description: "Use when building Next.js 14+ applications with App Router, server components, or server actions. Invoke to configure route handlers, implement middleware, set up API routes, add streaming SSR, write generateMetadata for SEO, scaffold loading.tsx/error.tsx boundaries, or deploy to Vercel. Triggers on: Next.js, Next.js 14, App Router, RSC, use server, Server Components, Server Actions, React Server Components, generateMetadata, loading.tsx, Next.js deployment, Vercel, Next.js performance."
+description: "Use when building Next.js 16+ applications with App Router, Cache Components, Turbopack, and React 19.2 integration. Invoke to configure route handlers, implement middleware, set up API routes, configure Cache Components with Partial Pre-Rendering (PPR), write generateMetadata for SEO, scaffold loading.tsx/error.tsx boundaries, or deploy to Vercel. Triggers on: Next.js, Next.js 16, App Router, RSC, use server, Server Components, Server Actions, Cache Components, Turbopack, React 19.2, generateMetadata, loading.tsx, Next.js deployment, Vercel, Next.js performance, PPR."
 license: MIT
 metadata:
   author: https://github.com/Jeffallan
-  version: "1.1.0"
+  version: "1.4.0"
   domain: frontend
-  triggers: Next.js, Next.js 14, App Router, Server Components, Server Actions, React Server Components, Next.js deployment, Vercel, Next.js performance
+  triggers: Next.js, Next.js 16, App Router, Server Components, Server Actions, React Server Components, Cache Components, Turbopack, React 19.2, Partial Pre-Rendering, PPR, Next.js deployment, Vercel, Next.js performance, React Compiler, hydration error, SSR, streaming
   role: specialist
   scope: implementation
   output-format: code
-  related-skills: typescript-pro
+  related-skills: typescript-pro, react-expert
 ---
 
 # Next.js Developer
 
-Senior Next.js developer with expertise in Next.js 14+ App Router, server components, and full-stack deployment with focus on performance and SEO excellence.
+Senior Next.js developer with expertise in Next.js 16+ App Router, Cache Components, Turbopack (stable), React 19.2 integration, and full-stack deployment with focus on performance and SEO excellence.
 
 ## Core Workflow
 
-1. **Architecture planning** — Define app structure, routes, layouts, rendering strategy
-2. **Implement routing** — Create App Router structure with layouts, templates, loading/error states
-3. **Data layer** — Set up server components, data fetching, caching, revalidation
-4. **Optimize** — Images, fonts, bundles, streaming, edge runtime
-5. **Deploy** — Production build, environment setup, monitoring
-   - Validate: run `next build` locally, confirm zero type errors, check `NEXT_PUBLIC_*` and server-only env vars are set, run Lighthouse/PageSpeed to confirm Core Web Vitals > 90
+1. **Architecture planning** — Define app structure, routes, layouts, rendering strategy with Cache Components & PPR
+2. **Implement routing** — Create App Router structure with layouts, templates, loading/error states, route deduplication
+3. **Data layer** — Set up server components, data fetching, Cache Components, ISR, on-demand revalidation
+4. **Optimize** — Images, fonts, Turbopack bundling (50%+ faster), streaming, edge runtime, React Compiler
+5. **Deploy** — Production build (Turbopack default), environment setup, monitoring
+   - Validate: run `next build` locally (fast with Turbopack), confirm zero type errors, check `NEXT_PUBLIC_*` and server-only env vars are set, run Lighthouse/PageSpeed to confirm Core Web Vitals > 90
 
 ## Reference Guide
 
@@ -32,11 +32,14 @@ Load detailed guidance based on context:
 
 | Topic | Reference | Load When |
 |-------|-----------|-----------|
-| App Router | `references/app-router.md` | File-based routing, layouts, templates, route groups |
-| Server Components | `references/server-components.md` | RSC patterns, streaming, client boundaries |
+| App Router | `references/app-router.md` | File-based routing, layouts, templates, route groups, layout deduplication |
+| Cache Components & PPR | `references/cache-components.md` | Partial Pre-Rendering, opt-in caching, instant navigation |
+| Turbopack | `references/turbopack.md` | Rust-based bundler, 50%+ faster builds, file system caching |
+| Server Components | `references/server-components.md` | RSC patterns, streaming, client boundaries, React 19.2 |
 | Server Actions | `references/server-actions.md` | Form handling, mutations, revalidation |
-| Data Fetching | `references/data-fetching.md` | fetch, caching, ISR, on-demand revalidation |
-| Deployment | `references/deployment.md` | Vercel, self-hosting, Docker, optimization |
+| Data Fetching | `references/data-fetching.md` | fetch, Cache Components, ISR, on-demand revalidation |
+| React 19.2 Integration | `references/react-19-integration.md` | View Transitions, useEffectEvent, React Compiler support |
+| Deployment | `references/deployment.md` | Vercel, self-hosting, Docker, Turbopack optimization |
 
 ## Large Page & Component Decomposition (Next.js)
 
@@ -178,6 +181,196 @@ export default function DashboardLayout({
 | Page sections that load/refresh independently | Parallel Routes |
 | Heavy component slowing initial load | `next/dynamic` with `ssr: false` |
 
+## Hydration Error Prevention (CRITICAL)
+
+Hydration errors occur when server-rendered HTML differs from client-rendered HTML. This is the #1 cause of runtime issues in Next.js 16+. Apply these patterns to eliminate hydration mismatches.
+
+### Root Causes & Solutions
+
+| Cause | ❌ Anti-Pattern | ✅ Solution |
+|-------|-----------------|-----------|
+| **Browser APIs in Server Components** | Using `window`, `localStorage`, `navigator` in server code | Move to `'use client'` components or use `useEffect` |
+| **Conditional rendering (random/date)** | `{Math.random() > 0.5 ? <A /> : <B />}` on server then client | Use `useEffect` + state to conditionally render after hydration |
+| **CSS-in-JS style mismatch** | Dynamic styles differ server-to-client | Use stable CSS classes or `suppressHydrationWarning` (last resort) |
+| **useEffect on initial render** | Fetching data in `useEffect` causes content mismatch | Fetch on server; pass data as props or use Server Components |
+| **Inline event handlers** | `onClick={() => ...}` function created fresh each render | Use stable function refs or memoize callbacks |
+| **Timestamp/date differences** | `new Date().toLocaleString()` differs on server vs client | Format dates on server or pass serialized timestamp to client |
+| **Third-party script interference** | External scripts modify DOM during hydration | Defer scripts or use `Script` component with `strategy="afterInteractive"` |
+| **Context with non-serializable values** | Functions/instances in Context cause mismatches | Serialize all Context values; pass functions as callbacks in props |
+
+### Pattern 1 — Browser APIs: Move to Client Boundary
+
+```tsx
+// ❌ HYDRATION ERROR: window is undefined on server
+'use server'
+export async function PageWithClientDetection() {
+  const isDarkMode = typeof window !== 'undefined' && window.matchMedia('(prefers-color-scheme: dark)').matches;
+  return <div>{isDarkMode ? 'dark' : 'light'}</div>;
+}
+
+// ✅ CORRECT: Push browser logic to client leaf
+async function PageWithClientDetection() {
+  return <ThemeDetector />;
+}
+
+'use client'
+function ThemeDetector() {
+  const [isDarkMode, setIsDarkMode] = useState(false);
+  useEffect(() => {
+    setIsDarkMode(window.matchMedia('(prefers-color-scheme: dark)').matches);
+  }, []);
+  return <div>{isDarkMode ? 'dark' : 'light'}</div>;
+}
+```
+
+### Pattern 2 — Random/Conditional Rendering: Defer to Client
+
+```tsx
+// ❌ HYDRATION ERROR: Random values differ server → client
+'use client'
+export function RandomGreeting() {
+  const greetings = ['Hi', 'Hello', 'Howdy'];
+  const greeting = greetings[Math.floor(Math.random() * greetings.length)];
+  return <p>{greeting}!</p>;
+}
+
+// ✅ CORRECT: Use state + useEffect to ensure match
+'use client'
+export function RandomGreeting() {
+  const [greeting, setGreeting] = useState('');
+  const [isHydrated, setIsHydrated] = useState(false);
+
+  useEffect(() => {
+    const greetings = ['Hi', 'Hello', 'Howdy'];
+    setGreeting(greetings[Math.floor(Math.random() * greetings.length)]);
+    setIsHydrated(true);
+  }, []);
+
+  // Render placeholder during hydration, real content after
+  if (!isHydrated) return <p aria-busy="true"></p>;
+  return <p>{greeting}!</p>;
+}
+```
+
+### Pattern 3 — Date/Time Formatting: Format on Server
+
+```tsx
+// ❌ HYDRATION ERROR: Client-side toLocaleString() differs by timezone/locale
+'use client'
+export function PostTime({ timestamp }: { timestamp: number }) {
+  return <time>{new Date(timestamp).toLocaleString()}</time>;
+}
+
+// ✅ CORRECT: Format on server; pass formatted string
+import { formatDate } from '@/lib/date-utils';
+
+export function PostTime({ timestamp }: { timestamp: number }) {
+  const formatted = formatDate(timestamp); // runs on server
+  return <time dateTime={new Date(timestamp).toISOString()}>{formatted}</time>;
+}
+```
+
+### Pattern 4 — Data Fetching: Server First, Not useEffect
+
+```tsx
+// ❌ HYDRATION ERROR: useEffect fetching causes mismatch (no data on first render)
+'use client'
+export function UserProfile({ userId }: { userId: string }) {
+  const [user, setUser] = useState(null);
+  
+  useEffect(() => {
+    fetch(`/api/users/${userId}`).then(r => r.json()).then(setUser);
+  }, [userId]);
+
+  return <div>{user?.name || 'Loading...'}</div>; // mismatch!
+}
+
+// ✅ CORRECT: Fetch on server; pass data to client
+async function UserProfile({ userId }: { userId: string }) {
+  const user = await fetch(`http://internal-api/users/${userId}`).then(r => r.json());
+  return <UserProfileClient user={user} />;
+}
+
+'use client'
+function UserProfileClient({ user }: { user: User }) {
+  return <div>{user.name}</div>; // no fetching, no mismatch
+}
+```
+
+### Pattern 5 — CSS Classes: Use Stable Classes, Not Dynamic Inline Styles
+
+```tsx
+// ❌ HYDRATION ERROR: Inline style depends on random or client-only value
+'use client'
+export function Card({ color }: { color?: string }) {
+  const bgColor = color || (Math.random() > 0.5 ? 'blue' : 'green');
+  return <div style={{ backgroundColor: bgColor }}>Content</div>;
+}
+
+// ✅ CORRECT: Use Tailwind classes or stable CSS
+'use client'
+export function Card({ color = 'blue' }: { color: 'blue' | 'green' }) {
+  const bgClass = color === 'blue' ? 'bg-blue-500' : 'bg-green-500';
+  return <div className={bgClass}>Content</div>;
+}
+
+// Even better: pass color from server so it's deterministic
+async function CardPage({ colorFromDb }: { colorFromDb: 'blue' | 'green' }) {
+  return <Card color={colorFromDb} />;
+}
+```
+
+### Pattern 6 — Context with Complex Values: Serialize & Pass Props
+
+```tsx
+// ❌ HYDRATION ERROR: Context value includes function that differs server → client
+const ThemeContext = createContext({
+  theme: 'light',
+  toggleTheme: () => {}, // functions recreated on each render
+});
+
+'use client'
+export function ThemeProvider({ children }: { children: ReactNode }) {
+  const [theme, setTheme] = useState('light');
+  const value = { theme, toggleTheme: () => setTheme(t => t === 'light' ? 'dark' : 'light') };
+  return <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>;
+}
+
+// ✅ CORRECT: Server-pass theme; client controls toggle
+type ThemeContextValue = {
+  theme: 'light' | 'dark';
+  onToggle: () => void;
+};
+
+const ThemeContext = createContext<ThemeContextValue | null>(null);
+
+// Server component fetches theme once
+async function ThemeProvider({ children }: { children: ReactNode }) {
+  const theme = await getThemeFromDb(); // server-side
+  return <ThemeProviderClient theme={theme}>{children}</ThemeProviderClient>;
+}
+
+'use client'
+function ThemeProviderClient({ theme: initialTheme, children }: { theme: 'light' | 'dark'; children: ReactNode }) {
+  const [theme, setTheme] = useState(initialTheme);
+  const value = { theme, onToggle: () => setTheme(t => t === 'light' ? 'dark' : 'light') };
+  return <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>;
+}
+```
+
+### Hydration Checklist
+
+When generating client components:
+- [ ] No `window`, `localStorage`, `document` access outside `useEffect`
+- [ ] No `Math.random()` or `Date.now()` in JSX (move to `useEffect` + state)
+- [ ] No inline styles that depend on client-only values
+- [ ] All conditional rendering is deterministic (data-driven, not random)
+- [ ] Data comes from props or server fetch, not `useEffect`
+- [ ] CSS classes are stable (Tailwind or CSS modules, not inline)
+- [ ] `useId()` for any element that needs a unique ID
+- [ ] All Context values are serializable (no functions)
+- [ ] Third-party scripts use `<Script>` component with strategy
+
 ## Constraints
 
 ### MUST DO (Next.js-specific)
@@ -187,11 +380,21 @@ export default function DashboardLayout({
 - Use `generateMetadata` (or the static `metadata` export) for all SEO — never hardcode `<title>` or `<meta>` tags in JSX
 - Optimize every image with `next/image`; never use a plain `<img>` tag for content images
 - Add `loading.tsx` and `error.tsx` at every route segment that performs async data fetching
+- **Fetch data on the server first** — pass data to client as props, never fetch in `useEffect` on first render
+- **No browser APIs in server code** — move `window`, `localStorage`, `document` access to `'use client'` components
+- **Use `useEffect` + state for client-only logic** — ensure server render matches client hydration
+- **Format dates/times on the server** — don't rely on client-side locale formatting
 
 ### MUST NOT DO
 - Convert components to Client Components just to access data — fetch server-side first
 - Skip `loading.tsx`/`error.tsx` boundaries on async route segments
 - Deploy without running `next build` to confirm zero errors
+- **Use `Math.random()` or `Date.now()` in JSX** — these cause hydration mismatches
+- **Access browser APIs (`window`, `localStorage`) outside `useEffect`** — causes hydration errors
+- **Fetch data in `useEffect` without a fallback** — creates server/client mismatch
+- **Put functions or non-serializable values in Context** — causes hydration mismatches across component boundaries
+- **Conditionally render based on client-only state** — defer to client with a state + useEffect guard
+- **Use inline styles that differ between server and client** — use stable CSS classes instead
 
 ## Code Examples
 
@@ -280,4 +483,4 @@ When implementing Next.js features, provide:
 
 ## Knowledge Reference
 
-Next.js 14+, App Router, React Server Components, Server Actions, Streaming SSR, Partial Prerendering, next/image, next/font, Metadata API, Route Handlers, Middleware, Edge Runtime, Turbopack, Vercel deployment
+Next.js 16+, App Router, React Server Components, Server Actions, Streaming SSR, Partial Pre-Rendering (PPR), Cache Components, Turbopack (stable, 50%+ faster), React 19.2 integration, next/image, next/font, Metadata API, Route Handlers, Middleware, Edge Runtime, Build Adapters (stable), Incremental Prefetching, Layout Deduplication, React Compiler support, View Transitions, Vercel deployment, **Hydration Error Prevention** (server-client consistency, no browser APIs on server, useEffect guards, serializable Context, stable CSS classes, server-side data fetching, date formatting)

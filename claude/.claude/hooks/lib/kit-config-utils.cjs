@@ -571,11 +571,13 @@ function escapeShellValue(str) {
 
 /**
  * Write environment variable to CLAUDE_ENV_FILE (with escaping)
+ * Keys with hyphens are sanitized to underscores — zsh rejects hyphenated names.
  */
 function writeEnv(envFile, key, value) {
   if (envFile && value !== null && value !== undefined) {
+    const safeKey = key.replace(/-/g, '_');
     const escaped = escapeShellValue(String(value));
-    fs.appendFileSync(envFile, `export ${key}="${escaped}"\n`);
+    fs.appendFileSync(envFile, `export ${safeKey}="${escaped}"\n`);
   }
 }
 

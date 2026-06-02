@@ -39,10 +39,10 @@ Scan `.codex/agents/*.md`, extract `name`, `description`, `skills` fields. Then 
 
 | Phase type | Agent | Skills to activate |
 |------------|-------|--------------------|
-| Go / Node.js backend | `backend-developer` | `golang-pro`, `postgres-pro`, `api-designer` |
-| React / TanStack UI | `frontend-developer` | `tanstack-start`, `react-expert`, `typescript-pro`, `web-frontend` |
-| Auth / OAuth / JWT | `backend-developer` | `golang-pro`, `typescript-pro` |
-| SSE / real-time backend | `backend-developer` | `golang-pro`, `websocket-engineer`, `postgres-pro` |
+| Go / Node.js backend | `developer` | `golang-pro`, `postgres-pro`, `api-designer` |
+| React / TanStack UI | `developer` | `tanstack-start`, `react-expert`, `typescript-pro`, `web-frontend` |
+| Auth / OAuth / JWT | `developer` | `golang-pro`, `typescript-pro` |
+| SSE / real-time backend | `developer` | `golang-pro`, `websocket-engineer`, `postgres-pro` |
 | Test / E2E | `tester` | `playwright-expert`, `web-testing`, `test` |
 | CI/CD / Docker | `devops-engineer` | `infra-docker`, `terraform-engineer` |
 | Security audit | `security-auditor` | `fullstack-guardian` |

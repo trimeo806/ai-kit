@@ -1,12 +1,12 @@
 ---
 name: react-expert
-description: Use when building React 18+ applications in .jsx or .tsx files, Next.js App Router projects, or create-react-app setups. Creates components, implements custom hooks, debugs rendering issues, migrates class components to functional, and implements state management. Invoke for Server Components, Suspense boundaries, useActionState forms, performance optimization, or React 19 features.
+description: Use when building React 19+ applications in .jsx or .tsx files, Next.js App Router projects, or create-react-app setups. Creates components, implements custom hooks, debugs rendering issues, and optimizes with React Compiler. Invoke for Server Components, Suspense boundaries, useActionState forms, Form Actions, use() hook, React Compiler optimization, React 19.2+ features, or performance optimization.
 license: MIT
 metadata:
   author: https://github.com/Jeffallan
-  version: "1.1.0"
+  version: "1.2.0"
   domain: frontend
-  triggers: React, JSX, hooks, useState, useEffect, useContext, Server Components, React 19, Suspense, TanStack Query, Redux, Zustand, component, frontend
+  triggers: React, React 19, React 19.2, JSX, hooks, useState, useEffect, useContext, useActionState, Server Components, React Compiler, Form Actions, Suspense, TanStack Query, Redux, Zustand, component, frontend
   role: specialist
   scope: implementation
   output-format: code
@@ -15,17 +15,18 @@ metadata:
 
 # React Expert
 
-Senior React specialist with deep expertise in React 19, Server Components, and production-grade application architecture.
+Senior React specialist with deep expertise in React 19.2+, Server Components, React Compiler, and production-grade application architecture.
 
 ## When to Use This Skill
 
-- Building new React components or features
+- Building new React components or features with React 19.2+
 - Implementing state management (local, Context, Redux, Zustand)
-- Optimizing React performance
+- Optimizing React performance with React Compiler (stable as of Oct 2025)
 - Setting up React project architecture
-- Working with React 19 Server Components
-- Implementing forms with React 19 actions
-- Data fetching patterns with TanStack Query or `use()`
+- Working with React 19 Server Components and async components
+- Implementing forms with React 19 Form Actions and useActionState
+- Data fetching patterns with TanStack Query, use() hook, or server actions
+- Leveraging React Compiler for automatic optimization (no manual memoization)
 
 ## Core Workflow
 
@@ -43,10 +44,11 @@ Load detailed guidance based on context:
 | Topic | Reference | Load When |
 |-------|-----------|-----------|
 | Server Components | `references/server-components.md` | RSC patterns, Next.js App Router |
-| React 19 | `references/react-19-features.md` | use() hook, useActionState, forms |
+| React 19.2+ | `references/react-19-features.md` | use() hook, useActionState, Form Actions, useEffectEvent |
+| React Compiler | `references/react-compiler.md` | Automatic optimization, skipping manual memoization |
 | State Management | `references/state-management.md` | Context, Zustand, Redux, TanStack |
-| Hooks | `references/hooks-patterns.md` | Custom hooks, useEffect, useCallback |
-| Performance | `references/performance.md` | memo, lazy, virtualization |
+| Hooks | `references/hooks-patterns.md` | Custom hooks, useEffect, useCallback, useActionState |
+| Performance | `references/performance.md` | React Compiler, lazy, virtualization, Suspense |
 | Testing | `references/testing-react.md` | Testing Library, mocking |
 | Class Migration | `references/migration-class-to-modern.md` | Converting class components to hooks/RSC |
 
@@ -332,4 +334,4 @@ When implementing React features, provide:
 
 ## Knowledge Reference
 
-React 19, Server Components, use() hook, Suspense, TypeScript, TanStack Query, Zustand, Redux Toolkit, React Router, React Testing Library, Vitest/Jest, Next.js App Router, accessibility (WCAG)
+React 19.2+, Server Components, use() hook, useActionState, Form Actions, React Compiler (stable Oct 2025), Suspense, TypeScript, TanStack Query, Zustand, Redux Toolkit, React Router, React Testing Library, Vitest/Jest, Next.js App Router, View Transitions, useEffectEvent, Activity rendering, accessibility (WCAG)
