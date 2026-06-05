@@ -1,6 +1,6 @@
 ---
 name: prompt-refinement
-description: Use when a user wants to refine, improve, clarify, rewrite, or make a prompt/spec/task request more effective before an agent works on it. Also use when requirements are vague, business logic is underspecified, acceptance criteria are missing, or an implementation/research/design prompt needs clearer scope, constraints, context, output format, or validation steps.
+description: Pre-planning grill session that stress-tests a rough request against the codebase and domain model, sharpens terminology, and produces an execution-ready prompt for /plan. Use when requirements are vague, underspecified, or need validation before planning begins.
 user-invocable: true
 metadata:
   argument-hint: "[rough prompt, feature idea, or requirements draft]"
@@ -10,7 +10,6 @@ metadata:
     - project-manager
     - developer
     - researcher
-    - docs-manager
   keywords:
     - prompt
     - refinement
@@ -22,6 +21,8 @@ metadata:
     - constraints
     - business-logic
     - specification
+    - grill
+    - stress-test
   platforms:
     - all
   triggers:
@@ -34,11 +35,11 @@ metadata:
     - make this prompt better
 ---
 
-# Prompt Refinement
+# Prompt Refinement — Pre-Planning Grill
 
 ## Purpose
 
-Convert rough requests into clear, bounded, execution-ready prompts without changing the user's intent. The refined prompt should make the next agent's job obvious: what to inspect, what to produce, what constraints matter, and how success will be judged.
+A structured interview that stress-tests a rough request against the existing codebase and domain model, sharpens terminology, and produces a clear, bounded, execution-ready prompt for `/plan`. This is the gate between "I want X" and "here's exactly how we'll build X."
 
 ## When Active
 
@@ -49,23 +50,28 @@ Use this skill when the input is:
 - A PRD/spec/user story draft
 - A business logic description with missing rules or edge cases
 - A research/design/review prompt that needs clearer scope
-- A request to "make this prompt better" or "refine this before I run it"
+- A request to "make this prompt better" or "refine this before I plan it"
+
+## Core Principles
+
+1. **Codebase-first.** If a question can be answered by exploring the code, explore the code instead of asking the user.
+2. **One question at a time.** Ask sequentially, wait for feedback on each before continuing. For each question, provide your recommended answer.
+3. **Relentless precision.** Don't let fuzzy terms, vague boundaries, or unvalidated assumptions pass into the refined prompt.
+4. **Update docs inline.** When a term is resolved, update `CONTEXT.md` immediately. When a decision crystallizes, offer an ADR.
 
 ## Workflow
 
-### 1. Explore Before Asking
+### 1. Explore the Codebase
 
-**Codebase-first rule:** If a question can be answered by exploring the code, explore the code instead of asking the user.
+Before asking anything, ground yourself in the project:
 
-Before drafting questions:
+- Search for `CONTEXT.md` or `CONTEXT-MAP.md` — load the domain glossary if it exists
+- Search for `docs/adr/` — load recent Architecture Decision Records
+- Read relevant source files the user's request touches
+- Check existing documentation (README, docs/, specs/)
+- Identify contradictions between the user's request and the actual code
 
-- Search for existing documentation (CONTEXT.md, docs/, README.md, ADRs in docs/adr/)
-- Check if the user's claims match the actual code
-- Look for existing terminology/glossary in CONTEXT.md or similar
-- Identify contradictions between the request and the codebase
-
-Surface contradictions immediately:
-> *"Your request assumes X, but the code actually does Y — which is correct?"*
+If `CONTEXT.md` doesn't exist, note that you'll create one lazily when the first term is resolved.
 
 ### 2. Preserve Intent
 
@@ -74,12 +80,12 @@ Identify the user's actual goal before rewriting:
 | Check | Question |
 |-------|----------|
 | Objective | What outcome does the user want? |
-| Audience | Who or what will consume the prompt? |
+| Audience | Who or what will consume the output? |
 | Scope | What is included and excluded? |
 | Constraints | What rules, tools, files, deadlines, or standards apply? |
 | Validation | How will the result be checked? |
 
-Do not add features, architecture, tools, or business rules that the user did not imply. Mark uncertain items as assumptions or open questions.
+Do not add features, architecture, tools, or business rules that the user did not imply.
 
 ### 3. Classify The Prompt
 
@@ -95,49 +101,55 @@ Choose the closest prompt type:
 | Documentation | audience, document type, tone, template, source material |
 | Design | audience, brand, interaction goals, constraints, deliverables |
 
-### 4. Sharpen Fuzzy Language
+### 4. Challenge Against the Glossary
 
-Actively call out vague or overloaded terms. Propose precise canonical alternatives:
+If the user uses a term that conflicts with `CONTEXT.md`, call it out immediately:
+
+> *"Your glossary defines 'cancellation' as X, but you seem to mean Y — which is it?"*
+
+If no glossary exists yet, propose one as terms are resolved during the session.
+
+### 5. Sharpen Fuzzy Language
+
+When the user uses vague or overloaded terms, propose a precise canonical alternative:
 
 > *"You're saying 'account' — do you mean the Customer or the User? Those are different things."*
 >
 > *"You mention 'fix the performance' — is this about response time, throughput, or memory usage?"*
 
-Do not let ambiguous terms pass into the refined prompt. Every term should be unambiguous.
+Do not let ambiguous terms pass into the refined prompt.
 
-### 5. Stress-Test with Concrete Scenarios
+### 6. Stress-Test with Concrete Scenarios
 
 When domain relationships or business rules are involved, invent edge-case scenarios to force precision:
 
 - What happens at the boundary? (empty input, max size, concurrent access)
 - What's the failure mode? (network timeout, invalid state, partial completion)
 - Who else is affected? (downstream systems, other users, background jobs)
+- Cross-reference with code: does the user's claim match what the code actually does?
 
-Surface these as open questions or assumptions in the refined prompt.
+Surface contradictions:
+> *"Your code cancels entire Orders, but you just said partial cancellation is possible — which is right?"*
 
-### 6. Resolve Ambiguity
+### 7. Resolve Ambiguity
 
-Ask questions one at a time, waiting for feedback on each before continuing. For each question, provide your recommended answer.
+Ask questions one at a time, providing your recommended answer for each. Wait for feedback before continuing.
 
 If the user hasn't answered after 3 focused questions, proceed with clearly stated assumptions:
 > *"Assume X unless corrected"*
 > *"Open question: Y"*
 > *"Out of scope: Z"*
 
-Prefer:
-- "Assume X unless corrected"
-- "Open question: Y"
-- "Out of scope: Z"
+### 8. Update Documentation Inline
 
-Avoid:
-- Large interview lists
-- Scope expansion
-- Generic prompt-engineering advice
-- Hidden implementation decisions
+As terms and decisions crystallize during the session:
 
-### 7. Produce The Refined Prompt
+- **Update `CONTEXT.md`** immediately when a term is resolved. Use the format in [context-format.md](./references/context-format.md). `CONTEXT.md` is a glossary only — no implementation details.
+- **Offer an ADR** only when all three criteria are met: hard to reverse, surprising without context, result of a real trade-off. Use the format in [adr-format.md](./references/adr-format.md). If any criterion is missing, skip the ADR.
 
-Use this template by default:
+### 9. Produce The Refined Prompt
+
+Output the final prompt using this template:
 
 ```markdown
 ## Refined Prompt
@@ -149,6 +161,7 @@ Objective:
 Context:
 - [known context from codebase exploration]
 - [files/systems/users involved]
+- [glossary terms from CONTEXT.md if applicable]
 
 Scope:
 - In scope:
@@ -203,6 +216,7 @@ Before finalizing, verify the refined prompt is:
 - Free of invented facts
 - Aligned with the original intent
 - Validated against the actual codebase (not just user claims)
+- Consistent with existing glossary (CONTEXT.md) and decisions (ADRs)
 
 ## Output Options
 
@@ -212,8 +226,19 @@ If useful, include:
 - **Full version** — detailed prompt with context, criteria, and validation
 - **Questions only** — when rewriting would require decisions the user has not made
 
+## Handoff
+
+After refinement, the user can pipe the result directly into `/plan`:
+
+```
+/prompt-refinement [rough idea]
+# → refined prompt output
+/plan [refined prompt]
+```
+
 ## Related Documents
 
-- `.claude/skills/plan/SKILL.md` — implementation planning
+- [context-format.md](./references/context-format.md) — CONTEXT.md glossary format
+- [adr-format.md](./references/adr-format.md) — Architecture Decision Record format
+- `.claude/skills/plan/SKILL.md` — implementation planning (next step)
 - `.claude/skills/core/SKILL.md` — operational boundaries
-- `.claude/skills/doc-coauthoring/SKILL.md` — collaborative PRD/spec drafting
