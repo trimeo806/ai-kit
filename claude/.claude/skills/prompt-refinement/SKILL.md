@@ -1,6 +1,6 @@
 ---
 name: prompt-refinement
-description: Use when a user wants to refine, improve, clarify, rewrite, or make a prompt/spec/task request more effective before Codex, an agent, or another AI works on it. Also use when requirements are vague, business logic is underspecified, acceptance criteria are missing, or an implementation/research/design prompt needs clearer scope, constraints, context, output format, or validation steps.
+description: Use when a user wants to refine, improve, clarify, rewrite, or make a prompt/spec/task request more effective before an agent works on it. Also use when requirements are vague, business logic is underspecified, acceptance criteria are missing, or an implementation/research/design prompt needs clearer scope, constraints, context, output format, or validation steps.
 user-invocable: true
 metadata:
   argument-hint: "[rough prompt, feature idea, or requirements draft]"
@@ -53,7 +53,21 @@ Use this skill when the input is:
 
 ## Workflow
 
-### 1. Preserve Intent
+### 1. Explore Before Asking
+
+**Codebase-first rule:** If a question can be answered by exploring the code, explore the code instead of asking the user.
+
+Before drafting questions:
+
+- Search for existing documentation (CONTEXT.md, docs/, README.md, ADRs in docs/adr/)
+- Check if the user's claims match the actual code
+- Look for existing terminology/glossary in CONTEXT.md or similar
+- Identify contradictions between the request and the codebase
+
+Surface contradictions immediately:
+> *"Your request assumes X, but the code actually does Y — which is correct?"*
+
+### 2. Preserve Intent
 
 Identify the user's actual goal before rewriting:
 
@@ -67,7 +81,7 @@ Identify the user's actual goal before rewriting:
 
 Do not add features, architecture, tools, or business rules that the user did not imply. Mark uncertain items as assumptions or open questions.
 
-### 2. Classify The Prompt
+### 3. Classify The Prompt
 
 Choose the closest prompt type:
 
@@ -81,36 +95,47 @@ Choose the closest prompt type:
 | Documentation | audience, document type, tone, template, source material |
 | Design | audience, brand, interaction goals, constraints, deliverables |
 
-### 3. Extract Known Context
+### 4. Sharpen Fuzzy Language
 
-Build a compact context block from the original request:
+Actively call out vague or overloaded terms. Propose precise canonical alternatives:
 
-- Known facts
-- Target files, systems, users, or workflows
-- Required outputs
-- Hard constraints
-- Soft preferences
-- Business rules stated explicitly
-- Risks or edge cases already mentioned
+> *"You're saying 'account' — do you mean the Customer or the User? Those are different things."*
+>
+> *"You mention 'fix the performance' — is this about response time, throughput, or memory usage?"*
 
-### 4. Resolve Ambiguity
+Do not let ambiguous terms pass into the refined prompt. Every term should be unambiguous.
 
-If missing information blocks a useful rewrite, ask up to 3 focused questions. If the prompt can still be improved, proceed with assumptions.
+### 5. Stress-Test with Concrete Scenarios
+
+When domain relationships or business rules are involved, invent edge-case scenarios to force precision:
+
+- What happens at the boundary? (empty input, max size, concurrent access)
+- What's the failure mode? (network timeout, invalid state, partial completion)
+- Who else is affected? (downstream systems, other users, background jobs)
+
+Surface these as open questions or assumptions in the refined prompt.
+
+### 6. Resolve Ambiguity
+
+Ask questions one at a time, waiting for feedback on each before continuing. For each question, provide your recommended answer.
+
+If the user hasn't answered after 3 focused questions, proceed with clearly stated assumptions:
+> *"Assume X unless corrected"*
+> *"Open question: Y"*
+> *"Out of scope: Z"*
 
 Prefer:
-
 - "Assume X unless corrected"
 - "Open question: Y"
 - "Out of scope: Z"
 
 Avoid:
-
 - Large interview lists
 - Scope expansion
 - Generic prompt-engineering advice
 - Hidden implementation decisions
 
-### 5. Produce The Refined Prompt
+### 7. Produce The Refined Prompt
 
 Use this template by default:
 
@@ -118,12 +143,11 @@ Use this template by default:
 ## Refined Prompt
 
 Role: [best-fit agent/role]
-
 Objective:
 [specific outcome]
 
 Context:
-- [known context]
+- [known context from codebase exploration]
 - [files/systems/users involved]
 
 Scope:
@@ -178,6 +202,7 @@ Before finalizing, verify the refined prompt is:
 - Clear about output format
 - Free of invented facts
 - Aligned with the original intent
+- Validated against the actual codebase (not just user claims)
 
 ## Output Options
 
@@ -189,7 +214,6 @@ If useful, include:
 
 ## Related Documents
 
-- `.agents/skills/brainstorm/SKILL.md` — trade-off analysis
-- `.agents/skills/doc-coauthoring/SKILL.md` — collaborative PRD/spec drafting
-- `.agents/skills/plan/SKILL.md` — implementation planning
-- `.agents/skills/core/SKILL.md` — operational boundaries
+- `.claude/skills/plan/SKILL.md` — implementation planning
+- `.claude/skills/core/SKILL.md` — operational boundaries
+- `.claude/skills/doc-coauthoring/SKILL.md` — collaborative PRD/spec drafting
