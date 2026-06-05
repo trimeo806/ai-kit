@@ -22,6 +22,7 @@ program
   .option("--repo <slug>", "GitHub repo slug to fetch from", "trimeo806/ai-kit")
   .option("-y, --yes", "overwrite all conflicts without prompting", false)
   .option("--force", "alias for --yes", false)
+  .option("--skip-existing", "skip files that already exist (add new files only)", false)
   .option("--dry-run", "preview without writing", false)
   .action(async (targets: string[], opts) => {
     try {
@@ -29,6 +30,7 @@ program
         ref: opts.ref,
         repo: opts.repo,
         yes: Boolean(opts.yes || opts.force),
+        skipExisting: Boolean(opts.skipExisting),
         dryRun: opts.dryRun,
         cwd: process.cwd(),
       });

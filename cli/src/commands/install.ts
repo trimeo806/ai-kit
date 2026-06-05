@@ -8,6 +8,7 @@ import { expandTargets, HANDLERS, TargetName } from "../targets";
 export interface InstallOptions {
   ref: string;
   yes: boolean;
+  skipExisting?: boolean;
   dryRun: boolean;
   repo?: string;
   cwd: string;
@@ -19,7 +20,7 @@ export async function runInstall(rawTargets: string[], opts: InstallOptions): Pr
 
   const fetched = await fetchKit({ repo: opts.repo, ref: opts.ref });
   try {
-    const policy = makePolicy({ yes: opts.yes });
+    const policy = makePolicy({ yes: opts.yes, skipExisting: opts.skipExisting });
     const manifest = (await readManifest(opts.cwd)) ?? emptyManifest();
     manifest.ref = fetched.ref;
     manifest.sha = fetched.sha;

@@ -32,6 +32,10 @@ npx agentkit-cli install codex opencode
 npx agentkit-cli install all
 ```
 
+Useful flags: `--skip-existing` (add new files only, never overwrite existing — preserves your project's own `CLAUDE.md`/`.claude/`), `-y`/`--yes` (overwrite all, no backup), `--dry-run` (preview).
+
+Every `install` also appends an ai-kit-managed block to the target repo's `.gitignore`, keeping installed kit files local and out of commits.
+
 Other commands: `update`, `uninstall`, `list`. Source for the CLI lives in [`cli/`](./cli/README.md).
 
 ### Install the CLI globally (no npm publish required)
@@ -67,6 +71,26 @@ npm install -g agentkit-cli
 # or zero-install:
 npx agentkit-cli install
 ```
+
+**D. Local, no publish, always latest** — run the CLI straight from a local checkout, no npm publish, no global install. Kit *content* is always fetched fresh from GitHub `master` on every run; only the CLI *logic* is as fresh as your last `pull + build`.
+
+```bash
+# one-time: build the CLI once
+cd /path/to/ai-kit/cli && npm install && npm run build
+
+# run via npx against the local path (rebuild after pulling new CLI changes)
+npx /path/to/ai-kit/cli install all --skip-existing
+```
+
+For a true *always-latest* shortcut, add an alias that pulls + rebuilds + runs (replace the path with your checkout):
+```bash
+alias aikit='git -C /path/to/ai-kit pull -q && npm --prefix /path/to/ai-kit/cli run -s build >/dev/null && node /path/to/ai-kit/cli/dist/index.js'
+
+# then, from any repo:
+aikit install all --skip-existing
+```
+
+> Note: content comes from **pushed** GitHub `master` — commit and push kit changes to make them installable. Local-only/unpushed commits are not installed.
 
 > Windows users who prefer the existing scripts can keep using the PowerShell installers below.
 

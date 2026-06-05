@@ -9,11 +9,11 @@ export interface ConflictPolicy {
   globalChoice: "overwrite" | "skip" | null;
 }
 
-export function makePolicy(opts: { yes: boolean }): ConflictPolicy {
+export function makePolicy(opts: { yes: boolean; skipExisting?: boolean }): ConflictPolicy {
   return {
     yes: opts.yes,
     noTTY: !process.stdin.isTTY || !process.stdout.isTTY,
-    globalChoice: opts.yes ? "overwrite" : null,
+    globalChoice: opts.skipExisting ? "skip" : opts.yes ? "overwrite" : null,
   };
 }
 
