@@ -1,5 +1,6 @@
 import { makePolicy } from "../lib/conflict";
 import { fetchKit } from "../lib/fetch";
+import { writeGitignoreBlock } from "../lib/gitignore";
 import { error, info, ok, step } from "../lib/logger";
 import { emptyManifest, readManifest, writeManifest, ManifestTargetEntry } from "../lib/manifest";
 import { expandTargets, HANDLERS, TargetName } from "../targets";
@@ -37,6 +38,8 @@ export async function runInstall(rawTargets: string[], opts: InstallOptions): Pr
       manifest.targets[t] = entry;
       ok(`${t}: wrote ${result.files.length} file(s)`);
     }
+
+    await writeGitignoreBlock(opts.cwd, manifest, opts.dryRun);
 
     if (!opts.dryRun) {
       await writeManifest(opts.cwd, manifest);

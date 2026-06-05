@@ -1,0 +1,17 @@
+# Dependencies
+node_modules/
+
+# Build output
+cli/dist/
+
+# Packaged tarballs
+*.tgz
+
+# OS junk
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor
+.idea/
+.vscode/
