@@ -3,7 +3,7 @@ name: docs-manager
 description: "Use when working with project docs: write, update, migrate, reorganize, scan structure, find orphaned files, or audit KB consistency. Triggers on: docs, document, migrate docs, reorganize docs, scan docs, orphaned files, KB structure, docs audit."
 model: haiku
 color: blue
-skills: [core, skill-discovery, knowledge-retrieval, docs, knowledge-capture]
+skills: [core, skill-discovery, knowledge-retrieval, docs]
 memory: project
 handoffs:
   - label: Ship docs

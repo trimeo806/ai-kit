@@ -1,13 +1,13 @@
 {
   "generated": "2026-05-26T22:30:00.000Z",
   "version": "2.0.0",
-  "count": 44,
+  "count": 49,
   "categories": {
-    "uncategorized": 32,
-    "development-tools": 11,
-    "analysis-reasoning": 12,
+    "uncategorized": 22,
+    "development-tools": 10,
+    "analysis-reasoning": 13,
     "infrastructure": 2,
-    "frontend-web": 3
+    "frontend-web": 2
   },
   "connectedSkills": 13,
   "skills": [
@@ -32,7 +32,7 @@
     },
     {
       "name": "architecture-designer",
-      "description": "Use when designing new high-level system architecture, reviewing existing designs, or making architectural decisions. Invoke to create architecture diagrams, write Architecture Decision Records (ADRs), evaluate technology trade-offs, design component interactions, and plan for scalability. Use for system design, architecture review, microservices structuring, ADR authoring, scalability planning, and infrastructure pattern selection \u2014 distinct from code-level design patterns or database-only design tasks.",
+      "description": "Use when designing new high-level system architecture, reviewing existing designs, or making architectural decisions. Invoke to create architecture diagrams, write Architecture Decision Records (ADRs), evaluate technology trade-offs, design component interactions, and plan for scalability. Use for system design, architecture review, microservices structuring, ADR authoring, scalability planning, and infrastructure pattern selection — distinct from code-level design patterns or database-only design tasks.",
       "category": "uncategorized",
       "tier": "discoverable",
       "keywords": [],
@@ -51,7 +51,7 @@
     },
     {
       "name": "ask",
-      "description": "Use when user asks questions about the codebase \u2014 how does X work, where is Y used, what's the architecture of Z, why is this implemented this way",
+      "description": "Use when user asks questions about the codebase — how does X work, where is Y used, what's the architecture of Z, why is this implemented this way",
       "category": "uncategorized",
       "tier": "discoverable",
       "keywords": [
@@ -91,7 +91,7 @@
     },
     {
       "name": "audit",
-      "description": "Use when user says \"audit\", \"run an audit\", \"check quality\", \"review before merge\", \"a11y audit\", or \"code audit\" \u2014 detects audit type (UI component, a11y, or code) and dispatches the right specialist",
+      "description": "Use when user says \"audit\", \"run an audit\", \"check quality\", \"review before merge\", \"a11y audit\", or \"code audit\" — detects audit type (UI component, a11y, or code) and dispatches the right specialist",
       "category": "development-tools",
       "tier": "discoverable",
       "keywords": [
@@ -203,27 +203,8 @@
       "path": "code-review\\SKILL.md"
     },
     {
-      "name": "code-reviewer",
-      "description": "Analyzes code diffs and files to identify bugs, security vulnerabilities (SQL injection, XSS, insecure deserialization), code smells, N+1 queries, naming issues, and architectural concerns, then produces a structured review report with prioritized, actionable feedback. Use when reviewing pull requests, conducting code quality audits, identifying refactoring opportunities, or checking for security issues. Invoke for PR reviews, code quality checks, refactoring suggestions, review code, code quality. Complements specialized skills (security-reviewer, test-master) by providing broad-scope review across correctness, performance, maintainability, and test coverage in a single pass.",
-      "category": "uncategorized",
-      "tier": "discoverable",
-      "keywords": [],
-      "platforms": [
-        "all"
-      ],
-      "triggers": "code review, PR review, pull request, review code, code quality",
-      "agent-affinity": [],
-      "connections": {
-        "extends": [],
-        "requires": [],
-        "enhances": [],
-        "conflicts": []
-      },
-      "path": "code-reviewer\\SKILL.md"
-    },
-    {
       "name": "cook",
-      "description": "Use when user says \"implement\", \"build\", \"add a feature\", \"cook\", \"make this work\", or \"continue the plan\" \u2014 dispatches platform-aware feature implementation for web, iOS, Android, or backend",
+      "description": "Use when user says \"implement\", \"build\", \"add a feature\", \"cook\", \"make this work\", or \"continue the plan\" — dispatches platform-aware feature implementation for web, iOS, Android, or backend",
       "category": "development-tools",
       "tier": "discoverable",
       "keywords": [],
@@ -263,7 +244,7 @@
     },
     {
       "name": "debug",
-      "description": "Use when user says \"debug\", \"trace this\", \"diagnose\", \"it crashes\", \"why is this failing\", or provides a stack trace \u2014 investigates root cause using platform-specific debugging tools",
+      "description": "Use when user says \"debug\", \"trace this\", \"diagnose\", \"it crashes\", \"why is this failing\", or provides a stack trace — investigates root cause using platform-specific debugging tools",
       "category": "development-tools",
       "tier": "core",
       "keywords": [
@@ -342,7 +323,7 @@
     },
     {
       "name": "docs",
-      "description": "Use when user says \"write docs\", \"update docs\", \"document this\", \"init docs\", \"reorganize documentation\", or \"add component docs\" \u2014 detects docs intent (init, update, migrate, component) and runs the right workflow",
+      "description": "Use when user says \"write docs\", \"update docs\", \"document this\", \"init docs\", \"reorganize documentation\", or \"add component docs\" — detects docs intent (init, update, migrate, component) and runs the right workflow",
       "category": "development-tools",
       "tier": "discoverable",
       "keywords": [],
@@ -361,7 +342,7 @@
     },
     {
       "name": "fastapi-python",
-      "description": "Use when building Python backend APIs with FastAPI. Invoke for FastAPI route handlers, Pydantic v2 schemas, async HTTP clients with httpx, dependency injection, middleware, OpenAPI documentation, or BFF (Backend-for-Frontend) wrapper layers. Load this skill whenever the task involves FastAPI, Python REST APIs, uvicorn, Pydantic, or Python async backend services \u2014 even if the user just says \"implement the API\" in a Python project.",
+      "description": "Use when building Python backend APIs with FastAPI. Invoke for FastAPI route handlers, Pydantic v2 schemas, async HTTP clients with httpx, dependency injection, middleware, OpenAPI documentation, or BFF (Backend-for-Frontend) wrapper layers. Load this skill whenever the task involves FastAPI, Python REST APIs, uvicorn, Pydantic, or Python async backend services — even if the user just says \"implement the API\" in a Python project.",
       "category": "uncategorized",
       "tier": "discoverable",
       "keywords": [
@@ -381,7 +362,6 @@
       ],
       "triggers": [],
       "agent-affinity": [
-        "backend-developer",
         "backend-architect"
       ],
       "connections": {
@@ -394,7 +374,7 @@
     },
     {
       "name": "fix",
-      "description": "Use when user says \"fix\", \"broken\", \"error\", \"failing\", \"this doesn't work\", or pastes an error message \u2014 identifies error type and applies platform-appropriate fix",
+      "description": "Use when user says \"fix\", \"broken\", \"error\", \"failing\", \"this doesn't work\", or pastes an error message — identifies error type and applies platform-appropriate fix",
       "category": "development-tools",
       "tier": "discoverable",
       "keywords": [],
@@ -413,7 +393,7 @@
     },
     {
       "name": "fullstack-guardian",
-      "description": "Builds security-focused full-stack web applications by implementing integrated frontend and backend components with layered security at every level. Covers the complete stack from database to UI, enforcing auth, input validation, output encoding, and parameterized queries across all layers. Use when implementing features across frontend and backend, building REST APIs with corresponding UI, connecting frontend components to backend endpoints, creating end-to-end data flows from database to UI, or implementing CRUD operations with UI forms. Distinct from frontend-only, backend-only, or API-only skills in that it simultaneously addresses all three perspectives\u2014Frontend, Backend, and Security\u2014within a single implementation workflow. Invoke for full-stack feature work, web app development, authenticated API routes with views, microservices, real-time features, monorepo architecture, or technology selection decisions.",
+      "description": "Builds security-focused full-stack web applications by implementing integrated frontend and backend components with layered security at every level. Covers the complete stack from database to UI, enforcing auth, input validation, output encoding, and parameterized queries across all layers. Use when implementing features across frontend and backend, building REST APIs with corresponding UI, connecting frontend components to backend endpoints, creating end-to-end data flows from database to UI, or implementing CRUD operations with UI forms. Distinct from frontend-only, backend-only, or API-only skills in that it simultaneously addresses all three perspectives—Frontend, Backend, and Security—within a single implementation workflow. Invoke for full-stack feature work, web app development, authenticated API routes with views, microservices, real-time features, monorepo architecture, or technology selection decisions.",
       "category": "uncategorized",
       "tier": "discoverable",
       "keywords": [],
@@ -470,7 +450,7 @@
     },
     {
       "name": "infra-cloud",
-      "description": "Use when working with GCP infrastructure \u2014 Terraform, Cloud Build, Cloud Run, GKE, deployment pipelines. Scope: GCP-specific operational patterns. For multi-cloud architecture strategy and design, use cloud-architect instead.",
+      "description": "Use when working with GCP infrastructure — Terraform, Cloud Build, Cloud Run, GKE, deployment pipelines. Scope: GCP-specific operational patterns. For multi-cloud architecture strategy and design, use cloud-architect instead.",
       "category": "infrastructure",
       "tier": "discoverable",
       "keywords": [
@@ -572,7 +552,7 @@
     },
     {
       "name": "microservices-architect",
-      "description": "Designs distributed system architectures, decomposes monoliths into bounded-context services, recommends communication patterns, and produces service boundary diagrams and resilience strategies. Use when designing distributed systems, decomposing monoliths, or implementing microservices patterns \u2014 including service boundaries, DDD, saga patterns, event sourcing, CQRS, service mesh, or distributed tracing.",
+      "description": "Designs distributed system architectures, decomposes monoliths into bounded-context services, recommends communication patterns, and produces service boundary diagrams and resilience strategies. Use when designing distributed systems, decomposing monoliths, or implementing microservices patterns — including service boundaries, DDD, saga patterns, event sourcing, CQRS, service mesh, or distributed tracing.",
       "category": "uncategorized",
       "tier": "discoverable",
       "keywords": [],
@@ -610,7 +590,7 @@
     },
     {
       "name": "plan",
-      "description": "Use when user says \"plan\", \"design this\", \"architect\", \"spec out\", \"how should we build\", or \"create a roadmap\" \u2014 produces a phased implementation plan scaled to task complexity",
+      "description": "Use when user says \"plan\", \"design this\", \"architect\", \"spec out\", \"how should we build\", or \"create a roadmap\" — produces a phased implementation plan scaled to task complexity",
       "category": "development-tools",
       "tier": "discoverable",
       "keywords": [
@@ -647,39 +627,6 @@
         "conflicts": []
       },
       "path": "plan\\SKILL.md"
-    },
-    {
-      "name": "plan-hard",
-      "description": "Deep plan with sequential research and comprehensive analysis \u2014 use for moderate to complex features requiring investigation",
-      "category": "development-tools",
-      "tier": "discoverable",
-      "keywords": [
-        "plan",
-        "hard",
-        "deep",
-        "research",
-        "complex"
-      ],
-      "platforms": [
-        "all"
-      ],
-      "triggers": [
-        "plan deep",
-        "deep plan",
-        "plan hard",
-        "detailed plan"
-      ],
-      "agent-affinity": [
-        "planner",
-        "researcher"
-      ],
-      "connections": {
-        "extends": [],
-        "requires": [],
-        "enhances": [],
-        "conflicts": []
-      },
-      "path": "plan-hard\\SKILL.md"
     },
     {
       "name": "playwright-expert",
@@ -721,7 +668,7 @@
     },
     {
       "name": "problem-solving",
-      "description": "Use when stuck, facing a complex bug, or need root cause analysis \u2014 5 whys, bisection, inversion techniques",
+      "description": "Use when stuck, facing a complex bug, or need root cause analysis — 5 whys, bisection, inversion techniques",
       "category": "analysis-reasoning",
       "tier": "discoverable",
       "keywords": [
@@ -820,7 +767,7 @@
     },
     {
       "name": "review",
-      "description": "Use when user says \"review\", \"check my code\", \"is this good\", \"look at this before I commit\", or \"suggest improvements\" \u2014 detects review type (code quality, a11y, or general improvements) and runs the appropriate review",
+      "description": "Use when user says \"review\", \"check my code\", \"is this good\", \"look at this before I commit\", or \"suggest improvements\" — detects review type (code quality, a11y, or general improvements) and runs the appropriate review",
       "category": "development-tools",
       "tier": "discoverable",
       "keywords": [],
@@ -839,7 +786,7 @@
     },
     {
       "name": "security-reviewer",
-      "description": "Use when doing a security review or audit of web application code \u2014 frontend (React, Vue, Next.js, HTML/JS), backend (Node.js, Go, Python, Java), or both. Always invoke when user says 'security review', 'check for vulnerabilities', 'OWASP audit', 'is this secure', 'security audit', 'find security issues', 'check auth', 'pen test', or pastes code they want security-vetted. Also invoke when the user asks about XSS, CSRF, injection attacks, JWT security, authentication flaws, insecure headers, secrets leakage, or dependency vulnerabilities in their code. Do NOT wait for an explicit 'security' keyword \u2014 any time code is shared and the concern is about whether it can be exploited, use this skill.",
+      "description": "Use when doing a security review or audit of web application code — frontend (React, Vue, Next.js, HTML/JS), backend (Node.js, Go, Python, Java), or both. Always invoke when user says 'security review', 'check for vulnerabilities', 'OWASP audit', 'is this secure', 'security audit', 'find security issues', 'check auth', 'pen test', or pastes code they want security-vetted. Also invoke when the user asks about XSS, CSRF, injection attacks, JWT security, authentication flaws, insecure headers, secrets leakage, or dependency vulnerabilities in their code. Do NOT wait for an explicit 'security' keyword — any time code is shared and the concern is about whether it can be exploited, use this skill.",
       "category": "uncategorized",
       "tier": "discoverable",
       "keywords": [
@@ -931,7 +878,7 @@
     },
     {
       "name": "subagent-driven-development",
-      "description": "Use when a plan has 3+ independent tasks, phases have non-overlapping file ownership, or user says \"parallel implementation\", \"execute all phases\" \u2014 provides per-task subagent dispatch with two-stage review",
+      "description": "Use when a plan has 3+ independent tasks, phases have non-overlapping file ownership, or user says \"parallel implementation\", \"execute all phases\" — provides per-task subagent dispatch with two-stage review",
       "category": "analysis-reasoning",
       "tier": "discoverable",
       "keywords": [
@@ -981,7 +928,7 @@
     },
     {
       "name": "test",
-      "description": "Use when user says \"run tests\", \"add tests\", \"check coverage\", \"write unit tests\", or \"validate this works\" \u2014 detects platform and runs the appropriate test suite (Jest, XCTest, JUnit, Espresso)",
+      "description": "Use when user says \"run tests\", \"add tests\", \"check coverage\", \"write unit tests\", or \"validate this works\" — detects platform and runs the appropriate test suite (Jest, XCTest, JUnit, Espresso)",
       "category": "development-tools",
       "tier": "discoverable",
       "keywords": [],
@@ -1066,7 +1013,6 @@
         "hook"
       ],
       "agent-affinity": [
-        "frontend-developer",
         "developer",
         "tester",
         "debugger",
@@ -1108,7 +1054,6 @@
         "spec"
       ],
       "agent-affinity": [
-        "frontend-developer",
         "tester",
         "developer"
       ],
@@ -1149,6 +1094,139 @@
         "all"
       ],
       "path": "knowledge-retrieval/SKILL.md"
+    },
+    {
+      "name": "prompt-refinement",
+      "description": "",
+      "category": "development-tools",
+      "tier": "discoverable",
+      "keywords": [],
+      "platforms": [
+        "all"
+      ],
+      "triggers": [],
+      "agent-affinity": [],
+      "connections": {
+        "extends": [],
+        "requires": [],
+        "enhances": [],
+        "conflicts": []
+      },
+      "path": "prompt-refinement\\SKILL.md"
+    },
+    {
+      "name": "understand",
+      "description": "Analyze a codebase to produce an interactive knowledge graph for understanding architecture, components, and relationships",
+      "category": "analysis-reasoning",
+      "tier": "discoverable",
+      "keywords": [],
+      "platforms": [
+        "all"
+      ],
+      "triggers": [],
+      "agent-affinity": [],
+      "connections": {
+        "extends": [],
+        "requires": [],
+        "enhances": [],
+        "conflicts": []
+      },
+      "path": "understand\\SKILL.md"
+    },
+    {
+      "name": "understand-chat",
+      "description": "Use when you need to ask questions about a codebase or understand code using a knowledge graph",
+      "category": "analysis-reasoning",
+      "tier": "discoverable",
+      "keywords": [],
+      "platforms": [
+        "all"
+      ],
+      "triggers": [],
+      "agent-affinity": [],
+      "connections": {
+        "extends": [],
+        "requires": [],
+        "enhances": [],
+        "conflicts": []
+      },
+      "path": "understand-chat\\SKILL.md"
+    },
+    {
+      "name": "understand-dashboard",
+      "description": "Launch the interactive web dashboard to visualize a codebase's knowledge graph",
+      "category": "analysis-reasoning",
+      "tier": "discoverable",
+      "keywords": [],
+      "platforms": [
+        "all"
+      ],
+      "triggers": [],
+      "agent-affinity": [],
+      "connections": {
+        "extends": [],
+        "requires": [],
+        "enhances": [],
+        "conflicts": []
+      },
+      "path": "understand-dashboard\\SKILL.md"
+    },
+    {
+      "name": "understand-diff",
+      "description": "Use when you need to analyze git diffs or pull requests to understand what changed, affected components, and risks",
+      "category": "analysis-reasoning",
+      "tier": "discoverable",
+      "keywords": [],
+      "platforms": [
+        "all"
+      ],
+      "triggers": [],
+      "agent-affinity": [],
+      "connections": {
+        "extends": [],
+        "requires": [],
+        "enhances": [],
+        "conflicts": []
+      },
+      "path": "understand-diff\\SKILL.md"
+    },
+    {
+      "name": "understand-explain",
+      "description": "Use when you need a deep-dive explanation of a specific file, function, or module in the codebase",
+      "category": "analysis-reasoning",
+      "tier": "discoverable",
+      "keywords": [],
+      "platforms": [
+        "all"
+      ],
+      "triggers": [],
+      "agent-affinity": [],
+      "connections": {
+        "extends": [],
+        "requires": [],
+        "enhances": [],
+        "conflicts": []
+      },
+      "path": "understand-explain\\SKILL.md"
+    },
+    {
+      "name": "understand-onboard",
+      "description": "Use when you need to generate an onboarding guide for new team members joining a project",
+      "category": "analysis-reasoning",
+      "tier": "discoverable",
+      "keywords": [],
+      "platforms": [
+        "all"
+      ],
+      "triggers": [],
+      "agent-affinity": [],
+      "connections": {
+        "extends": [],
+        "requires": [],
+        "enhances": [],
+        "conflicts": []
+      },
+      "path": "understand-onboard\\SKILL.md"
     }
   ]
 }

@@ -150,7 +150,7 @@ Defined before implementation starts so tests are written alongside code.
 
 ## Phase 7 — CI/CD Pipeline Design
 
-**Skill:** `/infra-docker` or `/infra-cloud` | **Agent:** `researcher`
+**Skill:** `/infra-docker` or `/infra-cloud` | **Agent:** `devops-engineer`
 
 - Pipeline stages: `build → lint → unit test → integration test → staging deploy → e2e → production gate`
 - Deployment gates (all tests passing, no critical CVEs, no bundle size regression)
@@ -263,7 +263,7 @@ Defined before implementation starts so tests are written alongside code.
 
 ## Phase 12 — Observability Setup
 
-**Skill:** `/infra-cloud` | **Agent:** `researcher`
+**Skill:** `/infra-cloud` | **Agent:** `devops-engineer`
 
 Defined before go-live, not retrofitted after.
 
@@ -280,7 +280,7 @@ Defined before go-live, not retrofitted after.
 
 ## Phase 13 — Hosting & Infrastructure
 
-**Skill:** `/cloud-architect` | **Agent:** `researcher`
+**Skill:** `/cloud-architect` | **Agent:** `devops-engineer`
 
 **Decision matrix — cost vs reliability:**
 

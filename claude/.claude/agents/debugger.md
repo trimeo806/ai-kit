@@ -4,7 +4,7 @@ description: Debugging agent that finds root causes and explains issues clearly.
 model: sonnet
 effort: inherit
 color: red
-skills: [core, skill-discovery, debug, knowledge-retrieval, error-recovery, problem-solving]
+skills: [core, skill-discovery, debug, knowledge-retrieval, problem-solving]
 memory: project
 handoffs:
   - label: Verify fix

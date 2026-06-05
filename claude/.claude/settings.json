@@ -7,8 +7,7 @@
     "allow": [
       "Bash(npm run test:*)",
       "mcp__xcodebuildmcp__*",
-      "Bash(node .claude/hooks/*)",
-      "Bash(node .claude/scripts/*)"
+      "Bash(node .claude/hooks/*)"
     ]
   },
   "hooks": {

@@ -5,7 +5,7 @@ user-invocable: false
 tier: core
 
 metadata:
-  agent-affinity: [planner, developer, debugger, tester, code-reviewer, project-manager]
+  agent-affinity: [planner, developer, debugger, tester, code-review, project-manager]
   keywords: [platform, discovery, skill-index, context, conventions, lazy-loading]
   platforms: [all]
   triggers: []
@@ -31,14 +31,11 @@ Check request keywords → git diff extensions → CWD path:
 
 | Signal | Platform | Skills to Load |
 |--------|----------|---------------|
-| `.swift`, "iOS", "Swift", "SwiftUI" | ios | *(platform pack not installed — use `problem-solving`, `sequential-thinking`)* |
-| `.kt/.kts`, "Android", "Kotlin", "Compose" | android | *(platform pack not installed — use `problem-solving`, `sequential-thinking`)* |
+| `.swift`, "iOS", "Swift", "SwiftUI" | ios | *(platform-specific skills not installed — use `problem-solving`, `research`)* |
+| `.kt/.kts`, "Android", "Kotlin", "Compose" | android | *(platform-specific skills not installed — use `problem-solving`, `research`)* |
 | `.tsx/.ts/.jsx/.scss`, "React", "Next.js", "web" | web | `react-expert`, `typescript-pro`, `nextjs-developer` |
-| `.tsx/.ts` + TanStack/router | web | `tanstack-start`, `typescript-pro` |
-| `.java` + `pom.xml`, "Java EE", "WildFly", "backend" | backend | *(platform pack not installed — use `api-designer`, `microservices-architect`)* |
-| `.css/.scss` + design tokens, "Figma" | design | *(figma/web-ui-lib skills not installed — describe conventions from context)* |
-
-> **Note**: Platform packs (ios-development, android-development, backend-javaee, etc.) are planned for future installation. Until installed, fall back to generic reasoning skills and external research via `docs-seeker`.
+| `.java` + `pom.xml`, "Java EE", "WildFly", "backend" | backend | `api-designer`, `microservices-architect` |
+| `.css/.scss` + design tokens | design | `ui-styling`, `ui-ux-pro-max` |
 
 Multiple platforms: ask user (max 1 question). If 80%+ files = one platform, use that.
 
@@ -53,18 +50,17 @@ Scan the user request for these patterns:
 
 | Signal Words | Task Type | Likely Skills |
 |-------------|-----------|---------------|
-| error, stack trace, crash, bug, failing | debug | problem-solving, error-recovery |
-| docs, library, API reference, how to use | research | docs-seeker, research |
+| error, stack trace, crash, bug, failing | debug | problem-solving, debug, fix |
+| docs, library, API reference, how to use | research | research, knowledge-retrieval |
 | ADR, prior art, existing pattern, similar | knowledge | knowledge-retrieval |
-| write docs, spec, proposal, RFC | documentation | doc-coauthoring |
-| retry, timeout, circuit breaker, fallback | resilience | error-recovery |
-| step by step, complex, analyze, root cause | reasoning | sequential-thinking, problem-solving |
-| repo overview, codebase summary | exploration | repomix |
-| a11y, accessibility, WCAG, VoiceOver | accessibility | a11y + platform-a11y variant |
-| Figma, design tokens, components, theme | design system | figma, web-ui-lib |
+| write docs, spec, proposal, RFC | documentation | doc-coauthoring, docs |
+| retry, timeout, circuit breaker, fallback | resilience | problem-solving, debug |
+| step by step, complex, analyze, root cause | reasoning | problem-solving |
+| repo overview, codebase summary | exploration | research, ask |
+| a11y, accessibility, WCAG, VoiceOver | accessibility | audit, ui-styling |
+| design tokens, components, theme, UI | design system | ui-styling, ui-ux-pro-max |
 | Docker, container, GCP, Terraform | infrastructure | infra-docker, infra-cloud |
-| B2B module, inbox, monitoring, composer | domain | domain-b2b |
-| get started, onboard, begin, new to project | onboarding | get-started |
+| get started, onboard, begin, new to project | onboarding | research, docs |
 
 ### 1c. Domain Signals (from git context)
 - Files in module-specific directories → domain skills
@@ -148,15 +144,14 @@ This overrides Steps 1-2 when a clear flow match exists. Falls back to standard 
 
 | You Are | Task Looks Like | Discover |
 |---------|----------------|----------|
-| any agent | iOS task (.swift) | sequential-thinking, problem-solving *(ios pack not installed)* |
-| any agent | Android task (.kt) | sequential-thinking, problem-solving *(android pack not installed)* |
+| any agent | iOS task (.swift) | problem-solving, research *(iOS pack not installed)* |
+| any agent | Android task (.kt) | problem-solving, research *(Android pack not installed)* |
 | any agent | Web task (.tsx/.ts) | react-expert, typescript-pro |
 | any agent | Next.js task | nextjs-developer, typescript-pro |
-| any agent | TanStack Start task | tanstack-start, typescript-pro |
-| any agent | Backend task (.java) | api-designer, microservices-architect *(backend pack not installed)* |
-| debugger | stuck on bug | sequential-thinking, problem-solving |
-| fullstack-developer | API timeout | error-recovery, problem-solving |
-| planner | plan with research | research, docs-seeker |
-| any agent | a11y | *(a11y skill packs not installed — use external research via docs-seeker)* |
-| any agent | Figma / design system | *(figma/design-token skills not installed — use external research via docs-seeker)* |
+| any agent | Backend task (.java) | api-designer, microservices-architect |
+| debugger | stuck on bug | problem-solving, debug |
+| fullstack-developer | API timeout | problem-solving, debug |
+| planner | plan with research | research, knowledge-retrieval |
+| any agent | a11y | audit, ui-styling |
+| any agent | design system | ui-styling, ui-ux-pro-max |
 | any agent | kit authoring | skill-creator |

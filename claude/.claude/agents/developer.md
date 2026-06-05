@@ -17,14 +17,12 @@ skills:
     postgres-pro,
     api-designer,
     nextjs-developer,
-    tanstack-start,
     javascript-pro,
     graphql-architect,
     microservices-architect,
     playwright-expert,
     web-frontend,
     web-testing,
-    web-i18n,
     fastapi-python,
   ]
 memory: project

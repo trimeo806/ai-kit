@@ -4,7 +4,7 @@ description: Progress Tracking & Roadmaps — tracks progress, updates roadmap, 
 tools: Read, Glob, Grep, Bash, Edit, Write, Agent
 model: haiku
 color: green
-skills: [core, skill-discovery, ai-kit]
+skills: [core, skill-discovery]
 memory: project
 handoffs:
   - label: Create plan
