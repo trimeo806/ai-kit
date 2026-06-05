@@ -19,6 +19,33 @@ The repository has been restructured to cleanly separate platform-specific workf
 
 ## 🚀 Install via CLI (cross-platform)
 
+### ⚡ Quick start — local, no publish (run from inside the target repo)
+
+No npm publish, no global install. Runs the CLI from a local checkout; kit content is fetched fresh from GitHub `master` every run. Replace `/home/felix/projects/easygds/ai-kit/cli` with your own checkout path.
+
+```bash
+# install everything, never overwrite your own files
+npx /home/felix/projects/easygds/ai-kit/cli install all --skip-existing
+
+# claude only
+npx /home/felix/projects/easygds/ai-kit/cli install --skip-existing
+
+# pick targets
+npx /home/felix/projects/easygds/ai-kit/cli install codex opencode --skip-existing
+
+# preview without writing
+npx /home/felix/projects/easygds/ai-kit/cli install all --dry-run
+
+# maintenance
+npx /home/felix/projects/easygds/ai-kit/cli update
+npx /home/felix/projects/easygds/ai-kit/cli list
+npx /home/felix/projects/easygds/ai-kit/cli uninstall
+```
+
+> First run needs the CLI built once: `cd /home/felix/projects/easygds/ai-kit/cli && npm install && npm run build`. After pulling new CLI changes, rebuild. For an auto pull+build+run shortcut, see **Option D** below.
+
+---
+
 Drop the kit into any project with a single command. Default target is `claude`; pass additional targets positionally.
 
 ```bash
