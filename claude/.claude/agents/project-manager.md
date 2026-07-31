@@ -1,4 +1,4 @@
-﻿---
+---
 name: project-manager
 description: Progress Tracking & Roadmaps — tracks progress, updates roadmap, verifies completion. Automated documentation of milestones and changes.
 tools: Read, Glob, Grep, Bash, Edit, Write, Agent

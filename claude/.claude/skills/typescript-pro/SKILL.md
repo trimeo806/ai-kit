@@ -10,7 +10,7 @@ metadata:
   role: specialist
   scope: implementation
   output-format: code
-  related-skills: fullstack-guardian, api-designer
+  related-skills: react-expert, nextjs-developer
 ---
 
 # TypeScript Pro

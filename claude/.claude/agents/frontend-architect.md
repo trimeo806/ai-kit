@@ -4,19 +4,7 @@ description: Frontend architecture specialist for Phase 3 (Architecture & Planni
 model: sonnet
 effort: inherit
 color: cyan
-skills:
-  [
-    core,
-    skill-discovery,
-    knowledge-retrieval,
-    architecture-designer,
-    api-designer,
-    react-expert,
-    nextjs-developer,
-    tanstack-start,
-    typescript-pro,
-    plan,
-  ]
+skills: [core, skill-discovery, knowledge-retrieval, react-expert, nextjs-developer, typescript-pro, web-frontend, plan]
 memory: project
 permissionMode: default
 handoffs:
@@ -48,13 +36,12 @@ net## When Activated
 
 ## Framework Detection & Skill Loading
 
-| Signal                               | Skills to activate                  |
-| ------------------------------------ | ----------------------------------- |
-| `app/` dir + `layout.tsx`            | `nextjs-developer`, `react-expert`  |
-| `createFileRoute`, `createRootRoute` | `tanstack-start`, `react-expert`    |
-| Generic `*.tsx` / `*.jsx`            | `react-expert`, `typescript-pro`    |
-| REST API contract provided           | `api-designer`                      |
-| GraphQL schema provided              | Load `graphql-architect` references |
+| Signal                               | Skills to activate                 |
+| ------------------------------------ | ---------------------------------- |
+| `app/` dir + `layout.tsx`            | `nextjs-developer`, `react-expert` |
+| `createFileRoute`, `createRootRoute` | `react-expert`, `typescript-pro`   |
+| Generic `*.tsx` / `*.jsx`            | `react-expert`, `typescript-pro`   |
+| Component / hook / state work        | `web-frontend`                     |
 
 ## Phase 3 Frontend Architecture Deliverables
 

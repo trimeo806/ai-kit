@@ -39,13 +39,13 @@ Scan `.claude/agents/*.md`, extract `name`, `description`, `skills` fields. Then
 
 | Phase type | Agent | Skills to activate |
 |------------|-------|--------------------|
-| Go / Node.js backend | `developer` | `golang-pro`, `postgres-pro`, `api-designer` |
-| React / TanStack UI | `developer` | `tanstack-start`, `react-expert`, `typescript-pro`, `web-frontend` |
+| Go / Node.js backend | `developer` | `golang-pro`, `postgres-pro` |
+| Python / FastAPI backend | `developer` | `fastapi-python`, `postgres-pro` |
+| React / TanStack UI | `developer` | `react-expert`, `typescript-pro`, `web-frontend` |
 | Auth / OAuth / JWT | `developer` | `golang-pro`, `typescript-pro` |
-| SSE / real-time backend | `developer` | `golang-pro`, `websocket-engineer`, `postgres-pro` |
 | Test / E2E | `tester` | `playwright-expert`, `web-testing`, `test` |
-| CI/CD / Docker | `devops-engineer` | `infra-docker`, `terraform-engineer` |
-| Security audit | `security-auditor` | `fullstack-guardian` |
+| CI/CD / Docker | `devops-engineer` | `infra-docker` |
+| Security audit | `security-auditor` | `security-reviewer`, `code-review` |
 
 Embed in every generated phase file (after Overview):
 ```markdown

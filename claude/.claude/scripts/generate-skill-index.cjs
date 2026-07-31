@@ -91,7 +91,6 @@ const CATEGORY_MAP = {
   'subagent-driven-development': 'analysis-reasoning',
 
   // infrastructure
-  'infra-cloud': 'infrastructure',
   'infra-docker': 'infrastructure',
 
   // kit-authoring

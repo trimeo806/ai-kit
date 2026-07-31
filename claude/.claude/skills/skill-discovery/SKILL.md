@@ -34,8 +34,8 @@ Check request keywords → git diff extensions → CWD path:
 | `.swift`, "iOS", "Swift", "SwiftUI" | ios | *(platform-specific skills not installed — use `problem-solving`, `research`)* |
 | `.kt/.kts`, "Android", "Kotlin", "Compose" | android | *(platform-specific skills not installed — use `problem-solving`, `research`)* |
 | `.tsx/.ts/.jsx/.scss`, "React", "Next.js", "web" | web | `react-expert`, `typescript-pro`, `nextjs-developer` |
-| `.java` + `pom.xml`, "Java EE", "WildFly", "backend" | backend | `api-designer`, `microservices-architect` |
-| `.css/.scss` + design tokens | design | `ui-styling`, `ui-ux-pro-max` |
+| `.go` + `go.mod`, "Go", "backend" | backend | `golang-pro`, `postgres-pro` |
+| `.py` + `requirements.txt`, "FastAPI", "Python" | backend | `fastapi-python`, `postgres-pro` |
 
 Multiple platforms: ask user (max 1 question). If 80%+ files = one platform, use that.
 
@@ -57,9 +57,9 @@ Scan the user request for these patterns:
 | retry, timeout, circuit breaker, fallback | resilience | problem-solving, debug |
 | step by step, complex, analyze, root cause | reasoning | problem-solving |
 | repo overview, codebase summary | exploration | research, ask |
-| a11y, accessibility, WCAG, VoiceOver | accessibility | audit, ui-styling |
-| design tokens, components, theme, UI | design system | ui-styling, ui-ux-pro-max |
-| Docker, container, GCP, Terraform | infrastructure | infra-docker, infra-cloud |
+| a11y, accessibility, WCAG, VoiceOver | accessibility | audit, review |
+| design tokens, components, theme, UI | frontend | web-frontend, react-expert |
+| Docker, container, image, compose | infrastructure | infra-docker |
 | get started, onboard, begin, new to project | onboarding | research, docs |
 
 ### 1c. Domain Signals (from git context)
@@ -148,10 +148,11 @@ This overrides Steps 1-2 when a clear flow match exists. Falls back to standard 
 | any agent | Android task (.kt) | problem-solving, research *(Android pack not installed)* |
 | any agent | Web task (.tsx/.ts) | react-expert, typescript-pro |
 | any agent | Next.js task | nextjs-developer, typescript-pro |
-| any agent | Backend task (.java) | api-designer, microservices-architect |
+| any agent | Backend task (.go) | golang-pro, postgres-pro |
+| any agent | Backend task (.py) | fastapi-python, postgres-pro |
 | debugger | stuck on bug | problem-solving, debug |
 | fullstack-developer | API timeout | problem-solving, debug |
 | planner | plan with research | research, knowledge-retrieval |
-| any agent | a11y | audit, ui-styling |
-| any agent | design system | ui-styling, ui-ux-pro-max |
+| any agent | a11y | audit, review |
+| any agent | component / styling | web-frontend, react-expert |
 | any agent | kit authoring | skill-creator |

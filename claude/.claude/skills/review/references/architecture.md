@@ -41,5 +41,5 @@ That path runs the grilling loop (`prompt-refinement/references/grilling.md`) an
 ## Boundaries
 
 - Line-level defects → `references/code.md`
-- New system architecture / ADR authoring → `architecture-designer`
+- New system architecture / ADR authoring → `/plan --arch`
 - Applying a refactor → `/cook`, `/fix-deep`

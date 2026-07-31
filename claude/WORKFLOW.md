@@ -150,7 +150,7 @@ Defined before implementation starts so tests are written alongside code.
 
 ## Phase 7 — CI/CD Pipeline Design
 
-**Skill:** `/infra-docker` or `/infra-cloud` | **Agent:** `devops-engineer`
+**Skill:** `/infra-docker` | **Agent:** `devops-engineer`
 
 - Pipeline stages: `build → lint → unit test → integration test → staging deploy → e2e → production gate`
 - Deployment gates (all tests passing, no critical CVEs, no bundle size regression)
@@ -263,7 +263,7 @@ Defined before implementation starts so tests are written alongside code.
 
 ## Phase 12 — Observability Setup
 
-**Skill:** `/infra-cloud` | **Agent:** `devops-engineer`
+**Agent:** `devops-engineer`
 
 Defined before go-live, not retrofitted after.
 
@@ -280,7 +280,7 @@ Defined before go-live, not retrofitted after.
 
 ## Phase 13 — Hosting & Infrastructure
 
-**Skill:** `/cloud-architect` | **Agent:** `devops-engineer`
+**Agent:** `devops-engineer`
 
 **Decision matrix — cost vs reliability:**
 
@@ -380,7 +380,7 @@ Phase 15 SLO breach          → incident response → root cause → Phase 8
 | Review code | `/review` | `code-reviewer` |
 | Audit (UI/a11y/code) | `/audit` | specialist agents |
 | Security hardening (Phase 11) | `/audit --security` | `security-auditor` |
-| CI/CD + Infra + Observability | `/infra-cloud` or `/infra-docker` | `devops-engineer` |
+| CI/CD + Infra + Observability | `/infra-docker` | `devops-engineer` |
 | Write/run tests | `/test` | `tester` |
 | Write docs | `/docs` | `docs-manager` |
 | Commit & ship | `/git` | `git-manager` |

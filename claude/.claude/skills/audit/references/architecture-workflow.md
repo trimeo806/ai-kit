@@ -27,7 +27,7 @@ Principles:
 - **The interface is the test surface.**
 - **One adapter = hypothetical seam; two = real seam.**
 
-Cross-reference `architecture-designer` for system-level patterns and ADR authoring. This workflow is module-level.
+Cross-reference `/plan` for system-level patterns and ADR authoring. This workflow is module-level.
 
 ## Process
 
@@ -99,7 +99,7 @@ Side effects happen inline as decisions crystallize:
 | Deepened module named after a concept absent from `CONTEXT.md` | Add the term to `CONTEXT.md` (create the file lazily) |
 | A fuzzy term gets sharpened mid-conversation | Update `CONTEXT.md` right there |
 | User rejects a candidate with a load-bearing reason | Offer an ADR: *"Record this so future architecture audits don't re-suggest it?"* Only when a future explorer would actually need it — skip ephemeral ("not now") and self-evident reasons |
-| Want alternative interfaces for the deepened module | Escalate to `architecture-designer` |
+| Want alternative interfaces for the deepened module | Escalate to `/plan --arch` |
 
 ### 4. Close out
 
@@ -114,6 +114,6 @@ Side effects happen inline as decisions crystallize:
 |----------------|--------------------|
 | Propose deepenings, grill one to a decision | Apply the refactor — that's `/cook` or `/fix-deep` |
 | Module-level structure | Line-level defects — that's `/audit --code` |
-| Design vocabulary and seams | New system architecture — that's `architecture-designer` |
+| Design vocabulary and seams | New system architecture — that is `/plan --arch` |
 
 For a quick, read-only, no-HTML version, use `/review --architecture`.

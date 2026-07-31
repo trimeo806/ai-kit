@@ -1,6 +1,6 @@
 ---
 name: test
-description: Use when user says "run tests", "add tests", "check coverage", "write unit tests", or "validate this works" — detects platform and runs the appropriate test suite (Jest, XCTest, JUnit, Espresso)
+description: Use when user says "run tests", "add tests", "check coverage", "write unit tests", or "validate this works" — detects the runner and executes the appropriate suite (Vitest, Jest, Playwright, go test, pytest)
 user-invocable: true
 metadata:
   argument-hint: "[--unit | --ui | --coverage | test description]"
@@ -8,11 +8,20 @@ metadata:
 
 # Test — Unified Test Command
 
-Run tests with automatic platform detection.
+Run tests with automatic runner detection.
 
-## Platform Detection
+## Runner Detection
 
-Detect platform per `skill-discovery` protocol.
+| Signal | Runner | Skills |
+|--------|--------|--------|
+| `vitest.config.*` | Vitest | `web-testing` |
+| `jest.config.*` | Jest | `web-testing` |
+| `playwright.config.*` | Playwright | `playwright-expert` |
+| `*_test.go` / `go.mod` | `go test` | `golang-pro` |
+| `pytest.ini` / `conftest.py` | pytest | `fastapi-python` |
+| `*.test.cjs` under `__tests__/` | Node (custom harness) | — |
+
+Fall back to `skill-discovery` protocol if no marker matches.
 
 ## Arguments
 
@@ -23,8 +32,8 @@ Detect platform per `skill-discovery` protocol.
 
 ## Execution
 
-1. Detect platform
-2. Route to platform-specific agent
+1. Detect runner
+2. Route to `tester` with the matching skills
 3. Run appropriate test commands
 4. Report results with pass/fail counts and coverage
 
@@ -42,4 +51,4 @@ Key requirements:
 
 <request>$ARGUMENTS</request>
 
-**IMPORTANT:** Analyze the skills catalog and activate needed skills for the detected platform.
+**IMPORTANT:** Analyze the skills catalog and activate needed skills for the detected runner.

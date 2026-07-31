@@ -1,54 +1,16 @@
 {
-  "generated": "2026-05-26T22:30:00.000Z",
+  "generated": "2026-07-31T15:22:34.843Z",
   "version": "2.0.0",
-  "count": 49,
+  "count": 31,
   "categories": {
-    "uncategorized": 22,
-    "development-tools": 10,
-    "analysis-reasoning": 13,
-    "infrastructure": 2,
+    "uncategorized": 12,
+    "development-tools": 8,
+    "analysis-reasoning": 8,
+    "infrastructure": 1,
     "frontend-web": 2
   },
-  "connectedSkills": 13,
+  "connectedSkills": 8,
   "skills": [
-    {
-      "name": "api-designer",
-      "description": "Use when designing REST or GraphQL APIs, creating OpenAPI specifications, or planning API architecture. Invoke for resource modeling, versioning strategies, pagination patterns, error handling standards.",
-      "category": "uncategorized",
-      "tier": "discoverable",
-      "keywords": [],
-      "platforms": [
-        "all"
-      ],
-      "triggers": "API design, REST API, OpenAPI, API specification, API architecture, resource modeling, API versioning, GraphQL schema, API documentation",
-      "agent-affinity": [],
-      "connections": {
-        "extends": [],
-        "requires": [],
-        "enhances": [],
-        "conflicts": []
-      },
-      "path": "api-designer\\SKILL.md"
-    },
-    {
-      "name": "architecture-designer",
-      "description": "Use when designing new high-level system architecture, reviewing existing designs, or making architectural decisions. Invoke to create architecture diagrams, write Architecture Decision Records (ADRs), evaluate technology trade-offs, design component interactions, and plan for scalability. Use for system design, architecture review, microservices structuring, ADR authoring, scalability planning, and infrastructure pattern selection — distinct from code-level design patterns or database-only design tasks.",
-      "category": "uncategorized",
-      "tier": "discoverable",
-      "keywords": [],
-      "platforms": [
-        "all"
-      ],
-      "triggers": "architecture, system design, design pattern, microservices, scalability, ADR, technical design, infrastructure",
-      "agent-affinity": [],
-      "connections": {
-        "extends": [],
-        "requires": [],
-        "enhances": [],
-        "conflicts": []
-      },
-      "path": "architecture-designer\\SKILL.md"
-    },
     {
       "name": "ask",
       "description": "Use when user asks questions about the codebase — how does X work, where is Y used, what's the architecture of Z, why is this implemented this way",
@@ -87,7 +49,7 @@
         "enhances": [],
         "conflicts": []
       },
-      "path": "ask\\SKILL.md"
+      "path": "ask/SKILL.md"
     },
     {
       "name": "audit",
@@ -136,45 +98,7 @@
         ],
         "conflicts": []
       },
-      "path": "audit\\SKILL.md"
-    },
-    {
-      "name": "ui-styling",
-      "description": "Create beautiful, accessible user interfaces with shadcn/ui components (built on Radix UI + Tailwind), Tailwind CSS utility-first styling, and canvas-based visual designs. Use when building user interfaces, implementing design systems, creating responsive layouts, adding accessible components (dialogs, dropdowns, forms, tables), customizing themes and colors, implementing dark mode, generating visual designs and posters, or establishing consistent styling patterns across applications.",
-      "category": "uncategorized",
-      "tier": "discoverable",
-      "keywords": [],
-      "platforms": [
-        "all"
-      ],
-      "triggers": [],
-      "agent-affinity": [],
-      "connections": {
-        "extends": [],
-        "requires": [],
-        "enhances": [],
-        "conflicts": []
-      },
-      "path": "ui-styling\\SKILL.md"
-    },
-    {
-      "name": "cloud-architect",
-      "description": "Designs cloud architectures, creates migration plans, generates cost optimization recommendations, and produces disaster recovery strategies across AWS, Azure, and GCP. Use when designing cloud architectures, planning migrations, or optimizing multi-cloud deployments. Invoke for Well-Architected Framework, cost optimization, disaster recovery, landing zones, security architecture, serverless design.",
-      "category": "uncategorized",
-      "tier": "discoverable",
-      "keywords": [],
-      "platforms": [
-        "all"
-      ],
-      "triggers": "AWS, Azure, GCP, Google Cloud, cloud migration, cloud architecture, multi-cloud, cloud cost, Well-Architected, landing zone, cloud security, disaster recovery, cloud native, serverless architecture",
-      "agent-affinity": [],
-      "connections": {
-        "extends": [],
-        "requires": [],
-        "enhances": [],
-        "conflicts": []
-      },
-      "path": "cloud-architect\\SKILL.md"
+      "path": "audit/SKILL.md"
     },
     {
       "name": "code-review",
@@ -207,7 +131,7 @@
         "enhances": [],
         "conflicts": []
       },
-      "path": "code-review\\SKILL.md"
+      "path": "code-review/SKILL.md"
     },
     {
       "name": "cook",
@@ -228,7 +152,7 @@
         ],
         "conflicts": []
       },
-      "path": "cook\\SKILL.md"
+      "path": "cook/SKILL.md"
     },
     {
       "name": "core",
@@ -247,7 +171,7 @@
         "enhances": [],
         "conflicts": []
       },
-      "path": "core\\SKILL.md"
+      "path": "core/SKILL.md"
     },
     {
       "name": "debug",
@@ -291,7 +215,7 @@
         ],
         "conflicts": []
       },
-      "path": "debug\\SKILL.md"
+      "path": "debug/SKILL.md"
     },
     {
       "name": "doc-coauthoring",
@@ -329,7 +253,7 @@
         ],
         "conflicts": []
       },
-      "path": "doc-coauthoring\\SKILL.md"
+      "path": "doc-coauthoring/SKILL.md"
     },
     {
       "name": "docs",
@@ -348,7 +272,7 @@
         "enhances": [],
         "conflicts": []
       },
-      "path": "docs\\SKILL.md"
+      "path": "docs/SKILL.md"
     },
     {
       "name": "fastapi-python",
@@ -372,6 +296,7 @@
       ],
       "triggers": [],
       "agent-affinity": [
+        "developer",
         "backend-architect"
       ],
       "connections": {
@@ -380,7 +305,7 @@
         "enhances": [],
         "conflicts": []
       },
-      "path": "fastapi-python\\SKILL.md"
+      "path": "fastapi-python/SKILL.md"
     },
     {
       "name": "fix",
@@ -399,26 +324,7 @@
         "enhances": [],
         "conflicts": []
       },
-      "path": "fix\\SKILL.md"
-    },
-    {
-      "name": "fullstack-guardian",
-      "description": "Builds security-focused full-stack web applications by implementing integrated frontend and backend components with layered security at every level. Covers the complete stack from database to UI, enforcing auth, input validation, output encoding, and parameterized queries across all layers. Use when implementing features across frontend and backend, building REST APIs with corresponding UI, connecting frontend components to backend endpoints, creating end-to-end data flows from database to UI, or implementing CRUD operations with UI forms. Distinct from frontend-only, backend-only, or API-only skills in that it simultaneously addresses all three perspectives—Frontend, Backend, and Security—within a single implementation workflow. Invoke for full-stack feature work, web app development, authenticated API routes with views, microservices, real-time features, monorepo architecture, or technology selection decisions.",
-      "category": "uncategorized",
-      "tier": "discoverable",
-      "keywords": [],
-      "platforms": [
-        "all"
-      ],
-      "triggers": "fullstack, implement feature, build feature, create API, frontend and backend, full stack, new feature, implement, microservices, websocket, real-time, deployment pipeline, monorepo, architecture decision, technology selection, end-to-end",
-      "agent-affinity": [],
-      "connections": {
-        "extends": [],
-        "requires": [],
-        "enhances": [],
-        "conflicts": []
-      },
-      "path": "fullstack-guardian\\SKILL.md"
+      "path": "fix/SKILL.md"
     },
     {
       "name": "golang-pro",
@@ -437,56 +343,7 @@
         "enhances": [],
         "conflicts": []
       },
-      "path": "golang-pro\\SKILL.md"
-    },
-    {
-      "name": "graphql-architect",
-      "description": "Use when designing GraphQL schemas, implementing Apollo Federation, or building real-time subscriptions. Invoke for schema design, resolvers with DataLoader, query optimization, federation directives.",
-      "category": "uncategorized",
-      "tier": "discoverable",
-      "keywords": [],
-      "platforms": [
-        "all"
-      ],
-      "triggers": "GraphQL, Apollo Federation, GraphQL schema, API graph, GraphQL subscriptions, Apollo Server, schema design, GraphQL resolvers, DataLoader",
-      "agent-affinity": [],
-      "connections": {
-        "extends": [],
-        "requires": [],
-        "enhances": [],
-        "conflicts": []
-      },
-      "path": "graphql-architect\\SKILL.md"
-    },
-    {
-      "name": "infra-cloud",
-      "description": "Use when working with GCP infrastructure — Terraform, Cloud Build, Cloud Run, GKE, deployment pipelines. Scope: GCP-specific operational patterns. For multi-cloud architecture strategy and design, use cloud-architect instead.",
-      "category": "infrastructure",
-      "tier": "discoverable",
-      "keywords": [
-        "gcp",
-        "terraform",
-        "cloud-build",
-        "cloud-run",
-        "gke",
-        "infrastructure",
-        "deployment-pipeline"
-      ],
-      "platforms": [
-        "all"
-      ],
-      "triggers": [],
-      "agent-affinity": [
-        "devops-engineer",
-        "planner"
-      ],
-      "connections": {
-        "extends": [],
-        "requires": [],
-        "enhances": [],
-        "conflicts": []
-      },
-      "path": "infra-cloud\\SKILL.md"
+      "path": "golang-pro/SKILL.md"
     },
     {
       "name": "infra-docker",
@@ -520,7 +377,7 @@
         "enhances": [],
         "conflicts": []
       },
-      "path": "infra-docker\\SKILL.md"
+      "path": "infra-docker/SKILL.md"
     },
     {
       "name": "javascript-pro",
@@ -539,56 +396,59 @@
         "enhances": [],
         "conflicts": []
       },
-      "path": "javascript-pro\\SKILL.md"
+      "path": "javascript-pro/SKILL.md"
     },
     {
-      "name": "kubernetes-specialist",
-      "description": "Use when deploying or managing Kubernetes workloads. Invoke to create deployment manifests, configure pod security policies, set up service accounts, define network isolation rules, debug pod crashes, analyze resource limits, inspect container logs, or right-size workloads. Use for Helm charts, RBAC policies, NetworkPolicies, storage configuration, performance optimization, GitOps pipelines, and multi-cluster management.",
-      "category": "uncategorized",
+      "name": "knowledge-retrieval",
+      "description": "Use when you need prior art, past decisions, or existing patterns — checks docs/, skills, and RAG before external sources",
+      "category": "analysis-reasoning",
       "tier": "discoverable",
-      "keywords": [],
+      "keywords": [
+        "retrieve",
+        "search",
+        "knowledge",
+        "context",
+        "rag",
+        "lookup",
+        "prior-art"
+      ],
       "platforms": [
         "all"
       ],
-      "triggers": "Kubernetes, K8s, kubectl, Helm, container orchestration, pod deployment, RBAC, NetworkPolicy, Ingress, StatefulSet, Operator, CRD, CustomResourceDefinition, ArgoCD, Flux, GitOps, Istio, Linkerd, service mesh, multi-cluster, cost optimization, VPA, spot instances",
-      "agent-affinity": [],
-      "connections": {
-        "extends": [],
-        "requires": [],
-        "enhances": [],
-        "conflicts": []
-      },
-      "path": "kubernetes-specialist\\SKILL.md"
-    },
-    {
-      "name": "microservices-architect",
-      "description": "Designs distributed system architectures, decomposes monoliths into bounded-context services, recommends communication patterns, and produces service boundary diagrams and resilience strategies. Use when designing distributed systems, decomposing monoliths, or implementing microservices patterns — including service boundaries, DDD, saga patterns, event sourcing, CQRS, service mesh, or distributed tracing.",
-      "category": "uncategorized",
-      "tier": "discoverable",
-      "keywords": [],
-      "platforms": [
-        "all"
+      "triggers": [
+        "what do we know about",
+        "check knowledge",
+        "prior art",
+        "previous decision"
       ],
-      "triggers": "microservices, service mesh, distributed systems, service boundaries, domain-driven design, event sourcing, CQRS, saga pattern, Kubernetes microservices, Istio, distributed tracing",
-      "agent-affinity": [],
+      "agent-affinity": [
+        "planner",
+        "developer",
+        "debugger",
+        "researcher",
+        "code-reviewer"
+      ],
       "connections": {
         "extends": [],
         "requires": [],
-        "enhances": [],
+        "enhances": [
+          "research",
+          "plan"
+        ],
         "conflicts": []
       },
-      "path": "microservices-architect\\SKILL.md"
+      "path": "knowledge-retrieval/SKILL.md"
     },
     {
       "name": "nextjs-developer",
-      "description": "Use when building Next.js 16+ applications with App Router, Cache Components, Turbopack, and React 19.2 integration. Includes comprehensive hydration error prevention patterns. Invoke to configure route handlers, implement middleware, set up API routes, configure Cache Components with Partial Pre-Rendering (PPR), write generateMetadata for SEO, scaffold loading.tsx/error.tsx boundaries, prevent hydration mismatches, or deploy to Vercel.",
+      "description": "Use when building Next.js 16+ applications with App Router, Cache Components, Turbopack, and React 19.2 integration. Invoke to configure route handlers, implement middleware, set up API routes, configure Cache Components with Partial Pre-Rendering (PPR), write generateMetadata for SEO, scaffold loading.tsx/error.tsx boundaries, or deploy to Vercel. Triggers on: Next.js, Next.js 16, App Router, RSC, use server, Server Components, Server Actions, Cache Components, Turbopack, React 19.2, generateMetadata, loading.tsx, Next.js deployment, Vercel, Next.js performance, PPR.",
       "category": "uncategorized",
       "tier": "discoverable",
       "keywords": [],
       "platforms": [
         "all"
       ],
-      "triggers": "Next.js, Next.js 16, App Router, Server Components, Server Actions, React Server Components, Cache Components, Turbopack, React 19.2, Partial Pre-Rendering, PPR, Next.js deployment, Vercel, Next.js performance, React Compiler, hydration error, SSR, streaming, hydration mismatch",
+      "triggers": "Next.js, Next.js 16, App Router, Server Components, Server Actions, React Server Components, Cache Components, Turbopack, React 19.2, Partial Pre-Rendering, PPR, Next.js deployment, Vercel, Next.js performance, React Compiler, hydration error, SSR, streaming",
       "agent-affinity": [],
       "connections": {
         "extends": [],
@@ -596,11 +456,11 @@
         "enhances": [],
         "conflicts": []
       },
-      "path": "nextjs-developer\\SKILL.md"
+      "path": "nextjs-developer/SKILL.md"
     },
     {
       "name": "plan",
-      "description": "Use when user says \"plan\", \"design this\", \"architect\", \"spec out\", \"how should we build\", or \"create a roadmap\" — produces a phased implementation plan scaled to task complexity",
+      "description": "Use when user says \"plan\", \"design this\", \"architect\", \"spec out\", \"how should we build\", or \"create a roadmap\" — produces a phased implementation plan grounded in ADR standard, spec-driven development, and test-driven development",
       "category": "development-tools",
       "tier": "discoverable",
       "keywords": [
@@ -636,7 +496,7 @@
         "enhances": [],
         "conflicts": []
       },
-      "path": "plan\\SKILL.md"
+      "path": "plan/SKILL.md"
     },
     {
       "name": "playwright-expert",
@@ -655,7 +515,7 @@
         "enhances": [],
         "conflicts": []
       },
-      "path": "playwright-expert\\SKILL.md"
+      "path": "playwright-expert/SKILL.md"
     },
     {
       "name": "postgres-pro",
@@ -674,7 +534,7 @@
         "enhances": [],
         "conflicts": []
       },
-      "path": "postgres-pro\\SKILL.md"
+      "path": "postgres-pro/SKILL.md"
     },
     {
       "name": "problem-solving",
@@ -715,7 +575,56 @@
         ],
         "conflicts": []
       },
-      "path": "problem-solving\\SKILL.md"
+      "path": "problem-solving/SKILL.md"
+    },
+    {
+      "name": "prompt-refinement",
+      "description": "Pre-planning grill session that stress-tests a rough request against the codebase and domain model, sharpens terminology, and produces an execution-ready prompt for /plan. Use when requirements are vague, underspecified, or need validation before planning begins.",
+      "category": "uncategorized",
+      "tier": "discoverable",
+      "keywords": [
+        "prompt",
+        "refinement",
+        "clarify",
+        "rewrite",
+        "requirements",
+        "acceptance-criteria",
+        "scope",
+        "constraints",
+        "business-logic",
+        "specification",
+        "grill",
+        "stress-test"
+      ],
+      "platforms": [
+        "all"
+      ],
+      "triggers": [
+        "/prompt-refinement",
+        "prompt refinement",
+        "refine prompt",
+        "improve prompt",
+        "rewrite prompt",
+        "clarify requirements",
+        "make this prompt better",
+        "grill me",
+        "grill this",
+        "stress-test this plan"
+      ],
+      "agent-affinity": [
+        "business-analyst",
+        "planner",
+        "project-manager",
+        "developer",
+        "researcher"
+      ],
+      "connections": {
+        "extends": [],
+        "requires": [],
+        "enhances": [],
+        "conflicts": []
+      },
+      "path": "prompt-refinement/SKILL.md"
     },
     {
       "name": "react-expert",
@@ -734,7 +643,7 @@
         "enhances": [],
         "conflicts": []
       },
-      "path": "react-expert\\SKILL.md"
+      "path": "react-expert/SKILL.md"
     },
     {
       "name": "research",
@@ -773,7 +682,7 @@
         "enhances": [],
         "conflicts": []
       },
-      "path": "research\\SKILL.md"
+      "path": "research/SKILL.md"
     },
     {
       "name": "review",
@@ -792,7 +701,7 @@
         "enhances": [],
         "conflicts": []
       },
-      "path": "review\\SKILL.md"
+      "path": "review/SKILL.md"
     },
     {
       "name": "security-reviewer",
@@ -832,7 +741,7 @@
         "enhances": [],
         "conflicts": []
       },
-      "path": "security-reviewer\\SKILL.md"
+      "path": "security-reviewer/SKILL.md"
     },
     {
       "name": "skill-creator",
@@ -851,7 +760,7 @@
         "enhances": [],
         "conflicts": []
       },
-      "path": "skill-creator\\SKILL.md"
+      "path": "skill-creator/SKILL.md"
     },
     {
       "name": "skill-discovery",
@@ -875,7 +784,7 @@
         "developer",
         "debugger",
         "tester",
-        "code-reviewer",
+        "code-review",
         "project-manager"
       ],
       "connections": {
@@ -884,7 +793,7 @@
         "enhances": [],
         "conflicts": []
       },
-      "path": "skill-discovery\\SKILL.md"
+      "path": "skill-discovery/SKILL.md"
     },
     {
       "name": "subagent-driven-development",
@@ -915,30 +824,11 @@
         ],
         "conflicts": []
       },
-      "path": "subagent-driven-development\\SKILL.md"
-    },
-    {
-      "name": "terraform-engineer",
-      "description": "Use when implementing infrastructure as code with Terraform across AWS, Azure, or GCP. Invoke for module development (create reusable modules, manage module versioning), state management (migrate backends, import existing resources, resolve state conflicts), provider configuration, multi-environment workflows, and infrastructure testing.",
-      "category": "uncategorized",
-      "tier": "discoverable",
-      "keywords": [],
-      "platforms": [
-        "all"
-      ],
-      "triggers": "Terraform, infrastructure as code, IaC, terraform module, terraform state, AWS provider, Azure provider, GCP provider, terraform plan, terraform apply",
-      "agent-affinity": [],
-      "connections": {
-        "extends": [],
-        "requires": [],
-        "enhances": [],
-        "conflicts": []
-      },
-      "path": "terraform-engineer\\SKILL.md"
+      "path": "subagent-driven-development/SKILL.md"
     },
     {
       "name": "test",
-      "description": "Use when user says \"run tests\", \"add tests\", \"check coverage\", \"write unit tests\", or \"validate this works\" — detects platform and runs the appropriate test suite (Jest, XCTest, JUnit, Espresso)",
+      "description": "Use when user says \"run tests\", \"add tests\", \"check coverage\", \"write unit tests\", or \"validate this works\" — detects the runner and executes the appropriate suite (Vitest, Jest, Playwright, go test, pytest)",
       "category": "development-tools",
       "tier": "discoverable",
       "keywords": [],
@@ -955,7 +845,7 @@
         ],
         "conflicts": []
       },
-      "path": "test\\SKILL.md"
+      "path": "test/SKILL.md"
     },
     {
       "name": "typescript-pro",
@@ -974,26 +864,7 @@
         "enhances": [],
         "conflicts": []
       },
-      "path": "typescript-pro\\SKILL.md"
-    },
-    {
-      "name": "ui-ux-pro-max",
-      "description": "UI/UX design intelligence for web and mobile. Includes 50+ styles, 161 color palettes, 57 font pairings, 161 product types, 99 UX guidelines, and 25 chart types across 10 stacks (React, Next.js, Vue, Svelte, SwiftUI, React Native, Flutter, Tailwind, shadcn/ui, and HTML/CSS). Actions: plan, build, create, design, implement, review, fix, improve, optimize, enhance, refactor, and check UI/UX code. Projects: website, landing page, dashboard, admin panel, e-commerce, SaaS, portfolio, blog, and mobile app. Elements: button, modal, navbar, sidebar, card, table, form, and chart. Styles: glassmorphism, claymorphism, minimalism, brutalism, neumorphism, bento grid, dark mode, responsive, skeuomorphism, and flat design. Topics: color systems, accessibility, animation, layout, typography, font pairing, spacing, interaction states, shadow, and gradient. Integrations: shadcn/ui MCP for component search and examples.",
-      "category": "uncategorized",
-      "tier": "discoverable",
-      "keywords": [],
-      "platforms": [
-        "all"
-      ],
-      "triggers": [],
-      "agent-affinity": [],
-      "connections": {
-        "extends": [],
-        "requires": [],
-        "enhances": [],
-        "conflicts": []
-      },
-      "path": "ui-ux-pro-max\\SKILL.md"
+      "path": "typescript-pro/SKILL.md"
     },
     {
       "name": "web-frontend",
@@ -1034,7 +905,7 @@
         "enhances": [],
         "conflicts": []
       },
-      "path": "web-frontend\\SKILL.md"
+      "path": "web-frontend/SKILL.md"
     },
     {
       "name": "web-testing",
@@ -1064,8 +935,8 @@
         "spec"
       ],
       "agent-affinity": [
-        "tester",
-        "developer"
+        "developer",
+        "tester"
       ],
       "connections": {
         "extends": [],
@@ -1073,170 +944,7 @@
         "enhances": [],
         "conflicts": []
       },
-      "path": "web-testing\\SKILL.md"
-    },
-    {
-      "name": "websocket-engineer",
-      "description": "Use when building real-time communication systems with WebSockets or Socket.IO. Invoke for bidirectional messaging, horizontal scaling with Redis, presence tracking, room management.",
-      "category": "uncategorized",
-      "tier": "discoverable",
-      "keywords": [],
-      "platforms": [
-        "all"
-      ],
-      "triggers": "WebSocket, Socket.IO, real-time communication, bidirectional messaging, pub/sub, server push, live updates, chat systems, presence tracking",
-      "agent-affinity": [],
-      "connections": {
-        "extends": [],
-        "requires": [],
-        "enhances": [],
-        "conflicts": []
-      },
-      "path": "websocket-engineer\\SKILL.md"
-    },
-    {
-      "name": "knowledge-retrieval",
-      "description": "Internal-first knowledge search across docs/, skills, and RAG to locate prior art and past decisions",
-      "category": "development-tools",
-      "tier": "discoverable",
-      "keywords": [],
-      "platforms": [
-        "all"
-      ],
-      "path": "knowledge-retrieval/SKILL.md"
-    },
-    {
-      "name": "prompt-refinement",
-      "description": "",
-      "category": "development-tools",
-      "tier": "discoverable",
-      "keywords": [],
-      "platforms": [
-        "all"
-      ],
-      "triggers": [],
-      "agent-affinity": [],
-      "connections": {
-        "extends": [],
-        "requires": [],
-        "enhances": [],
-        "conflicts": []
-      },
-      "path": "prompt-refinement\\SKILL.md"
-    },
-    {
-      "name": "understand",
-      "description": "Analyze a codebase to produce an interactive knowledge graph for understanding architecture, components, and relationships",
-      "category": "analysis-reasoning",
-      "tier": "discoverable",
-      "keywords": [],
-      "platforms": [
-        "all"
-      ],
-      "triggers": [],
-      "agent-affinity": [],
-      "connections": {
-        "extends": [],
-        "requires": [],
-        "enhances": [],
-        "conflicts": []
-      },
-      "path": "understand\\SKILL.md"
-    },
-    {
-      "name": "understand-chat",
-      "description": "Use when you need to ask questions about a codebase or understand code using a knowledge graph",
-      "category": "analysis-reasoning",
-      "tier": "discoverable",
-      "keywords": [],
-      "platforms": [
-        "all"
-      ],
-      "triggers": [],
-      "agent-affinity": [],
-      "connections": {
-        "extends": [],
-        "requires": [],
-        "enhances": [],
-        "conflicts": []
-      },
-      "path": "understand-chat\\SKILL.md"
-    },
-    {
-      "name": "understand-dashboard",
-      "description": "Launch the interactive web dashboard to visualize a codebase's knowledge graph",
-      "category": "analysis-reasoning",
-      "tier": "discoverable",
-      "keywords": [],
-      "platforms": [
-        "all"
-      ],
-      "triggers": [],
-      "agent-affinity": [],
-      "connections": {
-        "extends": [],
-        "requires": [],
-        "enhances": [],
-        "conflicts": []
-      },
-      "path": "understand-dashboard\\SKILL.md"
-    },
-    {
-      "name": "understand-diff",
-      "description": "Use when you need to analyze git diffs or pull requests to understand what changed, affected components, and risks",
-      "category": "analysis-reasoning",
-      "tier": "discoverable",
-      "keywords": [],
-      "platforms": [
-        "all"
-      ],
-      "triggers": [],
-      "agent-affinity": [],
-      "connections": {
-        "extends": [],
-        "requires": [],
-        "enhances": [],
-        "conflicts": []
-      },
-      "path": "understand-diff\\SKILL.md"
-    },
-    {
-      "name": "understand-explain",
-      "description": "Use when you need a deep-dive explanation of a specific file, function, or module in the codebase",
-      "category": "analysis-reasoning",
-      "tier": "discoverable",
-      "keywords": [],
-      "platforms": [
-        "all"
-      ],
-      "triggers": [],
-      "agent-affinity": [],
-      "connections": {
-        "extends": [],
-        "requires": [],
-        "enhances": [],
-        "conflicts": []
-      },
-      "path": "understand-explain\\SKILL.md"
-    },
-    {
-      "name": "understand-onboard",
-      "description": "Use when you need to generate an onboarding guide for new team members joining a project",
-      "category": "analysis-reasoning",
-      "tier": "discoverable",
-      "keywords": [],
-      "platforms": [
-        "all"
-      ],
-      "triggers": [],
-      "agent-affinity": [],
-      "connections": {
-        "extends": [],
-        "requires": [],
-        "enhances": [],
-        "conflicts": []
-      },
-      "path": "understand-onboard\\SKILL.md"
+      "path": "web-testing/SKILL.md"
     }
   ]
 }

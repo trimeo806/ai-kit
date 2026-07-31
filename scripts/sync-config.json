@@ -416,7 +416,6 @@
         "brainstormer",
         "code-reviewer",
         "frontend-architect",
-        "knowledge-graph-guide",
         "muji",
         "planner",
         "project-manager",
@@ -517,25 +516,11 @@
           "template": "Use the current conversation and repository context. Load the `sequential-thinking` skill and reason through the problem step by step before recommending an action. Additional command input: $ARGUMENTS"
         },
         {
-          "name": "cloud-architect",
-          "description": "Evaluate cloud architecture and deployment decisions",
-          "agent": "devops-engineer",
-          "subtask": true,
-          "template": "Use the current conversation and repository context. Load the `cloud-architect` skill and produce a practical cloud architecture recommendation with trade-offs and rollout notes. Additional command input: $ARGUMENTS"
-        },
-        {
           "name": "infra-docker",
           "description": "Design or update containerization and local runtime setup",
           "agent": "devops-engineer",
           "subtask": true,
           "template": "Use the current conversation and repository context. Load the `infra-docker` skill and complete the requested Docker or containerization work. Additional command input: $ARGUMENTS"
-        },
-        {
-          "name": "infra-cloud",
-          "description": "Design or update cloud infrastructure and deployment setup",
-          "agent": "devops-engineer",
-          "subtask": true,
-          "template": "Use the current conversation and repository context. Load the `infra-cloud` skill and complete the requested cloud infrastructure work. Additional command input: $ARGUMENTS"
         },
         {
           "name": "git",

@@ -7,7 +7,7 @@ metadata:
   platforms: [backend]
   agent-affinity: [developer, backend-architect]
   connections:
-    enhances: [api-designer, error-recovery]
+    enhances: [postgres-pro, code-review]
     requires: []
     conflicts: []
 ---

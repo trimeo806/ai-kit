@@ -15,11 +15,8 @@ skills:
     typescript-pro,
     golang-pro,
     postgres-pro,
-    api-designer,
     nextjs-developer,
     javascript-pro,
-    graphql-architect,
-    microservices-architect,
     playwright-expert,
     web-frontend,
     web-testing,
@@ -126,17 +123,15 @@ At task start, use `skill-discovery` to detect platform and load the right skill
 | Signal                               | Skills to load                     |
 | ------------------------------------ | ---------------------------------- |
 | `*.tsx` + `app/` directory           | `react-expert`, `nextjs-developer` |
-| `createFileRoute`, `createRootRoute` | `react-expert`, `tanstack-start`   |
+| `createFileRoute`, `createRootRoute` | `react-expert`, `typescript-pro`   |
 | `*.tsx` / `*.jsx` (generic React)    | `react-expert`, `typescript-pro`   |
 | `*.go` / `go.mod`                    | `golang-pro`                       |
 | `*.ts` + `server/` / `api/` path     | `typescript-pro`                   |
 | `.sql` / migrations / `db/`          | `postgres-pro`                     |
-| `schema.graphql` / `resolvers/`      | `graphql-architect`                |
 | `*.py` / `fastapi` / `main.py`       | `fastapi-python`                   |
 | `*.test.tsx`, `playwright.config.*`  | `playwright-expert`                |
 | `docker-compose.yml` / `Dockerfile`  | `infra-docker`                     |
-| Multiple services / `services/` dir  | `microservices-architect`          |
-| design brief / UI/UX request         | `ui-ux-pro-max`, `design-system`   |
+| Component / hook / state work        | `web-frontend`                     |
 
 ## Dispatch Protocol (Step 1 — Always Run First)
 

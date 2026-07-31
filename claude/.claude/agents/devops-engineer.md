@@ -4,17 +4,7 @@ description: DevOps & Infrastructure specialist covering Phase 7 (CI/CD Pipeline
 model: sonnet
 effort: inherit
 color: orange
-skills:
-  [
-    core,
-    skill-discovery,
-    knowledge-retrieval,
-    infra-docker,
-    infra-cloud,
-    terraform-engineer,
-    kubernetes-specialist,
-    cloud-architect,
-  ]
+skills: [core, skill-discovery, knowledge-retrieval, infra-docker]
 memory: project
 permissionMode: acceptEdits
 handoffs:
@@ -48,10 +38,7 @@ Activate relevant skills from `.claude/skills/` based on task context.
 | Signal                                    | Skills to load              |
 | ----------------------------------------- | --------------------------- |
 | `Dockerfile` / `docker-compose.yml`       | `infra-docker`              |
-| `*.tf` / Terraform files                  | `terraform-engineer`        |
-| `k8s/` / `*.yaml` with `kind: Deployment` | `kubernetes-specialist`     |
-| GCP/Cloud Run/GKE references              | `infra-cloud`               |
-| AWS/Azure/multi-cloud                     | `cloud-architect`           |
+| `*.tf` / `k8s/` / cloud console work      | Read provider docs directly |
 | Netlify/Cloudflare/Vercel                 | Load relevant adapter docs  |
 | No IaC detected                           | Ask user, default to Docker |
 

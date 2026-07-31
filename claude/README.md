@@ -96,9 +96,7 @@ Custom slash commands are specifically supported in Claude Code via `.claude/hoo
 ### Infrastructure & Deployment
 | Command | What It Does |
 |---------|-------------|
-| `/cloud-architect` | Cloud architecture decisions, cost optimization, DR strategies |
 | `/infra-docker` | Dockerfiles, docker-compose, containerization |
-| `/infra-cloud` | GCP infrastructure — Terraform, Cloud Build, Cloud Run, GKE |
 | `/git` | Commit, push, PR creation, branch management |
 
 ### Documentation & Knowledge

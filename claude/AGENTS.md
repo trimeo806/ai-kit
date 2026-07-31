@@ -17,7 +17,7 @@ This file provides guidance to Claude Code when working with code in this reposi
 ## Claude Code Agent System
 
 ### Configuration
-- **Agents**: `.claude/agents/` — 18 agents
+- **Agents**: `.claude/agents/` — 17 agents
 - **Commands**: `.claude/commands/` — Slash commands
 - **Skills**: `.claude/skills/` — Passive knowledge
 
@@ -117,7 +117,7 @@ Add an `## Agent & Skills` block to every `phase-{N}-*.md` (after the Overview s
 ```markdown
 ## Agent & Skills
 - **Agent**: `developer`
-- **Skills**: `golang-pro`, `postgres-pro`, `api-designer`
+- **Skills**: `golang-pro`, `postgres-pro`
 - **Handoffs**:
   - After completion → `code-reviewer`
   - On security concern → `security-auditor`
@@ -135,17 +135,15 @@ Do not guess. A wrong agent assignment causes the wrong skills to activate durin
 
 | Domain signal | Agent | Core skills |
 |---------------|-------|-------------|
-| Go / REST API / DB migrations | `developer` | `golang-pro`, `postgres-pro`, `api-designer` |
+| Go / REST API / DB migrations | `developer` | `golang-pro`, `postgres-pro` |
 | React / UI / TypeScript frontend | `developer` | `react-expert`, `typescript-pro`, `web-frontend` |
 | Auth / OAuth / JWT | `developer` | `golang-pro`, `typescript-pro` |
-| SSE / WebSocket / real-time | `developer` | `golang-pro`, `websocket-engineer` |
 | E2E / unit / integration tests | `tester` | `playwright-expert`, `web-testing`, `test` |
-| Docker / CI/CD / infra | `devops-engineer` | `infra-docker`, `terraform-engineer` |
-| Security hardening | `security-auditor` | `fullstack-guardian` |
-| API schema design | `backend-architect` | `api-designer`, `architecture-designer` |
-| Routing / component hierarchy | `frontend-architect` | `react-expert`, `architecture-designer` |
-| UI/UX design, color, typography | `developer` | `ui-ux-pro-max`, `ui-styling` |
-| Python / FastAPI backend | `developer` | `fastapi-python`, `postgres-pro`, `api-designer` |
+| Docker / CI/CD / infra | `devops-engineer` | `infra-docker` |
+| Security hardening | `security-auditor` | `security-reviewer`, `code-review` |
+| API schema design | `backend-architect` | `plan`, `postgres-pro`, `typescript-pro` |
+| Routing / component hierarchy | `frontend-architect` | `react-expert`, `web-frontend` |
+| Python / FastAPI backend | `developer` | `fastapi-python`, `postgres-pro` |
 
 ---
 

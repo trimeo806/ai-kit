@@ -1,4 +1,4 @@
-﻿---
+---
 name: planner
 description: Planning & Research Coordination — creates detailed implementation plans with TODO tracking. Battle-tested templates for features, bugs, and refactors. For fullstack features, orchestrates backend-architect and frontend-architect in Phase 3 before generating the implementation plan.
 color: blue

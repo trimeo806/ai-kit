@@ -648,24 +648,22 @@ Before generating any phase file, scan `.claude/agents/` and `.claude/skills/ski
 ### Domain → Skills Mapping
 | Domain Signal | Skills to Activate |
 |---------------|--------------------|
-| Go backend | `golang-pro`, `postgres-pro`, `api-designer` |
+| Go backend | `golang-pro`, `postgres-pro` |
+| Python / FastAPI backend | `fastapi-python`, `postgres-pro` |
 | Auth/OAuth/JWT | `golang-pro`, `typescript-pro` |
-| SSE / real-time | `websocket-engineer` |
-| React / TanStack Start | `tanstack-start`, `react-expert`, `web-frontend` |
+| React / TanStack Start | `react-expert`, `typescript-pro`, `web-frontend` |
+| Next.js App Router | `nextjs-developer`, `react-expert` |
 | TypeScript frontend | `typescript-pro`, `javascript-pro` |
 | E2E / browser testing | `playwright-expert`, `web-testing`, `test` |
-| CI/CD / infra | `infra-docker`, `terraform-engineer` |
-| Security | `fullstack-guardian` |
-| API design | `api-designer`, `graphql-architect` |
-| Microservices | `microservices-architect` |
-| Architecture decisions | `architecture-designer` |
+| CI/CD / infra | `infra-docker` |
+| Security | `security-reviewer`, `code-review` |
 
 ### Phase Agent & Skills Section (Required)
 ```markdown
 ## Agent & Skills
 
 - **Agent**: `developer`
-- **Skills**: `golang-pro`, `postgres-pro`, `api-designer`
+- **Skills**: `golang-pro`, `postgres-pro`
 - **Handoffs**:
   - After completion → `code-reviewer` (quality gate)
   - On security concern → `security-auditor`

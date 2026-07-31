@@ -4,19 +4,7 @@ description: Backend architecture specialist for Phase 3 (Architecture & Plannin
 model: sonnet
 effort: inherit
 color: green
-skills:
-  [
-    core,
-    skill-discovery,
-    knowledge-retrieval,
-    architecture-designer,
-    api-designer,
-    graphql-architect,
-    microservices-architect,
-    postgres-pro,
-    typescript-pro,
-    plan,
-  ]
+skills: [core, skill-discovery, knowledge-retrieval, postgres-pro, typescript-pro, plan]
 memory: project
 permissionMode: default
 handoffs:
@@ -52,14 +40,12 @@ Activate relevant skills from `.claude/skills/` based on task context.
 
 ## Technology Detection & Skill Loading
 
-| Signal                              | Skills to activate        |
-| ----------------------------------- | ------------------------- |
-| GraphQL schema / Apollo mentioned   | `graphql-architect`       |
-| REST API / OpenAPI mentioned        | `api-designer`            |
-| PostgreSQL / `*.sql` / migrations   | `postgres-pro`            |
-| Multiple services / `services/` dir | `microservices-architect` |
-| `*.go` / Go project                 | `golang-pro`              |
-| TypeScript API / Node.js            | `typescript-pro`          |
+| Signal                            | Skills to activate |
+| --------------------------------- | ------------------ |
+| PostgreSQL / `*.sql` / migrations | `postgres-pro`     |
+| `*.go` / Go project               | `golang-pro`       |
+| TypeScript API / Node.js          | `typescript-pro`   |
+| Python / FastAPI                  | `fastapi-python`   |
 
 ## Phase 3 Backend Architecture Deliverables
 

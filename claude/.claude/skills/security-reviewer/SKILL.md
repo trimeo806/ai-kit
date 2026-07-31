@@ -8,7 +8,7 @@ metadata:
   platforms: [web, backend, all]
   agent-affinity: [security-auditor, code-reviewer]
   connections:
-    enhances: [code-reviewer, fullstack-guardian]
+    enhances: [code-review, audit]
     requires: []
 ---
 
