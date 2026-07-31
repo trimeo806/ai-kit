@@ -26,7 +26,7 @@ function topLevelEntries(manifest: Manifest): string[] {
 }
 
 function buildBlock(entries: string[]): string {
-  return [BEGIN, "# Installed by agentkit-cli — keep kit files local, do not commit.", ...entries, END].join("\n");
+  return [BEGIN, "# Installed by devagent-kit — keep kit files local, do not commit.", ...entries, END].join("\n");
 }
 
 /** Write or refresh the ai-kit managed block in <cwd>/.gitignore (idempotent). */

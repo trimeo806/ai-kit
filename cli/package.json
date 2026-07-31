@@ -1,14 +1,11 @@
 {
-  "name": "@trimeo806/agentkit-cli",
+  "name": "devagent-kit",
   "version": "0.2.0",
-  "publishConfig": {
-    "access": "public"
-  },
-  "description": "agentkit-cli — installable CLI for the multi-agent ai-kit (Claude, Codex, OpenCode, Antigravity).",
+  "description": "devagent-kit — installable CLI for the multi-agent ai-kit (Claude, Codex, OpenCode, Antigravity).",
   "license": "MIT",
   "type": "commonjs",
   "bin": {
-    "agentkit-cli": "dist/index.js",
+    "devagent-kit": "dist/index.js",
     "agentkit": "dist/index.js"
   },
   "files": [

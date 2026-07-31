@@ -19,7 +19,30 @@ The repository has been restructured to cleanly separate platform-specific workf
 
 ## 🚀 Install via CLI (cross-platform)
 
-### ⚡ Quick start — local, no publish (run from inside the target repo)
+### ⚡ Quick start (run from inside the target repo)
+
+```bash
+# everything, never overwrite your own files
+npx devagent-kit install all --skip-existing
+
+# claude only (default target)
+npx devagent-kit install --skip-existing
+
+# pick targets
+npx devagent-kit install codex opencode --skip-existing
+
+# preview without writing
+npx devagent-kit install all --dry-run
+
+# maintenance
+npx devagent-kit update
+npx devagent-kit list
+npx devagent-kit uninstall
+```
+
+Kit content is fetched fresh from GitHub `master` on every run, so `npx devagent-kit` always installs the latest agents/skills without a new npm release.
+
+### Alternative — from a local checkout (no publish)
 
 No npm publish, no global install. Runs the CLI from a local checkout; kit content is fetched fresh from GitHub `master` every run. Replace `/path/to/your/ai-kit/cli` with your own checkout path.
 
@@ -50,13 +73,13 @@ Drop the kit into any project with a single command. Default target is `claude`;
 
 ```bash
 # claude only (default)
-npx agentkit-cli install
+npx devagent-kit install
 
 # multi-target
-npx agentkit-cli install codex opencode
+npx devagent-kit install codex opencode
 
 # everything
-npx agentkit-cli install all
+npx devagent-kit install all
 ```
 
 Useful flags: `--skip-existing` (add new files only, never overwrite existing — preserves your project's own `CLAUDE.md`/`.claude/`), `-y`/`--yes` (overwrite all, no backup), `--dry-run` (preview).
@@ -65,7 +88,7 @@ Every `install` also appends an ai-kit-managed block to the target repo's `.giti
 
 Other commands: `update`, `uninstall`, `list`. Source for the CLI lives in [`cli/`](./cli/README.md).
 
-### Install the CLI globally (no npm publish required)
+### Install the CLI globally
 
 **A. From local checkout** — install once, reuse anywhere:
 ```bash
@@ -76,7 +99,7 @@ npm run build
 npm install -g .
 
 # now usable in any directory:
-agentkit-cli install
+devagent-kit install
 ```
 
 **B. From a tarball** — share with teammates without publishing:
@@ -85,18 +108,18 @@ agentkit-cli install
 cd ai-kit/cli
 npm install && npm run build
 npm pack
-# → agentkit-cli-0.1.0.tgz
+# → devagent-kit-0.2.0.tgz
 
 # consumer (any machine with Node ≥18)
-npm install -g ./agentkit-cli-0.1.0.tgz
-agentkit-cli install
+npm install -g ./devagent-kit-0.2.0.tgz
+devagent-kit install
 ```
 
-**C. From npm registry** — once published:
+**C. From npm registry** — published as [`devagent-kit`](https://www.npmjs.com/package/devagent-kit):
 ```bash
-npm install -g agentkit-cli
+npm install -g devagent-kit
 # or zero-install:
-npx agentkit-cli install
+npx devagent-kit install
 ```
 
 **D. Local, no publish, always latest** — run the CLI straight from a local checkout, no npm publish, no global install. Kit *content* is always fetched fresh from GitHub `master` on every run; only the CLI *logic* is as fresh as your last `pull + build`.

@@ -1,4 +1,4 @@
-# agentkit-cli
+# devagent-kit
 
 Installable CLI for the multi-agent **ai-kit** — bootstraps Claude Code, Codex, OpenCode, and Antigravity agent/skill packs into any project.
 
@@ -6,19 +6,19 @@ Installable CLI for the multi-agent **ai-kit** — bootstraps Claude Code, Codex
 
 ```bash
 # default: install Claude pack into ./.claude + AGENTS.md + WORKFLOW.md
-npx agentkit-cli install
+npx devagent-kit install
 
 # multi-target
-npx agentkit-cli install codex opencode
+npx devagent-kit install codex opencode
 
 # everything
-npx agentkit-cli install all
+npx devagent-kit install all
 ```
 
 The shorter `agentkit` alias works too:
 
 ```bash
-npx -p agentkit-cli agentkit install codex
+npx -p devagent-kit agentkit install codex
 ```
 
 ## Install globally without publishing
@@ -31,20 +31,20 @@ npm install && npm run build
 npm install -g .
 
 # or distribute a tarball
-npm pack            # produces agentkit-cli-<version>.tgz
-npm install -g ./agentkit-cli-0.1.0.tgz   # on consumer machine
+npm pack            # produces devagent-kit-<version>.tgz
+npm install -g ./devagent-kit-0.2.0.tgz   # on consumer machine
 ```
 
-After global install, `agentkit-cli` and `agentkit` are on `PATH`.
+After global install, `devagent-kit` and `agentkit` are on `PATH`.
 
 ## Commands
 
 | Command | What it does |
 |---|---|
-| `agentkit-cli install [targets...]` | Fetch latest kit from GitHub and install selected targets into the current directory. Default target: `claude`. |
-| `agentkit-cli update [targets...]` | Re-fetch and reapply installed targets, preserving user files. |
-| `agentkit-cli uninstall [targets...]` | Remove kit-owned files for the given targets. Strips sentinel-merged blocks from `AGENTS.md`. |
-| `agentkit-cli list` (alias `status`) | Show installed targets, pinned commit SHA, and drift from the source. |
+| `devagent-kit install [targets...]` | Fetch latest kit from GitHub and install selected targets into the current directory. Default target: `claude`. |
+| `devagent-kit update [targets...]` | Re-fetch and reapply installed targets, preserving user files. |
+| `devagent-kit uninstall [targets...]` | Remove kit-owned files for the given targets. Strips sentinel-merged blocks from `AGENTS.md`. |
+| `devagent-kit list` (alias `status`) | Show installed targets, pinned commit SHA, and drift from the source. |
 
 ### Targets
 
@@ -56,7 +56,7 @@ After global install, `agentkit-cli` and `agentkit` are on `PATH`.
 
 ### Common flags
 
-- `--ref <git-ref>` — branch / tag / commit to fetch (default: `main`)
+- `--ref <git-ref>` — branch / tag / commit to fetch (default: `master`, falls back to `main`)
 - `--repo <slug>` — GitHub repo slug to fetch from (default: `trimeo806/ai-kit`)
 - `--dry-run` — print the plan without writing anything
 - `-y, --yes` / `--force` — overwrite all conflicts without prompting

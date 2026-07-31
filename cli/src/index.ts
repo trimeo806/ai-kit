@@ -11,7 +11,7 @@ const pkg = require("../package.json") as { version: string };
 const program = new Command();
 
 program
-  .name("agentkit-cli")
+  .name("devagent-kit")
   .description("Install the multi-agent ai-kit (Claude, Codex, OpenCode, Antigravity) into a project.")
   .version(pkg.version);
 
