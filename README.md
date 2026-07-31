@@ -17,9 +17,13 @@ The repository has been restructured to cleanly separate platform-specific workf
 
 ---
 
-## 🚀 Install via CLI (cross-platform)
+## 🚀 Install
 
-### ⚡ Quick start (run from inside the target repo)
+Published on npm as [**`devagent-kit`**](https://www.npmjs.com/package/devagent-kit). Requires Node ≥ 18. Works on macOS, Linux, and Windows.
+
+### 1. npx (recommended — nothing to install)
+
+Run from inside the project you want the kit in:
 
 ```bash
 # everything, never overwrite your own files
@@ -33,116 +37,97 @@ npx devagent-kit install codex opencode --skip-existing
 
 # preview without writing
 npx devagent-kit install all --dry-run
-
-# maintenance
-npx devagent-kit update
-npx devagent-kit list
-npx devagent-kit uninstall
 ```
 
-Kit content is fetched fresh from GitHub `master` on every run, so `npx devagent-kit` always installs the latest agents/skills without a new npm release.
-
-### Alternative — from a local checkout (no publish)
-
-No npm publish, no global install. Runs the CLI from a local checkout; kit content is fetched fresh from GitHub `master` every run. Replace `/path/to/your/ai-kit/cli` with your own checkout path.
+Maintenance, same directory:
 
 ```bash
-# install everything, never overwrite your own files
-npx /path/to/your/ai-kit/cli install all --skip-existing
-
-# claude only
-npx /path/to/your/ai-kit/cli install --skip-existing
-
-# pick targets
-npx /path/to/your/ai-kit/cli install codex opencode --skip-existing
-
-# preview without writing
-npx /path/to/your/ai-kit/cli install all --dry-run
-
-# maintenance
-npx /path/to/your/ai-kit/cli update
-npx /path/to/your/ai-kit/cli list
-npx /path/to/your/ai-kit/cli uninstall
+npx devagent-kit update       # re-fetch and reapply installed targets
+npx devagent-kit list         # installed targets, pinned SHA, drift
+npx devagent-kit uninstall    # remove kit-owned files
 ```
 
-> First run needs the CLI built once: `cd /path/to/your/ai-kit/cli && npm install && npm run build`. After pulling new CLI changes, rebuild. For an auto pull+build+run shortcut, see **Option D** below.
+### 2. Global install
 
----
-
-Drop the kit into any project with a single command. Default target is `claude`; pass additional targets positionally.
-
-```bash
-# claude only (default)
-npx devagent-kit install
-
-# multi-target
-npx devagent-kit install codex opencode
-
-# everything
-npx devagent-kit install all
-```
-
-Useful flags: `--skip-existing` (add new files only, never overwrite existing — preserves your project's own `CLAUDE.md`/`.claude/`), `-y`/`--yes` (overwrite all, no backup), `--dry-run` (preview).
-
-Every `install` also appends an ai-kit-managed block to the target repo's `.gitignore`, keeping installed kit files local and out of commits.
-
-Other commands: `update`, `uninstall`, `list`. Source for the CLI lives in [`cli/`](./cli/README.md).
-
-### Install the CLI globally
-
-**A. From local checkout** — install once, reuse anywhere:
-```bash
-git clone https://github.com/trimeo806/ai-kit.git
-cd ai-kit/cli
-npm install
-npm run build
-npm install -g .
-
-# now usable in any directory:
-devagent-kit install
-```
-
-**B. From a tarball** — share with teammates without publishing:
-```bash
-# producer
-cd ai-kit/cli
-npm install && npm run build
-npm pack
-# → devagent-kit-0.2.0.tgz
-
-# consumer (any machine with Node ≥18)
-npm install -g ./devagent-kit-0.2.0.tgz
-devagent-kit install
-```
-
-**C. From npm registry** — published as [`devagent-kit`](https://www.npmjs.com/package/devagent-kit):
 ```bash
 npm install -g devagent-kit
-# or zero-install:
-npx devagent-kit install
+
+# then from any project directory:
+devagent-kit install all --skip-existing
+agentkit install all --skip-existing   # short alias, same binary
 ```
 
-**D. Local, no publish, always latest** — run the CLI straight from a local checkout, no npm publish, no global install. Kit *content* is always fetched fresh from GitHub `master` on every run; only the CLI *logic* is as fresh as your last `pull + build`.
+### Targets
+
+| Target | Installs into |
+|---|---|
+| `claude` (default) | `.claude/`, `AGENTS.md`, `WORKFLOW.md` |
+| `codex` | `.codex/`, `.agents/`, `AGENTS.md`, `WORKFLOW.md`, `.kit-data/improvements/` |
+| `opencode` | `.opencode/`, `opencode.json` |
+| `antigravity` | `.agents/` |
+| `all` | every target above |
+
+### Flags worth knowing
+
+| Flag | Effect |
+|---|---|
+| `--skip-existing` | Add new files only, never overwrite — preserves your own `CLAUDE.md` / `.claude/` |
+| `-y`, `--yes` | Overwrite all conflicts, no prompt, no backup |
+| `--dry-run` | Print the plan, write nothing |
+| `--ref <git-ref>` | Install kit content from a specific branch, tag, or commit (default: `master`) |
+
+Every `install` appends an ai-kit-managed block to the target repo's `.gitignore`, keeping installed kit files local and out of your commits. `.ai-kit.lock` records installed targets, the resolved commit SHA, and the kit-owned file list.
+
+### How versioning works
+
+Two things ship on different tracks:
+
+| What | Source | Updated by |
+|---|---|---|
+| Kit content — agents, skills, hooks, `AGENTS.md`, `WORKFLOW.md` | GitHub `master`, fetched fresh on every run | a push to this repo (no npm release needed) |
+| CLI logic — install / update / merge / conflict handling | the npm tarball's `dist/` | a new `devagent-kit` npm release |
+
+So `npx devagent-kit install` always pulls the latest agents and skills, even from an older CLI version. To pin content to an older state, pass `--ref <sha-or-tag>`.
+
+### Contributor / local-checkout install
+
+For working on the kit itself — runs the CLI from your clone, no npm involved:
 
 ```bash
-# one-time: build the CLI once
-cd /path/to/ai-kit/cli && npm install && npm run build
+git clone https://github.com/trimeo806/ai-kit.git
+cd ai-kit/cli && npm install && npm run build
 
-# run via npx against the local path (rebuild after pulling new CLI changes)
+# run against any project directory
 npx /path/to/ai-kit/cli install all --skip-existing
+
+# or install your build globally
+npm install -g .
 ```
 
-For a true *always-latest* shortcut, add an alias that pulls + rebuilds + runs (replace the path with your checkout):
+Rebuild after pulling new CLI changes. For an always-latest shortcut:
+
 ```bash
 alias aikit='git -C /path/to/ai-kit pull -q && npm --prefix /path/to/ai-kit/cli run -s build >/dev/null && node /path/to/ai-kit/cli/dist/index.js'
-
-# then, from any repo:
 aikit install all --skip-existing
 ```
 
-> Note: content comes from **pushed** GitHub `master` — commit and push kit changes to make them installable. Local-only/unpushed commits are not installed.
+> Kit content comes from **pushed** `master` — commit and push kit changes to make them installable. Local-only commits are not installed.
 
 > Windows users who prefer the existing scripts can keep using the PowerShell installers below.
+
+## 🤝 Contributing
+
+`master` is protected — **no direct pushes**. Open a pull request:
+
+```bash
+git switch -c feat/my-change
+# edit only claude/.claude/agents/ and claude/.claude/skills/, then run the sync scripts
+git commit -am "feat(skills): ..."
+git push -u origin feat/my-change
+gh pr create --fill
+```
+
+CI (`ci-cli.yml`) runs the CLI build and tests on Node 18/20, Ubuntu + Windows, for any change under `cli/`. Merging to `master` is what publishes new kit content to every `devagent-kit` user, so review accordingly.
 
 ---
 
