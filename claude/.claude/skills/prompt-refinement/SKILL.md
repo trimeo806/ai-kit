@@ -33,6 +33,9 @@ metadata:
     - rewrite prompt
     - clarify requirements
     - make this prompt better
+    - grill me
+    - grill this
+    - stress-test this plan
 ---
 
 # Prompt Refinement — Pre-Planning Grill
@@ -55,9 +58,19 @@ Use this skill when the input is:
 ## Core Principles
 
 1. **Codebase-first.** If a question can be answered by exploring the code, explore the code instead of asking the user.
-2. **One question at a time.** Ask sequentially, wait for feedback on each before continuing. For each question, provide your recommended answer.
+2. **One question at a time.** The questioning mechanics are defined once, in [grilling.md](./references/grilling.md) — the interview loop this skill runs on. Read it before Step 7.
 3. **Relentless precision.** Don't let fuzzy terms, vague boundaries, or unvalidated assumptions pass into the refined prompt.
 4. **Update docs inline.** When a term is resolved, update `CONTEXT.md` immediately. When a decision crystallizes, offer an ADR.
+
+### Division of Labour
+
+| Concern | Owner |
+|---------|-------|
+| **How** to ask — one at a time, always recommend, facts vs decisions, dependency order, when to stop | [grilling.md](./references/grilling.md) |
+| **What** to ask about — glossary conflicts, fuzzy terms, edge cases, business logic | This file, Steps 1–6 + Business Logic Checklist |
+| **What comes out** — the refined prompt template and quality gate | This file, Step 9 |
+
+`grilling.md` is skill-agnostic and reused by `/audit --architecture`. Don't fork or paraphrase it here — edit it in place if the loop needs changing.
 
 ## Workflow
 
@@ -131,11 +144,11 @@ When domain relationships or business rules are involved, invent edge-case scena
 Surface contradictions:
 > *"Your code cancels entire Orders, but you just said partial cancellation is possible — which is right?"*
 
-### 7. Resolve Ambiguity
+### 7. Resolve Ambiguity — Run the Grilling Loop
 
-Ask questions one at a time, providing your recommended answer for each. Wait for feedback before continuing.
+Run the loop in [grilling.md](./references/grilling.md) as-is. Feed it the open items surfaced by Steps 4–6 (glossary conflicts, fuzzy terms, failed edge cases) and the unfilled rows of the Business Logic Checklist.
 
-If the user hasn't answered after 3 focused questions, proceed with clearly stated assumptions:
+Escape hatch: if the user hasn't answered after 3 focused questions, stop looping and proceed with clearly stated assumptions:
 > *"Assume X unless corrected"*
 > *"Open question: Y"*
 > *"Out of scope: Z"*
@@ -238,6 +251,7 @@ After refinement, the user can pipe the result directly into `/plan`:
 
 ## Related Documents
 
+- [grilling.md](./references/grilling.md) — the interview loop (Step 7); reused by other skills
 - [context-format.md](./references/context-format.md) — CONTEXT.md glossary format
 - [adr-format.md](./references/adr-format.md) — Architecture Decision Record format
 - `.claude/skills/plan/SKILL.md` — implementation planning (next step)

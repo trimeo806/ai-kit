@@ -29,6 +29,9 @@ metadata:
     - bug
     - crash
     - exception
+    - flaky
+    - intermittent
+    - regression
 ---
 
 # Debug — Unified Debug Command
@@ -46,9 +49,25 @@ Detect platform per `skill-discovery` protocol.
 3. Analyze error context, gather logs, identify root cause
 4. Explain root cause and suggest fix (do NOT auto-apply fix — that's `/fix`)
 
+## Deep Diagnosis Routing
+
+Two paths. Pick one **before** reading code.
+
+| Path | Use when | Runs |
+|------|----------|------|
+| **Quick triage** (this file) | Stack trace points at the cause · reproduces on first try · single-file · symptom is obvious from the error | Systematic Debugging (below) |
+| **Deep loop** ([references/diagnosis-loop.md](./references/diagnosis-loop.md)) | Flaky / intermittent · performance regression · no reliable repro · one fix attempt already failed · cause spans modules · "works on my machine" | 6 phases, feedback-loop-first |
+
+Escalate to the deep loop mid-session the moment a quick-triage hypothesis fails. Do not keep guessing.
+
+The deep loop's non-negotiable: **build a red-capable feedback loop before forming any hypothesis.** Quick triage assumes you already have one (the stack trace + a rerun).
+
 ## Expertise
 
 ### Systematic Debugging
+
+Quick-triage path. For hard bugs use the deep loop above instead — its Phase 1 replaces steps 1–3 here with a much stronger gate.
+
 1. **Understand**: What's the symptom?
 2. **Reproduce**: Can you reproduce it?
 3. **Isolate**: What's the minimal case?
@@ -217,8 +236,10 @@ See `verification-before-completion` skill for anti-rationalization table, red f
 - `auto-improvement` — Error metrics auto-captured by session-metrics hook on Stop
 
 ## References
+- `references/diagnosis-loop.md` — 6-phase deep diagnosis discipline for hard/flaky/perf bugs
 - `references/debugging-flow.dot` — Authoritative debugging process flowchart
 - `references/condition-based-waiting.md` — Patterns for replacing `sleep()` with condition polling
+- `scripts/hitl-loop.template.sh` — Human-in-the-loop reproduction driver (deep loop, Phase 1 last resort)
 
 <issue>$ARGUMENTS</issue>
 

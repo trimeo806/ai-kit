@@ -103,7 +103,12 @@
         "code",
         "quality",
         "ui-lib",
-        "tokens"
+        "tokens",
+        "architecture",
+        "deepening",
+        "module-depth",
+        "seam",
+        "refactor"
       ],
       "platforms": [
         "all"
@@ -115,7 +120,9 @@
         "\"audit a11y\"",
         "\"audit code\"",
         "\"code audit\"",
-        "\"component audit\""
+        "\"component audit\"",
+        "\"architecture audit\"",
+        "\"improve codebase architecture\""
       ],
       "agent-affinity": [
         "code-reviewer",
@@ -267,7 +274,10 @@
         "error",
         "bug",
         "crash",
-        "exception"
+        "exception",
+        "flaky",
+        "intermittent",
+        "regression"
       ],
       "agent-affinity": [
         "debugger",

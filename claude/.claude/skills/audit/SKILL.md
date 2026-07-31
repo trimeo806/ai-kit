@@ -3,8 +3,8 @@ name: audit
 description: Use when user says "audit", "run an audit", "check quality", "review before merge", "a11y audit", or "code audit" — detects audit type (UI component, a11y, or code) and dispatches the right specialist
 user-invocable: true
 metadata:
-  argument-hint: "[--ui <ComponentName> [--platform web|ios|android|all] [--poc|--beta|--stable] | --a11y [platform] | --code]"
-  keywords: [audit, review, component, a11y, accessibility, code, quality, ui-lib, tokens]
+  argument-hint: "[--ui <ComponentName> [--platform web|ios|android|all] [--poc|--beta|--stable] | --a11y [platform] | --code | --architecture [module]]"
+  keywords: [audit, review, component, a11y, accessibility, code, quality, ui-lib, tokens, architecture, deepening, module-depth, seam, refactor]
   triggers:
     - "audit"
     - "audit component"
@@ -13,6 +13,8 @@ metadata:
     - "audit code"
     - "code audit"
     - "component audit"
+    - "architecture audit"
+    - "improve codebase architecture"
   platforms: [all]
   agent-affinity: [code-reviewer, a11y-specialist]
   connections:
@@ -67,6 +69,7 @@ If `$ARGUMENTS` starts with `--a11y`: **dispatch a11y-specialist** via Agent too
 If `$ARGUMENTS` starts with `--close --ui`: load `references/ui-close.md` and execute inline.
 If `$ARGUMENTS` starts with `--close`: load `references/a11y-close.md` and execute inline.
 If `$ARGUMENTS` starts with `--code`: **dispatch code-reviewer** via Agent tool.
+If `$ARGUMENTS` starts with `--architecture`: load `references/architecture-workflow.md` and execute inline. Pass the module/subsystem scope if given.
 Otherwise: continue to Auto-Detection.
 
 ## Single-Agent Delegation Protocol
@@ -103,6 +106,8 @@ For non-hybrid dispatches (`--ui`, `--code`, `--a11y`):
 | `references/ui-findings-schema.md` | Schema for `reports/known-findings/ui-components.json` |
 | `references/session-json-schema.md` | Schema for `session.json` — per-session metadata written to every session folder |
 | `references/delegation-templates.md` | Structured handoff templates for specialist delegation |
+| `references/architecture-workflow.md` | Scan for module **deepening opportunities**, then grill the chosen candidate |
+| `references/architecture-html-report.md` | HTML scaffold, diagram patterns, and tone for the architecture report |
 
 ## Plan Phase Update
 
@@ -155,7 +160,8 @@ Analyze `$ARGUMENTS` keywords and context:
 | "close" + "ui" signals | `--close --ui` → `references/ui-close.md` |
 | "close", "resolve", "finding" | `--close` → `references/a11y-close.md` |
 | "code", "security", "performance", staged changes without component signal | `--code` → `code-review` |
-| Ambiguous | Ask: UI component audit, a11y audit, or code audit? |
+| "architecture", "shallow", "coupling", "hard to test", "structure", "deepen", "too many small files" | `--architecture` → `references/architecture-workflow.md` (inline) |
+| Ambiguous | Ask: UI component audit, a11y audit, code audit, or architecture audit? |
 
 ## Platform Detection (--ui mode)
 
@@ -175,6 +181,18 @@ Detect target platforms for --ui mode:
 | `--close` | a11y-specialist | `references/a11y-close.md` | Mark a11y finding as resolved |
 | `--close --ui <id>` | inline | `references/ui-close.md` | Mark UI finding resolved |
 | `--code` | code-reviewer | `code-review` | General code quality, security, performance |
+| `--architecture` | inline (+ `Explore` subagents) | `references/architecture-workflow.md` | Module depth, seams, testability — structural, not line-level |
+
+### `--code` vs `--architecture`
+
+| | `--code` | `--architecture` |
+|---|---|---|
+| Unit of finding | Defect at `file:line` | Deepening opportunity across modules |
+| Question asked | "Is this code wrong?" | "Is this the right shape?" |
+| Output | Findings table + verdict | Candidate cards + before/after diagrams + a grilled decision |
+| Ends with | Fix list | One chosen candidate, ADR/CONTEXT.md updated |
+
+Run both when reviewing a large feature: `--code` catches what's broken, `--architecture` catches why it keeps breaking.
 
 ## Examples
 
@@ -185,4 +203,6 @@ Detect target platforms for --ui mode:
 - `/audit --a11y` → a11y specialist audits staged changes
 - `/audit --code` → reviewer audits staged code changes
 - `/audit --close --ui 3` → mark UI finding ID 3 as resolved
+- `/audit --architecture` → scope from git hot spots, propose deepenings, open the HTML report
+- `/audit --architecture booking-flow` → scope to the booking-flow module
 - `/audit Input` → auto-detected as UI audit → executes inline via references/ui-workflow.md
