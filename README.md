@@ -172,4 +172,21 @@ claude/.claude/agents/   ←── SOURCE OF TRUTH ──→  claude/.claude/ski
 .\scripts\sync-to-opencode.ps1
 ```
 
+### Sync Guardrail (CI)
+
+A drift guardrail (`scripts/validate-sync.mjs`) runs in CI to enforce the
+one-way sync model. It fails when a generated tree drifts **further** from
+`claude/` than the recorded baseline — catching a skill removed from source
+but left in the generated trees, a source skill never propagated downstream,
+or a `skill-index.json` that goes inconsistent (e.g. a stale `count` field).
+
+Run it locally:
+```bash
+node scripts/validate-sync.mjs                 # gate (exit 0 = clean)
+node scripts/validate-sync.mjs --update-baseline  # after an intentional sync/reconcile
+```
+
+After you intentionally sync or reconcile the generated trees, re-baseline so
+CI reflects the new normal: `node scripts/validate-sync.mjs --update-baseline`.
+
 📖 **Full maintenance details**: see the platform setup docs in `claude/`, `codex/`, and `opencode/`.

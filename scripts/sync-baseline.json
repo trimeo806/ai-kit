@@ -1,0 +1,174 @@
+{
+  "schema": 1,
+  "updatedBy": "validate-sync.mjs --update-baseline",
+  "trees": {
+    "codex/.agents": {
+      "total": 49,
+      "missingFromSource": [],
+      "extraVsSource": [
+        "api-designer",
+        "architecture-designer",
+        "cloud-architect",
+        "fullstack-guardian",
+        "graphql-architect",
+        "infra-cloud",
+        "kubernetes-specialist",
+        "microservices-architect",
+        "terraform-engineer",
+        "ui-styling",
+        "ui-ux-pro-max",
+        "understand",
+        "understand-chat",
+        "understand-dashboard",
+        "understand-diff",
+        "understand-explain",
+        "understand-onboard",
+        "websocket-engineer"
+      ],
+      "dirsWithoutSkillMd": [
+        "security-reviewer-workspace"
+      ],
+      "indexProblems": [
+        "codex/.agents: \"prompt-refinement\" exists on disk but is missing from skill-index.json",
+        "codex/.agents: \"security-reviewer-workspace\" exists on disk but is missing from skill-index.json",
+        "codex/.agents: \"understand\" exists on disk but is missing from skill-index.json",
+        "codex/.agents: \"understand-chat\" exists on disk but is missing from skill-index.json",
+        "codex/.agents: \"understand-dashboard\" exists on disk but is missing from skill-index.json",
+        "codex/.agents: \"understand-diff\" exists on disk but is missing from skill-index.json",
+        "codex/.agents: \"understand-explain\" exists on disk but is missing from skill-index.json",
+        "codex/.agents: \"understand-onboard\" exists on disk but is missing from skill-index.json",
+        "codex/.agents: skill-index.json \"count\" is 44 but has 42 entries"
+      ]
+    },
+    "opencode/.agents": {
+      "total": 49,
+      "missingFromSource": [],
+      "extraVsSource": [
+        "api-designer",
+        "architecture-designer",
+        "cloud-architect",
+        "fullstack-guardian",
+        "graphql-architect",
+        "infra-cloud",
+        "kubernetes-specialist",
+        "microservices-architect",
+        "terraform-engineer",
+        "ui-styling",
+        "ui-ux-pro-max",
+        "understand",
+        "understand-chat",
+        "understand-dashboard",
+        "understand-diff",
+        "understand-explain",
+        "understand-onboard",
+        "websocket-engineer"
+      ],
+      "dirsWithoutSkillMd": [
+        "security-reviewer-workspace"
+      ],
+      "indexProblems": [
+        "opencode/.agents: \"prompt-refinement\" exists on disk but is missing from skill-index.json",
+        "opencode/.agents: \"security-reviewer-workspace\" exists on disk but is missing from skill-index.json",
+        "opencode/.agents: \"understand\" exists on disk but is missing from skill-index.json",
+        "opencode/.agents: \"understand-chat\" exists on disk but is missing from skill-index.json",
+        "opencode/.agents: \"understand-dashboard\" exists on disk but is missing from skill-index.json",
+        "opencode/.agents: \"understand-diff\" exists on disk but is missing from skill-index.json",
+        "opencode/.agents: \"understand-explain\" exists on disk but is missing from skill-index.json",
+        "opencode/.agents: \"understand-onboard\" exists on disk but is missing from skill-index.json",
+        "opencode/.agents: skill-index.json \"count\" is 44 but has 42 entries"
+      ]
+    },
+    "antigravity/skills": {
+      "total": 48,
+      "missingFromSource": [
+        "prompt-refinement"
+      ],
+      "extraVsSource": [
+        "api-designer",
+        "architecture-designer",
+        "cloud-architect",
+        "fullstack-guardian",
+        "graphql-architect",
+        "infra-cloud",
+        "kubernetes-specialist",
+        "microservices-architect",
+        "terraform-engineer",
+        "ui-styling",
+        "ui-ux-pro-max",
+        "understand",
+        "understand-chat",
+        "understand-dashboard",
+        "understand-diff",
+        "understand-explain",
+        "understand-onboard",
+        "websocket-engineer"
+      ],
+      "dirsWithoutSkillMd": [
+        "security-reviewer-workspace"
+      ],
+      "indexProblems": [
+        "antigravity/skills: \"security-reviewer-workspace\" exists on disk but is missing from skill-index.json",
+        "antigravity/skills: \"understand\" exists on disk but is missing from skill-index.json",
+        "antigravity/skills: \"understand-chat\" exists on disk but is missing from skill-index.json",
+        "antigravity/skills: \"understand-dashboard\" exists on disk but is missing from skill-index.json",
+        "antigravity/skills: \"understand-diff\" exists on disk but is missing from skill-index.json",
+        "antigravity/skills: \"understand-explain\" exists on disk but is missing from skill-index.json",
+        "antigravity/skills: \"understand-onboard\" exists on disk but is missing from skill-index.json",
+        "antigravity/skills: skill-index.json \"count\" is 44 but has 42 entries"
+      ]
+    },
+    "antigravity/.agents": {
+      "total": 64,
+      "missingFromSource": [],
+      "extraVsSource": [
+        "api-designer",
+        "architecture-designer",
+        "auto-improvement",
+        "banner-design",
+        "brainstorm",
+        "brand",
+        "cloud-architect",
+        "code-documenter",
+        "design",
+        "design-system",
+        "docs-seeker",
+        "error-recovery",
+        "fastapi-templates",
+        "fullstack-guardian",
+        "graphql-architect",
+        "infra-cloud",
+        "knowledge-capture",
+        "kubernetes-specialist",
+        "microservices-architect",
+        "sequential-thinking",
+        "slides",
+        "tanstack-start",
+        "terraform-engineer",
+        "ui-styling",
+        "ui-ux-pro-max",
+        "understand",
+        "understand-chat",
+        "understand-dashboard",
+        "understand-diff",
+        "understand-explain",
+        "understand-onboard",
+        "web-i18n",
+        "websocket-engineer"
+      ],
+      "dirsWithoutSkillMd": [
+        "security-reviewer-workspace"
+      ],
+      "indexProblems": [
+        "antigravity/.agents: \"prompt-refinement\" exists on disk but is missing from skill-index.json",
+        "antigravity/.agents: \"security-reviewer-workspace\" exists on disk but is missing from skill-index.json",
+        "antigravity/.agents: \"understand\" exists on disk but is missing from skill-index.json",
+        "antigravity/.agents: \"understand-chat\" exists on disk but is missing from skill-index.json",
+        "antigravity/.agents: \"understand-dashboard\" exists on disk but is missing from skill-index.json",
+        "antigravity/.agents: \"understand-diff\" exists on disk but is missing from skill-index.json",
+        "antigravity/.agents: \"understand-explain\" exists on disk but is missing from skill-index.json",
+        "antigravity/.agents: \"understand-onboard\" exists on disk but is missing from skill-index.json",
+        "antigravity/.agents: skill-index.json \"count\" is 59 but has 57 entries"
+      ]
+    }
+  }
+}
