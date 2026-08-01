@@ -30,3 +30,17 @@ jobs:
       - run: npm ci
       - run: npm run build
       - run: npm test
+
+  # Kit-content drift guardrail: enforces the one-way sync model
+  # (claude/ = source of truth -> codex/opencode/antigravity generated copies).
+  # Fails when a generated tree drifts FURTHER from source than the recorded
+  # baseline, or an index becomes inconsistent. Run root-level (not under cli/).
+  validate-sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - name: Run kit-content sync guardrail
+        run: node scripts/validate-sync.mjs
