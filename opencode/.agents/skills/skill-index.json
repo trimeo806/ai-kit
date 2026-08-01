@@ -1094,6 +1094,55 @@
         "all"
       ],
       "path": "knowledge-retrieval/SKILL.md"
+    },
+    {
+      "name": "prompt-refinement",
+      "description": "Pre-planning grill session that stress-tests a rough request against the codebase and domain model, sharpens terminology, and produces an execution-ready prompt for /plan. Use when requirements are vague, underspecified, or need validation before planning begins.",
+      "category": "uncategorized",
+      "tier": "discoverable",
+      "keywords": [
+        "prompt",
+        "refinement",
+        "clarify",
+        "rewrite",
+        "requirements",
+        "acceptance-criteria",
+        "scope",
+        "constraints",
+        "business-logic",
+        "specification",
+        "grill",
+        "stress-test"
+      ],
+      "platforms": [
+        "all"
+      ],
+      "triggers": [
+        "/prompt-refinement",
+        "prompt refinement",
+        "refine prompt",
+        "improve prompt",
+        "rewrite prompt",
+        "clarify requirements",
+        "make this prompt better",
+        "grill me",
+        "grill this",
+        "stress-test this plan"
+      ],
+      "agent-affinity": [
+        "business-analyst",
+        "planner",
+        "project-manager",
+        "developer",
+        "researcher"
+      ],
+      "connections": {
+        "extends": [],
+        "requires": [],
+        "enhances": [],
+        "conflicts": []
+      },
+      "path": "prompt-refinement\\SKILL.md"
     }
   ]
 }
