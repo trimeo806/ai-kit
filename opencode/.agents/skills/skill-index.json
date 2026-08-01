@@ -203,25 +203,6 @@
       "path": "code-review\\SKILL.md"
     },
     {
-      "name": "code-reviewer",
-      "description": "Analyzes code diffs and files to identify bugs, security vulnerabilities (SQL injection, XSS, insecure deserialization), code smells, N+1 queries, naming issues, and architectural concerns, then produces a structured review report with prioritized, actionable feedback. Use when reviewing pull requests, conducting code quality audits, identifying refactoring opportunities, or checking for security issues. Invoke for PR reviews, code quality checks, refactoring suggestions, review code, code quality. Complements specialized skills (security-reviewer, test-master) by providing broad-scope review across correctness, performance, maintainability, and test coverage in a single pass.",
-      "category": "uncategorized",
-      "tier": "discoverable",
-      "keywords": [],
-      "platforms": [
-        "all"
-      ],
-      "triggers": "code review, PR review, pull request, review code, code quality",
-      "agent-affinity": [],
-      "connections": {
-        "extends": [],
-        "requires": [],
-        "enhances": [],
-        "conflicts": []
-      },
-      "path": "code-reviewer\\SKILL.md"
-    },
-    {
       "name": "cook",
       "description": "Use when user says \"implement\", \"build\", \"add a feature\", \"cook\", \"make this work\", or \"continue the plan\" \u2014 dispatches platform-aware feature implementation for web, iOS, Android, or backend",
       "category": "development-tools",
@@ -644,39 +625,6 @@
         "conflicts": []
       },
       "path": "plan\\SKILL.md"
-    },
-    {
-      "name": "plan-hard",
-      "description": "Deep plan with sequential research and comprehensive analysis \u2014 use for moderate to complex features requiring investigation",
-      "category": "development-tools",
-      "tier": "discoverable",
-      "keywords": [
-        "plan",
-        "hard",
-        "deep",
-        "research",
-        "complex"
-      ],
-      "platforms": [
-        "all"
-      ],
-      "triggers": [
-        "plan deep",
-        "deep plan",
-        "plan hard",
-        "detailed plan"
-      ],
-      "agent-affinity": [
-        "planner",
-        "researcher"
-      ],
-      "connections": {
-        "extends": [],
-        "requires": [],
-        "enhances": [],
-        "conflicts": []
-      },
-      "path": "plan-hard\\SKILL.md"
     },
     {
       "name": "playwright-expert",
