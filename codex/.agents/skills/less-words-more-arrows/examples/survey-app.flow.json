@@ -1,0 +1,37 @@
+{
+  "title": "Survey app — how it works",
+  "subtitle": "Send from the web app (one by one) or by the public API (many recipients) · one API delivers · answers go back to the sender and to a 3rd-party system",
+  "grid": { "colWidth": 300, "rowHeight": 200 },
+  "nodes": [
+    { "id": "sender", "kind": "person", "label": "sender", "col": 0, "row": 1.4 },
+    { "id": "studio", "kind": "window", "label": "Web app", "caption": "create & send", "col": 0.75, "row": 0.6 },
+    { "id": "api", "kind": "window", "variant": "external", "label": "Public API", "caption": "sender's system\nPOST /v1/surveys", "col": 0.75, "row": 1.5 },
+    { "id": "survey", "kind": "service", "label": "survey-service", "caption": "turns the send into invitations", "col": 2.1, "row": 1.0 },
+    { "id": "responses", "kind": "service", "label": "response-service", "caption": "DRAFT → SENT → ANSWERED\nkeeps the answers · fires the webhook", "col": 2.1, "row": 3.0 },
+    { "id": "store", "kind": "database", "label": "survey-db", "caption": "templates · surveys · answers", "col": 2.6, "row": 4.8 },
+    { "id": "inbox", "kind": "window", "label": "Recipient portal", "caption": "open & answer", "w": 220, "col": 4.0, "row": 1.0 },
+    { "id": "rA", "kind": "person", "label": "recipient A", "col": 5.0, "row": 0.3 },
+    { "id": "rB", "kind": "person", "label": "recipient B", "col": 5.0, "row": 1.0 },
+    { "id": "rC", "kind": "person", "label": "recipient C", "col": 5.0, "row": 1.7 },
+    { "id": "results", "kind": "window", "label": "Web app", "caption": "results", "col": 0.75, "row": 3.0 },
+    { "id": "third", "kind": "box", "label": "3rd-party system", "caption": "Slack · Google Sheets · HubSpot ·\ncustom webhook", "col": 0.75, "row": 4.5 }
+  ],
+  "groups": [{ "label": "One API", "nodes": ["survey", "responses", "store"] }],
+  "edges": [
+    { "from": "sender", "to": "studio", "n": null },
+    { "from": "sender", "to": "api", "n": null },
+    { "from": "studio", "to": "survey", "n": 1, "label": "send" },
+    { "from": "api", "to": "survey", "n": 1, "label": "send by API" },
+    { "from": "survey", "to": "responses", "n": 2, "label": "register\nrecipients" },
+    { "from": "survey", "to": "inbox", "n": 3, "label": "deliver" },
+    { "from": "inbox", "to": "rA", "n": null },
+    { "from": "inbox", "to": "rB", "n": null },
+    { "from": "inbox", "to": "rC", "n": null },
+    { "from": "inbox", "to": "responses", "fromSide": "bottom", "toSide": "right", "n": 4, "label": "submit\nanswers" },
+    { "from": "responses", "to": "results", "n": 5, "label": "results" },
+    { "from": "responses", "to": "third", "fromSide": "bottom", "toSide": "right", "n": 6, "label": "webhook" },
+    { "from": "responses", "to": "store", "fromSide": "bottom", "toSide": "top", "dashed": true, "n": null }
+  ],
+  "legend": true,
+  "legendNote": "dashed = data write / read"
+}

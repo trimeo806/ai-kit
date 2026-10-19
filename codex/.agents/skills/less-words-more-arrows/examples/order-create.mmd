@@ -1,0 +1,21 @@
+sequenceDiagram
+  actor C as API client
+  participant O as orders-api
+  participant S as file-storage
+  participant DB as orders-db
+  participant B as message-broker
+  participant T as Pub/Sub topic
+  C->>O: POST /v1/orders
+  O->>S: store attachments
+  O->>DB: save Order CREATED
+  O->>B: POST /publish/{topic}
+  alt topic exists
+    B->>T: publish + orderSize attr
+    T-->>B: messageId
+  else topic missing
+    B-->>O: 500 TOPIC_NOT_FOUND
+  end
+  B-->>O: 200
+  O-->>C: 201 Created
+  Note over O,B: broker call has @Retry 5s x2
+  Note over B,T: Publisher cached per topic

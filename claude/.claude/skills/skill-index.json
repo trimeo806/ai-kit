@@ -440,6 +440,57 @@
       "path": "knowledge-retrieval/SKILL.md"
     },
     {
+      "name": "less-words-more-arrows",
+      "description": "Render diagrams instead of prose: ASCII in a terminal, a PNG in Claude desktop, or an editable hand-drawn Excalidraw scene with sequence, calltree, flow, whiteboard and mermaid presets (light/dark, hand/code/sans fonts) plus a local live editor. Use proactively when explaining call chains, request flows, code paths or multi-component architecture.",
+      "category": "development-tools",
+      "tier": "discoverable",
+      "keywords": [
+        "diagram",
+        "sequence",
+        "mermaid",
+        "excalidraw",
+        "architecture",
+        "flow",
+        "call-chain",
+        "call-tree",
+        "whiteboard",
+        "system-design",
+        "visualize"
+      ],
+      "platforms": [
+        "all"
+      ],
+      "triggers": [
+        "/less-words-more-arrows",
+        "sequence diagram",
+        "draw a diagram",
+        "ascii diagram",
+        "excalidraw",
+        "hand-drawn diagram",
+        "architecture flow",
+        "how it works diagram",
+        "call tree",
+        "whiteboard diagram",
+        "system design diagram",
+        "edit the diagram",
+        "what calls what"
+      ],
+      "agent-affinity": [
+        "developer",
+        "code-reviewer",
+        "researcher",
+        "debugger",
+        "planner"
+      ],
+      "connections": {
+        "extends": [],
+        "requires": [],
+        "enhances": [],
+        "conflicts": []
+      },
+      "path": "less-words-more-arrows/SKILL.md"
+    },
+    {
       "name": "nextjs-developer",
       "description": "Use when building Next.js 16+ applications with App Router, Cache Components, Turbopack, and React 19.2 integration. Invoke to configure route handlers, implement middleware, set up API routes, configure Cache Components with Partial Pre-Rendering (PPR), write generateMetadata for SEO, scaffold loading.tsx/error.tsx boundaries, or deploy to Vercel. Triggers on: Next.js, Next.js 16, App Router, RSC, use server, Server Components, Server Actions, Cache Components, Turbopack, React 19.2, generateMetadata, loading.tsx, Next.js deployment, Vercel, Next.js performance, PPR.",
       "category": "uncategorized",
@@ -742,50 +793,6 @@
         "conflicts": []
       },
       "path": "security-reviewer/SKILL.md"
-    },
-    {
-      "name": "sequence-diagram",
-      "description": "Render Mermaid diagrams as ASCII (terminal), a PNG image (Claude desktop), or a hand-drawn Excalidraw scene with arch/mermaid/flow layouts and an optional per-step call table. Use proactively when explaining call chains, request flows, or multi-component architecture.",
-      "category": "development-tools",
-      "tier": "discoverable",
-      "keywords": [
-        "diagram",
-        "sequence",
-        "mermaid",
-        "excalidraw",
-        "architecture",
-        "flow",
-        "call-chain",
-        "visualize"
-      ],
-      "platforms": [
-        "all"
-      ],
-      "triggers": [
-        "/sequence-diagram",
-        "sequence diagram",
-        "draw a diagram",
-        "ascii diagram",
-        "excalidraw",
-        "hand-drawn diagram",
-        "architecture flow",
-        "how it works diagram",
-        "what calls what"
-      ],
-      "agent-affinity": [
-        "developer",
-        "code-reviewer",
-        "researcher",
-        "debugger",
-        "planner"
-      ],
-      "connections": {
-        "extends": [],
-        "requires": [],
-        "enhances": [],
-        "conflicts": []
-      },
-      "path": "sequence-diagram/SKILL.md"
     },
     {
       "name": "skill-creator",

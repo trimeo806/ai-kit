@@ -1,0 +1,14 @@
+calltree: orders — create order (code call tree)
+orders-api | OrderResource.createOrder | rest/OrderResource.java:42 | POST /v1/orders
+  | OrderService.storeOrderAsync | service/OrderService.java:67 | @Transactional
+    | OrderRepository.upsert | | Order CREATED
+    | OrderEventPublisher.publishCreated | messaging/OrderEventPublisher.java:31 | attr orderSize
+      | BasePublisher.sendWithAttributes | messaging/BasePublisher.java:28 | @Retry 5s x2
+        | MessageBrokerClient.publish | client/MessageBrokerClient.java:22 | HTTP POST
+          message-broker | PublishResource.publishWithAttributes | rest/PublishResource.java:55 | /publish/{topic}
+            | PubSubPublishService.publish | pubsub/PubSubPublishService.java:80
+              | TopicGuard.checkTopicExists | pubsub/TopicGuard.java:19 | TOPIC_NOT_FOUND → 500
+              | PublisherCache.get | pubsub/PublisherCache.java:34 | cached per topic
+              | publisher.publish(...).get() | PubSubPublishService.java:86 | returns messageId
+                orders-worker | OrderCreatedConsumer.handleMessage | consumer/OrderCreatedConsumer.java:40 | async pubsub pull
+                  | OrderFulfillmentService.process | fulfillment/OrderFulfillmentService.java:58 | ack / nack by status
