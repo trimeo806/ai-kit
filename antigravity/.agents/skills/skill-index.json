@@ -1,10 +1,10 @@
 {
   "generated": "2026-05-26T22:30:00.000Z",
   "version": "2.0.0",
-  "count": 58,
+  "count": 59,
   "categories": {
     "uncategorized": 32,
-    "development-tools": 11,
+    "development-tools": 12,
     "analysis-reasoning": 12,
     "infrastructure": 2,
     "frontend-web": 3
@@ -285,6 +285,50 @@
         "conflicts": []
       },
       "path": "design-system\\SKILL.md"
+    },
+    {
+      "name": "sequence-diagram",
+      "description": "Render Mermaid diagrams as ASCII (terminal), a PNG image (Claude desktop), or a hand-drawn Excalidraw scene with arch/mermaid/flow layouts and an optional per-step call table. Use proactively when explaining call chains, request flows, or multi-component architecture.",
+      "category": "development-tools",
+      "tier": "discoverable",
+      "keywords": [
+        "diagram",
+        "sequence",
+        "mermaid",
+        "excalidraw",
+        "architecture",
+        "flow",
+        "call-chain",
+        "visualize"
+      ],
+      "platforms": [
+        "all"
+      ],
+      "triggers": [
+        "/sequence-diagram",
+        "sequence diagram",
+        "draw a diagram",
+        "ascii diagram",
+        "excalidraw",
+        "hand-drawn diagram",
+        "architecture flow",
+        "how it works diagram",
+        "what calls what"
+      ],
+      "agent-affinity": [
+        "developer",
+        "code-reviewer",
+        "researcher",
+        "debugger",
+        "planner"
+      ],
+      "connections": {
+        "extends": [],
+        "requires": [],
+        "enhances": [],
+        "conflicts": []
+      },
+      "path": "sequence-diagram\\SKILL.md"
     },
     {
       "name": "slides",

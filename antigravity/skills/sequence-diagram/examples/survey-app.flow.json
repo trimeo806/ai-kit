@@ -1,0 +1,207 @@
+{
+  "title": "Survey app — how it works",
+  "subtitle": "Send from the web app (one by one) or by the public API (many recipients) · the platform delivers · answers go back to sender and to a 3rd-party system",
+  "grid": {
+    "colWidth": 300,
+    "rowHeight": 200
+  },
+  "nodes": [
+    {
+      "id": "sender",
+      "kind": "person",
+      "label": "sender",
+      "col": 0,
+      "row": 1.4
+    },
+    {
+      "id": "webapp",
+      "kind": "window",
+      "label": "Web App",
+      "caption": "create & send",
+      "col": 0.75,
+      "row": 0.6
+    },
+    {
+      "id": "api",
+      "kind": "window",
+      "variant": "external",
+      "label": "Public API",
+      "caption": "sender's system\nPOST v2/deliveries",
+      "col": 0.75,
+      "row": 1.5
+    },
+    {
+      "id": "delivery",
+      "kind": "service",
+      "label": "delivery-service",
+      "caption": "turns the send into a delivery",
+      "col": 2.1,
+      "row": 1
+    },
+    {
+      "id": "docs",
+      "kind": "service",
+      "label": "document-service",
+      "caption": "DRAFT → SENT → ANSWERED\nkeeps the answers · fires the webhook",
+      "col": 2.1,
+      "row": 3
+    },
+    {
+      "id": "store",
+      "kind": "database",
+      "label": "doc-store",
+      "caption": "templates · surveys · answers",
+      "col": 2.6,
+      "row": 4.8
+    },
+    {
+      "id": "inbox",
+      "kind": "window",
+      "label": "Recipient Inbox",
+      "caption": "open & answer",
+      "w": 220,
+      "col": 4,
+      "row": 1
+    },
+    {
+      "id": "rA",
+      "kind": "person",
+      "label": "recipient A",
+      "col": 5,
+      "row": 0.3
+    },
+    {
+      "id": "rB",
+      "kind": "person",
+      "label": "recipient B",
+      "col": 5,
+      "row": 1
+    },
+    {
+      "id": "rC",
+      "kind": "person",
+      "label": "recipient C",
+      "col": 5,
+      "row": 1.7
+    },
+    {
+      "id": "results",
+      "kind": "window",
+      "label": "Web App",
+      "caption": "results",
+      "col": 0.75,
+      "row": 3
+    },
+    {
+      "id": "third",
+      "kind": "box",
+      "label": "3rd-party system",
+      "caption": "Slack · Google Sheets · CRM ·\ncustom webhook",
+      "col": 0.75,
+      "row": 4.5
+    }
+  ],
+  "groups": [
+    {
+      "label": "Platform",
+      "nodes": [
+        "delivery",
+        "docs",
+        "store"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "from": "sender",
+      "to": "webapp",
+      "n": null
+    },
+    {
+      "from": "sender",
+      "to": "api",
+      "n": null
+    },
+    {
+      "from": "webapp",
+      "to": "delivery",
+      "n": 1,
+      "label": "send",
+      "calls": [
+        "sendSurveyAction()",
+        "POST /v2/deliveries"
+      ]
+    },
+    {
+      "from": "api",
+      "to": "delivery",
+      "n": 1,
+      "label": "send by API",
+      "calls": [
+        "POST /v2/deliveries"
+      ]
+    },
+    {
+      "from": "delivery",
+      "to": "docs",
+      "n": 2,
+      "label": "register\nrecipients"
+    },
+    {
+      "from": "delivery",
+      "to": "inbox",
+      "n": 3,
+      "label": "deliver"
+    },
+    {
+      "from": "inbox",
+      "to": "rA",
+      "n": null
+    },
+    {
+      "from": "inbox",
+      "to": "rB",
+      "n": null
+    },
+    {
+      "from": "inbox",
+      "to": "rC",
+      "n": null
+    },
+    {
+      "from": "inbox",
+      "to": "docs",
+      "fromSide": "bottom",
+      "toSide": "right",
+      "n": 4,
+      "label": "submit\nanswers"
+    },
+    {
+      "from": "docs",
+      "to": "results",
+      "n": 5,
+      "label": "results"
+    },
+    {
+      "from": "docs",
+      "to": "third",
+      "fromSide": "bottom",
+      "toSide": "right",
+      "n": 6,
+      "label": "webhook",
+      "calls": [
+        "fireWebhook(answer)"
+      ]
+    },
+    {
+      "from": "docs",
+      "to": "store",
+      "fromSide": "bottom",
+      "toSide": "top",
+      "dashed": true,
+      "n": null
+    }
+  ],
+  "legend": true,
+  "legendNote": "dashed = data write / read"
+}
