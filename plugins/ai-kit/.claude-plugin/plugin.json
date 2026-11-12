@@ -1,7 +1,7 @@
 {
   "name": "ai-kit",
   "description": "General software-development-lifecycle kit: ticket → brainstorm → plan → TDD → test → debug → review → PR, 13 role agents, guard hooks, and a project-rules setup flow with a rules gate so the agent follows each workspace's own rules.",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "author": { "name": "Tri Nguyen" },
   "keywords": ["sdlc", "workflow", "tdd", "review", "project-rules"],
   "userConfig": {

@@ -109,6 +109,14 @@ Component kinds (`flow` `kind`, `whiteboard` `shape`): `service`, `database`, `q
 `window`, `mobile`, `person`, `cloud` (3rd-party / internet), `clock` (scheduler),
 `box`, `text` — pick the kind that matches the role, never `database` for a topic or queue.
 
+**Library icons (whiteboard):** for a nicer, more recognisable picture, give a `whiteboard` node
+`"lib": "<library>:<item>"` to draw a hand-drawn component from the vendored Excalidraw
+libraries — `system-design` (load balancer, CDN, DNS, cache, DB kinds, queue…), `aws`, `azure`,
+`k8s`, `c4`, `network`, `logos` / `tech-logos` (Redis, Kafka, Postgres, Docker, Nginx…) and more.
+Prefer a library item over a plain box whenever one matches the component. Read
+`references/excalidraw-libraries.md` for refs, sizing, dark-theme colours and how to list items
+(`scripts/excalidraw-library.mjs list|sheet`).
+
 Auto-detect: `sequenceDiagram` → `sequence`; first line `calltree` → `calltree`; JSON →
 its `"preset"` field (default `whiteboard`); other Mermaid → `mermaid`. `mermaid` output stays
 light-themed. Unsupported Mermaid types fall back to one embedded image
@@ -122,30 +130,40 @@ code-looking text → `code`.
 ### Steps
 
 1. Write the source to `<scratchpad>/<name>.mmd | .calltree.txt | .flow.json | .wb.json`.
-2. Run:
+2. **Check first (whiteboard, ~0.1 s, no browser):**
    ```bash
-   node <skill-dir>/scripts/mmd-to-excalidraw.mjs <scratchpad>/<name>.wb.json
+   node <skill-dir>/scripts/mmd-to-excalidraw.mjs <scratchpad>/<name>.wb.json --check
    ```
    `<skill-dir>` = folder containing this SKILL.md (`${CLAUDE_PLUGIN_ROOT}/skills/less-words-more-arrows`).
+   Prints `warnings`: nodes overlapping, edges crossing a node or a label, labels overlapping.
+   Fix each (nudge `x/y`, `bend`, `labelAt`/`labelOffset`, pin sides) and re-run until `warnings` is
+   empty — no PNG needed for this loop. Other presets lay themselves out and return no warnings.
+3. **Preview:** render with `--preview` (PNG at scale 0.75, ~4x fewer pixels) and `Read` it once
+   for what the lint cannot judge: balance, spacing, reading order. Fix, re-check, re-preview.
+4. **Final render** without `--preview` (scale 2) — only this PNG goes to the user.
    Options: `[outBase]`, `--preset auto|sequence|calltree|flow|whiteboard|mermaid`, `--theme`, `--font`,
-   `--title "…"`, `--no-png`, `--no-calls` (flow), `--scale N` (default 2).
-   Writes `<name>.excalidraw` + `<name>.png` (theme background) and prints JSON with
-   preset, theme, paths, element counts.
-3. `Read` the PNG. Fix overlaps (nudge positions / bends / label offsets per the preset
-   reference) and re-render — usually 1–2 passes.
-4. Deliver:
+   `--title "…"`, `--check`, `--preview`, `--no-png`, `--no-calls` (flow), `--scale N` (default 2),
+   `--no-server`. Writes `<name>.excalidraw` + `<name>.png` (theme background) and prints JSON with
+   preset, theme, paths, element counts and `warnings`.
+   Speed: the first render starts a background render server (headless Chromium, ~5 s); later
+   renders reuse it (~0.2–0.5 s). It stops itself after 15 min idle; `node <skill-dir>/scripts/render-server.mjs stop`
+   stops it now; `--no-server` renders in-process. esm.sh modules and fonts are cached on disk
+   (`~/.cache/less-words-more-arrows/esm`, override `LWMA_CACHE_DIR`), so later cold starts are faster
+   and work offline.
+5. Deliver:
    - **Client that can show files:** show the PNG inline and attach the `.excalidraw`
      (excalidraw.com → File → Open, or the VS Code Excalidraw extension).
    - **Terminal session:** print both file paths.
    - Keep in the project only if asked, in the work folder: `<docsDir>/<TICKET-KEY>/diagrams/` or
      `<docsDir>/<intention-name>/diagrams/` (`docsDir` from `.ai-kit/workspace.json`, default `docs`).
-5. When the user wants to edit (or "open it in the browser"): see **Edit in place** below.
+6. When the user wants to edit (or "open it in the browser"): see **Edit in place** below.
 
 ### Edit in place (Excalidraw or Mermaid)
 
 `scripts/open-diagram-editor.mjs <file.excalidraw|file.mmd> [--port 5199] [--open]` serves a
 local editor on `127.0.0.1` for that one file:
 - `.excalidraw` → full Excalidraw editor; Ctrl+S writes the `.excalidraw` and re-exports the `.png`.
+  All vendored libraries are preloaded in its Library panel for drag-and-drop.
 - `.mmd` → source on the left, live Mermaid preview on the right; Ctrl+S writes the `.mmd`.
 - Two-way: when you change the file on disk, the page reloads it within ~2 s (unless the user
   has unsaved edits). After the user saves, `Read` the file before changing it further.

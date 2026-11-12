@@ -26,12 +26,13 @@ export function detectPreset(source) {
 export function buildSkeleton(source, { preset = "auto", title, theme, font, calls = true } = {}) {
   const name = preset === "auto" ? detectPreset(source) : preset;
   if (!PRESET_NAMES.includes(name)) throw new Error(`unknown preset "${name}" (use: ${PRESET_NAMES.join(", ")})`);
-  if (name === "mermaid") return { preset: name, skeleton: null, theme: resolveTheme("light") };
+  if (name === "mermaid") return { preset: name, skeleton: null, theme: resolveTheme("light"), warnings: [] };
   if (TEXT_PRESETS[name]) {
     const t = resolveTheme(theme ?? "light", font ?? "hand");
-    return { preset: name, skeleton: TEXT_PRESETS[name](source, t, { title }), theme: t };
+    return { preset: name, skeleton: TEXT_PRESETS[name](source, t, { title }), theme: t, warnings: [] };
   }
   const spec = { ...JSON.parse(source), ...(title ? { title } : {}) };
   const t = resolveTheme(theme ?? spec.theme ?? "light", font ?? spec.font ?? "hand");
-  return { preset: name, skeleton: JSON_PRESETS[name](spec, t, { calls }), theme: t };
+  const built = JSON_PRESETS[name](spec, t, { calls });
+  return Array.isArray(built) ? { preset: name, skeleton: built, theme: t, warnings: [] } : { preset: name, skeleton: built.elements, theme: t, warnings: built.warnings };
 }

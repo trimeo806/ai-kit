@@ -1,0 +1,29 @@
+{
+  "preset": "whiteboard",
+  "theme": "light",
+  "font": "hand",
+  "title": "URL shortener",
+  "nodes": [
+    { "id": "web", "lib": "system-design:Web Application", "x": 100, "y": 300, "w": 120 },
+    { "id": "mobile", "lib": "system-design:Mobile", "x": 100, "y": 520, "h": 110 },
+    { "id": "dns", "lib": "system-design:DNS", "x": 380, "y": 130, "w": 120 },
+    { "id": "cdn", "lib": "system-design:CDN", "x": 380, "y": 300, "w": 120 },
+    { "id": "lb", "lib": "system-design:Load Balancer", "x": 600, "y": 410, "h": 130 },
+    { "id": "api", "lib": "system-design:Multi Instance Server", "x": 820, "y": 410, "w": 120 },
+    { "id": "cache", "lib": "logos:Redis", "label": "Redis\nhot links", "x": 1080, "y": 260, "w": 90 },
+    { "id": "db", "lib": "logos:PostgreSQL", "label": "Postgres\nurls", "x": 1080, "y": 560, "w": 90 },
+    { "id": "mq", "lib": "tech-logos:Kafka", "label": "Kafka\nclick events", "x": 820, "y": 690, "w": 80 },
+    { "id": "olap", "lib": "system-design:Columnar DB", "x": 1080, "y": 800, "w": 100 }
+  ],
+  "edges": [
+    { "from": "web", "to": "dns", "dashed": true, "label": "resolve" },
+    { "from": "web", "to": "cdn", "label": "GET /abc" },
+    { "from": "mobile", "to": "lb", "curve": "curved", "bend": 0.15 },
+    { "from": "cdn", "to": "lb", "label": "miss" },
+    { "from": "lb", "to": "api" },
+    { "from": "api", "to": "cache", "label": "get" },
+    { "from": "api", "to": "db", "label": "on miss" },
+    { "from": "api", "to": "mq", "dashed": true, "label": "click" },
+    { "from": "mq", "to": "olap", "curve": "curved", "bend": 0.2 }
+  ]
+}

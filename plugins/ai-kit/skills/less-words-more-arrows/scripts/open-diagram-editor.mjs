@@ -5,6 +5,7 @@ import { resolve, basename, extname } from "node:path";
 import { exec } from "node:child_process";
 import { excalidrawEditorPage } from "./editor/excalidraw-editor-page.mjs";
 import { mermaidEditorPage } from "./editor/mermaid-editor-page.mjs";
+import { allLibraryItems } from "./scene/library-items.mjs";
 
 const args = process.argv.slice(2);
 const file = args.find((a, i) => !a.startsWith("--") && args[i - 1] !== "--port");
@@ -54,6 +55,7 @@ const server = createServer(async (req, res) => {
     const route = `${req.method} ${new URL(req.url, "http://x").pathname}`;
     if (route === "GET /") return send(res, 200, page, "text/html; charset=utf-8");
     if (route === "GET /source") return send(res, 200, readFileSync(path), kind === "excalidraw" ? "application/json" : "text/plain; charset=utf-8");
+    if (route === "GET /library") return send(res, 200, JSON.stringify(allLibraryItems()));
     if (route === "GET /version") return send(res, 200, JSON.stringify({ version: version() }));
     if (route === "PUT /source") {
       const body = await readBody(req);

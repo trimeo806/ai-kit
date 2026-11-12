@@ -1,0 +1,185 @@
+{
+  "source": "https://libraries.excalidraw.com",
+  "license": "MIT (excalidraw/excalidraw-libraries)",
+  "libraries": {
+    "system-design": {
+      "file": "system-design.excalidrawlib",
+      "title": "System Design Components",
+      "author": "Rohan Pithadiya",
+      "source": "https://libraries.excalidraw.com/libraries/rohanp/system-design.excalidrawlib",
+      "about": "Components useful in interviews and elsewhere to build high-level system diagrams.",
+      "names": {
+        "0": "Blank Box",
+        "1": "Application Server",
+        "2": "Multi Instance Server",
+        "3": "Server Strip",
+        "4": "Multi Instance Strip",
+        "5": "Blank Cylinder",
+        "6": "Relational DB",
+        "7": "Object Storage",
+        "8": "Cold Storage",
+        "9": "Document DB",
+        "10": "Columnar DB",
+        "11": "Graph DB",
+        "12": "Stack Storage",
+        "13": "Cache",
+        "14": "Auth IAM",
+        "15": "DNS",
+        "16": "Load Balancer",
+        "17": "Message Queue",
+        "18": "Pipeline",
+        "19": "Cloud",
+        "20": "CDN",
+        "21": "Archive",
+        "22": "Mobile",
+        "23": "Web Application"
+      }
+    },
+    "sd-kit": {
+      "file": "sd-kit.excalidrawlib",
+      "title": "Systems Design Components",
+      "author": "Arach Tchoupani",
+      "source": "https://libraries.excalidraw.com/libraries/arach/systems-design-components.excalidrawlib",
+      "about": "Simple library to help with Systems Design"
+    },
+    "sd-icons": {
+      "file": "sd-icons.excalidrawlib",
+      "title": "System Design Icons",
+      "author": "niknm",
+      "source": "https://libraries.excalidraw.com/libraries/niknm/systemdesignicons.excalidrawlib",
+      "about": "Generic components for use for a system design scenario"
+    },
+    "sw-arch": {
+      "file": "sw-arch.excalidrawlib",
+      "title": "Software Architecture",
+      "author": "Youri Tjang",
+      "source": "https://libraries.excalidraw.com/libraries/youritjang/software-architecture.excalidrawlib",
+      "about": "Collection of software architecture components: microservice, database, cache, event bus or pipeline, documents or code, browser, and mobile device",
+      "names": {
+        "0": "Microservice",
+        "1": "Database",
+        "2": "Cache",
+        "3": "Event Bus",
+        "4": "Documents",
+        "5": "Browser",
+        "6": "Mobile"
+      }
+    },
+    "arch": {
+      "file": "arch.excalidrawlib",
+      "title": "Architecture diagram components",
+      "author": "Anna Pastushko",
+      "source": "https://libraries.excalidraw.com/libraries/anna-pastushko/architecture-diagram-components.excalidrawlib",
+      "about": "Collection of common components for architecture diagrams."
+    },
+    "it": {
+      "file": "it.excalidrawlib",
+      "title": "IT icons",
+      "author": "Mateusz Baran",
+      "source": "https://libraries.excalidraw.com/libraries/mateuszbaransanok/it-icons.excalidrawlib",
+      "about": "The shown icons are dedicated to the design of IT system architecture. The collection allows you to present the scheme of complex concepts in an easy and clear "
+    },
+    "network": {
+      "file": "network.excalidrawlib",
+      "title": "Network topology icons",
+      "author": "dwelle",
+      "source": "https://libraries.excalidraw.com/libraries/dwelle/network-topology-icons.excalidrawlib",
+      "about": "Several of the most common network topology icons."
+    },
+    "c4": {
+      "file": "c4.excalidrawlib",
+      "title": "C4 Architecture",
+      "author": "Dmitry Burnyshev",
+      "source": "https://libraries.excalidraw.com/libraries/dmitry-burnyshev/c4-architecture.excalidrawlib",
+      "about": "C4 Simon's Brown concept elements based on https://c4model.com/"
+    },
+    "data-sources": {
+      "file": "data-sources.excalidrawlib",
+      "title": "Data sources",
+      "author": "Kishore",
+      "source": "https://libraries.excalidraw.com/libraries/kvchitrapu/data-sources.excalidrawlib",
+      "about": "Data sources, protocols, apis, and sinks - USB, email, FTP, kafka, GraphQL, databases, RESTful interfaces"
+    },
+    "aws": {
+      "file": "aws.excalidrawlib",
+      "title": "AWS Serverless Icons v2",
+      "author": "slobodan",
+      "source": "https://libraries.excalidraw.com/libraries/stojanovic/aws-serverless-icons-v2.excalidrawlib",
+      "about": "A new library with icons for AWS serverless services. This version has a new design and more services. The first version is now part of the AWS Architecture Ico",
+      "names": {
+        "20": "CodePipeline",
+        "21": "CloudTrail",
+        "22": "Route53",
+        "23": "EventBridge Pipe"
+      }
+    },
+    "azure": {
+      "file": "azure.excalidrawlib",
+      "title": "Azure cloud services icons",
+      "author": "Youri Tjang, bothzoli",
+      "source": "https://libraries.excalidraw.com/libraries/youritjang/azure-cloud-services.excalidrawlib",
+      "about": "Collection of icons from different Azure cloud services."
+    },
+    "k8s": {
+      "file": "k8s.excalidrawlib",
+      "title": "Kubernetes icons",
+      "author": "Nikola Markovic",
+      "source": "https://libraries.excalidraw.com/libraries/boemska-nik/kubernetes-icons.excalidrawlib",
+      "about": "The full set of Kubernetes architecture icons, as published by @kubernauts on twitter on xmas eve 2019 and widely used since."
+    },
+    "logos": {
+      "file": "logos.excalidrawlib",
+      "title": "Software Logos",
+      "author": "drwnio.polyrand.net",
+      "source": "https://libraries.excalidraw.com/libraries/drwnio/drwnio.excalidrawlib",
+      "about": "Software architecture logos: archive, database, docker, JSON, Kubernetes, load balancer, Postgres, Redis, Nginx, RabbitMQ, server, chip, reverse proxy, and more",
+      "names": {
+        "0": "Archive",
+        "1": "Database",
+        "2": "Docker",
+        "3": "JSON",
+        "4": "Kubernetes",
+        "5": "Redis",
+        "6": "Nginx",
+        "7": "RabbitMQ",
+        "8": "Chip",
+        "9": "Lock",
+        "10": "Load Balancer",
+        "11": "Code",
+        "12": "PostgreSQL",
+        "13": "GitHub",
+        "14": "Server Rack",
+        "15": "Python",
+        "16": "Browser",
+        "17": "DNS"
+      }
+    },
+    "tech-logos": {
+      "file": "tech-logos.excalidrawlib",
+      "title": "Technology Logos",
+      "author": "Matthias Haeussler",
+      "source": "https://libraries.excalidraw.com/libraries/maeddes/technology-logos.excalidrawlib",
+      "about": "Collection of technology logos mostly from the cloud-native space. Featuring: Kubernetes, Docker, git, Cloud Foundry, Terraform, Spring, Quarkus, Micronaut, Kna",
+      "names": {
+        "0": "Kubernetes",
+        "1": "Java",
+        "2": "Docker",
+        "3": "Git",
+        "4": "Cloud Foundry",
+        "5": "Terraform",
+        "6": "Spring",
+        "7": "Quarkus",
+        "8": "Micronaut",
+        "9": "Knative",
+        "10": "Camunda",
+        "11": "Azure",
+        "12": "Kafka",
+        "13": "Kotlin",
+        "14": "OpenStack",
+        "15": "Paketo",
+        "16": "Neo4j",
+        "17": "Redis"
+      }
+    }
+  }
+}

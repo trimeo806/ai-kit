@@ -36,7 +36,9 @@ gives or shows a layout. Reference: `<skill-dir>/examples/payment-system.wb.json
   `align: "left"`, `x` is the left edge. Trace positions from a reference image when given one.
 - **Shapes:** `box` (default, rounded rect), `circle`, `ellipse`, `cylinder`, `diamond`, `pill`,
   `text`, plus the icon kinds `queue`, `topic`, `stream`, `cache`, `bucket`, `function`,
-  `cloud`, `clock`, `mobile` (label drawn below the icon; filled with the theme colour). Options: `w`, `h`, `dashed`, `fill` (default transparent), `color` (stroke+text),
+  `cloud`, `clock`, `mobile` (label drawn below the icon; filled with the theme colour), and `lib`
+  — set `"lib": "system-design:Load Balancer"` (or `aws:Lambda`, `logos:Redis`, `k8s:pod`…) to draw a
+  hand-drawn Excalidraw library component; see `excalidraw-libraries.md`. Options: `w`, `h`, `dashed`, `fill` (default transparent), `color` (stroke+text),
   `fontSize`.
 - **Containers:** any node referenced by a child's `parent` auto-fits its children; label sits at
   the top. `w`/`h` act as minimums. Nest as deep as needed.
@@ -47,5 +49,6 @@ gives or shows a layout. Reference: `<skill-dir>/examples/payment-system.wb.json
   edge: positive arcs up); negative mirrors it. `both`,
   `dashed`, `arrow: false`, `color`. Labels get a background-coloured plate so they read over
   lines; move with `labelAt` (0..1 along the edge) and `labelOffset: [dx, dy]`.
-- **Fixing overlaps:** render, `Read` the PNG, then nudge `x/y`, `bend` sign/size, `labelAt`,
-  or pin sides. Long cross-diagram arrows look best as `curved` with a small bend.
+- **Fixing overlaps:** run with `--check` first — it names each collision (`edge api->mq "click"
+  crosses label of node api`) without rendering. Then nudge `x/y`, `bend` sign/size, `labelAt`,
+  or pin sides, and re-check until clean; `Read` a `--preview` PNG only for overall balance. Long cross-diagram arrows look best as `curved` with a small bend.

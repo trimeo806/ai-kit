@@ -42,12 +42,29 @@ Tips:
 `window`, `mobile`, `person`, `cloud`, `clock`, `box`, `text` — plus containers
 (boxes inside boxes) in `whiteboard`.
 
+`whiteboard` also draws hand-drawn components from vendored Excalidraw libraries (system design,
+AWS, Azure, Kubernetes, C4, network, tech logos): `"lib": "system-design:Load Balancer"` on a
+node. Ask for "use library icons" or name the component. List / preview them:
+
+```bash
+node "$CLAUDE_PLUGIN_ROOT/skills/less-words-more-arrows/scripts/excalidraw-library.mjs" list
+node "$CLAUDE_PLUGIN_ROOT/skills/less-words-more-arrows/scripts/excalidraw-library.mjs" sheet aws ./aws-sheet
+```
+
+Details: `references/excalidraw-libraries.md`.
+
 ## Run it yourself
 
 ```bash
 node "$CLAUDE_PLUGIN_ROOT/skills/less-words-more-arrows/scripts/mmd-to-excalidraw.mjs" <input> [outBase] \
-  [--preset sequence|calltree|flow|whiteboard|mermaid] [--theme light|dark] [--font hand|code|sans]
+  [--preset sequence|calltree|flow|whiteboard|mermaid] [--theme light|dark] [--font hand|code|sans] \
+  [--check] [--preview] [--no-server]
 ```
+
+- `--check`: whiteboard overlap lint only, no browser (~0.1 s).
+- `--preview`: small PNG (scale 0.75) for review passes.
+- Renders go through a background server that keeps Chromium warm (first ~5 s, then ~0.2–0.5 s;
+  stops after 15 min idle, or `node scripts/render-server.mjs stop`). `--no-server` renders in-process.
 
 Input: `.mmd` (`sequenceDiagram` → sequence), `.calltree.txt`, `.flow.json`, `.wb.json`
 (JSON without `"preset"` → whiteboard).

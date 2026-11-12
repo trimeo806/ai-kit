@@ -1,5 +1,7 @@
 import { textW, textH, textBox, drawCylinder } from "../scene/scene-primitives.mjs";
 import { ICON_SIZES, isIcon, drawIcon } from "../scene/component-icons.mjs";
+import { librarySize, placeLibraryItem } from "../scene/library-items.mjs";
+import { lintWhiteboard } from "../scene/whiteboard-overlap-lint.mjs";
 
 const SIZES = {
   box: { w: 200, h: 110 },
@@ -10,7 +12,7 @@ const SIZES = {
   pill: { w: 180, h: 56 },
   ...ICON_SIZES,
 };
-const SHAPES = new Set([...Object.keys(SIZES), "text"]);
+const SHAPES = new Set([...Object.keys(SIZES), "text", "lib"]);
 const ROUND = new Set(["circle", "ellipse"]);
 const CONTAINER_PAD = 22;
 const CONTAINER_HEAD = 46;
@@ -22,10 +24,11 @@ function nodeFont(T, spec, n) {
 
 function layoutNodes(T, spec) {
   const unit = spec.grid ? [spec.grid.colWidth ?? 100, spec.grid.rowHeight ?? 100] : [1, 1];
-  const raw = new Map(spec.nodes.map((n) => [n.id, { ...n, shape: n.shape ?? "box" }]));
+  const raw = new Map(spec.nodes.map((n) => [n.id, { ...n, shape: n.shape ?? (n.lib ? "lib" : "box") }]));
   for (const n of raw.values()) {
     if (!SHAPES.has(n.shape)) throw new Error(`unknown shape "${n.shape}" (node ${n.id}); use ${[...SHAPES].join(", ")}`);
     if (n.parent && !raw.has(n.parent)) throw new Error(`node ${n.id}: unknown parent "${n.parent}"`);
+    if (n.shape === "lib" && !n.lib) throw new Error(`node ${n.id}: shape "lib" needs "lib": "<library>:<item>"`);
   }
   const children = (id) => [...raw.values()].filter((c) => c.parent === id);
   const placed = new Map();
@@ -46,6 +49,9 @@ function layoutNodes(T, spec) {
       const w = textW(n.label ?? "", size, family) + 16;
       const h = textH(n.label ?? "", size) + 4;
       box = { x: n.x * unit[0] - (n.align === "left" ? 0 : w / 2), y: n.y * unit[1] - h / 2, w, h };
+    } else if (n.shape === "lib") {
+      const { w, h } = librarySize(n.lib, { w: n.w, h: n.h });
+      box = { x: n.x * unit[0] - w / 2, y: n.y * unit[1] - h / 2, w, h };
     } else {
       const { size, family } = nodeFont(T, spec, n);
       const base = SIZES[n.shape];
@@ -90,10 +96,13 @@ function drawNode(T, spec, n, els) {
     if (n.label) els.push(textBox(n.cx, n.y + 10, n.label, { size, family, color: stroke }));
     return;
   }
+  if (n.shape === "lib") {
+    els.push(placeLibraryItem(n.lib, { x: n.x, y: n.y, w: n.w, h: n.h }, T, { colors: n.libColors ?? spec.libColors ?? "theme" }));
+    return pushBelowLabel(els, n, size, family, stroke);
+  }
   if (isIcon(n.shape)) {
     drawIcon(n.shape, els, { x: n.x, y: n.y, w: n.w, h: n.h }, T, n.fill);
-    if (n.label) els.push(textBox(n.cx, n.y + n.h + 6, n.label, { size, family, color: stroke }));
-    return;
+    return pushBelowLabel(els, n, size, family, stroke);
   }
   if (n.shape === "cylinder") {
     drawCylinder(els, { x: n.x, y: n.y, w: n.w, h: n.h, fill, stroke });
@@ -102,6 +111,13 @@ function drawNode(T, spec, n, els) {
   }
   const type = ROUND.has(n.shape) ? "ellipse" : n.shape === "diamond" ? "diamond" : "rectangle";
   els.push({ type, ...base, roundness: type === "rectangle" ? { type: 3 } : null, ...(label ? { label } : {}) });
+}
+
+function pushBelowLabel(els, n, size, family, color) {
+  if (!n.label) return undefined;
+  const label = textBox(n.cx, n.y + n.h + 6, n.label, { size, family, color });
+  els.push(label);
+  return label;
 }
 
 function sidePoint(n, side) {
@@ -192,12 +208,14 @@ function drawEdge(T, spec, e, nodes, els) {
     endArrowhead: e.arrow === false ? null : "arrow",
     roundness: smooth ? { type: 2 } : null,
   });
-  if (!e.label) return;
+  if (!e.label) return { edge: e, pts, smooth };
   const size = e.fontSize ?? spec.edgeFontSize ?? 16;
   const at = pointAt(pts, e.labelAt ?? 0.5, smooth);
   const [ox, oy] = e.labelOffset ?? [0, 0];
   const h = textH(e.label, size) + 4;
-  els.push(textBox(at.x + ox, at.y + oy - h / 2, e.label, { size, family: T.font.primary, color, background: T.bg }));
+  const labelBox = textBox(at.x + ox, at.y + oy - h / 2, e.label, { size, family: T.font.primary, color, background: T.bg });
+  els.push(labelBox);
+  return { edge: e, pts, smooth, labelBox };
 }
 
 export function buildWhiteboardSkeleton(spec, theme) {
@@ -207,12 +225,16 @@ export function buildWhiteboardSkeleton(spec, theme) {
   const depth = (n) => (n.parent ? 1 + depth(nodes.get(n.parent)) : 0);
   const ordered = [...nodes.values()].sort((p, q) => depth(p) - depth(q));
   const els = [];
-  for (const n of ordered) drawNode(T, spec, n, els);
-  for (const e of spec.edges ?? []) drawEdge(T, spec, e, nodes, els);
+  const nodeLabels = new Map();
+  for (const n of ordered) {
+    const label = drawNode(T, spec, n, els);
+    if (label) nodeLabels.set(n.id, label);
+  }
+  const edges = (spec.edges ?? []).map((e) => drawEdge(T, spec, e, nodes, els));
   if (spec.title) {
     const x0 = Math.min(...ordered.map((n) => n.x));
     const y0 = Math.min(...ordered.map((n) => n.y));
     els.push(textBox(x0, y0 - 80, spec.title, { size: 30, family: T.font.primary, color: T.ink, align: "left" }));
   }
-  return els;
+  return { elements: els, warnings: lintWhiteboard(nodes, { nodeLabels, edges }) };
 }

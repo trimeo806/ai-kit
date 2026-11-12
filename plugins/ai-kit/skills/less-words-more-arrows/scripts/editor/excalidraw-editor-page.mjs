@@ -43,9 +43,9 @@ const settle = async () => {
 };
 
 async function load() {
-  const [scene, v] = await Promise.all([fetch("/source").then((r) => r.json()), fetch("/version").then((r) => r.json())]);
+  const [scene, v, libraryItems] = await Promise.all([fetch("/source").then((r) => r.json()), fetch("/version").then((r) => r.json()), fetch("/library").then((r) => r.json()).catch(() => [])]);
   version = v.version;
-  return { elements: scene.elements ?? [], appState: { ...(scene.appState ?? {}), collaborators: new Map() }, files: scene.files ?? {} };
+  return { elements: scene.elements ?? [], appState: { ...(scene.appState ?? {}), collaborators: new Map() }, files: scene.files ?? {}, libraryItems };
 }
 
 async function save() {
