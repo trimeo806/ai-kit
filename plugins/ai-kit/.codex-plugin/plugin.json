@@ -1,0 +1,21 @@
+{
+  "name": "ai-kit",
+  "version": "1.0.0",
+  "description": "General software-development-lifecycle kit with a project-rules setup flow and rules gate. Claude Code is the source of truth; Codex shares the same skills and hooks.",
+  "author": { "name": "Tri Nguyen" },
+  "keywords": ["sdlc", "workflow", "tdd", "review", "project-rules"],
+  "skills": "./skills/",
+  "hooks": "./hooks/hooks.json",
+  "interface": {
+    "displayName": "ai-kit",
+    "shortDescription": "SDLC workflow + project rules for every repo.",
+    "longDescription": "Ticket to PR workflow skills (plan, TDD, test, debug, review, PR) plus a first-run setup that writes workspace and repository rules (AGENTS.md) and a gate that loads them before code changes.",
+    "developerName": "Tri Nguyen",
+    "category": "Coding",
+    "capabilities": ["Interactive", "Read", "Write"],
+    "defaultPrompt": [
+      "Set up project rules for this workspace.",
+      "Plan and implement this ticket test-first."
+    ]
+  }
+}

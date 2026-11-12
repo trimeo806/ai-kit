@@ -1,0 +1,66 @@
+// Debugging Process Flow — four phases, adapted from obra/superpowers systematic-debugging (MIT)
+// Authoritative process definition — prose in SKILL.md supports, doesn't replace.
+//
+// Render: dot -Tsvg debugging-flow.dot -o debugging-flow.svg
+
+digraph debugging_flow {
+    rankdir=TB;
+    node [shape=box, style=rounded, fontname="Helvetica", fontsize=11];
+    edge [fontname="Helvetica", fontsize=9];
+
+    start [label="Bug / failing test /\nunexpected behavior", shape=ellipse, style=filled, fillcolor="#e8f5e9"];
+
+    subgraph cluster_p1 {
+        label="Phase 1 — Root cause investigation"; style=dashed;
+        read_err [label="Read error + stack\ncompletely"];
+        reproduce [label="Reproduce\nconsistently"];
+        changes [label="Check recent\nchanges"];
+        instrument [label="Instrument component\nboundaries / trace\ndata flow backward"];
+    }
+
+    subgraph cluster_p2 {
+        label="Phase 2 — Pattern analysis"; style=dashed;
+        compare [label="Find working example,\nread reference fully,\nlist every difference"];
+    }
+
+    subgraph cluster_p3 {
+        label="Phase 3 — Hypothesis"; style=dashed;
+        hypothesis [label="One written hypothesis:\n\"X because Y\""];
+        min_test [label="Minimal test,\none variable"];
+    }
+
+    subgraph cluster_p4 {
+        label="Phase 4 — Fix (on a yes)"; style=dashed;
+        failing_test [label="Write failing test\n(watch it fail)"];
+        fix [label="One fix at the source"];
+        verify [label="Run targeted tests,\nshow output"];
+    }
+
+    reproduced [label="Reproduced?", shape=diamond, style=filled, fillcolor="#fff3e0"];
+    confirmed [label="Hypothesis\nconfirmed?", shape=diamond, style=filled, fillcolor="#fff3e0"];
+    approved [label="User said yes /\ndispatched fix list?", shape=diamond, style=filled, fillcolor="#fff3e0"];
+    fix_works [label="Fix verified?", shape=diamond, style=filled, fillcolor="#fff3e0"];
+    fix_count [label="Fix attempts\n>= 3?", shape=diamond, style=filled, fillcolor="#ffebee"];
+
+    report [label="Report root cause +\nproposed fix", shape=ellipse, style=filled, fillcolor="#e3f2fd"];
+    done [label="Done\n(with evidence)", shape=ellipse, style=filled, fillcolor="#e8f5e9"];
+    question_arch [label="STOP:\nQuestion the architecture\nwith the user", shape=box, style="filled,bold", fillcolor="#ffcdd2"];
+
+    start -> read_err -> reproduce -> reproduced;
+    reproduced -> changes [label="Yes"];
+    reproduced -> instrument [label="No — gather\nmore data"];
+    instrument -> reproduce;
+    changes -> instrument [style=dashed, label="multi-layer /\ndeep stack"];
+    changes -> compare;
+    instrument -> compare [style=dashed];
+    compare -> hypothesis -> min_test -> confirmed;
+    confirmed -> approved [label="Yes"];
+    confirmed -> hypothesis [label="No — new\nhypothesis"];
+    approved -> report [label="No"];
+    approved -> failing_test [label="Yes"];
+    failing_test -> fix -> verify -> fix_works;
+    fix_works -> done [label="Yes"];
+    fix_works -> fix_count [label="No"];
+    fix_count -> read_err [label="No — back to\nPhase 1"];
+    fix_count -> question_arch [label="Yes"];
+}

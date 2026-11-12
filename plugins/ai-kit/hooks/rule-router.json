@@ -1,0 +1,38 @@
+{
+  "maxInjections": 3,
+  "rules": [
+    {
+      "id": "rules-setup",
+      "priority": 1,
+      "match": "\\b(set ?up|setup|init\\w*|create|write|update|refresh)\\b.{0,30}\\b(project|workspace|repo\\w*|team)\\b.{0,15}\\brules?\\b|\\bAGENTS\\.md\\b",
+      "inject": "Project rules work: invoke skill `ai-kit:setup-rules` (Codex: `setup-rules`). It owns `.ai-kit/workspace.json`, AGENTS.md and the CLAUDE.md import."
+    },
+    {
+      "id": "pr",
+      "priority": 1,
+      "match": "\\b(create|open|submit|raise|make)\\b.{0,30}\\b(PR|MR|pull request|merge request)\\b",
+      "exclude": "\\breview(ing)?\\b.{0,15}\\b(PR|MR|pull request|merge request)\\b|\\b(PR|MR|pull request|merge request)\\b.{0,15}\\breview",
+      "inject": "Creating a PR/MR: invoke skill `ai-kit:pr-submit` from inside the repo on the feature branch; host and CLI come from `.ai-kit/workspace.json` (vcs). PR body via `ai-kit:solution-doc`. Do not hand-roll push + API calls."
+    },
+    {
+      "id": "brainstorm",
+      "priority": 1,
+      "match": "^\\s*brainstorm\\w*\\b|\\b(which|compare)\\b.{0,20}\\b(approach|options?|solutions?)\\b|\\b(grill\\w*|brainstorm\\w*|define|discover\\w*|workshop|clarify|missing)\\b.{0,40}\\b(ACs?|acceptance criteria)\\b|\\bexample mapping\\b",
+      "exclude": "\\b(review\\w*|converge|checklist|implement\\w*)\\b",
+      "inject": "Brainstorming acceptance criteria or an approach: invoke skill `ai-kit:brainstormer` (question rounds with recommendations, decisions logged as DEC-nnn in the work folder)."
+    },
+    {
+      "id": "flow",
+      "priority": 2,
+      "match": "\\b(call chain|what calls|who calls|sequence diagram|request flow|execution flow|data flow|code flow|design diagram)\\b|\\b(draw|redraw|create|update|render|give me)\\b.{0,40}\\bdiag?ram\\b",
+      "exclude": "\\b(regex|this function|this method|this line)\\b",
+      "inject": "Flow/interaction explanation: invoke skill `ai-kit:less-words-more-arrows` to render it as a diagram, not prose only."
+    },
+    {
+      "id": "ticket",
+      "priority": 2,
+      "match": "\\b(this|the|that|a|new) (ticket|story|issue)\\b|\\b(write|draft|refine)\\b.{0,20}\\b(user story|ticket|issue)\\b",
+      "inject": "Ticket work: use skill `ai-kit:ticket` (tracker from `.ai-kit/workspace.json`); full delivery from a ticket: `ai-kit:story`."
+    }
+  ]
+}

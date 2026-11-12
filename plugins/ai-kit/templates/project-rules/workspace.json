@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "name": "<workspace-name>",
+  "gate": "on",
+  "docsDir": "docs",
+  "tracker": {
+    "type": "<jira|github|gitlab|linear|azure-devops|none>",
+    "keyPattern": "<regex, e.g. [A-Z][A-Z0-9]+-\\d+>",
+    "baseUrl": "<tracker url or empty>",
+    "access": "<MCP server name | gh | glab | az | manual>"
+  },
+  "vcs": {
+    "host": "<github|gitlab|bitbucket|azure-devops|other>",
+    "cli": "<gh|glab|az|none>",
+    "defaultBranch": "main",
+    "branchPattern": "feat/<KEY>-<slug>"
+  },
+  "repos": [
+    { "path": "<relative/path>", "name": "<name>", "stack": ["<lang>", "<framework>"], "status": "ready" }
+  ]
+}

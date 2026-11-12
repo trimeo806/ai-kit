@@ -1,17 +1,8 @@
-# Dependencies
 node_modules/
-
-# Build output
-cli/dist/
-
-# Packaged tarballs
 *.tgz
-
-# OS junk
 .DS_Store
 Thumbs.db
-desktop.ini
-
-# Editor
 .idea/
 .vscode/
+plugins/ai-kit/hooks/.logs/
+plugins/ai-kit/hooks/notifications/.env

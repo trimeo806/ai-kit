@@ -1,0 +1,15 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "ai-kit",
+  "owner": { "name": "Tri Nguyen" },
+  "description": "ai-kit: general software-development-lifecycle plugin with a project-rules setup flow.",
+  "plugins": [
+    {
+      "name": "ai-kit",
+      "source": "./plugins/ai-kit",
+      "description": "SDLC skills, role agents and guard hooks. First run sets up workspace and repository rules; a rules gate makes the agent load them before editing.",
+      "version": "1.0.0",
+      "category": "development"
+    }
+  ]
+}

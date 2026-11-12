@@ -1,0 +1,54 @@
+{
+  "roles": {
+    "developer": [
+      { "skill": "ai-kit:tdd-dev-workflow", "when": "implementing a planned task test-first" },
+      { "skill": "ai-kit:test", "when": "tests for the change when no tester step owns them; targeted runs only" },
+      { "skill": "ai-kit:debug", "when": "a test or runtime error you did not expect" }
+    ],
+    "tester": [
+      { "skill": "ai-kit:test", "when": "always: unit and e2e modes, report template" },
+      { "skill": "ai-kit:debug", "when": "a failing test you did not write" }
+    ],
+    "code-reviewer": [
+      { "skill": "ai-kit:review", "when": "always: review modes, severity guide, report template" }
+    ],
+    "secure-code-review": [
+      { "skill": "ai-kit:review", "when": "security mode and its backend/frontend references" }
+    ],
+    "security-auditor": [
+      { "skill": "ai-kit:review", "when": "security mode and its backend/frontend references" }
+    ],
+    "debugger": [
+      { "skill": "ai-kit:debug", "when": "always: root cause before any fix" },
+      { "skill": "ai-kit:test", "when": "the failing test that reproduces the bug" },
+      { "skill": "ai-kit:less-words-more-arrows", "when": "the failure path is a multi-step flow" }
+    ],
+    "planner": [
+      { "skill": "ai-kit:plan", "when": "always: the step references (design, tasks, analyze) are your procedure" },
+      { "skill": "ai-kit:less-words-more-arrows", "when": "design step diagrams" }
+    ],
+    "frontend-architect": [
+      { "skill": "ai-kit:plan", "when": "design step format" },
+      { "skill": "ai-kit:less-words-more-arrows", "when": "UI data-flow diagrams" }
+    ],
+    "backend-architect": [
+      { "skill": "ai-kit:plan", "when": "design step format" },
+      { "skill": "ai-kit:less-words-more-arrows", "when": "sequence diagrams" }
+    ],
+    "devops-engineer": [
+      { "skill": "ai-kit:infra-docker", "when": "Dockerfiles, compose, images" },
+      { "skill": "ai-kit:infra-cloud", "when": "cloud deployment, IaC, pipelines" }
+    ],
+    "docs-manager": [
+      { "skill": "ai-kit:docs", "when": "project docs: init, update, component" },
+      { "skill": "ai-kit:solution-doc", "when": "the work folder's solution.md or a PR body" },
+      { "skill": "ai-kit:less-words-more-arrows", "when": "diagrams in docs" }
+    ],
+    "researcher": [
+      { "skill": "ai-kit:less-words-more-arrows", "when": "the answer is a call chain or flow" }
+    ],
+    "brainstormer": [
+      { "skill": "ai-kit:brainstormer", "when": "decision-log format, question axes, exit check under its references/ — read them; never run its rounds (you cannot ask the user)" }
+    ]
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "title": "Online shop — how an order flows",
+  "subtitle": "Order from the web shop (one by one) or by the partner API (in bulk) · Order service fulfils · status goes back to the buyer and to a 3rd-party system",
+  "grid": { "colWidth": 300, "rowHeight": 200 },
+  "nodes": [
+    { "id": "buyer", "kind": "person", "label": "buyer", "col": 0, "row": 1.4 },
+    { "id": "shop", "kind": "window", "label": "Web shop", "caption": "browse & check out", "col": 0.75, "row": 0.6 },
+    { "id": "api", "kind": "window", "variant": "external", "label": "Partner API", "caption": "partner's system\nPOST v1/orders", "col": 0.75, "row": 1.5 },
+    { "id": "orders", "kind": "service", "label": "order-service", "caption": "turns the checkout into an order", "col": 2.1, "row": 1.0 },
+    { "id": "status", "kind": "service", "label": "fulfilment-service", "caption": "NEW → SHIPPED → DELIVERED\ntracks shipments · fires the webhook", "col": 2.1, "row": 3.0 },
+    { "id": "store", "kind": "database", "label": "orders-db", "caption": "orders · items · shipments", "col": 2.6, "row": 4.8 },
+    { "id": "carrier", "kind": "window", "label": "Carrier portal", "caption": "pick up & deliver", "w": 220, "col": 4.0, "row": 1.0 },
+    { "id": "wA", "kind": "person", "label": "warehouse A", "col": 5.0, "row": 0.3 },
+    { "id": "wB", "kind": "person", "label": "warehouse B", "col": 5.0, "row": 1.0 },
+    { "id": "wC", "kind": "person", "label": "warehouse C", "col": 5.0, "row": 1.7 },
+    { "id": "account", "kind": "window", "label": "Web shop", "caption": "my orders", "col": 0.75, "row": 3.0 },
+    { "id": "third", "kind": "box", "label": "3rd-party system", "caption": "Slack · Google Sheets · CRM ·\ncustom webhook", "col": 0.75, "row": 4.5 }
+  ],
+  "groups": [{ "label": "Order platform", "nodes": ["orders", "status", "store"] }],
+  "edges": [
+    { "from": "buyer", "to": "shop", "n": null },
+    { "from": "buyer", "to": "api", "n": null },
+    { "from": "shop", "to": "orders", "n": 1, "label": "check out" },
+    { "from": "api", "to": "orders", "n": 1, "label": "order by API" },
+    { "from": "orders", "to": "status", "n": 2, "label": "register\nshipment" },
+    { "from": "orders", "to": "carrier", "n": 3, "label": "dispatch" },
+    { "from": "carrier", "to": "wA", "n": null },
+    { "from": "carrier", "to": "wB", "n": null },
+    { "from": "carrier", "to": "wC", "n": null },
+    { "from": "carrier", "to": "status", "fromSide": "bottom", "toSide": "right", "n": 4, "label": "delivery\nupdates" },
+    { "from": "status", "to": "account", "n": 5, "label": "status" },
+    { "from": "status", "to": "third", "fromSide": "bottom", "toSide": "right", "n": 6, "label": "webhook" },
+    { "from": "status", "to": "store", "fromSide": "bottom", "toSide": "top", "dashed": true, "n": null }
+  ],
+  "legend": true,
+  "legendNote": "dashed = data write / read"
+}
