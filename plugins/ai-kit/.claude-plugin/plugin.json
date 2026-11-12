@@ -1,7 +1,7 @@
 {
   "name": "ai-kit",
   "description": "General software-development-lifecycle kit: ticket → brainstorm → plan → TDD → test → debug → review → PR, 13 role agents, guard hooks, and a project-rules setup flow with a rules gate so the agent follows each workspace's own rules.",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "author": { "name": "Tri Nguyen" },
   "keywords": ["sdlc", "workflow", "tdd", "review", "project-rules"],
   "userConfig": {
@@ -14,7 +14,7 @@
     "rules_gate": {
       "type": "boolean",
       "title": "Project rules gate",
-      "description": "Block code edits until project rules are set up, and inject a repository's rules on the first edit there.",
+      "description": "Load a folder's AGENTS.md rules before the first edit there, and ask the first-run rules question once per machine.",
       "default": true
     },
     "no_comments_guard": {

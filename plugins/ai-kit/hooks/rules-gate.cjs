@@ -47,20 +47,19 @@ function deny(reason) {
 
 const RULES_CLI = path.join(__dirname, '..', 'scripts', 'rules.cjs');
 
-function choiceMessage(project, sessionId, wsRoot) {
-  const setupArg = wsRoot ? ` ${path.relative(wsRoot, project) || '.'}` : '';
+function choiceMessage(project, wsRoot) {
+  const scopeArg = wsRoot ? ` repo ${path.relative(wsRoot, project) || '.'}` : '';
   const what = wsRoot
     ? `repository ${project} has no project rules (no AGENTS.md; workspace ${wsRoot} does not mark it "skip").`
     : `project ${project} has no project rules yet (no .ai-kit/workspace.json).`;
   return [
-    `ai-kit rules gate: ${what}`,
-    'Do not edit yet. Pause the task and ask the user to choose (AskUserQuestion in Claude, a plain question in Codex), with option 1 recommended:',
-    `1. Create the rules now — run \`/ai-kit:setup-rules${setupArg}\` (Codex: the setup-rules skill) as an interactive session with the user. When the rules are written, resume the original task; the gate then loads them.`,
-    `2. Continue without rules for this session — run: node "${RULES_CLI}" allow "${project}" --session ${sessionId}`,
+    `ai-kit rules gate (first run, asked once): ${what}`,
+    'Do not edit yet. Pause the task and ask the user once (AskUserQuestion in Claude, a plain question in Codex), with option 1 recommended:',
+    `1. Create rules now — run \`/ai-kit:create-rules${scopeArg}\` (Codex: the create-rules skill) with the user; it asks which scope (plugin-wide, workspace, repository, subfolder), writes the rules and records the first run. Then resume the original task.`,
+    `2. Not now — run: node "${RULES_CLI}" onboarded later`,
     '   then retry the edit. Follow ai-kit defaults only, invent no project conventions, and say in your final report that no project rules were applied.',
-    `3. Never ask for this project — run: node "${RULES_CLI}" skip "${project}"`,
-    '   then retry the edit (undo later with `unskip`).',
-    'Run the command for option 2 or 3 only after the user picked it. Never bypass the gate by editing through the shell.'
+    'Either way ai-kit never asks again; later the user runs /ai-kit:create-rules for a project, repository or folder when they want rules.',
+    'Run the command for option 2 only after the user picked it. Never bypass the gate by editing through the shell.'
   ].join('\n');
 }
 
@@ -83,8 +82,8 @@ function main() {
 
     if (!workspace) {
       const gitRoot = ws.findGitRoot(dir);
-      if (!gitRoot || !ws.gateEnabled(null) || allowed(gitRoot)) continue;
-      deny(choiceMessage(gitRoot, sessionId, null));
+      if (!gitRoot || !ws.gateEnabled(null) || allowed(gitRoot) || ws.isOnboarded()) continue;
+      deny(choiceMessage(gitRoot, null));
     }
 
     if (!ws.gateEnabled(workspace)) continue;
@@ -94,7 +93,7 @@ function main() {
     const gitRoot = ws.findGitRoot(dir);
     if (gitRoot && gitRoot !== workspace.root && ws.isWithin(gitRoot, workspace.root)) {
       const repoHasRules = ws.ruleChain(gitRoot, gitRoot).length > 0;
-      if (!repoHasRules && !allowed(gitRoot)) deny(choiceMessage(gitRoot, sessionId, workspace.root));
+      if (!repoHasRules && !allowed(gitRoot) && !ws.isOnboarded()) deny(choiceMessage(gitRoot, workspace.root));
     }
 
     for (const rule of ws.ruleChain(workspace.root, dir)) {

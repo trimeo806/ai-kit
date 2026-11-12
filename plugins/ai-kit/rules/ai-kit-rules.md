@@ -4,9 +4,10 @@ General software-development-lifecycle rules. Project rules (`AGENTS.md` chain +
 
 ## Project rules first
 - Before planning or changing code in a repository, have its rules in context: the `AGENTS.md` files from the workspace root down to the folder you change, plus `.ai-kit/workspace.json`.
-- Project without rules → before the first code change there, ask the user to choose: (1) create the rules now with `/ai-kit:setup-rules`, then resume the task; (2) continue without rules for this session; (3) never ask for this project. The rules gate enforces this and gives the exact commands. Reading, questions, research and planning need no rules.
-- Working without rules (option 2 or 3): follow ai-kit defaults and what the code itself shows; state in the final report that no project rules were applied.
-- Never invent a convention the rules do not state. Missing fact → ask once, then offer to save it with `ai-kit:setup-rules` (update mode).
+- Rules are asked about once: on the first use of ai-kit on a machine, `ai-kit:create-rules` (first-run mode) asks whether to create rules now and for which scope — plugin-wide, workspace, repository or subfolder — and records the answer. After that never prompt for rules; create them only when the user asks (`/ai-kit:create-rules [scope] [path]`).
+- Plugin-wide personal rules (`~/.ai-kit/AGENTS.md`) are injected at session start; project rules override them.
+- Project without rules: follow ai-kit defaults and what the code itself shows; state in the final report that no project rules were applied.
+- Never invent a convention the rules do not state. Missing fact → ask once, then offer to save it with `ai-kit:create-rules` at the matching scope.
 - Tracker, VCS host, stack, commands, UI library and folder conventions come from project rules, never from ai-kit defaults.
 
 ## Lifecycle

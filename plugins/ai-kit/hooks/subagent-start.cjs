@@ -47,7 +47,9 @@ try {
   if (process.env.CLAUDE_PLUGIN_OPTION_INJECT_RULES !== 'false') {
     const input = ws.readStdin();
     const cwd = path.resolve(input.cwd || process.cwd());
-    const parts = [IMPLEMENTATION_TEXT, projectRules(cwd), roster(input.agent_type || '')].filter(Boolean);
+    const personal = ws.pluginRules();
+    const personalBlock = personal ? `User's ai-kit rules (all projects; project rules override them):\n${personal}` : '';
+    const parts = [IMPLEMENTATION_TEXT, personalBlock, projectRules(cwd), roster(input.agent_type || '')].filter(Boolean);
     process.stdout.write(JSON.stringify({
       hookSpecificOutput: { hookEventName: 'SubagentStart', additionalContext: parts.join('\n\n') }
     }));

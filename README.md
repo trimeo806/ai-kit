@@ -39,9 +39,21 @@ enabled = true
 
 Codex treats plugin hooks as untrusted until you review them; approve them to turn on the rules gate.
 
-## First use
+## First use and rules
 
-Open a session in your workspace and run `/ai-kit:setup-rules` (Codex: ask for the `setup-rules` skill). ai-kit prompts for it automatically until rules exist.
+ai-kit asks about rules **once**, in your first session after installing it. Pick a scope and it interviews you and writes the rules, or pick "not now". Either way the answer is saved in `~/.ai-kit/onboarding.json` and ai-kit never asks again.
+
+Later, create rules whenever you want them with `/ai-kit:create-rules` (Codex: ask for the `create-rules` skill):
+
+| Command | Rules for | Written to |
+|---|---|---|
+| `/ai-kit:create-rules plugin` | you, in every project (plugin rules) | `~/.ai-kit/AGENTS.md` |
+| `/ai-kit:create-rules workspace [path]` | a workspace / project and all its repos | `<root>/AGENTS.md`, `<root>/.ai-kit/workspace.json` |
+| `/ai-kit:create-rules repo [path]` | one repository | `<repo>/AGENTS.md` |
+| `/ai-kit:create-rules folder <path>` | one subfolder or module | `<dir>/AGENTS.md` |
+| `/ai-kit:create-rules list` | show which rules apply here | — |
+
+The more specific rule wins: folder → repo → workspace → plugin → ai-kit defaults. Details: [plugins/ai-kit/README.md](plugins/ai-kit/README.md#rules-asked-once-then-on-demand).
 
 ## Authoring
 

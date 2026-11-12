@@ -1,29 +1,61 @@
 # ai-kit plugin
 
-General software-development-lifecycle kit for **Claude Code** (source of truth) and **Codex** (same folder, `.codex-plugin/` manifest). It holds no project-specific rules: those live in each workspace as **project rules**, set up on first use.
+General software-development-lifecycle kit for **Claude Code** (source of truth) and **Codex** (same folder, `.codex-plugin/` manifest). It holds no project-specific rules: those live in each workspace as **project rules**, asked about once on first use, then created on demand with `/ai-kit:create-rules`.
 
-## First run: project rules
+## Rules: asked once, then on demand
 
-1. Open Claude/Codex in your workspace (the folder above your repositories, or a single repo) and work as usual.
-2. The first time the agent is about to change code in a project that has no rules, it pauses and asks you:
-   - **Create the rules now** — it runs **`/ai-kit:setup-rules`** (Codex: the `setup-rules` skill) with you, then resumes the task;
-   - **Continue without rules** — for this session only; it follows ai-kit defaults and says so in its report;
-   - **Never ask for this project**.
-3. The setup session detects each repository's stack and commands, interviews you about tracker, VCS, architecture, conventions and testing, then writes:
+ai-kit carries general SDLC rules only. Your own rules live at one of four **scopes**:
+
+| Scope | File | Applies to | Shared? |
+|---|---|---|---|
+| **plugin** | `~/.ai-kit/AGENTS.md` | every project you open with ai-kit | no, personal |
+| **workspace** | `<workspace>/AGENTS.md` + `.ai-kit/workspace.json` | all repositories under the workspace | yes, commit it |
+| **repo** | `<repo>/AGENTS.md` | one repository | yes, commit it |
+| **folder** | `<dir>/AGENTS.md` | one subfolder or module | yes, commit it |
+
+Each `AGENTS.md` in a workspace, repo or folder gets a `CLAUDE.md` holding `@AGENTS.md`, so Claude and Codex read the same text. The more specific rule wins: **your current instruction → folder → repo → workspace → plugin → ai-kit defaults**.
+
+### First run (asked once per machine)
+
+1. Install ai-kit and open a session anywhere.
+2. In that first session, ai-kit asks once: **create rules now?** If the agent starts editing code before it asks, the rules gate pauses the edit and asks the same question.
+   - **Yes** — `create-rules` asks *where* the rules apply (plugin-wide, this workspace, one repository, a subfolder; several at once is fine). It detects the stack and commands, interviews you, shows the files and writes them after you approve. Workspace and repository setup runs through `setup-rules`.
+   - **Not now** — ai-kit works with its defaults.
+3. Either answer is saved in `~/.ai-kit/onboarding.json`. **ai-kit never asks about rules again.**
+
+### Later: create rules when you want them
+
+```
+/ai-kit:create-rules                     # asks the scope
+/ai-kit:create-rules plugin              # personal rules for every project
+/ai-kit:create-rules workspace [path]    # workspace / project rules
+/ai-kit:create-rules repo services/api   # one repository
+/ai-kit:create-rules folder apps/web     # one subfolder or module
+/ai-kit:create-rules list                # which rules apply here
+/ai-kit:setup-rules update               # re-sync workspace rules after the code changed
+```
+
+Plain requests work too: "create rules for this repo", "add folder rules for apps/web", "set my personal rules". Codex: ask for the `create-rules` skill.
+
+To get the first-run question again: `node <plugin>/scripts/rules.cjs reset-onboarding`.
+
+### What a workspace setup writes
 
 ```
 <workspace>/.ai-kit/workspace.json   # structured facts (tracker, vcs, docsDir, repos)
 <workspace>/AGENTS.md                # workspace rules  (Codex reads natively)
 <workspace>/CLAUDE.md                # @AGENTS.md       (Claude reads natively)
 <workspace>/<repo>/AGENTS.md         # repository rules
-<workspace>/<repo>/CLAUDE.md         # @AGENTS.md
+<workspace>/<repo>/apps/web/AGENTS.md  # folder rules (optional)
 ```
 
-4. Commit the rule files in each repo so the whole team shares them.
+Commit the rule files in each repo so the whole team shares them.
 
-The **rules gate** (PreToolUse on edits) enforces that choice. Once rules exist, the first edit in a repository whose `AGENTS.md` is not loaded yet is denied once with the rules attached, then allowed — so the agent always reads a repo's rules before changing it.
+### Rules gate
 
-Other opt-outs: `"gate": "off"` in `workspace.json`, a repo marked `"status": "skip"`, the plugin option `rules_gate`, or `AI_KIT_GATE=off`. "Never ask" lives in `~/.ai-kit/skip.json`; per-session choices in `~/.ai-kit/state/`.
+The **rules gate** (PreToolUse on edits) makes sure the agent reads rules before changing code: the first edit in a folder whose `AGENTS.md` chain is not loaded yet is denied once with the rules attached, then allowed. Before first run it also pauses the first edit in a project without rules to ask the first-run question. After first run, a project without rules is never paused.
+
+Opt-outs: `"gate": "off"` in `workspace.json`, a repo marked `"status": "skip"`, the plugin option `rules_gate`, or `AI_KIT_GATE=off`.
 
 Full contract: [references/project-rules-contract.md](references/project-rules-contract.md).
 
@@ -31,7 +63,8 @@ Full contract: [references/project-rules-contract.md](references/project-rules-c
 
 | Skill | Use |
 |---|---|
-| `setup-rules` | Set up / update / check / skip project rules |
+| `create-rules` | Create rules at a scope you choose: plugin-wide, workspace, repository, subfolder; first-run question |
+| `setup-rules` | Workspace and repository rules: detect, interview, update, check, skip |
 | `story` | End-to-end: ticket → plan → implement → test → review → PR |
 | `ticket` | Read or draft a ticket on the tracker from `workspace.json` |
 | `brainstormer` | Grill acceptance criteria or an approach; decision log |
@@ -54,10 +87,10 @@ Full contract: [references/project-rules-contract.md](references/project-rules-c
 
 | Event | Hook | Does |
 |---|---|---|
-| SessionStart | `session-start.cjs` | Injects `rules/ai-kit-rules.md` and project-rules status (or the first-run setup prompt) |
-| SubagentStart | `subagent-start.cjs` | Implementation rules, project rules pointer, role skill set |
+| SessionStart | `session-start.cjs` | Injects `rules/ai-kit-rules.md`, your plugin rules (`~/.ai-kit/AGENTS.md`), project-rules status, and the first-run question until it was answered once |
+| SubagentStart | `subagent-start.cjs` | Implementation rules, plugin rules, project rules pointer, role skill set |
 | UserPromptSubmit | `rule-router.cjs` | Routes prompts to skills; workspace can add routes in `.ai-kit/routes.json` |
-| PreToolUse (edits) | `rules-gate.cjs` | Project-rules gate (Claude `Edit/Write`, Codex `apply_patch`) |
+| PreToolUse (edits) | `rules-gate.cjs` | Loads `AGENTS.md` rules before the first edit in a folder; first-run question (Claude `Edit/Write`, Codex `apply_patch`) |
 | PreToolUse | `scout-block`, `privacy-block`, `destructive-guard` | Skip heavy dirs, protect secrets, confirm destructive git/rm |
 | PostToolUse | `no-comments-guard.cjs` | Flags unrequested comments and plan IDs in code |
 | Stop | `notifications/notify.cjs` | Optional Telegram/Discord/Slack notify (env-configured) |

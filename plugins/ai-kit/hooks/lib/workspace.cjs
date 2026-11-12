@@ -6,7 +6,10 @@ const path = require('path');
 
 const RULE_FILE = 'AGENTS.md';
 const WORKSPACE_FILE = path.join('.ai-kit', 'workspace.json');
-const SKIP_FILE = path.join(os.homedir(), '.ai-kit', 'skip.json');
+const KIT_HOME = path.join(os.homedir(), '.ai-kit');
+const SKIP_FILE = path.join(KIT_HOME, 'skip.json');
+const ONBOARDING_FILE = path.join(KIT_HOME, 'onboarding.json');
+const PLUGIN_RULE_FILE = path.join(KIT_HOME, RULE_FILE);
 const MAX_RULE_CHARS = 12000;
 
 function readJson(file) {
@@ -90,6 +93,26 @@ function skipList() {
 
 function isSkipped(dir) {
   return skipList().some((p) => isWithin(path.resolve(dir), path.resolve(p)));
+}
+
+function onboarding() {
+  return readJson(ONBOARDING_FILE);
+}
+
+function isOnboarded() {
+  const data = onboarding();
+  return Boolean(data && data.done);
+}
+
+function markOnboarded(choice, done = true) {
+  const data = { done, choice: choice || null, at: new Date().toISOString() };
+  fs.mkdirSync(KIT_HOME, { recursive: true });
+  fs.writeFileSync(ONBOARDING_FILE, JSON.stringify(data, null, 2) + '\n');
+  return data;
+}
+
+function pluginRules() {
+  return fs.existsSync(PLUGIN_RULE_FILE) ? readRule(PLUGIN_RULE_FILE) : '';
 }
 
 function gateEnabled(ws) {
@@ -207,7 +230,14 @@ function describeWorkspace(ws) {
 module.exports = {
   RULE_FILE,
   WORKSPACE_FILE,
+  KIT_HOME,
   SKIP_FILE,
+  ONBOARDING_FILE,
+  PLUGIN_RULE_FILE,
+  onboarding,
+  isOnboarded,
+  markOnboarded,
+  pluginRules,
   readJson,
   readStdin,
   ancestors,

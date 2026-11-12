@@ -5,8 +5,15 @@ ai-kit carries only general software-development-lifecycle rules. Everything spe
 ## Precedence
 
 1. The user's instruction in the current turn.
-2. Project rules: the nearest `AGENTS.md` wins over a farther one (repo over workspace).
-3. ai-kit general rules (`rules/ai-kit-rules.md`).
+2. Project rules: the nearest `AGENTS.md` wins over a farther one (folder over repo over workspace).
+3. Plugin-wide personal rules: `~/.ai-kit/AGENTS.md` (this user, every project).
+4. ai-kit general rules (`rules/ai-kit-rules.md`).
+
+## Scopes and first run
+
+`ai-kit:create-rules` writes rules at four scopes: **plugin** (`~/.ai-kit/AGENTS.md`), **workspace** (`<root>/AGENTS.md` + `.ai-kit/workspace.json`), **repo** (`<repo>/AGENTS.md`), **folder** (`<dir>/AGENTS.md`). Workspace and repo setup runs through `ai-kit:setup-rules`.
+
+ai-kit asks about rules **once per machine**. Until `~/.ai-kit/onboarding.json` exists, the SessionStart hook tells the agent to run `create-rules` in first-run mode, and the rules gate pauses the first edit in a project without rules to ask the same question. Either answer ("create now" or "not now") is recorded with `rules.cjs onboarded <created|later>`; from then on nothing prompts for rules and the user runs `/ai-kit:create-rules` when they want them. `rules.cjs reset-onboarding` re-arms the question.
 
 ## Layout
 
@@ -56,7 +63,7 @@ ai-kit carries only general software-development-lifecycle rules. Everything spe
 
 | Field | Meaning |
 |---|---|
-| `gate` | `on` (default) blocks edits until rules exist and are loaded; `off` disables the gate for this workspace. |
+| `gate` | `on` (default) loads each folder's `AGENTS.md` chain before the first edit there (and asks the first-run question before onboarding); `off` disables the gate for this workspace. |
 | `docsDir` | Root folder for work artifacts (default `docs`). |
 | `tracker.type` | `jira` · `github` · `gitlab` · `linear` · `azure-devops` · `none`. |
 | `tracker.keyPattern` | Regex for ticket keys, used to find the ticket in a request or branch name. |
@@ -66,7 +73,7 @@ ai-kit carries only general software-development-lifecycle rules. Everything spe
 | `vcs.branchPattern` | Branch naming; `<KEY>` and `<slug>` are placeholders. |
 | `repos[].status` | `ready` (has rules) · `pending` (setup not finished) · `skip` (no rules wanted; gate lets edits through). |
 
-Missing field → the skill asks the user once, then offers to save the answer with `ai-kit:setup-rules` (update mode).
+Missing field → the skill asks the user once, then offers to save the answer with `ai-kit:create-rules` (or `ai-kit:setup-rules update`).
 
 ## Rule file sections (`AGENTS.md`)
 
@@ -87,10 +94,11 @@ Workspace and repo rule files use the same headings; leave out sections that do 
 
 - Claude loads `CLAUDE.md` (and through it `AGENTS.md`) from the cwd ancestry at start and from subfolders when it reads files there. Codex loads `AGENTS.md` from the git root down to the cwd.
 - The ai-kit **rules gate** (PreToolUse on Edit/Write/apply_patch) closes the gap: the first edit in a folder whose rule files are not loaded yet is denied once, with the rule text in the denial reason. Retry the edit after reading it.
-- A project (git repo) without rules → its first edit is paused and the agent asks the user to choose:
-  1. **Create the rules now** — run `ai-kit:setup-rules` for that project as an interactive session, then resume the original task.
-  2. **Continue without rules this session** — `rules.cjs allow <project> --session <id>` (state in `~/.ai-kit/state/`, pruned after 7 days).
-  3. **Never ask for this project** — `rules.cjs skip <project>` (stored in `~/.ai-kit/skip.json`; `unskip` reverses it).
+- First run only (no `~/.ai-kit/onboarding.json`): a project (git repo) without rules has its first edit paused and the agent asks the user once:
+  1. **Create rules now** — run `ai-kit:create-rules` (scope question, then the interview), then resume the original task.
+  2. **Not now** — `rules.cjs onboarded later`, continue with ai-kit defaults.
+- After first run, a project without rules is never paused; existing `AGENTS.md` files are still loaded by the gate.
+- Per-project opt-outs still work: `rules.cjs allow <project> --session <id>` (state in `~/.ai-kit/state/`, pruned after 7 days) and `rules.cjs skip <project>` (stored in `~/.ai-kit/skip.json`; `unskip` reverses it).
 - Edits to `AGENTS.md`, `CLAUDE.md` and `.ai-kit/**` always pass so setup can run.
 - Other opt-outs: `"gate": "off"` in `workspace.json`, `"status": "skip"` for one repo, the plugin option `rules_gate = false`, or env `AI_KIT_GATE=off`.
 

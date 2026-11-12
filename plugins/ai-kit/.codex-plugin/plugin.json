@@ -1,6 +1,6 @@
 {
   "name": "ai-kit",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "General software-development-lifecycle kit with a project-rules setup flow and rules gate. Claude Code is the source of truth; Codex shares the same skills and hooks.",
   "author": { "name": "Tri Nguyen" },
   "keywords": ["sdlc", "workflow", "tdd", "review", "project-rules"],
@@ -14,7 +14,7 @@
     "category": "Coding",
     "capabilities": ["Interactive", "Read", "Write"],
     "defaultPrompt": [
-      "Set up project rules for this workspace.",
+      "Create rules for this project, a repository, a folder or all my projects.",
       "Plan and implement this ticket test-first."
     ]
   }

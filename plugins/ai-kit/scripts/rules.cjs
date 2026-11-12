@@ -67,6 +67,8 @@ function status(dir) {
   if (!repos.length && gitRoot) repos.push(gitRoot);
   return {
     workspaceRoot: root,
+    onboarded: ws.isOnboarded(),
+    pluginRules: { file: ws.PLUGIN_RULE_FILE, exists: exists(ws.KIT_HOME, ws.RULE_FILE) },
     configured: Boolean(workspace),
     config: workspace ? workspace.config : null,
     skipped: ws.isSkipped(root),
@@ -115,7 +117,28 @@ function editSessionAllow(dir, sessionId, add) {
   return { session: sessionId, allowedWithoutRules: ws.allowForSession(sessionId, dir, add) };
 }
 
-const USAGE = 'usage: rules.cjs <status|detect|link-claude|skip|unskip> [dir] | <allow|disallow> <dir> --session <id>';
+function onboardingState() {
+  return { file: ws.ONBOARDING_FILE, onboarded: ws.isOnboarded(), state: ws.onboarding(), pluginRules: ws.PLUGIN_RULE_FILE };
+}
+
+const ONBOARDING_CHOICES = new Set(['created', 'later']);
+
+function markOnboarded(choice) {
+  if (!ONBOARDING_CHOICES.has(choice)) {
+    process.stderr.write(`onboarded needs one of: ${[...ONBOARDING_CHOICES].join(', ')}\n`);
+    process.exit(1);
+  }
+  return { file: ws.ONBOARDING_FILE, ...ws.markOnboarded(choice) };
+}
+
+function resetOnboarding() {
+  try {
+    fs.unlinkSync(ws.ONBOARDING_FILE);
+  } catch {}
+  return onboardingState();
+}
+
+const USAGE = 'usage: rules.cjs <status|detect|link-claude|skip|unskip> [dir] | <allow|disallow> <dir> --session <id> | onboarding | onboarded <created|later> | reset-onboarding';
 
 function main() {
   const args = process.argv.slice(2);
@@ -130,7 +153,10 @@ function main() {
     skip: () => editSkip(dir, true),
     unskip: () => editSkip(dir, false),
     allow: () => editSessionAllow(dir, sessionId, true),
-    disallow: () => editSessionAllow(dir, sessionId, false)
+    disallow: () => editSessionAllow(dir, sessionId, false),
+    onboarding: () => onboardingState(),
+    onboarded: () => markOnboarded(arg),
+    'reset-onboarding': () => resetOnboarding()
   };
   if (!commands[cmd]) {
     process.stderr.write(USAGE + '\n');

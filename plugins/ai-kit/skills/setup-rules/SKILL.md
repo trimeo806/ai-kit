@@ -24,13 +24,11 @@ Asking questions: use AskUserQuestion when available (Claude); in Codex ask in p
 | `check` | Run `status`, report what exists, what is missing, which repos are `pending`/`skip`. No writes. |
 | `skip [dir]` | The user never wants rules for this folder. Confirm once, run `rules.cjs skip <dir>`, tell them `rules.cjs unskip <dir>` or `/ai-kit:setup-rules` reverses it. |
 
-## Started from the rules gate
+## Entry point: create-rules
 
-The gate pauses the first edit in a project without rules and gives three options with exact commands. Ask the user (AskUserQuestion: "Create rules now (Recommended)", "Continue without rules", "Never ask for this project"). Then:
+`ai-kit:create-rules` owns the first-run question (asked once per machine) and the scope choice (plugin, workspace, repo, folder). It hands workspace and repo scopes to this skill. When this skill is invoked directly and `rules.cjs onboarding` reports `onboarded: false`, run `rules.cjs onboarded created` after writing the rules so first run is not asked again.
 
-- **Create rules now** → run this skill scoped to that project: if a workspace already exists, it is `update <repo>` for that repo only; otherwise full setup, where the workspace root defaults to the project root (offer its parent if it holds sibling repos). Keep it short: confirm detected facts in one batch, ask only the gaps, write, verify. Then say the rules are in place and **resume the original task** where it stopped — re-run the edit that was paused.
-- **Continue without rules** → run the gate's `allow … --session …` command, retry the edit, follow ai-kit defaults and the code's existing patterns, and say in the final report that no project rules were applied. Offer setup again at the end of the task, once.
-- **Never ask** → run the gate's `skip` command and continue as above.
+From the first-run gate with "create rules now": if a workspace already exists, run `update <repo>` for that repo only; otherwise full setup, where the workspace root defaults to the project root (offer its parent if it holds sibling repos). Keep it short: confirm detected facts in one batch, ask only the gaps, write, verify. Then **resume the original task** — re-run the edit that was paused.
 
 ## Full setup
 
@@ -69,7 +67,7 @@ Show the user a summary of files to create/change and wait for approval, then:
 
 ### 6. Verify and hand over
 - Run `rules.cjs status` again and show the result.
-- Tell the user: rule files live in their repos (commit them so the team shares them); the rules gate now injects each repo's rules on the first edit there; `/ai-kit:setup-rules update` adds repos or changes rules later.
+- Tell the user: rule files live in their repos (commit them so the team shares them); the rules gate now injects each repo's rules on the first edit there; `/ai-kit:create-rules` adds rules for another repo, a subfolder or plugin-wide later, `/ai-kit:setup-rules update` re-syncs workspace rules.
 - Do not commit unless the user asks.
 
 ## Update mode

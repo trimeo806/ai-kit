@@ -4,8 +4,9 @@
     {
       "id": "rules-setup",
       "priority": 1,
-      "match": "\\b(set ?up|setup|init\\w*|create|write|update|refresh)\\b.{0,30}\\b(project|workspace|repo\\w*|team)\\b.{0,15}\\brules?\\b|\\bAGENTS\\.md\\b",
-      "inject": "Project rules work: invoke skill `ai-kit:setup-rules` (Codex: `setup-rules`). It owns `.ai-kit/workspace.json`, AGENTS.md and the CLAUDE.md import."
+      "match": "\\b(set ?up|setup|init\\w*|create|write|add|update|refresh|define)\\b.{0,40}\\b(rules?|conventions?)\\b|\\bAGENTS\\.md\\b|\\b(plugin|personal|folder|subfolder|module)[- ]rules?\\b",
+      "exclude": "\\b(eslint|lint\\w*|checkstyle|firewall|iptables|css|regex|validation|business|alert\\w*|routing)\\b.{0,15}\\brules?\\b",
+      "inject": "Rules work: invoke skill `ai-kit:create-rules` (Codex: `create-rules`). It asks the scope (plugin-wide `~/.ai-kit/AGENTS.md`, workspace, repository, subfolder) and hands workspace/repo setup to `ai-kit:setup-rules`, which owns `.ai-kit/workspace.json`, AGENTS.md and the CLAUDE.md import."
     },
     {
       "id": "pr",
