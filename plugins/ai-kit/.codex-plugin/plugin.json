@@ -1,6 +1,6 @@
 {
   "name": "ai-kit",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "description": "General software-development-lifecycle kit with a project-rules setup flow and rules gate. Claude Code is the source of truth; Codex shares the same skills and hooks.",
   "author": { "name": "Tri Nguyen" },
   "keywords": ["sdlc", "workflow", "tdd", "review", "project-rules"],
