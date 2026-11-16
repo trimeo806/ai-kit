@@ -97,6 +97,8 @@ Full contract: [references/project-rules-contract.md](references/project-rules-c
 
 Turn a hook off per workspace with `"hooks": { "<name>": false }` in `workspace.json`, or `AI_KIT_HOOKS_OFF=scout,privacy`. Custom scout patterns: `.ai-kit/scout-ignore`.
 
+Every hook starts through `hooks/run-node.sh`, which finds Node.js even when the shell that runs hooks has no `node` on its PATH (fnm, nvm, Volta, Program Files, the Windows user/machine PATH). Without it Claude Code reports `A hook of the "ai-kit" plugin gave no usable answer, so it didn't check this action` for every call. Point it at a specific binary with `AI_KIT_NODE=/path/to/node`. The path it finds is cached in `~/.ai-kit/node-path`; delete that file after moving Node.js. If Node.js is not installed the hooks exit 0 silently and do not guard anything.
+
 ## Options (Claude plugin settings)
 
 `inject_rules`, `rules_gate`, `no_comments_guard` — all default on.

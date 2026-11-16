@@ -4,21 +4,21 @@
     "SessionStart": [
       {
         "hooks": [
-          { "type": "command", "command": "node \"${CLAUDE_PLUGIN_ROOT}/hooks/session-start.cjs\"" }
+          { "type": "command", "command": "sh \"${CLAUDE_PLUGIN_ROOT}/hooks/run-node.sh\" \"${CLAUDE_PLUGIN_ROOT}/hooks/session-start.cjs\"" }
         ]
       }
     ],
     "SubagentStart": [
       {
         "hooks": [
-          { "type": "command", "command": "node \"${CLAUDE_PLUGIN_ROOT}/hooks/subagent-start.cjs\"" }
+          { "type": "command", "command": "sh \"${CLAUDE_PLUGIN_ROOT}/hooks/run-node.sh\" \"${CLAUDE_PLUGIN_ROOT}/hooks/subagent-start.cjs\"" }
         ]
       }
     ],
     "UserPromptSubmit": [
       {
         "hooks": [
-          { "type": "command", "command": "node \"${CLAUDE_PLUGIN_ROOT}/hooks/rule-router.cjs\"" }
+          { "type": "command", "command": "sh \"${CLAUDE_PLUGIN_ROOT}/hooks/run-node.sh\" \"${CLAUDE_PLUGIN_ROOT}/hooks/rule-router.cjs\"" }
         ]
       }
     ],
@@ -26,20 +26,20 @@
       {
         "matcher": "Edit|Write|MultiEdit|NotebookEdit|apply_patch",
         "hooks": [
-          { "type": "command", "command": "node \"${CLAUDE_PLUGIN_ROOT}/hooks/rules-gate.cjs\"" }
+          { "type": "command", "command": "sh \"${CLAUDE_PLUGIN_ROOT}/hooks/run-node.sh\" \"${CLAUDE_PLUGIN_ROOT}/hooks/rules-gate.cjs\"" }
         ]
       },
       {
         "matcher": "Bash|Glob|Grep|Read|Edit|Write",
         "hooks": [
-          { "type": "command", "command": "node \"${CLAUDE_PLUGIN_ROOT}/hooks/scout-block.cjs\"" },
-          { "type": "command", "command": "node \"${CLAUDE_PLUGIN_ROOT}/hooks/privacy-block.cjs\"" }
+          { "type": "command", "command": "sh \"${CLAUDE_PLUGIN_ROOT}/hooks/run-node.sh\" \"${CLAUDE_PLUGIN_ROOT}/hooks/scout-block.cjs\"" },
+          { "type": "command", "command": "sh \"${CLAUDE_PLUGIN_ROOT}/hooks/run-node.sh\" \"${CLAUDE_PLUGIN_ROOT}/hooks/privacy-block.cjs\"" }
         ]
       },
       {
         "matcher": "Bash|PowerShell",
         "hooks": [
-          { "type": "command", "command": "node \"${CLAUDE_PLUGIN_ROOT}/hooks/destructive-guard.cjs\"" }
+          { "type": "command", "command": "sh \"${CLAUDE_PLUGIN_ROOT}/hooks/run-node.sh\" \"${CLAUDE_PLUGIN_ROOT}/hooks/destructive-guard.cjs\"" }
         ]
       }
     ],
@@ -47,14 +47,14 @@
       {
         "matcher": "Edit|Write",
         "hooks": [
-          { "type": "command", "command": "node \"${CLAUDE_PLUGIN_ROOT}/hooks/no-comments-guard.cjs\"" }
+          { "type": "command", "command": "sh \"${CLAUDE_PLUGIN_ROOT}/hooks/run-node.sh\" \"${CLAUDE_PLUGIN_ROOT}/hooks/no-comments-guard.cjs\"" }
         ]
       }
     ],
     "Stop": [
       {
         "hooks": [
-          { "type": "command", "command": "node \"${CLAUDE_PLUGIN_ROOT}/hooks/notifications/notify.cjs\"" }
+          { "type": "command", "command": "sh \"${CLAUDE_PLUGIN_ROOT}/hooks/run-node.sh\" \"${CLAUDE_PLUGIN_ROOT}/hooks/notifications/notify.cjs\"" }
         ]
       }
     ]
